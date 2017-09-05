@@ -1,10 +1,12 @@
 /*
- * Structs.h
- * Jacob Rook
- * Data Structures and Algorithms II
+ * @file Struct.h This file contains all of the structures used for a basic
+ * directory that processes basic Unix/Linux commands.
+ *
+ * @author Jacob Rook
+ * @date 09/05/2017
+ * @info Course COP 4534
  * Project 1
  */
-
 #ifndef STRUCTS_H_
 #define STRUCTS_H_
 
@@ -24,6 +26,11 @@ typedef struct Doc{
 	struct Document* NextDoc;
 
 }Document;
+
+typedef struct input{
+
+
+}UserInput;
 
 
 #endif /* STRUCTS_H_ */
