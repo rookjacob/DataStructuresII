@@ -15,15 +15,20 @@
 #include<string.h>
 
 /*
- * @brief ReadUserInput This function reads the input of the user and separates the
- * command into separate words and returns the separate words in the array
+ * @brief ReadUserInput This function reads the input of the user and places
+ * the input into the UserInput structure type.
  *
- * @param void
+ * @param EmptyInput This parameter is a pointer to a UserInput variable. The
+ * value in the variable will not matter because that data will be overwrote
+ * with the new input data from the user.
  *
- * @return Int The function returns an integer value
+ * @return UserInput* The pointer to the overwrote UserInput variable will be
+ * passed back.
  *
  */
-int ReadUserInput(void);
+UserInput* ReadUserInput(UserInput* EmptyInput);
+
+
 
 
 

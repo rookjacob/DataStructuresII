@@ -7,9 +7,9 @@
  * @info Course COP 4534
  * Project 1
  */
-
-#include"Functions.h"
 #include "Structs.h"
+#include"Functions.h"
+
 
 
 

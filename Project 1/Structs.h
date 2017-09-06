@@ -10,25 +10,35 @@
 #ifndef STRUCTS_H_
 #define STRUCTS_H_
 
-
-typedef struct Direct{
+/*
+ * @brief DirectoryFile Structure used for the Directories and files.
+ *
+ * @var Type The distinction between a directory and a file will be made by
+ * the Type variable. A directory will have a "D" assigned to Type and a file
+ * will have an "F" assigned to Type.
+ *
+ * @var DirName This variable will store the name of the directory or file.
+ *
+ * @var Parent This variable is a pointer to the directory that the current
+ * file is in.
+ *
+ * @var HeadDirList This variable is the head of the directory/file list that
+ * are in the Directory.
+ */
+typedef struct DirFile{
+	char Type;
 	char DirName[25];
-	struct Directory* Parent;
-	struct Directory* HeadDir;
-	struct Document* HeadDoc;
+	struct DirectoryFile* Parent;
+	struct DirectoryFile* HeadDirList;
+
+}DirectoryFile;
 
 
-}Directory;
-
-typedef struct Doc{
-	char DocName[25];
-	struct Directory* Parent;
-	struct Document* NextDoc;
-
-}Document;
 
 typedef struct input{
-
+	char Command[8];
+	char SecondWord[25];
+	char ThirdWord[25];
 
 }UserInput;
 
