@@ -1,0 +1,7 @@
+ls 
+mkdir d1
+mkdir d3
+mkdir d2
+ls
+cd d1
+
