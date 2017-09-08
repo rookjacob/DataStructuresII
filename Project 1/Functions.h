@@ -15,18 +15,17 @@
 #include<string.h>
 
 /*
- * @brief ReadUserInput This function reads the input of the user and places
- * the input into the UserInput structure type.
+ * @brief ReadFileLine This function reads a line in a file and returns it.
  *
- * @param EmptyInput This parameter is a pointer to a UserInput variable. The
- * value in the variable will not matter because that data will be overwrote
- * with the new input data from the user.
+ * @param NameOfFile This is the name of the file to be read.
+ *
+ * @param EndOfLineChar This will be the indication of the end of the line.
  *
  * @return UserInput* The pointer to the overwrote UserInput variable will be
  * passed back.
  *
  */
-UserInput* ReadUserInput(UserInput* EmptyInput);
+//char* ReadFileLine(char* NameOfFile, char EndOfLineChar);
 
 
 
