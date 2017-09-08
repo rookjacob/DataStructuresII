@@ -20,6 +20,24 @@ int main(void)
 {
 
 
+	FILE* CommandInput;
+	char CommandFile[]="TestFile.txt";		//File to read the commands from
+
+	char CommandLine[100]="\0";				//Character arry to store the command line input from file
+
+	CommandInput = fopen(CommandFile, "r");
+
+	int i=0;
+	do
+	{
+		fscanf(CommandInput, "%c", CommandLine[i]);
+		i++;
+
+
+	}while(CommandLine[i-1]!="\n");
+
+	CommandLine[i-1]="\0";					//Adding NULL character at the end of the string.
+
 
 	return 0;
 
