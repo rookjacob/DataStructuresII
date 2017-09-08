@@ -7,6 +7,9 @@
  * @info Course COP 4534
  * Project 1
  */
+
+#include <stdio.h>
+#include <string.h>
 #include "Structs.h"
 #include"Functions.h"
 
@@ -15,7 +18,8 @@
 
 int main(void)
 {
-	printf("Hello!!!");
+
+
 
 	return 0;
 
