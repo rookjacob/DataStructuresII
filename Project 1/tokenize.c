@@ -37,7 +37,7 @@ void Tokenizer (char *String, char *Prt[], char TokenChar)
 		the tokenizing character. The loop will move the PlaceHolder to the first non-tokenizing
 		character.
 	*/
-	while(( String[PlaceHolder] != TokenChar) && ( PlaceHolder < StringLen ))
+	while(( String[PlaceHolder] == TokenChar) && ( PlaceHolder < StringLen ))
 	{
 		PlaceHolder++;
 	}
