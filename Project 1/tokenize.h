@@ -21,7 +21,7 @@
  * @return	Void
  *
  */
-void Tokenizer (char *String, char *ptr[], char TokenChar);
+void Tokenizer (char *String, char *Ptr[], char TokenChar);
 
 
 #endif /* TOKENIZE_H_ */
