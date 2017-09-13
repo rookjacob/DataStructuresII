@@ -34,7 +34,6 @@ int Tokenizer (char String[], char *Ptr[], char TokenChar[]);
  *
  * @return	void
  */
-void Trim (char String[] );
 
 
 

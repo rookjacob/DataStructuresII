@@ -41,13 +41,6 @@ int Tokenizer (char String[], char *Prt[], char TokenChar[])
 
 }
 
-void Trim (char *String )
-{
-	int i = strlen(String)-1;
-	if((i>0) && (String[i] == '\n'))
-		String[i] = '\0';
-	return;
-}
 
 
 
