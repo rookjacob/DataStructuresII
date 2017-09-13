@@ -12,16 +12,16 @@
  * @brief	Tokenizer	This function tokenizes a string of characters passed by the
  * user.
  *
- * @param	*String  	String of characters to be tokenized
+ * @param	String[]  	String of characters to be tokenized
  *
- * @param	*prt[]		Array of pointers to store each token
+ * @param	*Prt[]		Array of pointers to store each token
  *
- * @param	TokenChar	Character to identify the end of a token
+ * @param	TokenChar[]	Character array to identify the end of a token
  *
  * @return	int 		Returns the number of tokens
  *
  */
-void Tokenizer (char *String, char *Ptr[], char TokenChar);
+int Tokenizer (char String[], char *Ptr[], char TokenChar[]);
 
 /*
  * @brief	FindNextToken	This function finds the location of the next token.
