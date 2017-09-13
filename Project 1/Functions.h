@@ -11,15 +11,30 @@
 #ifndef FUNCTIONS_H_
 #define FUNCTIONS_H_
 
-#ifndef MAININCLUDES
-#define MAININCLUDES
+/*
+ * @brief	Tokenizer	This function tokenizes a string of characters passed by the
+ * user.
+ *
+ * @param	String[]  	String of characters to be tokenized
+ *
+ * @param	*Prt[]		Array of pointers to store each token
+ *
+ * @param	TokenChar[]	Character array to identify the end of a token
+ *
+ * @return	int 		Returns the number of tokens
+ *
+ */
+int Tokenizer (char String[], char *Ptr[], char TokenChar[]);
 
-#include<stdio.h>
-#include<string.h>
-
-#endif
-
-void Trim(char *String);
+/*
+ * @breif	Trim		This function is used to get rid of the newline character the
+ * fgets function places on the end of the string.
+ *
+ * @param	String[]	String to take delete '\n'
+ *
+ * @return	void
+ */
+void Trim (char String[] );
 
 
 
