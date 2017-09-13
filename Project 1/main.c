@@ -21,35 +21,25 @@
 int main(void)
 {
 
-	//FILE* CommandInput;
-	//char CommandFile[]="TestFile.txt";		//File to read the commands from
+	FILE * CommandInput;
+	char CommandFile[]="TestFile.txt";			//File to read the commands from
+	CommandInput = fopen(CommandFile, "r");		//Opening the file containing the commands
 
-	char CommandLine[]="This file is the main C file for a basic directory that processes basic Unix/Linux commands. \0";				//Character arry to store the command line input from file
+	char CommandLine[100]="\0";					//Character array to store the command line input from file
 
-	char *Tokens[30];
-/*
-	CommandInput = fopen(CommandFile, "r");
+	char *Tokens[10];							//Array of pointers to store the tokens of the command line input
 
-	int i=0;
-	do
+
+	while(fgets(CommandLine, 100, CommandInput) != NULL)
 	{
-		fscanf(CommandInput, "%c", (CommandLine[i]));
-		i++;
+		printf("%s", CommandLine);
 
-
-	}while(CommandLine[i-1]!= '\n');
-
-	CommandLine[i-1]='\0';					//Adding NULL character at the end of the string.
-*/
-	int i = Tokenizer(CommandLine, Tokens, " \t");
-	int j;
-	printf("%d", i);
-	for (j=0;j<i;j++)
-	{
-		printf("%s\n", Tokens[j]);
 	}
 
-	printf("bye");
+
+
+	fclose(CommandInput);
+	printf("\nexit");
 	return 0;
 
 }
