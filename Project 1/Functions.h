@@ -11,10 +11,15 @@
 #ifndef FUNCTIONS_H_
 #define FUNCTIONS_H_
 
+#ifndef MAININCLUDES
+#define MAININCLUDES
+
 #include<stdio.h>
 #include<string.h>
 
+#endif
 
+void Trim(char *String);
 
 
 

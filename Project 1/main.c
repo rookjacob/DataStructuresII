@@ -8,8 +8,14 @@
  * Project 1
  */
 
-#include <stdio.h>
-#include <string.h>
+#ifndef MAININCLUDES
+#define MAININCLUDES
+
+#include<stdio.h>
+#include<string.h>
+
+#endif
+
 #include "Structs.h"
 #include"Functions.h"
 #include "Tokenize.h"
@@ -32,7 +38,7 @@ int main(void)
 
 	while(fgets(CommandLine, 100, CommandInput) != NULL)
 	{
-		printf("%s", CommandLine);
+
 
 	}
 

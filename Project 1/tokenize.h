@@ -8,6 +8,14 @@
 #ifndef TOKENIZE_H_
 #define TOKENIZE_H_
 
+#ifndef MAININCLUDES
+#define MAININCLUDES
+
+#include<stdio.h>
+#include<string.h>
+
+#endif
+
 /*
  * @brief	Tokenizer	This function tokenizes a string of characters passed by the
  * user.

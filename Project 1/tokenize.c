@@ -6,7 +6,7 @@
  */
 
 #include "tokenize.h"
-#include <string.h>
+
 
 int Tokenizer (char String[], char *Prt[], char TokenChar[])
 {
