@@ -46,54 +46,63 @@ int Tokenizer (char String[], char *Tokens[], char TokenChar[])
 
 void CommandOperator(char *Tokens[], int NumberTokens)
 {
+	/*
+	 * Need to convert the first token into a character array so that the character
+	 * array can be used in the strcmp function. strcmp function will not work with
+	 * the pointer.
+	 */
 	char FirstCommand[8] = "\0";
+	char *ptr = Tokens[0];
 	int i = 0;
 	while (i<8)
 	{
-		FirstCommand[i] = Tokens[0]+i;
+		FirstCommand[i] = *(ptr+i);
 		if(FirstCommand[i] == '\0')
 			break;
 		i++;
 	}
 
+	/*
+	 * Determining which, if any command is the first token
+	 */
 	if(!(strcmp(FirstCommand, "ls")))
 	{
 		printf("ls\n");
 		printf("%s\n",ROOT.DirName);
 	}
-	else if(StringCompare(Tokens[0], "mkdir"))
+	else if(!(strcmp(FirstCommand, "mkdir")))
 	{
 		printf("mkdir\n");
 	}
-	else if(StringCompare(Tokens[0], "cd"))
+	else if(!(strcmp(FirstCommand, "cd")))
 	{
 			printf("cd\n");
 	}
-	else if(StringCompare(Tokens[0], "pwd"))
+	else if(!(strcmp(FirstCommand, "pwd")))
 	{
 		printf("pwd\n");
 	}
-	else if(StringCompare(Tokens[0], "addf"))
+	else if(!(strcmp(FirstCommand, "addf")))
 	{
 		printf("addf\n");
 	}
-	else if(StringCompare(Tokens[0], "mv"))
+	else if(!(strcmp(FirstCommand, "mv")))
 	{
 		printf("mv\n");
 	}
-	else if(StringCompare(Tokens[0], "cp"))
+	else if(!(strcmp(FirstCommand, "cp")))
 	{
 		printf("cp\n");
 	}
-	else if(StringCompare(Tokens[0], "rm"))
+	else if(!(strcmp(FirstCommand, "rm")))
 	{
 		printf("rm\n");
 	}
-	else if(StringCompare(Tokens[0], "bye"))
+	else if(!(strcmp(FirstCommand, "bye")))
 	{
 		printf("bye\n");
 	}
-	else if(StringCompare(Tokens[0], "whereis"))
+	else if(!(strcmp(FirstCommand, "whereis")))
 	{
 		printf("whereis\n");
 	}
@@ -108,21 +117,63 @@ void CommandOperator(char *Tokens[], int NumberTokens)
 }
 
 
-int StringCompare(char *String, const char Command[])
+void ls(void)
 {
-	int i=0;
 
-	while(String[i] == Command[i])
-	{
-		if((String[i] == '\0') || (Command[i] == '\0'))
-			break;
-		i++;
-	}
+}
 
-	if((String[i] == '\0' )  && (Command[i]  == '\0' ))
-		return 1;
-	else
-		return 0;
+
+void mkdir(void)
+{
+
+}
+
+
+void cd(void)
+{
+
+}
+
+
+void pwd(void)
+{
+
+}
+
+
+void addf(void)
+{
+
+}
+
+
+void mv(void)
+{
+
+}
+
+
+void cp(void)
+{
+
+}
+
+
+void rm(void)
+{
+
+}
+
+
+void bye(void)
+{
+
+}
+
+
+void whereis(void)
+{
+
 }
 
 

@@ -27,7 +27,7 @@
 int Tokenizer (char String[], char *Tokens[], char TokenChar[]);
 
 /*
- * @breif	CommandOperator		This function determines which Unix\Linux command need to be called
+ * @brief	CommandOperator		This function determines which Unix\Linux command need to be called
  * 								and calls the function for that command.
  *
  * @param	*Tokens[]			Array of pointers to the tokens
@@ -39,18 +39,58 @@ int Tokenizer (char String[], char *Tokens[], char TokenChar[]);
 void CommandOperator(char *Tokens[], int NumberTokens);
 
 /*
- * @breif	StringCompare		This function compares a string of the passed character pointer and
- * 								a constant character array.
+ * @brief	ls					Lists all files and directories in the current directory, indicating
+ * 								which (file or directory) it is
  *
- * @param	*String				The pointer to the beginning of the string to be compared
- *
- * @param	Command				A constant character array to be compared with String. Should be passed
- * 								in form: "rm".
- *
- * @return	int					Returns 1 if string is the same, 0 if not
  */
-int StringCompare(char *String, const char Command[]);
+void ls(void);
 
+/*
+ * @brief	mkdir				Creates a new directory if it does not already exist
+ *
+ */
+void mkdir(void);
+
+/*
+ * @brief	cd					Changes into a specific directory
+ *
+ */
+void cd(void);
+
+/*
+ * @brief	pwd					Specifies the current directory as: <yourname>/root/nextdir/etc/
+ *
+ */
+void pwd(void);
+
+/*
+ * @brief	addf				Adds a file to the current directory
+ *
+ */
+void addf(void);
+
+/*
+ * @brief	cp					Copy file or folder to the new name
+ *
+ */
+void cp(void);
+
+/*
+ * @brief						Locate and remove the file or directory
+ *
+ */
+void rm(void);
+
+/*
+ * @brief	bye					Ends the session
+ *
+ */
+void bye(void);
+
+/*
+ * @brief	whereis				Show path to first occurrence of file or directory if it exists
+ */
+void whereis(void);
 
 
 
