@@ -46,6 +46,8 @@ void CommandOperator(char *Tokens[], int NumberTokens);
  *
  * @param	Command				A constant character array to be compared with String. Should be passed
  * 								in form: "rm".
+ *
+ * @return	int					Returns 1 if string is the same, 0 if not
  */
 int StringCompare(char *String, const char Command[]);
 

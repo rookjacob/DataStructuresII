@@ -46,51 +46,54 @@ int Tokenizer (char String[], char *Tokens[], char TokenChar[])
 
 void CommandOperator(char *Tokens[], int NumberTokens)
 {
-	//if(Tokens[0][0] == 'l')
+	char FirstCommand[8] = "\0";
+	int i = 0;
+	while (i<8)
+	{
+		FirstCommand[i] = Tokens[0]+i;
+		if(FirstCommand[i] == '\0')
+			break;
+		i++;
+	}
+
+	if(!(strcmp(FirstCommand, "ls")))
 	{
 		printf("ls\n");
-		printf("%s",ROOT.DirName);
-		return;
+		printf("%s\n",ROOT.DirName);
 	}
-	/*
-	if(strcmp(Tokens[0], "ls") == 0)
-	{
-		printf("ls\n");
-		//printf("%s",ROOT.DirName);
-	}
-	else if(strcmp(Tokens[0], "mkdir") == 0)
+	else if(StringCompare(Tokens[0], "mkdir"))
 	{
 		printf("mkdir\n");
 	}
-	else if(strcmp(Tokens[0], "cd") == 0)
+	else if(StringCompare(Tokens[0], "cd"))
 	{
 			printf("cd\n");
 	}
-	else if(strcmp(Tokens[0], "pwd") == 0)
+	else if(StringCompare(Tokens[0], "pwd"))
 	{
 		printf("pwd\n");
 	}
-	else if(strcmp(Tokens[0], "addf") == 0)
+	else if(StringCompare(Tokens[0], "addf"))
 	{
 		printf("addf\n");
 	}
-	else if(strcmp(Tokens[0], "mv") == 0)
+	else if(StringCompare(Tokens[0], "mv"))
 	{
 		printf("mv\n");
 	}
-	else if(strcmp(Tokens[0], "cp") == 0)
+	else if(StringCompare(Tokens[0], "cp"))
 	{
 		printf("cp\n");
 	}
-	else if(strcmp(Tokens[0], "rm") == 0)
+	else if(StringCompare(Tokens[0], "rm"))
 	{
 		printf("rm\n");
 	}
-	else if(strcmp(Tokens[0], "bye") == 0)
+	else if(StringCompare(Tokens[0], "bye"))
 	{
 		printf("bye\n");
 	}
-	else if(strcmp(Tokens[0], "whereis") == 0)
+	else if(StringCompare(Tokens[0], "whereis"))
 	{
 		printf("whereis\n");
 	}
@@ -99,7 +102,7 @@ void CommandOperator(char *Tokens[], int NumberTokens)
 		printf("Wrong Input\n");
 	}
 
-*/
+
 
 
 }
