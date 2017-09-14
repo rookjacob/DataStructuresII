@@ -12,30 +12,42 @@
 #define FUNCTIONS_H_
 
 /*
- * @brief	Tokenizer	This function tokenizes a string of characters passed by the
+ * @brief	Tokenizer		This function tokenizes a string of characters passed by the
  * user.
  *
- * @param	String[]  	String of characters to be tokenized
+ * @param	String[]  		String of characters to be tokenized
  *
- * @param	*Prt[]		Array of pointers to store each token
+ * @param	*Tokens[]		Array of pointers to the tokens
  *
- * @param	TokenChar[]	Character array to identify the end of a token
+ * @param	TokenChar[]		Character array to identify the end of a token
  *
- * @return	int 		Returns the number of tokens
+ * @return	int 			Returns the number of tokens
  *
  */
-int Tokenizer (char String[], char *Ptr[], char TokenChar[]);
+int Tokenizer (char String[], char *Tokens[], char TokenChar[]);
 
 /*
- * @breif	Trim		This function is used to get rid of the newline character the
- * fgets function places on the end of the string.
+ * @breif	CommandOperator		This function determines which Unix\Linux command need to be called
+ * 								and calls the function for that command.
  *
- * @param	String[]	String to take delete '\n'
+ * @param	*Tokens[]			Array of pointers to the tokens
+ *
+ * @param	NumberTokens		The number of tokens in the array of pointers
  *
  * @return	void
  */
+void CommandOperator(char *Tokens[], int NumberTokens);
 
-
+/*
+ * @breif	StringCompare		This function compares a string of the passed character pointer and
+ * 								a constant character array.
+ *
+ * @param	*String				The pointer to the beginning of the string to be compared
+ *
+ * @param	Command				A constant character array to be compared with String. Should be passed
+ * 								in form: "rm".
+ */
+int StringCompare(char *String, const char Command[]);
 
 
 

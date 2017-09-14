@@ -6,4 +6,16 @@ ls
 cd d1
 cd d2
 cd ..
-klahlk jhdaslk 
+klahlk jhdaslk fkjhlkjh  lkjklf
+
+ls              // lists all files and directories in the current directory, indicating which (file or directory) it is
+mkdir <dirname> // creates a new directory if it does not already exist
+cd <dirname>    // changes into specified directory if it exists
+cd ..           // changes to the parent directory
+pwd             // specifies the current directory as: <yourname>/root/nextdir/etc/
+addf <filename> // adds a file to the current directory
+mv <fname1> <fname2> // change the name of the file or directory to the new name
+cp <fname1> <fname2> // copy file or folder to the new name
+rm <filename>   // locate and remove the file or directory
+bye             // ends the session
+whereis <filename>   // show path to first occurrence of file or directory if it exists

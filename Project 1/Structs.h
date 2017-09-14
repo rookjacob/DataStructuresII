@@ -33,6 +33,8 @@ typedef struct DirFile{
 
 }DirectoryFile;
 
+DirectoryFile ROOT;
+
 
 
 typedef struct input{

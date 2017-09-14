@@ -18,7 +18,7 @@
 
 #include "Structs.h"
 #include"Functions.h"
-#include "Tokenize.h"
+
 
 
 
@@ -26,6 +26,8 @@
 
 int main(void)
 {
+	ROOT.Type = 'D';							//Initializing ROOT variables
+	strcpy(ROOT.DirName, "rook/root");
 
 	FILE * CommandInput;
 	char CommandFile[]="TestFile.txt";			//File to read the commands from
@@ -35,9 +37,17 @@ int main(void)
 
 	char *Tokens[10];							//Array of pointers to store the tokens of the command line input
 
+	int NumberTokens;
+	//int i;
+
+
 
 	while(fgets(CommandLine, 100, CommandInput) != NULL)
 	{
+		NumberTokens = Tokenizer(CommandLine, Tokens, " \t\n");
+		//printf("Tok");
+		CommandOperator(Tokens, NumberTokens);
+		//printf("Tik");
 
 
 	}
