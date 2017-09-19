@@ -23,11 +23,12 @@
 
 int Tokenizer (char String[], const char TokenChar[])
 {
-	Tokens[0][0] = '\0';			//Initialize the tokens to NULL so no overlap happens
-	Tokens[1][0] = '\0';
-	Tokens[2][0] = '\0';
-	Tokens[3][0] = '\0';
-
+	/*
+	strcpy(Tokens[0] , "\0");			//Initialize the tokens to NULL so no overlap happens
+	strcpy(Tokens[1], "\0");
+	strcpy(Tokens[2], "\0");
+	strcpy(Tokens[3], "\0");
+*/
 	int i = 0;
 	char *prt;
 	prt = strtok(String, TokenChar);
@@ -45,63 +46,71 @@ int Tokenizer (char String[], const char TokenChar[])
 
 }
 
+char *getToken(int TokenIndex)
+{
+	if(TokenIndex >= MAXTOKENS)
+		return NULL;
+	return Tokens[TokenIndex];
+}
+
+
 
 void CommandOperator(DirectoryFile *Curr)
 {
-
+	char *Command = getToken(0);
 	/*
 	 * Determining which, if any command is the first token
 	 */
-	if(!(strcmp(Tokens[0], "ls")))
+	if (Command == NULL)
+	{
+			printf("No input\n");
+	}
+	else if(!(strcmp(Command, "ls")))
 	{
 		ls(Curr);
 	}
-	else if(!(strcmp(Tokens[0], "mkdir")))
+	else if(!(strcmp(Command, "mkdir")))
 	{
 		mkdir(Curr);
 	}
-	else if(!(strcmp(Tokens[0], "cd")))
+	else if(!(strcmp(Command, "cd")))
 	{
 		cd();
 	}
-	else if(!(strcmp(Tokens[0], "pwd")))
+	else if(!(strcmp(Command, "pwd")))
 	{
 		pwd();
 	}
-	else if(!(strcmp(Tokens[0], "addf")))
+	else if(!(strcmp(Command, "addf")))
 	{
 		addf();
 	}
-	else if(!(strcmp(Tokens[0], "mv")))
+	else if(!(strcmp(Command, "mv")))
 	{
 		mv();
 	}
-	else if(!(strcmp(Tokens[0], "cp")))
+	else if(!(strcmp(Command, "cp")))
 	{
 		cp();
 	}
-	else if(!(strcmp(Tokens[0], "rm")))
+	else if(!(strcmp(Command, "rm")))
 	{
 		rm();
 	}
-	else if(!(strcmp(Tokens[0], "bye")))
+	else if(!(strcmp(Command, "bye")))
 	{
 		bye();
 	}
-	else if(!(strcmp(Tokens[0], "whereis")))
+	else if(!(strcmp(Command, "whereis")))
 	{
 		whereis();
-	}
-	else if (Tokens[0][0] == '\0')
-	{
-		printf("No input\n");
 	}
 	else
 	{
 		printf("Command \"%s\" was not recognized\n",Tokens[0]);
 	}
 
-
+return;
 
 
 }
@@ -123,21 +132,26 @@ void ls(DirectoryFile *Curr)
 
 void mkdir(DirectoryFile *Curr)
 {
-	if(Tokens[1][0] == '\0');
+	char Param1[] = {"Token1"};
+	char *Param2 = getToken(2);
+	int s =strlen(Param1);
+	if((strlen(Param1) == 0))
 	{
-		printf("File name was not given\n");
+		printf("File name was not given\n%s %d\n",Param1, s);	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		//The
 		return;
 	}
-	if(Tokens[2][0] != '\0')
+	if(strlen(Param2) != 0)
 	{
 		printf("Too many arguments were given\n");
 		return;
 	}
-
+	printf("Enter Name:");
+	scanf("%s", Param1);
 	DirectoryFile *NewDir = malloc(sizeof(DirectoryFile));
 	NewDir->Parent = Curr;
 	NewDir->Type = 'D';
-	strcpy(NewDir->DirName, Tokens[1]);
+	strcpy(NewDir->DirName, Param1);
 
 	Insert(NewDir);
 	return;
@@ -152,43 +166,63 @@ void Insert(DirectoryFile *NewNode)
 	if (NewNode->Parent->DirList == NULL)
 	{
 		NewNode->Parent->DirList = NewNode;
+		printf("%s",NewNode->DirName);
 		return;
 	}
 
 	if(NewNode->Type == 'D') 		//Directory
 	{
-		if(NewNode->Parent->DirList->Type == 'F')
-		{
-			NewNode->DirList = NewNode->Parent->DirList;
-			return;
-		}
-		else
-		{
-			int cmp = strcmp(NewNode->DirName, NewNode->Parent->DirList->DirName);
+		ptr = NewNode->Parent->DirList;
+		prev = NewNode->Parent->DirList;
 
-			if(cmp<0)
+		while((ptr->Type =='D') && (strcmp(NewNode->DirName, ptr->DirName)>=0) && ptr != NULL)
+		{
+			if(strcmp(NewNode->DirName, ptr->DirName) == 0)
 			{
-				NewNode->DirList = NewNode->Parent->DirList;
+				printf("Directory %s already exists. Directory not made.\n", NewNode->DirName);
+				free(NewNode);
 				return;
 			}
-			else if(cmp>0)
-			{
-
-				ptr = NewNode->Parent->DirList->DirList;
-				while (strcmp(NewNode->DirName,prt)>0)
-				{
-					prev = ptr;
-					ptr = ptr->DirList;
-				}
-				prev->DirList = NewNode;
-				NewNode
-			}
-
+			prev = ptr;
+			ptr = ptr->DirList;
 		}
+		prev->DirList = NewNode;
+		if(ptr != NULL)
+			NewNode->DirList = ptr;
+		printf("%s",NewNode->DirName);
+		return;
 	}
 	else 							//File
 	{
+		ptr = NewNode->Parent->DirList;
+		prev = NewNode->Parent->DirList;
 
+		while((ptr->Type =='D') && (ptr != NULL))
+		{
+			prev = ptr;
+			ptr = ptr->DirList;
+		}
+		if (ptr == NULL)
+		{
+			prev->DirList = NewNode;
+			printf("%s",NewNode->DirName);
+			return;
+		}
+		while((strcmp(NewNode->DirName,ptr->DirName)>=0) && (ptr != NULL))
+		{
+			if (strcmp(NewNode->DirName, ptr->DirName) == 0)
+			{
+				printf("File %s already exists. File not made. \n", NewNode->DirName);
+				free(NewNode);
+				return;
+			}
+			prev = ptr;
+			ptr = ptr->DirList;
+		}
+		prev->DirList = NewNode;
+		if(ptr != NULL)
+			NewNode->DirList = ptr;
+		return;
 	}
 
 }

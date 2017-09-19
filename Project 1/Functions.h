@@ -59,6 +59,16 @@ DirectoryFile ROOT;			//This is the root for all the files.
 int Tokenizer (char String[], const char TokenChar[]);
 
 /*
+ * @brief	getToken
+ *
+ * @param	TokenIndex			Index of token to be returned
+ *
+ * @return	char*				Returns pointer to beginning of the token with the index passed
+ */
+char *getToken(int TokenIndex);
+
+
+/*
  * @brief	CommandOperator		This function determines which Unix\Linux command need to be called
  * 								and calls the function for that command.
  *

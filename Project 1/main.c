@@ -30,6 +30,11 @@ int main(void)
 	strcpy(ROOT.DirName, "rook/root");
 	DirectoryFile *Curr;// = (DirectoryFile*)malloc(sizeof(DirectoryFile));
 	Curr = &ROOT;
+	/*
+	DirectoryFile Node = { 'D', "NODE", &ROOT, NULL};
+	DirectoryFile Node1 = { 'D', "NODE1", &ROOT, &Node};
+	ROOT.DirList = &Node1;
+	*/
 
 
 	FILE * CommandInput;
@@ -38,11 +43,17 @@ int main(void)
 
 	char CommandLine[100]="\0";					//Character array to store the command line input from file
 
+	int i;
+	int j;
 
 	while(fgets(CommandLine, 100, CommandInput) != NULL)
 	{
 		printf("\n$ %s", CommandLine);
-		Tokenizer(CommandLine, " \t\n");
+		j=Tokenizer(CommandLine, " \t\n");
+
+		for(i=0;i<j;i++)
+			printf("%s ",Tokens[i]);
+		printf("\n");
 
 		CommandOperator(Curr);
 
