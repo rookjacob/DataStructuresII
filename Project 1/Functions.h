@@ -32,16 +32,16 @@ char Tokens[MAXTOKENS][MAXTOKENLEN];			//Scope variable to store Tokens
  * @var DirList 				This variable is the head of the directory/file list that
  * 								are in the Directory.
  */
-typedef struct DirFile{
+typedef struct DirFile {
 	char Type;
-	char DirName[25];
-	struct DirectoryFile* Parent;
-	struct DirectoryFile* DirList;
+	char DirName[MAXTOKENLEN];
+	struct DirFile *Parent;
+	struct DirFile *DirList;
 
 }DirectoryFile;
 
 DirectoryFile ROOT;			//This is the root for all the files.
-DirectoryFile *CURR = &ROOT;		//Pointer to the current location in the tree
+
 
 
 
@@ -62,26 +62,31 @@ int Tokenizer (char String[], const char TokenChar[]);
  * @brief	CommandOperator		This function determines which Unix\Linux command need to be called
  * 								and calls the function for that command.
  *
- * @param	*Tokens[]			Array of pointers to the tokens
- *
- * @param	NumberTokens		The number of tokens in the array of pointers
+ * @param	*Curr				Current location in the Directory Tree
  *
  * @return	void
  */
-void CommandOperator(void);
+void CommandOperator(DirectoryFile *Curr);
 
 /*
  * @brief	ls					Lists all files and directories in the current directory, indicating
  * 								which (file or directory) it is
  *
  */
-void ls(void);
+void ls(DirectoryFile *Curr);
 
 /*
  * @brief	mkdir				Creates a new directory if it does not already exist
  *
  */
-void mkdir(void);
+void mkdir(DirectoryFile *Curr);
+
+/*
+ * @brief	Insert				Inserts a new directory or file in its current list of directories alphabetically
+ *
+ * @param	NewNode				New Node to be placed into its current directory
+ */
+void Insert(DirectoryFile *NewNode);
 
 /*
  * @brief	cd					Changes into a specific directory

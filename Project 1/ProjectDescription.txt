@@ -1,3 +1,25 @@
+Problem Description
+The goal of this assignment is to make a basic directory maintenance simulator that processes basic unix/Linux commands.
+
+Suppose we wanted a directory tree that would allow us to represent the following directory structure:
+
+ 
+
+
+We could have an array of pointers in each node for child nodes, but the array might fill up.
+
+As an alternative, we could use a binary tree structure where one branch is essentially a linked list of sibling nodes at a given level, and the other branch is a pointer to the contents of the given directory. Pictorially, the data structure would look like this:
+
+ 
+
+
+For simplicity, we will use the same type of node for a file or a directory.
+
+Requirements for this assignment:
+
+We will simulate several of the UNIX command-line operating system commands for a directory system in order to add directories, add files, list directory contents, etc. 
+
+We will implement the following commands:
 ls              // lists all files and directories in the current directory, indicating which (file or directory) it is
 mkdir <dirname> // creates a new directory if it does not already exist
 cd <dirname>    // changes into specified directory if it exists
@@ -9,3 +31,109 @@ cp <fname1> <fname2> // copy file or folder to the new name
 rm <filename>   // locate and remove the file or directory
 bye             // ends the session
 whereis <filename>   // show path to first occurrence of file or directory if it exists
+
+A technical note:
+Think of your structure for a Node in this system. The cd .. command suggests that it will be really critical to be able to navigate from a given node to that node's parent. Does it appear that the second picture above would make such a process efficient? One other thought. You will REALLY want to practice drawing how your pointers get set as this program runs!!
+
+Program execution:
+This assignment will simulate an interactive program by reading the commands from a file. Commands will be in the file, one per line. You will NOT have to construct commands from multiple lines and SHOULD NOT code your progam to work that way. We will adopt the approach of running an interactive program non-interactively for two reasons:
+It will illustrate that you can test interactive programs without having to do all the typing (most important)
+It will simplify life for the teaching assistant (also important)
+Error Checking:
+This assignment will require quite a bit of error checking. For instance, you should not be able to make a file or directory in a directory that already has a file or directory by that name. You obviously cannot switch into a directory that is not there, and you cannot switch to the parent directory of your root directory (although UNIX might permit you to do this if the System Administrator is not too picky). The data structure will be available in the background and will grow as we add subdirectories and files, or shrink as we remove them. Note the use of the $ as the command prompt - just like a typical command-line system!!
+
+Here is a typical output of a program run:
+$ pwd
+coffey/root/
+$ mkdir abc
+abc
+$ cd abc
+coffey/root/abc/
+$ addf f3
+$ addf f2
+$ addf f1
+$ ls
+  F f1
+  F f2
+  F f3
+$ mkdir def
+def
+$ ls
+  D def
+  F f1
+  F f2
+  F f3
+$ cd cdf
+cdf is not located in abc
+$ cd def
+coffey/root/abc/def/
+$ pwd
+coffey/root/abc/def/
+$ whereis f3
+coffey/root/abc/
+$ whereis qwerty
+qwerty not found
+$ cd ..
+coffey/root/abc/
+$ ls
+  D def
+  F f1
+  F f2
+  F f3
+$ cd ..
+coffey/root/
+$ pwd
+coffey/root/
+$ ls
+  D abc
+$ cd abc
+coffey/root/abc/
+$ pwd
+coffey/root/abc/
+$ ls
+  D def
+  F f1
+  F f2
+  F f3
+$ rm f5
+f5 is not in coffey/root/abc/
+$ rm f2
+$ ls
+  D def
+  F f1
+  F f3
+$ mv f3 file3
+$ ls
+  D def
+  F f1
+  F file3
+$ bye
+
+Deliverables
+
+1. Source code
+2. User's manual 
+3. Functional decomposition document
+Submission format:
+
+You will submit the following for this project: 
+1. The functional decomposition for your program.
+2. A User's manual that describes how to set up and run your program.
+3. Your source code in C. 
+4. Results table disk file: The comparison of results between the approximation program and the brute force implementation (for 10, 11, 12, etc cities).  This table is a summary of the data for all the individual  outputs from 10 cities ...
+5. A makefile for the project 
+
+ Submission Requirements:   
+Note: you will lose 10% if you do not follow these instructions exactly. The reason for this policy is that eLearning puts zip files inside zip files and it is a time-consuming, tedious, and error-prone policy to unzip them all one-by-one. I have a utility I wrote that nicely unzips all these into a usable folder structure. If you do not follow these instructions, your files will get all mashed up together with others, often with name collisions and it is an unusable mess.
+
+1. Compile and run your program one last time before submitting it. Your program must run with gcc in the Linux lab.
+2. Place every file in your submission in a SINGLE DIRECTORY named <last name>-<first initial>-p<number>. For instance, I would create directory:
+     coffey-j-p1  for project 1.
+3. zip that FOLDER into a .zip file with the SAME NAME. This means that inside your zip file, you will have exactly one folder (from the example: coffey-j-p1) showing at the top level. Inside that folder will be ALL the files in your project.
+4. DO NOT make separate folders for documentation and source files (or anything else) inside the main folder. Having such a setup simply necessitates more navigation time to get where we need to go to grade.
+5. Any needed input files should be in the top-level folder along with the source code.
+6. MacOS users - remove the _MacOS_ utility folder before you zip up the file. If you cannot, delete it from the archive once the archive is created. It just takes up space and is not needed for anything we do with your submissions.
+7. Login to UWF's eLearning system at http://elearning.uwf.edu/. Select our course.
+9. Select the Dropbox option. Then select the appropriate project folder.
+10. Upload your zip file to that folder. Check the dropbox to insure that the file was uploaded. ALWAYS give yourself enough time. If you are trying to submit at 11:57pm on your machine, the clock might be off and the dropbox might already be closed.
+Please review the policy on ACADEMIC MISCONDUCT. This is an individual assignment.

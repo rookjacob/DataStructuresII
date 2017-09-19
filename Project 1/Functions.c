@@ -14,15 +14,11 @@
 
 #include<stdio.h>
 #include<string.h>
+#include<stdlib.h>
 
 #endif
 
 #include "Functions.h"
-
-#define MAXTOKENS 4
-#define MAXTOKENLEN  100
-
-char Tokens[MAXTOKENS][MAXTOKENLEN];
 
 
 int Tokenizer (char String[], const char TokenChar[])
@@ -50,7 +46,7 @@ int Tokenizer (char String[], const char TokenChar[])
 }
 
 
-void CommandOperator(void)
+void CommandOperator(DirectoryFile *Curr)
 {
 
 	/*
@@ -58,11 +54,11 @@ void CommandOperator(void)
 	 */
 	if(!(strcmp(Tokens[0], "ls")))
 	{
-		ls();
+		ls(Curr);
 	}
 	else if(!(strcmp(Tokens[0], "mkdir")))
 	{
-		mkdir();
+		mkdir(Curr);
 	}
 	else if(!(strcmp(Tokens[0], "cd")))
 	{
@@ -111,20 +107,49 @@ void CommandOperator(void)
 }
 
 
-void ls(void)
+void ls(DirectoryFile *Curr)
 {
-	DirectoryFile *ListPtr;
-	ListPtr = (*CURR).DirList;
-	while(1)
+	DirectoryFile *ListPtr = Curr->DirList;
+
+	while(ListPtr != NULL)
 	{
-		printf("j");
+
+		printf("\t%c %s\n", ListPtr->Type ,ListPtr->DirName);
+		ListPtr = ListPtr->DirList;
 	}
+	return;
 }
 
 
-void mkdir(void)
+void mkdir(DirectoryFile *Curr)
 {
-	printf("mkdir\n");
+	if(Tokens[1][0] == '\0');
+	{
+		printf("File name was not given\n");
+		return;
+	}
+	if(Tokens[2][0] != '\0')
+	{
+		printf("Too many arguments were given\n");
+		return;
+	}
+
+	DirectoryFile *NewDir = malloc(sizeof(DirectoryFile));
+	NewDir->Parent = Curr;
+	NewDir->Type = 'D';
+	strcpy(NewDir->DirName, Tokens[1]);
+
+}
+
+void Insert(DirectoryFile *NewNode)
+{
+	if (NewNode->Parent->DirList == NULL)
+	{
+		NewNode->Parent->DirList = NewNode;
+		return;
+	}
+	//int cmp = strcmp(NewNode->DirName)
+
 }
 
 

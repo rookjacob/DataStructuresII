@@ -13,6 +13,7 @@
 
 #include<stdio.h>
 #include<string.h>
+#include<stdlib.h>
 
 #endif
 
@@ -27,6 +28,8 @@ int main(void)
 {
 	ROOT.Type = 'D';							//Initializing ROOT variables
 	strcpy(ROOT.DirName, "rook/root");
+	DirectoryFile *Curr;// = (DirectoryFile*)malloc(sizeof(DirectoryFile));
+	Curr = &ROOT;
 
 
 	FILE * CommandInput;
@@ -41,7 +44,7 @@ int main(void)
 		printf("\n$ %s", CommandLine);
 		Tokenizer(CommandLine, " \t\n");
 
-		CommandOperator();
+		CommandOperator(Curr);
 
 
 	}
