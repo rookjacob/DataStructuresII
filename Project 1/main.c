@@ -35,18 +35,13 @@ int main(void)
 
 	char CommandLine[100]="\0";					//Character array to store the command line input from file
 
-	char *Tokens[10];							//Array of pointers to store the tokens of the command line input
-
-	int NumberTokens;
-
-
 
 	while(fgets(CommandLine, 100, CommandInput) != NULL)
 	{
-		printf("$ %s", CommandLine);
-		NumberTokens = Tokenizer(CommandLine, Tokens, " \t\n");
+		printf("\n$ %s", CommandLine);
+		Tokenizer(CommandLine, " \t\n");
 
-		CommandOperator(Tokens, NumberTokens);
+		CommandOperator();
 
 
 	}

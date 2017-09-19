@@ -11,20 +11,23 @@
 #ifndef FUNCTIONS_H_
 #define FUNCTIONS_H_
 
+#define MAXTOKENS 4
+#define MAXTOKENLEN 100
+
+char Tokens[MAXTOKENS][MAXTOKENLEN];			//Scope variable to store Tokens
+
 /*
  * @brief	Tokenizer		This function tokenizes a string of characters passed by the
  * user.
  *
  * @param	String[]  		String of characters to be tokenized
  *
- * @param	*Tokens[]		Array of pointers to the tokens
- *
  * @param	TokenChar[]		Character array to identify the end of a token
  *
  * @return	int 			Returns the number of tokens
  *
  */
-int Tokenizer (char String[], char *Tokens[], char TokenChar[]);
+int Tokenizer (char String[], const char TokenChar[]);
 
 /*
  * @brief	CommandOperator		This function determines which Unix\Linux command need to be called
@@ -36,7 +39,7 @@ int Tokenizer (char String[], char *Tokens[], char TokenChar[]);
  *
  * @return	void
  */
-void CommandOperator(char *Tokens[], int NumberTokens);
+void CommandOperator(void);
 
 /*
  * @brief	ls					Lists all files and directories in the current directory, indicating
@@ -68,6 +71,11 @@ void pwd(void);
  *
  */
 void addf(void);
+
+/*
+ * @brief	mv					Change the name of the file or directory to the new name
+ */
+void mv(void);
 
 /*
  * @brief	cp					Copy file or folder to the new name

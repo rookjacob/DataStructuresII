@@ -20,95 +20,90 @@
 #include "Functions.h"
 #include "Structs.h"
 
-int Tokenizer (char String[], char *Tokens[], char TokenChar[])
+#define MAXTOKENS 4
+#define MAXTOKENLEN  100
+
+char Tokens[MAXTOKENS][MAXTOKENLEN];
+
+
+int Tokenizer (char String[], const char TokenChar[])
 {
+	Tokens[0][0] = '\0';			//Initialize the tokens to NULL so no overlap happens
+	Tokens[1][0] = '\0';
+	Tokens[2][0] = '\0';
+	Tokens[3][0] = '\0';
 
-	int i;
+	int i = 0;
+	char *prt;
+	prt = strtok(String, TokenChar);
 
-	Tokens[0] = strtok(String, TokenChar);
-
-	if ( Tokens[0] == NULL )
-		return 0;
-
-	i=1;
-
-	while (1)
+	while((prt != NULL) && (i<MAXTOKENS))
 	{
-		Tokens[i] = strtok(NULL, TokenChar);
-
-		if(Tokens[i] == NULL)
-			return i;
+		strcpy(Tokens[i], prt);
+		prt = strtok(NULL, TokenChar);
 		i++;
 	}
+	return i;
+
+
+
 
 }
 
 
-void CommandOperator(char *Tokens[], int NumberTokens)
+void CommandOperator(void)
 {
-	/*
-	 * Need to convert the first token into a character array so that the character
-	 * array can be used in the strcmp function. strcmp function will not work with
-	 * the pointer.
-	 */
-	char FirstCommand[8] = "\0";
-	char *ptr = Tokens[0];
-	int i = 0;
-	while (i<8)
-	{
-		FirstCommand[i] = *(ptr+i);
-		if(FirstCommand[i] == '\0')
-			break;
-		i++;
-	}
 
 	/*
 	 * Determining which, if any command is the first token
 	 */
-	if(!(strcmp(FirstCommand, "ls")))
+	if(!(strcmp(Tokens[0], "ls")))
 	{
-		printf("ls\n");
-		printf("%s\n",ROOT.DirName);
+		ls();
 	}
-	else if(!(strcmp(FirstCommand, "mkdir")))
+	else if(!(strcmp(Tokens[0], "mkdir")))
 	{
-		printf("mkdir\n");
+		mkdir();
 	}
-	else if(!(strcmp(FirstCommand, "cd")))
+	else if(!(strcmp(Tokens[0], "cd")))
 	{
-			printf("cd\n");
+		cd();
 	}
-	else if(!(strcmp(FirstCommand, "pwd")))
+	else if(!(strcmp(Tokens[0], "pwd")))
 	{
-		printf("pwd\n");
+		pwd();
 	}
-	else if(!(strcmp(FirstCommand, "addf")))
+	else if(!(strcmp(Tokens[0], "addf")))
 	{
-		printf("addf\n");
+		addf();
 	}
-	else if(!(strcmp(FirstCommand, "mv")))
+	else if(!(strcmp(Tokens[0], "mv")))
 	{
-		printf("mv\n");
+		mv();
 	}
-	else if(!(strcmp(FirstCommand, "cp")))
+	else if(!(strcmp(Tokens[0], "cp")))
 	{
-		printf("cp\n");
+		cp();
 	}
-	else if(!(strcmp(FirstCommand, "rm")))
+	else if(!(strcmp(Tokens[0], "rm")))
 	{
-		printf("rm\n");
+		rm();
 	}
-	else if(!(strcmp(FirstCommand, "bye")))
+	else if(!(strcmp(Tokens[0], "bye")))
 	{
-		printf("bye\n");
+		bye();
 	}
-	else if(!(strcmp(FirstCommand, "whereis")))
+	else if(!(strcmp(Tokens[0], "whereis")))
 	{
-		printf("whereis\n");
+		whereis();
+	}
+	else if (Tokens[0][0] == '\0')
+	{
+		printf("No input\n");
 	}
 	else
 	{
-		printf("Wrong Input\n");
+		printf("Command \"%s\" was not recognized\n",Tokens[0]);
 	}
 
 
@@ -119,61 +114,62 @@ void CommandOperator(char *Tokens[], int NumberTokens)
 
 void ls(void)
 {
-
+	printf("ls\n");
+	printf("%s\n",ROOT.DirName);
 }
 
 
 void mkdir(void)
 {
-
+	printf("mkdir\n");
 }
 
 
 void cd(void)
 {
-
+	printf("cd\n");
 }
 
 
 void pwd(void)
 {
-
+	printf("pwd\n");
 }
 
 
 void addf(void)
 {
-
+	printf("addf\n");
 }
 
 
 void mv(void)
 {
-
+	printf("mv\n");
 }
 
 
 void cp(void)
 {
-
+	printf("cp\n");
 }
 
 
 void rm(void)
 {
-
+	printf("rm\n");
 }
 
 
 void bye(void)
 {
-
+	printf("bye\n");
 }
 
 
 void whereis(void)
 {
-
+	printf("whereis\n");
 }
 
 
