@@ -16,6 +16,35 @@
 
 char Tokens[MAXTOKENS][MAXTOKENLEN];			//Scope variable to store Tokens
 
+
+/*
+ * @brief DirectoryFile 		Structure used for the Directories and files.
+ *
+ * @var Type 					The distinction between a directory and a file will be made by
+ * 								the Type variable. A directory will have a "D" assigned to Type and a file
+ * 								will have an "F" assigned to Type.
+ *
+ * @var DirName 				This variable will store the name of the directory or file.
+ *
+ * @var Parent 					This variable is a pointer to the directory that the current
+ * 								file is in.
+ *
+ * @var DirList 				This variable is the head of the directory/file list that
+ * 								are in the Directory.
+ */
+typedef struct DirFile{
+	char Type;
+	char DirName[25];
+	struct DirectoryFile* Parent;
+	struct DirectoryFile* DirList;
+
+}DirectoryFile;
+
+DirectoryFile ROOT;			//This is the root for all the files.
+DirectoryFile *CURR;		//Pointer to the current location in the tree
+
+
+
 /*
  * @brief	Tokenizer		This function tokenizes a string of characters passed by the
  * user.

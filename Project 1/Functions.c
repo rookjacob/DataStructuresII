@@ -114,8 +114,11 @@ void CommandOperator(void)
 
 void ls(void)
 {
-	printf("ls\n");
-	printf("%s\n",ROOT.DirName);
+
+	while(1)
+	{
+		printf("")
+	}
 }
 
 

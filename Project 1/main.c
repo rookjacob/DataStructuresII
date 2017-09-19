@@ -16,7 +16,6 @@
 
 #endif
 
-#include "Structs.h"
 #include"Functions.h"
 
 
@@ -28,6 +27,7 @@ int main(void)
 {
 	ROOT.Type = 'D';							//Initializing ROOT variables
 	strcpy(ROOT.DirName, "rook/root");
+	CURR = &ROOT;
 
 	FILE * CommandInput;
 	char CommandFile[]="TestFile.txt";			//File to read the commands from
