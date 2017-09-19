@@ -18,7 +18,6 @@
 #endif
 
 #include "Functions.h"
-#include "Structs.h"
 
 #define MAXTOKENS 4
 #define MAXTOKENLEN  100
@@ -114,10 +113,11 @@ void CommandOperator(void)
 
 void ls(void)
 {
-
+	DirectoryFile *ListPtr;
+	ListPtr = (*CURR).DirList;
 	while(1)
 	{
-		printf("")
+		printf("j");
 	}
 }
 

@@ -41,7 +41,7 @@ typedef struct DirFile{
 }DirectoryFile;
 
 DirectoryFile ROOT;			//This is the root for all the files.
-DirectoryFile *CURR;		//Pointer to the current location in the tree
+DirectoryFile *CURR = &ROOT;		//Pointer to the current location in the tree
 
 
 
