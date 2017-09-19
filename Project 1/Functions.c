@@ -139,16 +139,57 @@ void mkdir(DirectoryFile *Curr)
 	NewDir->Type = 'D';
 	strcpy(NewDir->DirName, Tokens[1]);
 
+	Insert(NewDir);
+	return;
+
 }
 
 void Insert(DirectoryFile *NewNode)
 {
+	DirectoryFile *ptr;
+	DirectoryFile *prev;
+
 	if (NewNode->Parent->DirList == NULL)
 	{
 		NewNode->Parent->DirList = NewNode;
 		return;
 	}
-	//int cmp = strcmp(NewNode->DirName)
+
+	if(NewNode->Type == 'D') 		//Directory
+	{
+		if(NewNode->Parent->DirList->Type == 'F')
+		{
+			NewNode->DirList = NewNode->Parent->DirList;
+			return;
+		}
+		else
+		{
+			int cmp = strcmp(NewNode->DirName, NewNode->Parent->DirList->DirName);
+
+			if(cmp<0)
+			{
+				NewNode->DirList = NewNode->Parent->DirList;
+				return;
+			}
+			else if(cmp>0)
+			{
+
+				ptr = NewNode->Parent->DirList->DirList;
+				while (strcmp(NewNode->DirName,prt)>0)
+				{
+					prev = ptr;
+					ptr = ptr->DirList;
+				}
+				prev->DirList = NewNode;
+				NewNode
+			}
+
+		}
+	}
+	else 							//File
+	{
+
+	}
 
 }
 
