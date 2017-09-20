@@ -42,6 +42,15 @@ typedef struct DirFile {
 
 DirectoryFile ROOT;			//This is the root for all the files.
 
+/*
+ * @brief	NameStack			Stack structure to
+ */
+typedef struct NStack{
+	char *DirectoryName;
+	struct NStack *Next;
+	struct NStack *Prev;
+}NameStack;
+
 
 
 
@@ -119,7 +128,7 @@ void cd(DirectoryFile *Curr);
  * @brief	pwd					Specifies the current directory as: <yourname>/root/nextdir/etc/
  *
  */
-void pwd(void);
+void pwd(DirectoryFile *Curr);
 
 /*
  * @brief	addf				Adds a file to the current directory

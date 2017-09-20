@@ -228,7 +228,11 @@ void Insert(DirectoryFile *NewNode)
 
 char *FindDirFile(DirectoryFile *Curr, char DirFileName[])
 {
-	char *ptr = Curr->DirList;
+	if (DirFileName == NULL)
+	{
+		return NULL;
+	}
+	DirectoryFile *ptr = Curr->DirList;
 
 	while (1)
 	{
@@ -236,7 +240,11 @@ char *FindDirFile(DirectoryFile *Curr, char DirFileName[])
 		{
 			return NULL;
 		}
-
+		if(!strcmp(DirFileName, ptr->DirName))
+		{
+			return ptr;
+		}
+		ptr = ptr->DirList;
 	}
 }
 
@@ -252,14 +260,35 @@ void cd(DirectoryFile *Curr)
 		printf("Too many arguments were given\n");
 		return;
 	}
-	char *ptr = Curr->DirList;
+	if(!stcmp(Tokens[1], ".."))
+	{
+		if (Curr->Parent == &ROOT)
+		{
+			printf("Permission Denied\n");
+			return;
+		}
+		Curr = Curr->Parent;
+		pwd(Curr);
+		return;
+	}
+	char *ptr = FindDirFile(Curr, Tokens[1]);
 
-
+	if(ptr == NULL)
+	{
+		printf("%s is not located in %s\n", Tokens[1], Curr->DirName);
+		return;
+	}
+	else
+	{
+		Curr = ptr;
+		pwd(Curr);
+		return;
+	}
 
 }
 
 
-void pwd(void)
+void pwd(DirectoryFile *Curr)
 {
 	printf("pwd\n");
 }

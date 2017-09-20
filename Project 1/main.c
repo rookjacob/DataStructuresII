@@ -48,7 +48,7 @@ int main(void)
 
 	while(fgets(CommandLine, 100, CommandInput) != NULL)
 	{
-		printf("\n$ %s", CommandLine);
+		printf("\n$ %s\n", CommandLine);
 		j=Tokenizer(CommandLine, " \t\n");
 
 		/*for(i=0;i<j;i++)
