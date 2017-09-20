@@ -75,7 +75,7 @@ void CommandOperator(DirectoryFile *Curr)
 	}
 	else if(!(strcmp(Command, "cd")))
 	{
-		cd();
+		cd(Curr);
 	}
 	else if(!(strcmp(Command, "pwd")))
 	{
@@ -226,10 +226,36 @@ void Insert(DirectoryFile *NewNode)
 
 }
 
+char *FindDirFile(DirectoryFile *Curr, char DirFileName[])
+{
+	char *ptr = Curr->DirList;
+
+	while (1)
+	{
+		if (ptr == NULL)
+		{
+			return NULL;
+		}
+
+	}
+}
 
 void cd(DirectoryFile *Curr)
 {
-	printf("cd\n");
+	if (strlen(Tokens[1]) == 0)				//If there is no parameters do nothing: print newline
+	{
+		printf("\n");
+		return;
+	}
+	if(strlen(Tokens[2]) != 0)
+	{
+		printf("Too many arguments were given\n");
+		return;
+	}
+	char *ptr = Curr->DirList;
+
+
+
 }
 
 

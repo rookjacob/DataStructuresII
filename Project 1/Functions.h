@@ -99,6 +99,17 @@ void mkdir(DirectoryFile *Curr);
 void Insert(DirectoryFile *NewNode);
 
 /*
+ * @brief	FindDirFile			Function finds a directory or file in the current directory
+ *
+ * @param	Curr				Pointer to current directory
+ *
+ * @param	DirFileName			Name of directory/file to find
+ *
+ * @return	char*				Returns pointer to found directory or file. Returns NULL if not found.
+ */
+char *FindDirFile(DirectoryFile *Curr, char DirFileName[]);
+
+/*
  * @brief	cd					Changes into a specific directory
  *
  */
