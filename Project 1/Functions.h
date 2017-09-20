@@ -43,14 +43,19 @@ typedef struct DirFile {
 DirectoryFile ROOT;			//This is the root for all the files.
 
 /*
- * @brief	NameStack			Stack structure to
+ * @brief	NameStack			Stack structure to store the file names to be popped off
+ *
+ * @var		DirectoryName		Name of name to be output when popped
+ *
+ * @var		Next				Pointer to next member in the stack
+ *
+ * @var		Prev				Pointer to previous member in the stack
  */
 typedef struct NStack{
 	char *DirectoryName;
 	struct NStack *Next;
 	struct NStack *Prev;
 }NameStack;
-
 
 
 
@@ -163,6 +168,44 @@ void bye(void);
  * @brief	whereis				Show path to first occurrence of file or directory if it exists
  */
 void whereis(void);
+
+/*
+ * @brief	Push				Push function for the NameStack stack
+ *
+ * @param	Top					Location of top of the stack
+ *
+ * @param	Tail				Location of the tail of the stack
+ *
+ * @param	Name				String to be popped off the stack
+ */
+void Push(NameStack *Top, NameStack *Tail, char *Name);
+
+/*
+ * @brief	Pop					Pop function for the NameStack stack
+ *
+ * @param	Top					Location of top of the stack
+ *
+ * @param	Tail				Location of the tail of the stack
+ */
+char *Pop(NameStack *Top, NameStack *Tail);
+
+/*
+ * @brief	Peak				Peak function for the NameStack stack
+ *
+ * @param	Top					Location of top of the stack
+ *
+ * @param	Tail				Location of the tail of the stack
+ */
+char *Peak(NameStack *Top, NameStack *Tail);
+
+/*
+ * @brief	isEmpty				 Function to determine if the NameStack is empty or not
+ *
+ * @param	Top					Location of top of the stack
+ *
+ * @param	Tail				Location of the tail of the stack
+ */
+int isEmpty(NameStack *Top, NameStack *Tail);
 
 
 

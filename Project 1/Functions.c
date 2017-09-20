@@ -226,27 +226,6 @@ void Insert(DirectoryFile *NewNode)
 
 }
 
-char *FindDirFile(DirectoryFile *Curr, char DirFileName[])
-{
-	if (DirFileName == NULL)
-	{
-		return NULL;
-	}
-	DirectoryFile *ptr = Curr->DirList;
-
-	while (1)
-	{
-		if (ptr == NULL)
-		{
-			return NULL;
-		}
-		if(!strcmp(DirFileName, ptr->DirName))
-		{
-			return ptr;
-		}
-		ptr = ptr->DirList;
-	}
-}
 
 void cd(DirectoryFile *Curr)
 {
@@ -287,6 +266,27 @@ void cd(DirectoryFile *Curr)
 
 }
 
+char *FindDirFile(DirectoryFile *Curr, char DirFileName[])
+{
+	if (DirFileName == NULL)
+	{
+		return NULL;
+	}
+	DirectoryFile *ptr = Curr->DirList;
+
+	while (1)
+	{
+		if (ptr == NULL)
+		{
+			return NULL;
+		}
+		if(!strcmp(DirFileName, ptr->DirName))
+		{
+			return ptr;
+		}
+		ptr = ptr->DirList;
+	}
+}
 
 void pwd(DirectoryFile *Curr)
 {
@@ -329,6 +329,25 @@ void whereis(void)
 	printf("whereis\n");
 }
 
+void Push(NameStack *Top, NameStack *Tail, char *Name)
+{
+
+}
+
+char *Pop(NameStack *Top, NameStack *Tail)
+{
+
+}
+
+char *Peak(NameStack *Top, NameStack *Tail)
+{
+
+}
+
+int isEmpty(NameStack *Top, NameStack *Tail)
+{
+
+}
 
 
 
