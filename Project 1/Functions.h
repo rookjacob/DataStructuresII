@@ -52,10 +52,10 @@ DirectoryFile ROOT;			//This is the root for all the files.
  * @var		Prev				Pointer to previous member in the stack
  */
 typedef struct NStack{
-	char *DirectoryName;
+	DirectoryFile *DirPtr;
 	struct NStack *Next;
 	struct NStack *Prev;
-}NameStack;
+}Stack;
 
 
 
@@ -178,7 +178,7 @@ void whereis(void);
  *
  * @param	Name				String to be popped off the stack
  */
-void Push(NameStack *Top, NameStack *Tail, char *Name);
+void Push(Stack *Top, char *Name);
 
 /*
  * @brief	Pop					Pop function for the NameStack stack
@@ -187,7 +187,7 @@ void Push(NameStack *Top, NameStack *Tail, char *Name);
  *
  * @param	Tail				Location of the tail of the stack
  */
-char *Pop(NameStack *Top, NameStack *Tail);
+char *Pop(Stack *Top);
 
 /*
  * @brief	Peak				Peak function for the NameStack stack
@@ -196,7 +196,7 @@ char *Pop(NameStack *Top, NameStack *Tail);
  *
  * @param	Tail				Location of the tail of the stack
  */
-char *Peak(NameStack *Top, NameStack *Tail);
+char *Peak(Stack *Top);
 
 /*
  * @brief	isEmpty				 Function to determine if the NameStack is empty or not
@@ -205,7 +205,7 @@ char *Peak(NameStack *Top, NameStack *Tail);
  *
  * @param	Tail				Location of the tail of the stack
  */
-int isEmpty(NameStack *Top, NameStack *Tail);
+int isEmpty(Stack *Top);
 
 
 

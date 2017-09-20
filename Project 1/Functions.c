@@ -329,24 +329,67 @@ void whereis(void)
 	printf("whereis\n");
 }
 
-void Push(NameStack *Top, NameStack *Tail, char *Name)
+void Push(Stack *Top, DirectoryFile *Directory)
 {
+	if (Directory == NULL)
+	{
+		return;
+	}
+
+	Stack *NewNode = malloc(sizeof(Stack));
+	NewNode->DirPtr = Directory;
+	NewNode->Next = NULL;
+	NewNode->Prev =NULL;
+
+	if(Top == NULL)
+	{
+		Top = NewNode;
+		return;
+	}
+
+	NewNode->Prev = Top;
+	Top->Next = NewNode;
+	Top = NewNode;
+
+	return;
 
 }
 
-char *Pop(NameStack *Top, NameStack *Tail)
+char *Pop(Stack *Top)
 {
+	if(isEmpty(Top))
+	{
+		return NULL;
+	}
+	char *Name = Top->DirPtr->DirList;
+
+	if((Top->Next == NULL) && (Top->Prev == NULL))
+	{
+		free(Top);
+		Top = NULL;
+		return Name;
+	}
+	Stack *Tmp = Top->Prev;
+
+	Tmp->Next = NULL;
+	free(Top);
+	Top = Tmp;
+	return Name;
+}
+
+char *Peak(Stack *Top)
+{
+	if(Top != NULL)
+		return Top->DirPtr->DirName;
+	return NULL;
 
 }
 
-char *Peak(NameStack *Top, NameStack *Tail)
+int isEmpty(Stack *Top)
 {
-
-}
-
-int isEmpty(NameStack *Top, NameStack *Tail)
-{
-
+	if(Top == NULL)
+		return 1;
+	return 0;
 }
 
 
