@@ -150,24 +150,24 @@ void mv(DirectoryFile *Curr);
  * @brief	cp					Copy file or folder to the new name
  *
  */
-void cp(void);
+void cp(DirectoryFile *Curr);
 
 /*
  * @brief						Locate and remove the file or directory
  *
  */
-void rm(void);
+void rm(DirectoryFile *Curr);
 
 /*
  * @brief	bye					Ends the session
  *
  */
-void bye(void);
+void bye(DirectoryFile *Curr);
 
 /*
  * @brief	whereis				Show path to first occurrence of file or directory if it exists
  */
-void whereis(void);
+void whereis(DirectoryFile *Curr);
 
 /*
  * @brief	Push				Push function for the NameStack stack
@@ -178,7 +178,7 @@ void whereis(void);
  *
  * @param	Name				String to be popped off the stack
  */
-void Push(Stack *Top, char *Name);
+void Push(Stack *Top, DirectoryFile *Directory);
 
 /*
  * @brief	Pop					Pop function for the NameStack stack
@@ -187,7 +187,7 @@ void Push(Stack *Top, char *Name);
  *
  * @param	Tail				Location of the tail of the stack
  */
-char *Pop(Stack *Top);
+DirectoryFile *Pop(Stack *Top);
 
 /*
  * @brief	Peak				Peak function for the NameStack stack

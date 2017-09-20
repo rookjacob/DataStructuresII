@@ -79,31 +79,31 @@ void CommandOperator(DirectoryFile *Curr)
 	}
 	else if(!(strcmp(Command, "pwd")))
 	{
-		pwd();
+		pwd(Curr);
 	}
 	else if(!(strcmp(Command, "addf")))
 	{
-		addf();
+		addf(Curr);
 	}
 	else if(!(strcmp(Command, "mv")))
 	{
-		mv();
+		mv(Curr);
 	}
 	else if(!(strcmp(Command, "cp")))
 	{
-		cp();
+		cp(Curr);
 	}
 	else if(!(strcmp(Command, "rm")))
 	{
-		rm();
+		rm(Curr);
 	}
 	else if(!(strcmp(Command, "bye")))
 	{
-		bye();
+		bye(Curr);
 	}
 	else if(!(strcmp(Command, "whereis")))
 	{
-		whereis();
+		whereis(Curr);
 	}
 	else
 	{
@@ -239,7 +239,7 @@ void cd(DirectoryFile *Curr)
 		printf("Too many arguments were given\n");
 		return;
 	}
-	if(!stcmp(Tokens[1], ".."))
+	if(!strcmp(Tokens[1], ".."))
 	{
 		if (Curr->Parent == &ROOT)
 		{
@@ -250,7 +250,7 @@ void cd(DirectoryFile *Curr)
 		pwd(Curr);
 		return;
 	}
-	char *ptr = FindDirFile(Curr, Tokens[1]);
+	DirectoryFile *ptr = FindDirFile(Curr, Tokens[1]);
 
 	if(ptr == NULL)
 	{
@@ -362,25 +362,25 @@ void mv(DirectoryFile *Curr)
 }
 
 
-void cp(void)
+void cp(DirectoryFile *Curr)
 {
 	printf("cp\n");
 }
 
 
-void rm(void)
+void rm(DirectoryFile *Curr)
 {
 	printf("rm\n");
 }
 
 
-void bye(void)
+void bye(DirectoryFile *Curr)
 {
 	printf("bye\n");
 }
 
 
-void whereis(void)
+void whereis(DirectoryFile *Curr)
 {
 	printf("whereis\n");
 }

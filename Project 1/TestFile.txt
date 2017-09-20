@@ -5,7 +5,9 @@ mkdir d3
 ls
 mkdir d2
 ls
+pwd
 cd d1
+pwd
 cd d2
 cd ..
 klahlk jhdaslk fkjhlkjh  lkjklf
