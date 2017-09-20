@@ -290,7 +290,23 @@ DirectoryFile *FindDirFile(DirectoryFile *Curr, char DirFileName[])
 
 void pwd(DirectoryFile *Curr)
 {
-	printf("pwd\n");
+	DirectoryFile *ptr = Curr;
+	Stack *Top = NULL;
+	Push(Top, ptr);
+	while(ptr != &ROOT)
+	{
+		ptr = ptr->Parent;
+		Push(Top, ptr);
+	}
+	ptr = Pop(Top);
+	printf("%s",ptr->DirName);				//This has to be the ROOT directory
+
+	while(!isEmpty(Top))
+	{
+		ptr = Pop(Top);
+		printf("%s/", ptr->DirName);
+	}
+	return;
 }
 
 
@@ -395,26 +411,26 @@ void Push(Stack *Top, DirectoryFile *Directory)
 
 }
 
-char *Pop(Stack *Top)
+DirectoryFile *Pop(Stack *Top)
 {
 	if(isEmpty(Top))
 	{
 		return NULL;
 	}
-	char *Name = Top->DirPtr->DirList;
+	DirectoryFile *Dir = Top->DirPtr;
 
 	if((Top->Next == NULL) && (Top->Prev == NULL))
 	{
 		free(Top);
 		Top = NULL;
-		return Name;
+		return Dir;
 	}
 	Stack *Tmp = Top->Prev;
 
 	Tmp->Next = NULL;
 	free(Top);
 	Top = Tmp;
-	return Name;
+	return Dir;
 }
 
 char *Peak(Stack *Top)
