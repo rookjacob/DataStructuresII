@@ -102,7 +102,7 @@ void Insert(DirectoryFile *NewNode);
  * @brief	cd					Changes into a specific directory
  *
  */
-void cd(void);
+void cd(DirectoryFile *Curr);
 
 /*
  * @brief	pwd					Specifies the current directory as: <yourname>/root/nextdir/etc/

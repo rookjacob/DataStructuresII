@@ -227,7 +227,7 @@ void Insert(DirectoryFile *NewNode)
 }
 
 
-void cd(void)
+void cd(DirectoryFile *Curr)
 {
 	printf("cd\n");
 }
