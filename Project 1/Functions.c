@@ -292,21 +292,26 @@ void pwd(DirectoryFile *Curr)
 {
 	DirectoryFile *ptr = Curr;
 	Stack *Top = NULL;
-	Push(Top, ptr);
-	printf("First Push\n");
 	while(ptr != &ROOT)
-	{
+   {
+      printf("Push\n");
+      Push(Top, ptr);
 		ptr = ptr->Parent;
-		Push(Top, ptr);
 	}
+   printf("Push\n");
+   Push(Top,ptr);
+   if(Top == NULL)
+   printf("Poppppp\n");
 	ptr = Pop(Top);
 	printf("%s",ptr->DirName);				//This has to be the ROOT directory
 
-	while(!isEmpty(Top))
+	while(!(isEmpty(Top)))
 	{
-		ptr = Pop(Top);
+      printf("Pop\n");
 		printf("%s/", ptr->DirName);
+      ptr = Pop(Top);
 	}
+   printf("%s/\n",ptr->DirName);
 	return;
 }
 
@@ -416,15 +421,19 @@ DirectoryFile *Pop(Stack *Top)
 {
 	if(isEmpty(Top))
 	{
+		printf("IS EMPTY\n");
 		return NULL;
 	}
 	DirectoryFile *Dir = Top->DirPtr;
 
 	if((Top->Next == NULL) && (Top->Prev == NULL))
 	{
+		printf("Before free\n");
 		free(Top);
 		Top = NULL;
+		printf("After free\n");
 		return Dir;
+
 	}
 	Stack *Tmp = Top->Prev;
 
