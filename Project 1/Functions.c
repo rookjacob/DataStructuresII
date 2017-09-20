@@ -293,6 +293,7 @@ void pwd(DirectoryFile *Curr)
 	DirectoryFile *ptr = Curr;
 	Stack *Top = NULL;
 	Push(Top, ptr);
+	printf("First Push\n");
 	while(ptr != &ROOT)
 	{
 		ptr = ptr->Parent;
