@@ -23,12 +23,12 @@
 
 int Tokenizer (char String[], const char TokenChar[])
 {
-	/*
+	
 	strcpy(Tokens[0] , "\0");			//Initialize the tokens to NULL so no overlap happens
 	strcpy(Tokens[1], "\0");
 	strcpy(Tokens[2], "\0");
 	strcpy(Tokens[3], "\0");
-*/
+
 	int i = 0;
 	char *prt;
 	prt = strtok(String, TokenChar);
@@ -132,26 +132,21 @@ void ls(DirectoryFile *Curr)
 
 void mkdir(DirectoryFile *Curr)
 {
-	char Param1[] = {"Token1"};
-	char *Param2 = getToken(2);
-	int s =strlen(Param1);
-	if((strlen(Param1) == 0))
+	if((strlen(Tokens[1]) == 0))
 	{
-		printf("File name was not given\n%s %d\n",Param1, s);	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		//The
+		printf("File name was not given\n");
 		return;
 	}
-	if(strlen(Param2) != 0)
+	if(strlen(Tokens[2]) != 0)
 	{
 		printf("Too many arguments were given\n");
 		return;
 	}
-	printf("Enter Name:");
-	scanf("%s", Param1);
 	DirectoryFile *NewDir = malloc(sizeof(DirectoryFile));
 	NewDir->Parent = Curr;
 	NewDir->Type = 'D';
-	strcpy(NewDir->DirName, Param1);
+	strcpy(NewDir->DirName, Tokens[1]);
+   NewDir->DirList = NULL;
 
 	Insert(NewDir);
 	return;
@@ -174,8 +169,7 @@ void Insert(DirectoryFile *NewNode)
 	{
 		ptr = NewNode->Parent->DirList;
 		prev = NewNode->Parent->DirList;
-
-		while((ptr->Type =='D') && (strcmp(NewNode->DirName, ptr->DirName)>=0) && ptr != NULL)
+		while((ptr->Type =='D') && (strcmp(NewNode->DirName, ptr->DirName)>=0))
 		{
 			if(strcmp(NewNode->DirName, ptr->DirName) == 0)
 			{
@@ -185,6 +179,9 @@ void Insert(DirectoryFile *NewNode)
 			}
 			prev = ptr;
 			ptr = ptr->DirList;
+         if (ptr == NULL)
+            break;
+            
 		}
 		prev->DirList = NewNode;
 		if(ptr != NULL)
@@ -208,7 +205,7 @@ void Insert(DirectoryFile *NewNode)
 			printf("%s",NewNode->DirName);
 			return;
 		}
-		while((strcmp(NewNode->DirName,ptr->DirName)>=0) && (ptr != NULL))
+		while((strcmp(NewNode->DirName,ptr->DirName)>=0))
 		{
 			if (strcmp(NewNode->DirName, ptr->DirName) == 0)
 			{
@@ -218,6 +215,8 @@ void Insert(DirectoryFile *NewNode)
 			}
 			prev = ptr;
 			ptr = ptr->DirList;
+			if(ptr == NULL)
+				break;
 		}
 		prev->DirList = NewNode;
 		if(ptr != NULL)

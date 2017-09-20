@@ -51,9 +51,9 @@ int main(void)
 		printf("\n$ %s", CommandLine);
 		j=Tokenizer(CommandLine, " \t\n");
 
-		for(i=0;i<j;i++)
+		/*for(i=0;i<j;i++)
 			printf("%s ",Tokens[i]);
-		printf("\n");
+		printf("\n");*/
 
 		CommandOperator(Curr);
 

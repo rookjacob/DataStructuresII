@@ -1,6 +1,8 @@
 ls 
 mkdir d1
+ls
 mkdir d3
+ls
 mkdir d2
 ls
 cd d1
