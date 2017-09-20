@@ -121,7 +121,7 @@ void Insert(DirectoryFile *NewNode);
  *
  * @return	char*				Returns pointer to found directory or file. Returns NULL if not found.
  */
-char *FindDirFile(DirectoryFile *Curr, char DirFileName[]);
+DirectoryFile *FindDirFile(DirectoryFile *Curr, char DirFileName[]);
 
 /*
  * @brief	cd					Changes into a specific directory
@@ -139,12 +139,12 @@ void pwd(DirectoryFile *Curr);
  * @brief	addf				Adds a file to the current directory
  *
  */
-void addf(void);
+void addf(DirectoryFile *Curr);
 
 /*
  * @brief	mv					Change the name of the file or directory to the new name
  */
-void mv(void);
+void mv(DirectoryFile *Curr);
 
 /*
  * @brief	cp					Copy file or folder to the new name

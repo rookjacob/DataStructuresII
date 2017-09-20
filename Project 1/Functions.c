@@ -266,7 +266,7 @@ void cd(DirectoryFile *Curr)
 
 }
 
-char *FindDirFile(DirectoryFile *Curr, char DirFileName[])
+DirectoryFile *FindDirFile(DirectoryFile *Curr, char DirFileName[])
 {
 	if (DirFileName == NULL)
 	{
@@ -294,15 +294,55 @@ void pwd(DirectoryFile *Curr)
 }
 
 
-void addf(void)
+void addf(DirectoryFile *Curr)
 {
-	printf("addf\n");
+	if((strlen(Tokens[1]) == 0))
+	{
+		printf("File name was not given\n");
+		return;
+	}
+	if(strlen(Tokens[2]) != 0)
+	{
+		printf("Too many arguments were given\n");
+		return;
+	}
+
+	DirectoryFile *NewFile = malloc(sizeof(DirectoryFile));
+	NewFile->Parent = Curr;
+	NewFile->Type = 'F';
+	strcpy(NewFile->DirName, Tokens[1]);
+	NewFile->DirList = NULL;
+
+	Insert(NewFile);
+	return;
 }
 
 
-void mv(void)
+void mv(DirectoryFile *Curr)
 {
-	printf("mv\n");
+	if (!(strlen(Tokens[1])) || !(strlen(Tokens[2])))
+	{
+		printf("Not enough arguments given.\n");
+		return;
+	}
+	if (!(strlen(Tokens[3])))
+	{
+		printf("Too many arguments given.\n");
+		return;
+	}
+	DirectoryFile *ptr = FindDirFile(Curr, Tokens[1]);
+
+	if(ptr == NULL)
+	{
+		printf("%s was not found in %s\n", Tokens[1], Curr->DirName);
+		return;
+	}
+	else
+	{
+		strcpy(ptr->DirName, Tokens[2]);
+		printf("%s\n",ptr->DirName);
+		return;
+	}
 }
 
 
