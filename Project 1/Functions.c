@@ -411,9 +411,9 @@ void bye(void)
 }
 
 
-void whereis(char *Filename)
+void whereis(char *FileName)
 {
-	printf("whereis\n");
+
 }
 
 void Push(DirectoryFile *Directory)

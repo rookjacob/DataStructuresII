@@ -181,7 +181,7 @@ void bye(void);
 /*
  * @brief	whereis				Show path to first occurrence of file or directory if it exists
  */
-void whereis(char *Filename);
+void whereis(char *FileName);
 
 /*
  * @brief	Push				Push function for the NameStack stack

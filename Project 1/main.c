@@ -38,7 +38,7 @@ int main(void)
 
 
 	FILE * CommandInput;
-	char CommandFile[]="TestFile.txt";			//File to read the commands from
+	char CommandFile[]="commands.txt";			//File to read the commands from
 	CommandInput = fopen(CommandFile, "r");		//Opening the file containing the commands
 
 	char CommandLine[100]="\0";					//Character array to store the command line input from file
