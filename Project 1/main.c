@@ -43,17 +43,12 @@ int main(void)
 
 	char CommandLine[100]="\0";					//Character array to store the command line input from file
 
-	int i;
-	int j;
+
 
 	while(fgets(CommandLine, 100, CommandInput) != NULL)
 	{
 		printf("\n$ %s\n", CommandLine);
-		j=Tokenizer(CommandLine, " \t\n");
-
-		/*for(i=0;i<j;i++)
-			printf("%s ",Tokens[i]);
-		printf("\n");*/
+		Tokenizer(CommandLine, " \t\n");
 
 		CommandOperator();
 

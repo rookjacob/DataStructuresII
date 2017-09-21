@@ -97,8 +97,6 @@ char *getToken(int TokenIndex);
  * @brief	CommandOperator		This function determines which Unix\Linux command need to be called
  * 								and calls the function for that command.
  *
- * @param	*Curr				Current location in the Directory Tree
- *
  * @return	void
  */
 void CommandOperator(void);
@@ -126,13 +124,18 @@ void Insert(DirectoryFile *NewNode);
 /*
  * @brief	FindDirFile			Function finds a directory or file in the current directory
  *
- * @param	Curr				Pointer to current directory
- *
  * @param	DirFileName			Name of directory/file to find
  *
  * @return	char*				Returns pointer to found directory or file. Returns NULL if not found.
  */
 DirectoryFile *FindDirFile(char DirFileName[]);
+
+/*
+ * @brief	FindPrevDirFile		Function finds the node to the left of passed node
+ *
+ * @param	DirFileName			Name of directory/file to be found
+ */
+DirectoryFile *FindPrevDirFile(char DirFileName[]);
 
 /*
  * @brief	cd					Changes into a specific directory
@@ -167,7 +170,7 @@ void cp(void);
  * @brief						Locate and remove the file or directory
  *
  */
-void rm(void);
+void rm(DirectoryFile *DeleteFile);
 
 /*
  * @brief	bye					Ends the session

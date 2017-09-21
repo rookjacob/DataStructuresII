@@ -88,7 +88,7 @@ void CommandOperator(void)
 	}
 	else if(!(strcmp(Command, "rm")))
 	{
-		rm();
+		rm(NULL);
 	}
 	else if(!(strcmp(Command, "bye")))
 	{
@@ -149,6 +149,7 @@ void mkdir(void)
 
 void Insert(DirectoryFile *NewNode)
 {
+	printf("In Insert\n");
 	DirectoryFile *ptr;
 	DirectoryFile *prev;
 
@@ -188,10 +189,12 @@ void Insert(DirectoryFile *NewNode)
 		ptr = NewNode->Parent->Children;
 		prev = NewNode->Parent->Children;
 
-		while((ptr->Type =='D') && (ptr != NULL))
+		while((ptr->Type =='D'))
 		{
 			prev = ptr;
 			ptr = ptr->Siblings;
+			if(ptr == NULL)
+				break;
 		}
 		if (ptr == NULL)
 		{
@@ -282,6 +285,32 @@ DirectoryFile *FindDirFile(char DirFileName[])
 	}
 }
 
+DirectoryFile *FindPrevDirFile(char DirFileName[])
+{
+	if (DirFileName == NULL)
+	{
+		return NULL;
+	}
+	DirectoryFile *ptr = Curr->Children;
+	DirectoryFile *prev = Curr->Children;
+
+	while (1)
+	{
+		if (ptr == NULL)
+		{
+			return NULL;
+		}
+		if(!strcmp(DirFileName, ptr->DirName))
+		{
+			if(prev != ptr)
+				return prev;
+			return NULL;
+		}
+		prev = ptr;
+		ptr = ptr->Siblings;
+	}
+}
+
 void pwd(void)
 {
    int i;
@@ -336,12 +365,13 @@ void mv(void)
 		printf("Not enough arguments given.\n");
 		return;
 	}
-	if (!(strlen(Tokens[3])))
+	if ((strlen(Tokens[3])))
 	{
 		printf("Too many arguments given.\n");
 		return;
 	}
 	DirectoryFile *ptr = FindDirFile(Tokens[1]);
+	DirectoryFile *prev = FindPrevDirFile(Tokens[1]);
 
 	if(ptr == NULL)
 	{
@@ -352,6 +382,12 @@ void mv(void)
 	{
 		strcpy(ptr->DirName, Tokens[2]);
 		printf("%s\n",ptr->DirName);
+
+		prev->Siblings = ptr->Siblings;
+		ptr->Siblings = NULL;
+
+		Insert(ptr);
+
 		return;
 	}
 }
@@ -363,7 +399,7 @@ void cp(void)
 }
 
 
-void rm(void)
+void rm(DirectoryFile *DeleteFile)
 {
 	printf("rm\n");
 }

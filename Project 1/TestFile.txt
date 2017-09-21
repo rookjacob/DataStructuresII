@@ -8,10 +8,21 @@ ls
 pwd
 cd d2
 ls
+mkdir a1
+ls
 pwd
-cd d1
+cd a1
 ls
 cd d1
 cd ..
-klahlk jhdaslk fkjhlkjh  lkjklf
+pwd
+cd ..
+ls
+pwd
+addf File3
+addf File2
+addf File1
+ls
+mv File2 File4
+ls
 
