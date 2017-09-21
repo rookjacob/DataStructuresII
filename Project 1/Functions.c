@@ -48,7 +48,7 @@ char *getToken(int TokenIndex)
 
 
 
-void CommandOperator(void)
+int CommandOperator(void)
 {
 	char *Command = getToken(0);
 	/*
@@ -93,7 +93,7 @@ void CommandOperator(void)
 	else if(!(strcmp(Command, "bye")))
 	{
 		bye();
-		return 0;
+		return 1;
 	}
 	else if(!(strcmp(Command, "whereis")))
 	{
@@ -104,7 +104,7 @@ void CommandOperator(void)
 		printf("Command \"%s\" was not recognized\n",Tokens[0]);
 	}
 
-return;
+return 0;
 
 
 }
@@ -427,11 +427,13 @@ void rm(void)
 	if(prev == NULL)			//First item on list
 	{
 		ptr->Parent->Children = ptr->Siblings;
+		ptr->Siblings = NULL;
 		del(ptr);
 	}
 	else
 	{
 		prev->Siblings = ptr->Siblings;
+		ptr->Siblings = NULL;
 		del(ptr);
 	}
 
@@ -464,13 +466,25 @@ void bye(void)
 		Tmp = Tmp->Children;
 		if(Tmp == NULL)
 		{
-			printf("exit");
 			return;
 		}
+      if(Tmp->Siblings != NULL)
+      {
+		   Tmp2 = Tmp->Siblings;
+		   Tmp2->Parent->Children = Tmp2;
+			Tmp->Siblings = NULL;
+			del(Tmp);
 
-		Tmp2 = Tmp->Children;
-		Tmp2->Parent->Children = Tmp2;
-		del(Tmp);
+
+      }
+      else
+      {
+    	  Tmp->Siblings = NULL;
+    	  del(Tmp);
+    	  Tmp2->Parent->Children = NULL;
+    	  return;
+      }
+
 	}
 }
 

@@ -50,7 +50,8 @@ int main(void)
 		printf("\n$ %s", CommandLine);
 		Tokenizer(CommandLine, " \t\n");
 
-		CommandOperator();
+		if(CommandOperator())
+			return 0;
 
 
 	}

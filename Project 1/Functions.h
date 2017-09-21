@@ -99,7 +99,7 @@ char *getToken(int TokenIndex);
  *
  * @return	void
  */
-void CommandOperator(void);
+int CommandOperator(void);
 
 /*
  * @brief	ls					Lists all files and directories in the current directory, indicating
