@@ -116,8 +116,8 @@ void ls(void)
 	while(ListPtr != NULL)
 	{
 
-		printf("\t%c %s\n", ListPtr->Type ,ListPtr->Children);
-		ListPtr = ListPtr->Children;
+		printf("\t%c %s\n", ListPtr->Type ,ListPtr->DirName);
+		ListPtr = ListPtr->Siblings;
 	}
 	return;
 }
