@@ -11,6 +11,15 @@
 #ifndef FUNCTIONS_H_
 #define FUNCTIONS_H_
 
+#ifndef MAININCLUDES
+#define MAININCLUDES
+
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+#endif
+
 #define MAXTOKENS 4
 #define MAXTOKENLEN 100
 
@@ -40,7 +49,8 @@ typedef struct DirFile {
 
 }DirectoryFile;
 
-DirectoryFile ROOT;			//This is the root for all the files.
+DirectoryFile ROOT;				//This is the root for all the files.
+DirectoryFile *Curr;
 
 /*
  * @brief	NameStack			Stack structure to store the file names to be popped off
@@ -54,9 +64,9 @@ DirectoryFile ROOT;			//This is the root for all the files.
 typedef struct NStack{
 	DirectoryFile *DirPtr;
 	struct NStack *Next;
-	struct NStack *Prev;
 }Stack;
 
+Stack *Top;				//Pointer for the top of the stack structure
 
 
 /*
@@ -90,20 +100,20 @@ char *getToken(int TokenIndex);
  *
  * @return	void
  */
-void CommandOperator(DirectoryFile *Curr);
+void CommandOperator(void);
 
 /*
  * @brief	ls					Lists all files and directories in the current directory, indicating
  * 								which (file or directory) it is
  *
  */
-void ls(DirectoryFile *Curr);
+void ls(void);
 
 /*
  * @brief	mkdir				Creates a new directory if it does not already exist
  *
  */
-void mkdir(DirectoryFile *Curr);
+void mkdir(void);
 
 /*
  * @brief	Insert				Inserts a new directory or file in its current list of directories alphabetically
@@ -121,53 +131,53 @@ void Insert(DirectoryFile *NewNode);
  *
  * @return	char*				Returns pointer to found directory or file. Returns NULL if not found.
  */
-DirectoryFile *FindDirFile(DirectoryFile *Curr, char DirFileName[]);
+DirectoryFile *FindDirFile(char DirFileName[]);
 
 /*
  * @brief	cd					Changes into a specific directory
  *
  */
-void cd(DirectoryFile *Curr);
+void cd(void);
 
 /*
  * @brief	pwd					Specifies the current directory as: <yourname>/root/nextdir/etc/
  *
  */
-void pwd(DirectoryFile *Curr);
+void pwd(void);
 
 /*
  * @brief	addf				Adds a file to the current directory
  *
  */
-void addf(DirectoryFile *Curr);
+void addf(void);
 
 /*
  * @brief	mv					Change the name of the file or directory to the new name
  */
-void mv(DirectoryFile *Curr);
+void mv(void);
 
 /*
  * @brief	cp					Copy file or folder to the new name
  *
  */
-void cp(DirectoryFile *Curr);
+void cp(void);
 
 /*
  * @brief						Locate and remove the file or directory
  *
  */
-void rm(DirectoryFile *Curr);
+void rm(void);
 
 /*
  * @brief	bye					Ends the session
  *
  */
-void bye(DirectoryFile *Curr);
+void bye(void);
 
 /*
  * @brief	whereis				Show path to first occurrence of file or directory if it exists
  */
-void whereis(DirectoryFile *Curr);
+void whereis(char *Filename);
 
 /*
  * @brief	Push				Push function for the NameStack stack
@@ -178,7 +188,7 @@ void whereis(DirectoryFile *Curr);
  *
  * @param	Name				String to be popped off the stack
  */
-Stack *Push(Stack *Top, DirectoryFile *Directory);
+void Push(DirectoryFile *Directory);
 
 /*
  * @brief	Pop					Pop function for the NameStack stack
@@ -187,16 +197,7 @@ Stack *Push(Stack *Top, DirectoryFile *Directory);
  *
  * @param	Tail				Location of the tail of the stack
  */
-DirectoryFile *Pop(Stack *Top);
-
-/*
- * @brief	Peak				Peak function for the NameStack stack
- *
- * @param	Top					Location of top of the stack
- *
- * @param	Tail				Location of the tail of the stack
- */
-char *Peak(Stack *Top);
+DirectoryFile *Pop(void);
 
 /*
  * @brief	isEmpty				 Function to determine if the NameStack is empty or not
@@ -205,7 +206,7 @@ char *Peak(Stack *Top);
  *
  * @param	Tail				Location of the tail of the stack
  */
-int isEmpty(Stack *Top);
+int isEmpty(void);
 
 
 

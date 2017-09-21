@@ -28,14 +28,13 @@ int main(void)
 {
 	ROOT.Type = 'D';							//Initializing ROOT variables
 	strcpy(ROOT.DirName, "rook/root");
-	DirectoryFile *Curr;// = (DirectoryFile*)malloc(sizeof(DirectoryFile));
 	Curr = &ROOT;
-	
+/*
 	DirectoryFile Node = { 'D', "NODE", &ROOT, NULL};
 	DirectoryFile Node1 = { 'D', "NODE1", &Node, NULL};
 	ROOT.DirList = &Node;
    Curr =&Node1;
-
+*/
 
 
 	FILE * CommandInput;
@@ -56,7 +55,7 @@ int main(void)
 			printf("%s ",Tokens[i]);
 		printf("\n");*/
 
-		CommandOperator(Curr);
+		CommandOperator();
 
 
 	}

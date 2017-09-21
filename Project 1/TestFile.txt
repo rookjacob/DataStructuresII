@@ -6,9 +6,12 @@ ls
 mkdir d2
 ls
 pwd
-cd d1
-pwd
 cd d2
+ls
+pwd
+cd d1
+ls
+cd d1
 cd ..
 klahlk jhdaslk fkjhlkjh  lkjklf
 

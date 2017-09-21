@@ -9,14 +9,7 @@
  */
 
 
-#ifndef MAININCLUDES
-#define MAININCLUDES
 
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
-
-#endif
 
 #include "Functions.h"
 
@@ -55,7 +48,7 @@ char *getToken(int TokenIndex)
 
 
 
-void CommandOperator(DirectoryFile *Curr)
+void CommandOperator(void)
 {
 	char *Command = getToken(0);
 	/*
@@ -67,43 +60,43 @@ void CommandOperator(DirectoryFile *Curr)
 	}
 	else if(!(strcmp(Command, "ls")))
 	{
-		ls(Curr);
+		ls();
 	}
 	else if(!(strcmp(Command, "mkdir")))
 	{
-		mkdir(Curr);
+		mkdir();
 	}
 	else if(!(strcmp(Command, "cd")))
 	{
-		cd(Curr);
+		cd();
 	}
 	else if(!(strcmp(Command, "pwd")))
 	{
-		pwd(Curr);
+		pwd();
 	}
 	else if(!(strcmp(Command, "addf")))
 	{
-		addf(Curr);
+		addf();
 	}
 	else if(!(strcmp(Command, "mv")))
 	{
-		mv(Curr);
+		mv();
 	}
 	else if(!(strcmp(Command, "cp")))
 	{
-		cp(Curr);
+		cp();
 	}
 	else if(!(strcmp(Command, "rm")))
 	{
-		rm(Curr);
+		rm();
 	}
 	else if(!(strcmp(Command, "bye")))
 	{
-		bye(Curr);
+		bye();
 	}
 	else if(!(strcmp(Command, "whereis")))
 	{
-		whereis(Curr);
+		whereis("File");
 	}
 	else
 	{
@@ -116,7 +109,7 @@ return;
 }
 
 
-void ls(DirectoryFile *Curr)
+void ls(void)
 {
 	DirectoryFile *ListPtr = Curr->DirList;
 
@@ -130,7 +123,7 @@ void ls(DirectoryFile *Curr)
 }
 
 
-void mkdir(DirectoryFile *Curr)
+void mkdir(void)
 {
 	if((strlen(Tokens[1]) == 0))
 	{
@@ -227,7 +220,7 @@ void Insert(DirectoryFile *NewNode)
 }
 
 
-void cd(DirectoryFile *Curr)
+void cd(void)
 {
 	if (strlen(Tokens[1]) == 0)				//If there is no parameters do nothing: print newline
 	{
@@ -241,16 +234,16 @@ void cd(DirectoryFile *Curr)
 	}
 	if(!strcmp(Tokens[1], ".."))
 	{
-		if (Curr->Parent == &ROOT)
+		if (Curr == &ROOT)
 		{
 			printf("Permission Denied\n");
 			return;
 		}
 		Curr = Curr->Parent;
-		pwd(Curr);
+		pwd();
 		return;
 	}
-	DirectoryFile *ptr = FindDirFile(Curr, Tokens[1]);
+	DirectoryFile *ptr = FindDirFile(Tokens[1]);
 
 	if(ptr == NULL)
 	{
@@ -260,13 +253,13 @@ void cd(DirectoryFile *Curr)
 	else
 	{
 		Curr = ptr;
-		pwd(Curr);
+		pwd();
 		return;
 	}
 
 }
 
-DirectoryFile *FindDirFile(DirectoryFile *Curr, char DirFileName[])
+DirectoryFile *FindDirFile(char DirFileName[])
 {
 	if (DirFileName == NULL)
 	{
@@ -288,40 +281,29 @@ DirectoryFile *FindDirFile(DirectoryFile *Curr, char DirFileName[])
 	}
 }
 
-void pwd(DirectoryFile *Curr)
+void pwd(void)
 {
    int i;
 	DirectoryFile *ptr = Curr;
-	Stack *Top = NULL;
       
 	while(ptr != &ROOT)
    {
-      printf("Push\n");
-      Top = Push(Top, ptr);
+      Push(ptr);
 		ptr = ptr->Parent;
 	}
-   printf("Push\n");
-   
-   Top = Push(Top,ptr);
+   Push(ptr);
    
 
-	while(!(isEmpty(Top)))
+	while(!(isEmpty()))
 	{
-      printf("Pop %p\n",ptr);
-      ptr = Pop(Top);
-      if(ptr == NULL)
-         break;
-      if (Top == NULL)
-    	  break;
+		ptr = Pop();
 		printf("%s/", ptr->DirName);
-      scanf("%d", &i);
 	}
-   //printf("%s/\n",ptr->DirName);
 	return;
 }
 
 
-void addf(DirectoryFile *Curr)
+void addf(void)
 {
 	if((strlen(Tokens[1]) == 0))
 	{
@@ -345,7 +327,7 @@ void addf(DirectoryFile *Curr)
 }
 
 
-void mv(DirectoryFile *Curr)
+void mv(void)
 {
 	if (!(strlen(Tokens[1])) || !(strlen(Tokens[2])))
 	{
@@ -357,7 +339,7 @@ void mv(DirectoryFile *Curr)
 		printf("Too many arguments given.\n");
 		return;
 	}
-	DirectoryFile *ptr = FindDirFile(Curr, Tokens[1]);
+	DirectoryFile *ptr = FindDirFile(Tokens[1]);
 
 	if(ptr == NULL)
 	{
@@ -373,94 +355,56 @@ void mv(DirectoryFile *Curr)
 }
 
 
-void cp(DirectoryFile *Curr)
+void cp(void)
 {
 	printf("cp\n");
 }
 
 
-void rm(DirectoryFile *Curr)
+void rm(void)
 {
 	printf("rm\n");
 }
 
 
-void bye(DirectoryFile *Curr)
+void bye(void)
 {
 	printf("bye\n");
 }
 
 
-void whereis(DirectoryFile *Curr)
+void whereis(char *Filename)
 {
 	printf("whereis\n");
 }
 
-Stack *Push(Stack *Top, DirectoryFile *Directory)
+void Push(DirectoryFile *Directory)
 {
-	if (Directory == NULL)
-	{
+	Stack *temp = (Stack*)malloc(sizeof(Stack));
+	temp->DirPtr = Directory;
+	temp->Next = Top;
+	Top = temp;
+
+}
+
+DirectoryFile *Pop(void)
+{
+	Stack *temp;
+	DirectoryFile *temp2;
+	if(isEmpty())
 		return NULL;
-	}
 
-	Stack *NewNode = (Stack*)malloc(sizeof(Stack));
-	NewNode->DirPtr = Directory;
-	NewNode->Next = NULL;
-	NewNode->Prev =NULL;
+	temp = Top;
+	Top = Top->Next;
+	temp2 = temp->DirPtr;
+	free(temp);
 
-	if(Top == NULL)
-	{
-		printf("NewNode");
-		Top = NewNode;
-		return Top;
-	}
-
-	
-	Top->Next = NewNode;
-   NewNode->Prev = Top;
-	Top = NewNode;
-
-	return Top;
+	return temp2;
 
 }
 
-DirectoryFile *Pop(Stack *Top)
-{
-   printf("In Pop11\n");
-	if(isEmpty(Top))
-	{
-		printf("IS EMPTY\n");
-		return NULL;
-	}
-	DirectoryFile *Dir = Top->DirPtr;
 
-	if((Top->Prev == NULL))
-	{
-		printf("In POP3");
-		Stack *Tmp = Top;
-		//free(Tmp);
-		Top = NULL;
-		return Dir;
-
-	}
-   printf("In Pop2");
-	Stack *Tmp = Top->Prev;
-
-	Tmp->Next = NULL;
-	free(Top);
-	Top = Tmp;
-	return Dir;
-}
-
-char *Peak(Stack *Top)
-{
-	if(Top != NULL)
-		return Top->DirPtr->DirName;
-	return NULL;
-
-}
-
-int isEmpty(Stack *Top)
+int isEmpty(void)
 {
 	if(Top == NULL)
    {
