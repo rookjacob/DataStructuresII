@@ -142,7 +142,7 @@ void mkdir(DirectoryFile *Curr)
 		printf("Too many arguments were given\n");
 		return;
 	}
-	DirectoryFile *NewDir = malloc(sizeof(DirectoryFile));
+	DirectoryFile *NewDir = (DirectoryFile*)malloc(sizeof(DirectoryFile));
 	NewDir->Parent = Curr;
 	NewDir->Type = 'D';
 	strcpy(NewDir->DirName, Tokens[1]);
@@ -290,28 +290,33 @@ DirectoryFile *FindDirFile(DirectoryFile *Curr, char DirFileName[])
 
 void pwd(DirectoryFile *Curr)
 {
+   int i;
 	DirectoryFile *ptr = Curr;
 	Stack *Top = NULL;
+      
 	while(ptr != &ROOT)
    {
       printf("Push\n");
-      Push(Top, ptr);
+      Top = Push(Top, ptr);
 		ptr = ptr->Parent;
 	}
    printf("Push\n");
-   Push(Top,ptr);
-   if(Top == NULL)
-   printf("Poppppp\n");
-	ptr = Pop(Top);
-	printf("%s",ptr->DirName);				//This has to be the ROOT directory
+   
+   Top = Push(Top,ptr);
+   
 
 	while(!(isEmpty(Top)))
 	{
-      printf("Pop\n");
-		printf("%s/", ptr->DirName);
+      printf("Pop %p\n",ptr);
       ptr = Pop(Top);
+      if(ptr == NULL)
+         break;
+      if (Top == NULL)
+    	  break;
+		printf("%s/", ptr->DirName);
+      scanf("%d", &i);
 	}
-   printf("%s/\n",ptr->DirName);
+   //printf("%s/\n",ptr->DirName);
 	return;
 }
 
@@ -329,7 +334,7 @@ void addf(DirectoryFile *Curr)
 		return;
 	}
 
-	DirectoryFile *NewFile = malloc(sizeof(DirectoryFile));
+	DirectoryFile *NewFile = (DirectoryFile*)malloc(sizeof(DirectoryFile));
 	NewFile->Parent = Curr;
 	NewFile->Type = 'F';
 	strcpy(NewFile->DirName, Tokens[1]);
@@ -391,34 +396,37 @@ void whereis(DirectoryFile *Curr)
 	printf("whereis\n");
 }
 
-void Push(Stack *Top, DirectoryFile *Directory)
+Stack *Push(Stack *Top, DirectoryFile *Directory)
 {
 	if (Directory == NULL)
 	{
-		return;
+		return NULL;
 	}
 
-	Stack *NewNode = malloc(sizeof(Stack));
+	Stack *NewNode = (Stack*)malloc(sizeof(Stack));
 	NewNode->DirPtr = Directory;
 	NewNode->Next = NULL;
 	NewNode->Prev =NULL;
 
 	if(Top == NULL)
 	{
+		printf("NewNode");
 		Top = NewNode;
-		return;
+		return Top;
 	}
 
-	NewNode->Prev = Top;
+	
 	Top->Next = NewNode;
+   NewNode->Prev = Top;
 	Top = NewNode;
 
-	return;
+	return Top;
 
 }
 
 DirectoryFile *Pop(Stack *Top)
 {
+   printf("In Pop11\n");
 	if(isEmpty(Top))
 	{
 		printf("IS EMPTY\n");
@@ -426,15 +434,16 @@ DirectoryFile *Pop(Stack *Top)
 	}
 	DirectoryFile *Dir = Top->DirPtr;
 
-	if((Top->Next == NULL) && (Top->Prev == NULL))
+	if((Top->Prev == NULL))
 	{
-		printf("Before free\n");
-		free(Top);
+		printf("In POP3");
+		Stack *Tmp = Top;
+		//free(Tmp);
 		Top = NULL;
-		printf("After free\n");
 		return Dir;
 
 	}
+   printf("In Pop2");
 	Stack *Tmp = Top->Prev;
 
 	Tmp->Next = NULL;
@@ -454,8 +463,11 @@ char *Peak(Stack *Top)
 int isEmpty(Stack *Top)
 {
 	if(Top == NULL)
+   {
 		return 1;
-	return 0;
+   }
+   else
+	   return 0;
 }
 
 

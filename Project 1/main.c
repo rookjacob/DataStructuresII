@@ -30,11 +30,12 @@ int main(void)
 	strcpy(ROOT.DirName, "rook/root");
 	DirectoryFile *Curr;// = (DirectoryFile*)malloc(sizeof(DirectoryFile));
 	Curr = &ROOT;
-	/*
+	
 	DirectoryFile Node = { 'D', "NODE", &ROOT, NULL};
-	DirectoryFile Node1 = { 'D', "NODE1", &ROOT, &Node};
-	ROOT.DirList = &Node1;
-	*/
+	DirectoryFile Node1 = { 'D', "NODE1", &Node, NULL};
+	ROOT.DirList = &Node;
+   Curr =&Node1;
+
 
 
 	FILE * CommandInput;

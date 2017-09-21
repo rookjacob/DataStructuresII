@@ -178,7 +178,7 @@ void whereis(DirectoryFile *Curr);
  *
  * @param	Name				String to be popped off the stack
  */
-void Push(Stack *Top, DirectoryFile *Directory);
+Stack *Push(Stack *Top, DirectoryFile *Directory);
 
 /*
  * @brief	Pop					Pop function for the NameStack stack
