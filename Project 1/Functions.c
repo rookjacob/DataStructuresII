@@ -149,7 +149,6 @@ void mkdir(void)
 
 void Insert(DirectoryFile *NewNode)
 {
-	printf("In Insert\n");
 	DirectoryFile *ptr;
 	DirectoryFile *prev;
 
@@ -304,7 +303,7 @@ DirectoryFile *FindPrevDirFile(char DirFileName[])
 		{
 			if(prev != ptr)
 				return prev;
-			return NULL;
+			return NULL;		//If ptr is at the beginning of the list
 		}
 		prev = ptr;
 		ptr = ptr->Siblings;
@@ -395,23 +394,87 @@ void mv(void)
 
 void cp(void)
 {
-	printf("cp\n");
+	if(!strlen(Tokens[3]))
+	{
+		printf("Too many arguments given.\n");
+		return;
+	}
 }
 
 
-void rm(DirectoryFile *DeleteFile)
+void rm(void)
 {
-	printf("rm\n");
+	if(!strlen(Tokens[2]))
+	{
+		printf("Too many arguments given.\n");
+		return;
+	}
+
+	DirectoryFile *ptr = FindDirFile(Tokens[1]);
+
+	if(ptr == NULL)
+	{
+		printf("%s was not found in %s. No files deleted.\n", Tokens[1], Curr->DirName);
+		return;
+	}
+
+	if(ptr == &ROOT)
+	{
+		printf("Can not remove root.\n");
+		return;
+	}
+	DirectoryFile *prev = FindPrevDirFile(Tokens[1]);
+	if(prev == NULL)			//First item on list
+	{
+		ptr->Parent->Children = ptr->Siblings;
+		del(ptr);
+	}
+	else
+	{
+		prev->Siblings = ptr->Siblings;
+		del(ptr);
+	}
+
+
+	return;
+}
+
+void del(DirectoryFile *Head)
+{
+	if(Head == NULL)
+	{
+		return;
+	}
+	del(Head->Children);
+	del(Head->Siblings);
+	free(Head);
+
+	return;
 }
 
 
 void bye(void)
 {
-	printf("bye\n");
+	DirectoryFile *Tmp;
+	DirectoryFile *Tmp2;
+
+	while(1)
+	{
+		Tmp = ROOT->Children;
+		if(Tmp == NULL)
+		{
+			printf("exit");
+			return;
+		}
+
+		Tmp2 = Tmp->Children;
+		ROOT->Children = Tmp2;
+		rm(Tmp);
+	}
 }
 
 
-void whereis(char *FileName)
+void whereis(void)
 {
 
 }

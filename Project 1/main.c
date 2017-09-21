@@ -47,7 +47,7 @@ int main(void)
 
 	while(fgets(CommandLine, 100, CommandInput) != NULL)
 	{
-		printf("\n$ %s\n", CommandLine);
+		printf("\n$ %s", CommandLine);
 		Tokenizer(CommandLine, " \t\n");
 
 		CommandOperator();

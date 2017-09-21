@@ -170,7 +170,14 @@ void cp(void);
  * @brief						Locate and remove the file or directory
  *
  */
-void rm(DirectoryFile *DeleteFile);
+void rm(void);
+
+/*
+ * @brief	del					Secondary delete function for rm
+ *
+ * @param	Head				Head node to be deleted
+ */
+void del(DirectoryFile *Head);
 
 /*
  * @brief	bye					Ends the session
@@ -181,7 +188,7 @@ void bye(void);
 /*
  * @brief	whereis				Show path to first occurrence of file or directory if it exists
  */
-void whereis(char *FileName);
+void whereis(void);
 
 /*
  * @brief	Push				Push function for the NameStack stack
