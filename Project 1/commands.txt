@@ -25,4 +25,9 @@ addf File1
 ls
 mv File2 File4
 ls
+rm File1
+ls
+rm d1
+ls
+bye
 

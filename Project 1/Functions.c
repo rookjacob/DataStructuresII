@@ -88,15 +88,16 @@ void CommandOperator(void)
 	}
 	else if(!(strcmp(Command, "rm")))
 	{
-		rm(NULL);
+		rm();
 	}
 	else if(!(strcmp(Command, "bye")))
 	{
 		bye();
+		return 0;
 	}
 	else if(!(strcmp(Command, "whereis")))
 	{
-		whereis("File");
+		whereis();
 	}
 	else
 	{
@@ -312,7 +313,6 @@ DirectoryFile *FindPrevDirFile(char DirFileName[])
 
 void pwd(void)
 {
-   int i;
 	DirectoryFile *ptr = Curr;
       
 	while(ptr != &ROOT)
@@ -404,7 +404,7 @@ void cp(void)
 
 void rm(void)
 {
-	if(!strlen(Tokens[2]))
+	if(strlen(Tokens[2]))
 	{
 		printf("Too many arguments given.\n");
 		return;
@@ -460,7 +460,8 @@ void bye(void)
 
 	while(1)
 	{
-		Tmp = ROOT->Children;
+		Tmp = &ROOT;
+		Tmp = Tmp->Children;
 		if(Tmp == NULL)
 		{
 			printf("exit");
@@ -468,8 +469,8 @@ void bye(void)
 		}
 
 		Tmp2 = Tmp->Children;
-		ROOT->Children = Tmp2;
-		rm(Tmp);
+		Tmp2->Parent->Children = Tmp2;
+		del(Tmp);
 	}
 }
 
