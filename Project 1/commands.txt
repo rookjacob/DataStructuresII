@@ -18,16 +18,23 @@ cd ..
 pwd
 cd ..
 ls
+cd d1
+mkdir a1
+ls
 pwd
+cd ..
+cd..
 addf File3
 addf File2
 addf File1
 ls
 mv File2 File4
 ls
+cp d1 d4
 rm File1
 ls
 rm d1
 ls
+whereis a1
 bye
 

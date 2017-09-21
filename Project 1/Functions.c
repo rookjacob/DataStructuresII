@@ -113,12 +113,14 @@ return 0;
 void ls(void)
 {
 	DirectoryFile *ListPtr = Curr->Children;
-
+	int i =1;
 	while(ListPtr != NULL)
 	{
-
-		printf("\t%c %s\n", ListPtr->Type ,ListPtr->DirName);
+		if(i != 1)
+			printf("\n");
+		printf("\t%c %s", ListPtr->Type ,ListPtr->DirName);
 		ListPtr = ListPtr->Siblings;
+		i++;
 	}
 	return;
 }
@@ -216,6 +218,7 @@ void Insert(DirectoryFile *NewNode)
 				break;
 		}
 		prev->Siblings = NewNode;
+		printf("%s", NewNode->DirName);
 		if(ptr != NULL)
 			NewNode->Siblings = ptr;
 		return;
@@ -380,8 +383,6 @@ void mv(void)
 	else
 	{
 		strcpy(ptr->DirName, Tokens[2]);
-		printf("%s\n",ptr->DirName);
-
 		prev->Siblings = ptr->Siblings;
 		ptr->Siblings = NULL;
 
@@ -394,11 +395,28 @@ void mv(void)
 
 void cp(void)
 {
-	if(!strlen(Tokens[3]))
+	if(strlen(Tokens[3]))
 	{
 		printf("Too many arguments given.\n");
 		return;
 	}
+	if(FindDirFile(Tokens[2]))
+	{
+		printf("File name already taken. No copy made\n");
+		return;
+	}
+	DirectoryFile *OldNode = FindDirFile(Tokens[1]);
+	DirectoryFile *NewNode = (DirectoryFile*)malloc(sizeof(DirectoryFile));
+
+	strcpy(NewNode->DirName, Tokens[2]);
+	NewNode->Parent = OldNode->Parent;
+
+	if(OldNode->Type == 'D')
+		NewNode->Type = 'D';
+	else
+		NewNode->Type = 'F';
+
+	return;
 }
 
 
@@ -491,7 +509,46 @@ void bye(void)
 
 void whereis(void)
 {
+	if(strlen(Tokens[2]) !=0)
+	{
+		printf("Too many arguments given.\n");
+	}
+	DirectoryFile *Dptr = (DirectoryFile*)malloc(sizeof(DirectoryFile));
+	Dptr = &ROOT;
+	Push2(Dptr->Children);
 
+	whereisrecur();
+
+	while (!isEmpty())
+	{
+		Pop2();
+	}
+
+}
+
+void whereisrecur(void)
+{
+
+	if (!strcmp(Tokens[1], Top2->DirPtr->DirName))
+	{
+		DirectoryFile *Temp = Curr;
+		Curr = Top2->DirPtr;
+		pwd();
+		Curr = Temp;
+		Pop2();
+		return;
+	}
+	if ((Top2->DirPtr->Children == NULL) && (Top2->DirPtr->Siblings == NULL))
+	{
+			Pop2();
+			return;
+	}
+	if(Top2->DirPtr->Children != NULL)
+		Push2(Top2->DirPtr->Children);
+	if(Top2->DirPtr->Siblings != NULL)
+		Push2(Top2->DirPtr->Siblings);
+	whereisrecur();
+	return;
 }
 
 void Push(DirectoryFile *Directory)
@@ -523,6 +580,42 @@ DirectoryFile *Pop(void)
 int isEmpty(void)
 {
 	if(Top == NULL)
+   {
+		return 1;
+   }
+   else
+	   return 0;
+}
+
+void Push2(DirectoryFile *Directory)
+{
+	Stack *temp = (Stack*)malloc(sizeof(Stack));
+	temp->DirPtr = Directory;
+	temp->Next = Top2;
+	Top2 = temp;
+
+}
+
+DirectoryFile *Pop2(void)
+{
+	Stack *temp;
+	DirectoryFile *temp2;
+	if(isEmpty2())
+		return NULL;
+
+	temp = Top2;
+	Top2 = Top2->Next;
+	temp2 = temp->DirPtr;
+	free(temp);
+
+	return temp2;
+
+}
+
+
+int isEmpty2(void)
+{
+	if(Top2 == NULL)
    {
 		return 1;
    }

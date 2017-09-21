@@ -67,8 +67,8 @@ typedef struct NStack{
 	struct NStack *Next;
 }Stack;
 
-Stack *Top;				//Pointer for the top of the stack structure
-
+Stack *Top;				//Pointer for the top of the stack structure for pwd function
+Stack *Top2;			//Pointer for the top of the stack structure for whereis function
 
 /*
  * @brief	Tokenizer		This function tokenizes a string of characters passed by the
@@ -191,6 +191,11 @@ void bye(void);
 void whereis(void);
 
 /*
+ * @brief						Recursive function for the whereis function
+ */
+void whereisrecur(void);
+
+/*
  * @brief	Push				Push function for the NameStack stack
  *
  * @param	Top					Location of top of the stack
@@ -219,6 +224,24 @@ DirectoryFile *Pop(void);
  */
 int isEmpty(void);
 
+/*
+ * @brief	Push				Push function for the stack for whereis
+ *
+ * @param	Directory			Directory to be popped off the stack
+ */
+void Push2(DirectoryFile *Directory);
+
+/*
+ * @brief	Pop2				Pop function for the stack for whereis
+ *
+ */
+DirectoryFile *Pop2(void);
+
+/*
+ * @brief	isEmpty2			Function to determine if the stack for whereis is empty
+ *
+ */
+int isEmpty2(void);
 
 
 
