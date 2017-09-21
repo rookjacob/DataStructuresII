@@ -167,6 +167,16 @@ void mv(void);
 void cp(void);
 
 /*
+ * @brief	Duplicate			Copies info from Original to Copy
+ *
+ * @param	Copy				Place to be copied to
+ *
+ * @param	Original			Original directory to be copied
+ */
+void Duplicate(DirectoryFile *Copy, DirectoryFile *Original);
+
+
+/*
  * @brief						Locate and remove the file or directory
  *
  */

@@ -419,6 +419,20 @@ void cp(void)
 	return;
 }
 
+void Duplicate(DirectoryFile *Copy, DirectoryFile *Original)
+{
+	if((Copy == NULL) || (Original == NULL))
+	{
+		return;
+	}
+	strcpy(Copy->DirName, Tokens[2]);
+	Copy->Parent = Original->Parent;
+	if (Original->Type == 'D')
+		Copy->Type = 'D';
+	else
+		Copy->Type = 'F';
+}
+
 
 void rm(void)
 {
