@@ -38,14 +38,15 @@ char Tokens[MAXTOKENS][MAXTOKENLEN];			//Scope variable to store Tokens
  * @var Parent 					This variable is a pointer to the directory that the current
  * 								file is in.
  *
- * @var DirList 				This variable is the head of the directory/file list that
+ * @var Children 				This variable is the head of the directory/file list that
  * 								are in the Directory.
  */
 typedef struct DirFile {
 	char Type;
 	char DirName[MAXTOKENLEN];
 	struct DirFile *Parent;
-	struct DirFile *DirList;
+	struct DirFile *Children;
+   struct DirFile *Siblings;
 
 }DirectoryFile;
 

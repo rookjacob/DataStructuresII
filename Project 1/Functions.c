@@ -111,13 +111,13 @@ return;
 
 void ls(void)
 {
-	DirectoryFile *ListPtr = Curr->DirList;
+	DirectoryFile *ListPtr = Curr->Children;
 
 	while(ListPtr != NULL)
 	{
 
-		printf("\t%c %s\n", ListPtr->Type ,ListPtr->DirName);
-		ListPtr = ListPtr->DirList;
+		printf("\t%c %s\n", ListPtr->Type ,ListPtr->Children);
+		ListPtr = ListPtr->Children;
 	}
 	return;
 }
@@ -139,7 +139,8 @@ void mkdir(void)
 	NewDir->Parent = Curr;
 	NewDir->Type = 'D';
 	strcpy(NewDir->DirName, Tokens[1]);
-   NewDir->DirList = NULL;
+    NewDir->Children = NULL;
+    NewDir->Siblings = NULL;
 
 	Insert(NewDir);
 	return;
@@ -151,17 +152,17 @@ void Insert(DirectoryFile *NewNode)
 	DirectoryFile *ptr;
 	DirectoryFile *prev;
 
-	if (NewNode->Parent->DirList == NULL)
+	if (NewNode->Parent->Children == NULL)
 	{
-		NewNode->Parent->DirList = NewNode;
+		NewNode->Parent->Children = NewNode;
 		printf("%s",NewNode->DirName);
 		return;
 	}
 
 	if(NewNode->Type == 'D') 		//Directory
 	{
-		ptr = NewNode->Parent->DirList;
-		prev = NewNode->Parent->DirList;
+		ptr = NewNode->Parent->Children;
+		prev = NewNode->Parent->Children;
 		while((ptr->Type =='D') && (strcmp(NewNode->DirName, ptr->DirName)>=0))
 		{
 			if(strcmp(NewNode->DirName, ptr->DirName) == 0)
@@ -171,30 +172,30 @@ void Insert(DirectoryFile *NewNode)
 				return;
 			}
 			prev = ptr;
-			ptr = ptr->DirList;
+			ptr = ptr->Children;
          if (ptr == NULL)
             break;
             
 		}
-		prev->DirList = NewNode;
+		prev->Children = NewNode;
 		if(ptr != NULL)
-			NewNode->DirList = ptr;
+			NewNode->Children = ptr;
 		printf("%s",NewNode->DirName);
 		return;
 	}
 	else 							//File
 	{
-		ptr = NewNode->Parent->DirList;
-		prev = NewNode->Parent->DirList;
+		ptr = NewNode->Parent->Children;
+		prev = NewNode->Parent->Children;
 
 		while((ptr->Type =='D') && (ptr != NULL))
 		{
 			prev = ptr;
-			ptr = ptr->DirList;
+			ptr = ptr->Children;
 		}
 		if (ptr == NULL)
 		{
-			prev->DirList = NewNode;
+			prev->Children = NewNode;
 			printf("%s",NewNode->DirName);
 			return;
 		}
@@ -207,13 +208,13 @@ void Insert(DirectoryFile *NewNode)
 				return;
 			}
 			prev = ptr;
-			ptr = ptr->DirList;
+			ptr = ptr->Children;
 			if(ptr == NULL)
 				break;
 		}
-		prev->DirList = NewNode;
+		prev->Children = NewNode;
 		if(ptr != NULL)
-			NewNode->DirList = ptr;
+			NewNode->Children = ptr;
 		return;
 	}
 
@@ -265,7 +266,7 @@ DirectoryFile *FindDirFile(char DirFileName[])
 	{
 		return NULL;
 	}
-	DirectoryFile *ptr = Curr->DirList;
+	DirectoryFile *ptr = Curr->Children;
 
 	while (1)
 	{
@@ -277,7 +278,7 @@ DirectoryFile *FindDirFile(char DirFileName[])
 		{
 			return ptr;
 		}
-		ptr = ptr->DirList;
+		ptr = ptr->Children;
 	}
 }
 
@@ -320,7 +321,7 @@ void addf(void)
 	NewFile->Parent = Curr;
 	NewFile->Type = 'F';
 	strcpy(NewFile->DirName, Tokens[1]);
-	NewFile->DirList = NULL;
+	NewFile->Children = NULL;
 
 	Insert(NewFile);
 	return;

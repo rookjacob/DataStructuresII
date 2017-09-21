@@ -32,7 +32,7 @@ int main(void)
 /*
 	DirectoryFile Node = { 'D', "NODE", &ROOT, NULL};
 	DirectoryFile Node1 = { 'D', "NODE1", &Node, NULL};
-	ROOT.DirList = &Node;
+	ROOT.Children = &Node;
    Curr =&Node1;
 */
 
