@@ -541,8 +541,6 @@ void bye(void)
 {
 	DirectoryFile *Tmp;
 	DirectoryFile *Tmp2;
-	int i;
-	scanf("%d", &i);
 	while(1)
 	{
 		Tmp = &ROOT;

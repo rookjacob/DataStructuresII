@@ -20,6 +20,12 @@ cd ..
 ls
 cd d1
 mkdir a1
+cd a1
+mkdir a2
+cd a2
+addf File
+cd ..
+cd ..
 ls
 pwd
 cd ..
@@ -40,6 +46,9 @@ ls
 cp d2 d4
 ls
 cd d4
+ls
+cd ..
+cd d2
 ls
 bye
 
