@@ -30,7 +30,6 @@ addf File1
 ls
 mv File2 File4
 ls
-cp d1 d4
 rm File1
 ls
 rm d1

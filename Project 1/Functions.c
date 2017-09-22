@@ -1,6 +1,6 @@
 /*
- * @file main.c This file is the main C file for a basic directory that
- * processes basic Unix/Linux commands.
+ * @file Functions.c 	This file contains all of the code for the functions
+ * to execute the Linux\Unix commands.
  *
  * @author Jacob Rook
  * @date 09/05/2017
@@ -39,69 +39,60 @@ int Tokenizer (char String[], const char TokenChar[])
 
 }
 
-char *getToken(int TokenIndex)
-{
-	if(TokenIndex >= MAXTOKENS)
-		return NULL;
-	return Tokens[TokenIndex];
-}
-
-
 
 int CommandOperator(void)
 {
-	char *Command = getToken(0);
 	/*
 	 * Determining which, if any command is the first token
 	 */
-	if (Command == NULL)
+	if (Tokens[0] == NULL)
 	{
 			printf("No input\n");
 	}
-	else if(!(strcmp(Command, "ls")))
+	else if(!(strcmp(Tokens[0], "ls")))
 	{
 		ls();
 	}
-	else if(!(strcmp(Command, "mkdir")))
+	else if(!(strcmp(Tokens[0], "mkdir")))
 	{
 		mkdir();
 	}
-	else if(!(strcmp(Command, "cd")))
+	else if(!(strcmp(Tokens[0], "cd")))
 	{
 		cd();
 	}
-	else if(!(strcmp(Command, "pwd")))
+	else if(!(strcmp(Tokens[0], "pwd")))
 	{
 		pwd();
 	}
-	else if(!(strcmp(Command, "addf")))
+	else if(!(strcmp(Tokens[0], "addf")))
 	{
 		addf();
 	}
-	else if(!(strcmp(Command, "mv")))
+	else if(!(strcmp(Tokens[0], "mv")))
 	{
 		mv();
 	}
-	else if(!(strcmp(Command, "cp")))
+	else if(!(strcmp(Tokens[0], "cp")))
 	{
 		cp();
 	}
-	else if(!(strcmp(Command, "rm")))
+	else if(!(strcmp(Tokens[0], "rm")))
 	{
 		rm();
 	}
-	else if(!(strcmp(Command, "bye")))
+	else if(!(strcmp(Tokens[0], "bye")))
 	{
 		bye();
 		return 1;
 	}
-	else if(!(strcmp(Command, "whereis")))
+	else if(!(strcmp(Tokens[0], "whereis")))
 	{
 		whereis();
 	}
 	else
 	{
-		printf("Command \"%s\" was not recognized\n",Tokens[0]);
+		printf("Tokens[0] \"%s\" was not recognized\n",Tokens[0]);
 	}
 
 return 0;
@@ -408,13 +399,8 @@ void cp(void)
 	DirectoryFile *OldNode = FindDirFile(Tokens[1]);
 	DirectoryFile *NewNode = (DirectoryFile*)malloc(sizeof(DirectoryFile));
 
-	strcpy(NewNode->DirName, Tokens[2]);
-	NewNode->Parent = OldNode->Parent;
-
-	if(OldNode->Type == 'D')
-		NewNode->Type = 'D';
-	else
-		NewNode->Type = 'F';
+	Duplicate(NewNode, OldNode);
+	Insert(NewNode);
 
 	return;
 }

@@ -1,9 +1,11 @@
 /*
  * @file main.c This file is the main C file for a basic directory that
- * processes basic Unix/Linux commands.
+ * processes basic Unix/Linux commands. Main handles the file i/o part
+ * of the project. It reads the command line and passes the commands to
+ * the Functions file.
  *
  * @author Jacob Rook
- * @date 09/05/2017
+ * @date 09/21/2017
  * @info Course COP 4534
  * Project 1
  */

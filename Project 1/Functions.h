@@ -40,6 +40,9 @@ char Tokens[MAXTOKENS][MAXTOKENLEN];			//Scope variable to store Tokens
  *
  * @var Children 				This variable is the head of the directory/file list that
  * 								are in the Directory.
+ *
+ * @var Siblings				This variable is the next sibling adjacent to the directory
+ *
  */
 typedef struct DirFile {
 	char Type;
@@ -51,7 +54,7 @@ typedef struct DirFile {
 }DirectoryFile;
 
 DirectoryFile ROOT;				//This is the root for all the files.
-DirectoryFile *Curr;
+DirectoryFile *Curr;			//Scope pointer to the current directory
 
 /*
  * @brief	NameStack			Stack structure to store the file names to be popped off
@@ -59,8 +62,6 @@ DirectoryFile *Curr;
  * @var		DirectoryName		Name of name to be output when popped
  *
  * @var		Next				Pointer to next member in the stack
- *
- * @var		Prev				Pointer to previous member in the stack
  */
 typedef struct NStack{
 	DirectoryFile *DirPtr;
@@ -72,7 +73,7 @@ Stack *Top2;			//Pointer for the top of the stack structure for whereis function
 
 /*
  * @brief	Tokenizer		This function tokenizes a string of characters passed by the
- * user.
+ * 							user. And, stores them in the scope variable Tokens 2d array
  *
  * @param	String[]  		String of characters to be tokenized
  *
@@ -82,15 +83,6 @@ Stack *Top2;			//Pointer for the top of the stack structure for whereis function
  *
  */
 int Tokenizer (char String[], const char TokenChar[]);
-
-/*
- * @brief	getToken
- *
- * @param	TokenIndex			Index of token to be returned
- *
- * @return	char*				Returns pointer to beginning of the token with the index passed
- */
-char *getToken(int TokenIndex);
 
 
 /*
@@ -122,26 +114,28 @@ void mkdir(void);
 void Insert(DirectoryFile *NewNode);
 
 /*
+ * @brief	cd					Changes into a specific directory
+ *
+ */
+void cd(void);
+
+/*
  * @brief	FindDirFile			Function finds a directory or file in the current directory
  *
  * @param	DirFileName			Name of directory/file to find
  *
- * @return	char*				Returns pointer to found directory or file. Returns NULL if not found.
+ * @return	DirectoryFile*		Returns pointer to found directory or file. Returns NULL if not found.
  */
 DirectoryFile *FindDirFile(char DirFileName[]);
 
 /*
- * @brief	FindPrevDirFile		Function finds the node to the left of passed node
+ * @brief	FindPrevDirFile		Function finds the node to the left of passed node. If the node does
+ * 								not have a left node NULL is returned. Used in the mv and rm functions
  *
  * @param	DirFileName			Name of directory/file to be found
  */
 DirectoryFile *FindPrevDirFile(char DirFileName[]);
 
-/*
- * @brief	cd					Changes into a specific directory
- *
- */
-void cd(void);
 
 /*
  * @brief	pwd					Specifies the current directory as: <yourname>/root/nextdir/etc/
@@ -208,29 +202,20 @@ void whereisrecur(void);
 /*
  * @brief	Push				Push function for the NameStack stack
  *
- * @param	Top					Location of top of the stack
  *
- * @param	Tail				Location of the tail of the stack
- *
- * @param	Name				String to be popped off the stack
+ * @param	Directory			Directory to be pusehd onto the stack
  */
 void Push(DirectoryFile *Directory);
 
 /*
  * @brief	Pop					Pop function for the NameStack stack
  *
- * @param	Top					Location of top of the stack
- *
- * @param	Tail				Location of the tail of the stack
  */
 DirectoryFile *Pop(void);
 
 /*
  * @brief	isEmpty				 Function to determine if the NameStack is empty or not
  *
- * @param	Top					Location of top of the stack
- *
- * @param	Tail				Location of the tail of the stack
  */
 int isEmpty(void);
 
