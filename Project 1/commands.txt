@@ -35,5 +35,11 @@ ls
 rm d1
 ls
 whereis a1
+cp File1 File5
+ls
+cp d2 d4
+ls
+cd d4
+ls
 bye
 

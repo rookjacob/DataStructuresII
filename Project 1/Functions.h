@@ -169,6 +169,10 @@ void cp(void);
  */
 void Duplicate(DirectoryFile *Copy, DirectoryFile *Original);
 
+/*
+ * @brief	cpRecur				Recursive function for cp
+ */
+void cpRecur(void);
 
 /*
  * @brief						Locate and remove the file or directory

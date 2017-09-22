@@ -397,10 +397,35 @@ void cp(void)
 		return;
 	}
 	DirectoryFile *OldNode = FindDirFile(Tokens[1]);
+	if(OldNode == NULL)
+	{
+		printf("%s was not found in %s", Tokens[1], Curr->DirName);
+		return;
+	}
+
 	DirectoryFile *NewNode = (DirectoryFile*)malloc(sizeof(DirectoryFile));
 
+
 	Duplicate(NewNode, OldNode);
+	strcpy(NewNode->DirName, Tokens[2]);
+	NewNode->Parent = Curr;
 	Insert(NewNode);
+	if(OldNode->Children == NULL)
+		return;
+	Push(OldNode->Children);
+
+	NewNode->Children = (DirectoryFile*)malloc(sizeof(DirectoryFile));
+	NewNode->Children->Parent = NewNode;
+	Duplicate(NewNode->Children, OldNode->Children);
+
+	Push2(NewNode->Children);
+
+	cpRecur();
+
+	while(!isEmpty())
+		Pop();
+	while(!isEmpty2())
+		Pop2();
 
 	return;
 }
@@ -411,12 +436,51 @@ void Duplicate(DirectoryFile *Copy, DirectoryFile *Original)
 	{
 		return;
 	}
-	strcpy(Copy->DirName, Tokens[2]);
-	Copy->Parent = Original->Parent;
+	strcpy(Copy->DirName, Original->DirName);
 	if (Original->Type == 'D')
 		Copy->Type = 'D';
 	else
 		Copy->Type = 'F';
+}
+
+void cpRecur(void)
+{
+	if(Top->DirPtr->Children == NULL && Top->DirPtr->Children)
+	{
+		Pop();
+		Pop2();
+		return;
+	}
+	if(Top->DirPtr->Children != NULL)
+	{
+		DirectoryFile *NewNode = (DirectoryFile*)malloc(sizeof(DirectoryFile));
+		NewNode->Parent = Top2->DirPtr;
+		Top2->DirPtr->Children = NewNode;
+		Duplicate(NewNode,Top->DirPtr->Children);
+
+		Push(Top->DirPtr->Children);
+		Push2(NewNode);
+
+		cpRecur();
+
+	}
+	if(Top->DirPtr->Siblings != NULL)
+	{
+		DirectoryFile *NewNode2 = (DirectoryFile*)malloc(sizeof(DirectoryFile));
+		Top2->DirPtr->Siblings = NewNode2;
+		NewNode2->Parent = Top2->DirPtr->Parent;
+		Duplicate(NewNode2, Top->DirPtr->Siblings);
+
+		Push(Top->DirPtr->Siblings);
+		Push2(NewNode2);
+
+		cpRecur();
+	}
+
+	Pop();
+	Pop2();
+	return;
+
 }
 
 
@@ -477,7 +541,8 @@ void bye(void)
 {
 	DirectoryFile *Tmp;
 	DirectoryFile *Tmp2;
-
+	int i;
+	scanf("%d", &i);
 	while(1)
 	{
 		Tmp = &ROOT;
