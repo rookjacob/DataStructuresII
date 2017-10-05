@@ -31,6 +31,7 @@ int main(void)
 	ROOT.Type = 'D';							//Initializing ROOT variables
 	strcpy(ROOT.DirName, "rook/root");
 	Curr = &ROOT;
+
 /*
 	DirectoryFile Node = { 'D', "NODE", &ROOT, NULL};
 	DirectoryFile Node1 = { 'D', "NODE1", &Node, NULL};
