@@ -43,7 +43,7 @@ ls
 whereis a1
 cp File1 File5
 ls
-cp d2 d4
+cp d2 d4 fd
 ls
 cd d4
 ls
