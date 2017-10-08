@@ -2,7 +2,9 @@
 jGrasp Project.gpj
 jGrasp Project.exe
 jGrasp Project 1.gpj
-.cproject
-.project
+*.cproject
+*.project
 rook-j-p1/Debug/
-.settings
+*.settings
+*.gpj
+*.exe
