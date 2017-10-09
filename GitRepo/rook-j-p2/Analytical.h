@@ -178,6 +178,12 @@ float calUtiliFactor(void);
 
 
 
+//FUNCTIONS FOR SIMULATION
+
+//END OF FUNCTIONS FOR SIMULATION
+
+
+
 
 
 
