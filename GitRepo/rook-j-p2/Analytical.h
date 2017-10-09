@@ -145,8 +145,35 @@ void setM(float M);
 
 
 //EXPECTED CALCULATIONS FOR THE ANALYTICAL MODEL
+/*
+ *
+ */
+float calIdle(void);
 
+/*
+ *
+ */
+float calAvePeopleSys(void);
 
+/*
+ *
+ */
+float calAveTimeSys(void);
+
+/*
+ *
+ */
+float calAveCustQ(void);
+
+/*
+ *
+ */
+float calAveTimeWait(void);
+
+/*
+ *
+ */
+float calUtiliFactor(void);
 //END OF EXPECTED CALCULATIONS FOR THE ANALYTICAL MODEL
 
 
