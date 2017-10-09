@@ -12,8 +12,16 @@
 
 #include<stdio.h>
 
+/*
+ * The Customer Priority Queue (PQ) is implemented using an array based heap of
+ * customer pointers. The priority is based off of the customers arrival time or
+ * departure time. The customers with the lower arrival or departure time will be
+ * of higher priority and will be higher in the heap. The children of the heap
+ * elements can be determined by multiplying the element's index by 2 and adding 1.
+ * The index*2 and index*2 + 1 are the children of the customer at the index. The
+ * size of the heap will be determined by the variable PQSize.
+ */
 #define PQMAXSIZE 200
-
 Customer_t *PQ[PQMAXSIZE+1];
 int PQSize;					//Current size of the PQ
 
