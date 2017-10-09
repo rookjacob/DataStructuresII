@@ -50,6 +50,10 @@ float	mu;
 int		numService;
 
 
+
+
+
+
 //PQ FUNCTIONS
 /*
  *
@@ -76,6 +80,32 @@ void percolateUp(Customer_t *Customer);
  */
 void percolateDown(int index);
 //END OF PQ FUNCTIONS
+
+
+
+
+
+
+//FIFO QUEUE FUNCTIONS
+/*
+ *
+ */
+void FIFOEnque(Customer_t *Customer);
+
+/*
+ *
+ */
+Customer_t *FIFODeque(void);
+
+/*
+ *
+ */
+int isFIFOEmpty(void);
+
+//END OF FIFO QUEUE FUNCTIONS
+
+
+
 
 
 
