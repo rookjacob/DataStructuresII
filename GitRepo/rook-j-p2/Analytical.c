@@ -150,5 +150,16 @@ float calUtiliFactor(void)
 
 
 //FUNCTIONS FOR SIMULATION
+void PlaceFirstArrivals(void)
+{
+
+}
+
+
+void ProcessNextEvent(void)
+{
+
+}
+
 
 //END OF FUNCTIONS FOR SIMULATION
