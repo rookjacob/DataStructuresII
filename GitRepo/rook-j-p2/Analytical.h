@@ -56,27 +56,57 @@ int		numService;
 
 //PQ FUNCTIONS
 /*
+ *@brief	PQEnque		Function will add a customer to the Priority Queue using
+ *percolateUp
  *
+ *@param	Customer	Customer to be added to the PQ
  */
 void PQEnque(Customer_t *Customer);
 
 /*
+ *@brief	PQDeque		Function will take the customer off the head of the PQ,
+ *take the lowest customer on the PQ and place them at the top of the PQ, use
+ *percolateDown to place the lowest customer to rightful spot, and then return
+ *the original customer at the top of the PQ
  *
+ *@return	Customer_t	Function will return the customer at the top of the PQ
+ *that is being returned
  */
 Customer_t *PQDeque(void);
 
 /*
+ *@brief	isPQEmpty	Function will check to see if the PQ is empty or not
  *
+ *@return	int			Function will return 1 if the PQ is empty, 0 if not empty
  */
 int isPQEmpty(void);
 
 /*
+ *@brief	percolateUp	Function will add the passed customer to the end of the
+ *PQ and use an insert method comparing the parent to the customer to be added.
+ *If the parent is of lower priority, the parent will be moved to the current
+ *location of the customer to be added and this process will continue to recur
+ *until the parent has a higher priority or the customer to be added is a the top
+ *of the PQ. When the parent is of higher priority the customer will stay at the
+ *current location in the PQ.
  *
+ *param		Customer	Customer to be added to the PQ
  */
 void percolateUp(Customer_t *Customer);
 
 /*
+ *@brief	percolateDown	Function will use an insert method of percolating down
+ *the customer at the index passed in the parameters. Typically the percolateDown
+ *function will be used when the lowest priority customer has just been moved to
+ *the highest priority position (1) and is needed to be percolated down. But,
+ *the function can be used at any position in the PQ. However, the function will
+ *compare the customers "children" in the heap at indices 2 times the customer's
+ *index and 2 time the customer's index plus 1. The customer that needs to be
+ *percolated down will be swapped with the higher priority child, if either child
+ *is of higher priority. If neither child is of higher priority the algorithm stops
+ *and the customer stays at the current index.
  *
+ *@param 	index		Index to start the percolateDown function
  */
 void percolateDown(int index);
 //END OF PQ FUNCTIONS
