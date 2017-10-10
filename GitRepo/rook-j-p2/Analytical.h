@@ -51,6 +51,8 @@ typedef struct Cust
 	struct Cust *nextCust; //For FIFO Queue
 }Customer_t;
 
+Customer_t *FIFOHead;
+Customer_t *FIFOTail;
 
 int 	numArrivals;
 float 	lambda;
@@ -126,17 +128,25 @@ void percolateDown(int index);
 
 //FIFO QUEUE FUNCTIONS
 /*
+ * @brief 	FIFOEnque		Function adds a customer to the end of the FIFO Queue.
  *
+ * @param	Customer		Customer to be added to the FIFO Queue
  */
 void FIFOEnque(Customer_t *Customer);
 
 /*
+ * @brief	FIFODeque		Function removes the customer at the head of the queue
+ * and moves the head pointer to the next customer in line. The original head of
+ * the queue is returned.
  *
+ * @return 	Customer_t*		Head of FIFO queue is returned.
  */
 Customer_t *FIFODeque(void);
 
 /*
+ * @brief	isFIFOEmpty		Checks to see if the FIFO queue is empty.
  *
+ * @return	int				Returns 1 if the FIFO queue is empty, 0 if not
  */
 int isFIFOEmpty(void);
 
