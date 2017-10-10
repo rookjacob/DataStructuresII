@@ -19,13 +19,11 @@ void PQEnque(Customer_t *Customer)
 	PQ[0] = Customer;
 	int index = ++PQSize;
 	float time = findTime(Customer);
-	float parentTime = findTime(PQ[index/2]);
 
-	while (time < parentTime)
+	while (time < findTime(PQ[index/2]))
 	{
 		PQ[index] = PQ[index/2];
 		index /= 2;
-		parentTime = findTime(PQ[index/2]);
 	}
 	PQ[index] = Customer;
 }
@@ -33,25 +31,39 @@ void PQEnque(Customer_t *Customer)
 
 Customer_t *PQDeque(void)
 {
-
+	Customer_t *tmp = PQ[1];
+	PQ[1] = PQ[PQSize--];
+	percolateDown(1);
+	return tmp;
 }
 
 
 int isPQEmpty(void)
 {
-
+	if(PQSize == 0)
+		return 1;
+	return 0;
 }
 
-
-void percolateUp(Customer_t *Customer)
-{
-
-}
 
 
 void percolateDown(int index)
 {
+	int child;
+	Customer_t *tmp = PQ[index];
 
+	while(index*2 <= PQSize)
+	{
+		child = index * 2;
+		if( (child != PQSize ) && ( findTime(PQ[child +1]) < findTime(PQ[child])) )
+				child++;
+		if (findTime(child) < findTime(tmp))
+			PQ[index] = PQ[child];
+		else
+			break;
+		index = child;
+	}
+	PQ[index] = tmp;
 }
 
 
@@ -75,19 +87,35 @@ float findTime(Customer_t *Customer)
 //FIFO QUEUE FUNCTIONS
 void FIFOEnque(Customer_t *Customer)
 {
-
+	Customer->nextCust = NULL;
+	if(FIFOFront == NULL && FIFORear == NULL)
+	{
+		FIFOFront = FIFORear = Customer;
+		return;
+	}
+	FIFORear->nextCust = Customer;
+	FIFORear = Customer;
 }
 
 
 Customer_t *FIFODeque(void)
 {
-
+	Customer_t *tmp = FIFOFront;
+	if(isFIFOEmpty(FIFOFront))
+		return NULL;
+	if(FIFOFront == FIFORear)
+		FIFOFront = FIFORear = NULL;
+	else
+		FIFOFront = FIFOFront->nextCust;
+	return tmp;
 }
 
 
 int isFIFOEmpty(void)
 {
-
+	if(FIFOFront == NULL)
+		return 1;
+	return 0;
 }
 
 //END OF FIFO QUEUE FUNCTIONS
@@ -100,7 +128,8 @@ int isFIFOEmpty(void)
 //SET FUNCTIONS
 void setN(int N)
 {
-
+	numArrivals = N;
+	return;
 }
 
 

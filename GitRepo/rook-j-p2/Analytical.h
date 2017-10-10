@@ -39,8 +39,8 @@ typedef struct Cust
 	struct Cust *nextCust; //For FIFO Queue
 }Customer_t;
 
-Customer_t *FIFOHead;
-Customer_t *FIFOTail;
+Customer_t *FIFOFront = NULL;
+Customer_t *FIFORear = NULL;
 
 /*
  * The Customer Priority Queue (PQ) is implemented using an array based heap of
@@ -53,13 +53,13 @@ Customer_t *FIFOTail;
  */
 #define PQMAXSIZE 200
 Customer_t *PQ[PQMAXSIZE+1];
-int PQSize;					//Current size of the PQ
+int PQSize =0;					//Current size of the PQ
 
 
-int 	numArrivals;
-float 	lambda;
-float	mu;
-int		numService;
+int 	numArrivals = 0;
+float 	lambda = 0;
+float	mu = 0;
+int		numService = 0;
 
 
 
@@ -68,8 +68,13 @@ int		numService;
 
 //PQ FUNCTIONS
 /*
- *@brief	PQEnque		Function will add a customer to the Priority Queue using
- *percolateUp
+ *@brief	PQEnque		Function will add the passed customer to the end of the
+ *PQ and use an insert method comparing the parent to the customer to be added.
+ *If the parent is of lower priority, the parent will be moved to the current
+ *location of the customer to be added and this process will continue to recur
+ *until the parent has a higher priority or the customer to be added is a the top
+ *of the PQ. When the parent is of higher priority the customer will stay at the
+ *current location in the PQ.
  *
  *@param	Customer	Customer to be added to the PQ
  */
@@ -92,19 +97,6 @@ Customer_t *PQDeque(void);
  *@return	int			Function will return 1 if the PQ is empty, 0 if not empty
  */
 int isPQEmpty(void);
-
-/*
- *@brief	percolateUp	Function will add the passed customer to the end of the
- *PQ and use an insert method comparing the parent to the customer to be added.
- *If the parent is of lower priority, the parent will be moved to the current
- *location of the customer to be added and this process will continue to recur
- *until the parent has a higher priority or the customer to be added is a the top
- *of the PQ. When the parent is of higher priority the customer will stay at the
- *current location in the PQ.
- *
- *param		Customer	Customer to be added to the PQ
- */
-void percolateUp(Customer_t *Customer);
 
 /*
  *@brief	percolateDown	Function will use an insert method of percolating down
