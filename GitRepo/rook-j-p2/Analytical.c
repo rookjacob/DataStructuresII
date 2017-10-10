@@ -135,19 +135,22 @@ void setN(int N)
 
 void setLambda(float L)
 {
-
+	lambda = L;
+	return;
 }
 
 
 void setMu(float M)
 {
-
+	mu = M;
+	return;
 }
 
 
 void setM(float M)
 {
-
+	numService = M;
+	return;
 }
 
 
