@@ -12,18 +12,6 @@
 
 #include<stdio.h>
 
-/*
- * The Customer Priority Queue (PQ) is implemented using an array based heap of
- * customer pointers. The priority is based off of the customers arrival time or
- * departure time. The customers with the lower arrival or departure time will be
- * of higher priority and will be higher in the heap. The children of the heap
- * elements can be determined by multiplying the element's index by 2 and adding 1.
- * The index*2 and index*2 + 1 are the children of the customer at the index. The
- * size of the heap will be determined by the variable PQSize.
- */
-#define PQMAXSIZE 200
-Customer_t *PQ[PQMAXSIZE+1];
-int PQSize;					//Current size of the PQ
 
 
 /*
@@ -31,7 +19,7 @@ int PQSize;					//Current size of the PQ
  * be stored for the customer
  *
  * @var		type			Variable to indicate whether the customer is an arrival
- * or a departure
+ * or a departure. "A" for arrival "D" for departure.
  *
  * @var		arrivalTime		Variable to store the time that the customer arrived
  *
@@ -53,6 +41,20 @@ typedef struct Cust
 
 Customer_t *FIFOHead;
 Customer_t *FIFOTail;
+
+/*
+ * The Customer Priority Queue (PQ) is implemented using an array based heap of
+ * customer pointers. The priority is based off of the customers arrival time or
+ * departure time. The customers with the lower arrival or departure time will be
+ * of higher priority and will be higher in the heap. The children of the heap
+ * elements can be determined by multiplying the element's index by 2 and adding 1.
+ * The index*2 and index*2 + 1 are the children of the customer at the index. The
+ * size of the heap will be determined by the variable PQSize.
+ */
+#define PQMAXSIZE 200
+Customer_t *PQ[PQMAXSIZE+1];
+int PQSize;					//Current size of the PQ
+
 
 int 	numArrivals;
 float 	lambda;
@@ -119,6 +121,16 @@ void percolateUp(Customer_t *Customer);
  *@param 	index		Index to start the percolateDown function
  */
 void percolateDown(int index);
+
+/*
+ * @brief	findTime	Function determines which time to use (arrival or departure)
+ * and returns that value.
+ *
+ * @param	Customer	Customer to find the time to return
+ *
+ * @return	float		Returns the appropriate time (arrival or departure)
+ */
+float findTime(Customer_t *Customer);
 //END OF PQ FUNCTIONS
 
 

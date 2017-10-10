@@ -7,6 +7,7 @@
  * Project 2
  */
 
+#include"Analytical.h"
 
 
 
@@ -15,7 +16,18 @@
 //PQ FUNCTIONS
 void PQEnque(Customer_t *Customer)
 {
+	PQ[0] = Customer;
+	int index = ++PQSize;
+	float time = findTime(Customer);
+	float parentTime = findTime(PQ[index/2]);
 
+	while (time < parentTime)
+	{
+		PQ[index] = PQ[index/2];
+		index /= 2;
+		parentTime = findTime(PQ[index/2]);
+	}
+	PQ[index] = Customer;
 }
 
 
@@ -39,6 +51,16 @@ void percolateUp(Customer_t *Customer)
 
 void percolateDown(int index)
 {
+
+}
+
+
+float findTime(Customer_t *Customer)
+{
+	if (Customer->type == 'A')
+		return Customer->arrivalTime;
+	else
+		return Customer->departureTime;
 
 }
 
