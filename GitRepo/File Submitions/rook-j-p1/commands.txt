@@ -1,54 +1,29 @@
-ls 
-mkdir d1
-ls
-mkdir d3
-ls
-mkdir d2
-ls
 pwd
-cd d2
+mkdir abc
+addf f3
+addf f1
+addf f2
+cp f1 file1
 ls
-mkdir a1
+mkdir def
 ls
-pwd
-cd a1
-ls
-cd d1
+cd cdf
+cd def
+addf whatNow
 cd ..
 pwd
-cd ..
+whereis f3
+whereis qwerty
 ls
-cd d1
-mkdir a1
-cd a1
-mkdir a2
-cd a2
-addf File
-cd ..
-cd ..
-ls
+cd abc
+cp def def2
 pwd
-cd ..
-cd..
-addf File3
-addf File2
-addf File1
-ls
-mv File2 File4
-ls
-rm File1
-ls
-rm d1
-ls
-whereis a1
-cp File1 File5
-ls
-cp d2 d4 fd
-ls
-cd d4
 ls
 cd ..
-cd d2
+rm f5
+rm f2
+mv aeye f4
+cd f4
 ls
 bye
 
