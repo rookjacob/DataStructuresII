@@ -271,6 +271,11 @@ void runSimulation(void)
 	printSimulation();
 }
 
+float getInterval(float avg)
+{
+
+}
+
 void PlaceFirstArrivals(void)
 {
 

@@ -262,6 +262,11 @@ void runSimulation();
 /*
  *
  */
+float getInterval(void);
+
+/*
+ *
+ */
 void PlaceFirstArrivals(void);
 
 /*
