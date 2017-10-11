@@ -8,10 +8,26 @@
  */
 
 #include<stdio.h>
+#include"Analytical.h"
 
 
 int main (void)
 {
+	float val;
+	printf("Please enter the number of arrivals to simulate: ");
+	scanf("%f", &val);
+	setN(val);
+	printf("Please enter the average arrivals in a time period: ");
+	scanf("%f", &val);
+	setLambda(val);
+	printf("Please enter the average number served in a time period: ");
+	scanf("%f", &val);
+	setMu(val);
+	printf("Please enter the number of service channels: ");
+	scanf("%f", &val);
+	setM(val);
+
+	printAllCal();
 
 	return 0;
 }
