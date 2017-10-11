@@ -3,11 +3,12 @@ mkdir abc
 addf f3
 addf f1
 addf f2
+cp f1 file1
 ls
 mkdir def
 ls
 cd cdf
-cddef
+cd def
 addf whatNow
 cd ..
 pwd
@@ -15,6 +16,7 @@ whereis f3
 whereis qwerty
 ls
 cd abc
+cp def def2
 pwd
 ls
 cd ..
