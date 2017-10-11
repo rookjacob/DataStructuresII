@@ -165,37 +165,84 @@ void setM(float M)
 //EXPECTED CALCULATIONS FOR THE ANALYTICAL MODEL
 float calIdle(void)
 {
+	float sum = 0;
+	int i;
 
+	for (i=0; i < numService; i++)
+		sum = sum + 1.0/(fact(i)) * (power(lambda/mu, i));
+	sum = sum + 1.0/(fact(numService)) * (power(lambda/mu, numService)) * numService * mu /(numService * mu - lambda);
+	return 1/sum;
 }
 
 
 float calAvePeopleSys(void)
 {
+	float L = lambda * mu * power(lambda/mu, numService) * calIdle();
+	L = L/( fact(numService - 1) * power((float)numService * mu - lambda, 2));
+	return L + lambda/mu;
 
 }
 
 
 float calAveTimeSys(void)
 {
-
+	return calAvePeopleSys/lambda;
 }
 
 
 float calAveCustQ(void)
 {
-
+	return calAveTimeSys - lambda/mu;
 }
 
 
 float calAveTimeWait(void)
 {
-
+	return calAveCustQ/lambda;
 }
 
 
 float calUtiliFactor(void)
 {
+	return lambda/numService/mu;
+}
 
+void printAllCal(void)
+{
+	float Pnot = calIdle();
+	float L, W, Lq , Wq, rho;
+	L = lambda * mu * power(lambda/mu, numService) * Pnot;
+	L = L/( fact(numService - 1) * power((float)numService * mu - lambda, 2));
+	L = lambda/mu;
+	W = L/mu;
+	Lq = L - lambda/mu;
+	Wq = Lq/lambda;
+	rho = lambda/numService/mu;
+
+	printf("Po = %.3f\n"
+			"L  = %.3f\n"
+			"W  = %.3f\n"
+			"Lq = %.3f\n"
+			"Wq = %.3f\n",
+			Pnot,L,W,Lq,Wq);
+}
+
+float fact(int n)
+{
+	if(n == 0)
+		return 1;
+	else
+		return (float)(n * fact(n - 1));
+}
+
+float power(float x, int y)
+{
+	while(y>0)
+	{
+		x = x * x;
+		y--;
+	}
+	return x;
 }
 
 

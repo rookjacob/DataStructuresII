@@ -11,6 +11,7 @@
 #define ANALYTICAL_H_
 
 #include<stdio.h>
+#include<math.h>
 
 
 
@@ -229,6 +230,21 @@ float calAveTimeWait(void);
  *
  */
 float calUtiliFactor(void);
+
+/*
+ *
+ */
+void printAllCal(void);
+
+/*
+ *
+ */
+float fact(int n);
+
+/*
+ *
+ */
+float power(float x, int y);
 //END OF EXPECTED CALCULATIONS FOR THE ANALYTICAL MODEL
 
 
