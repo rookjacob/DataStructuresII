@@ -1,0 +1,1023 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40"><head>
+
+
+
+
+
+
+
+
+
+
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  
+  <meta name="ProgId" content="Word.Document">
+
+  
+  <meta name="Generator" content="Microsoft Word 12">
+
+  
+  <meta name="Originator" content="Microsoft Word 12">
+
+  
+  <link rel="Edit-Time-Data" href="http://www.cs.uwf.edu/%7Ejcoffey/p3_dsandaii200808_files/editdata.mso"><title>Program 2. Queue Simulation</title><!--[if gte mso 9]><xml>
+
+ <o:DocumentProperties>
+
+  <o:Author>mlr8</o:Author>
+
+  <o:LastAuthor>mlr8</o:LastAuthor>
+
+  <o:Revision>3</o:Revision>
+
+  <o:TotalTime>24</o:TotalTime>
+
+  <o:Created>2008-06-17T19:34:00Z</o:Created>
+
+  <o:LastSaved>2008-06-17T19:35:00Z</o:LastSaved>
+
+  <o:Pages>2</o:Pages>
+
+  <o:Words>1027</o:Words>
+
+  <o:Characters>5858</o:Characters>
+
+  <o:Company>uwf</o:Company>
+
+  <o:Lines>48</o:Lines>
+
+  <o:Paragraphs>13</o:Paragraphs>
+
+  <o:CharactersWithSpaces>6872</o:CharactersWithSpaces>
+
+  <o:Version>12.00</o:Version>
+
+ </o:DocumentProperties>
+
+</xml><![endif]-->
+  
+
+  
+
+  
+  <link rel="dataStoreItem" href="http://www.cs.uwf.edu/%7Ejcoffey/p3_dsandaii200808_files/item0006.xml" target="p3_dsandaii200808_files/props0007.xml">
+
+  
+  <link rel="themeData" href="http://www.cs.uwf.edu/%7Ejcoffey/p3_dsandaii200808_files/themedata.thmx">
+
+  
+  <link rel="colorSchemeMapping" href="http://www.cs.uwf.edu/%7Ejcoffey/p3_dsandaii200808_files/colorschememapping.xml"><!--[if gte mso 9]><xml>
+
+ <w:WordDocument>
+
+  <w:TrackMoves>false</w:TrackMoves>
+
+  <w:TrackFormatting/>
+
+  <w:ValidateAgainstSchemas/>
+
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+
+  <w:DoNotPromoteQF/>
+
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+
+  <w:Compatibility>
+
+   <w:BreakWrappedTables/>
+
+   <w:SnapToGridInCell/>
+
+   <w:WrapTextWithPunct/>
+
+   <w:UseAsianBreakRules/>
+
+   <w:DontGrowAutofit/>
+
+   <w:SplitPgBreakAndParaMark/>
+
+   <w:DontVertAlignCellWithSp/>
+
+   <w:DontBreakConstrainedForcedTables/>
+
+   <w:DontVertAlignInTxbx/>
+
+   <w:Word11KerningPairs/>
+
+   <w:CachedColBalance/>
+
+  </w:Compatibility>
+
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+
+  <m:mathPr>
+
+   <m:mathFont m:val="Cambria Math"/>
+
+   <m:brkBin m:val="before"/>
+
+   <m:brkBinSub m:val="&#45;-"/>
+
+   <m:smallFrac m:val="off"/>
+
+   <m:dispDef/>
+
+   <m:lMargin m:val="0"/>
+
+   <m:rMargin m:val="0"/>
+
+   <m:defJc m:val="centerGroup"/>
+
+   <m:wrapIndent m:val="1440"/>
+
+   <m:intLim m:val="subSup"/>
+
+   <m:naryLim m:val="undOvr"/>
+
+  </m:mathPr></w:WordDocument>
+
+</xml><![endif]--><!--[if gte mso 9]><xml>
+
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+
+  LatentStyleCount="267">
+
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Table Grid"/>
+
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light Shading"/>
+
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light List"/>
+
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light Grid"/>
+
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Dark List"/>
+
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful List"/>
+
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+
+ </w:LatentStyles>
+
+</xml><![endif]-->
+
+
+  
+  <style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:1;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:variable;
+	mso-font-signature:0 0 0 0 0 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:1627400839 -2147483648 8 0 66047 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+p
+	{mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Balloon Text";
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-ascii-font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Tahoma;
+	mso-bidi-font-family:Tahoma;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:732123629;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-2087580548 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l1
+	{mso-list-id:1082726960;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1525239142 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l2
+	{mso-list-id:1926575858;
+	mso-list-template-ids:1139170654;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3
+	{mso-list-id:1998459030;
+	mso-list-template-ids:740689970;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+  </style><!--[if gte mso 10]>
+
+<style>
+
+ /* Style Definitions */
+
+ table.MsoNormalTable
+
+	{mso-style-name:"Table Normal";
+
+	mso-tstyle-rowband-size:0;
+
+	mso-tstyle-colband-size:0;
+
+	mso-style-noshow:yes;
+
+	mso-style-priority:99;
+
+	mso-style-qformat:yes;
+
+	mso-style-parent:"";
+
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+
+	mso-para-margin:0in;
+
+	mso-para-margin-bottom:.0001pt;
+
+	mso-pagination:widow-orphan;
+
+	font-size:10.0pt;
+
+	font-family:"Times New Roman","serif";}
+
+</style>
+
+<![endif]-->
+  
+  <meta name="Author" content="John coffey"><!--[if gte mso 9]><xml>
+
+ <o:shapelayout v:ext="edit">
+
+  <o:idmap v:ext="edit" data="1"/>
+
+ </o:shapelayout></xml><![endif]--></head><body lang="EN-US" link="blue" vlink="purple">
+<div class="Section1">
+<p class="MsoNormal" style="text-align: center;" align="center"><b><span style="font-size: 13.5pt;">Data Structures and Algorithms II</span></b></p>
+<p class="MsoNormal" style="text-align: center;" align="center"><span size="4" style="font-size: large;"><b> Programming Project 2</b></span><span> <br /> </span><b><span style="font-size: 13.5pt;">A Queue Simulation</span></b><span><o:p></o:p></span></p>
+<p class="MsoNormal"><span><o:p>&nbsp;</o:p></span></p>
+<p style="margin: 0in 0in 0.0001pt;"><b>Programming Problem Statement</b></p>
+<p style="margin: 0in 0in 0.0001pt;"><b><br /> </b></p>
+<p style="margin: 0in 0in 0.0001pt 0.5in; text-indent: -0.25in;">The purpose of this assignment is to explore several ideas:<span><span style="font-family: Symbol;"><span style="font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span></p>
+<ul>
+<li><span style="font-family: Symbol;"><span><span style="font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span>Event-driven programming.</li>
+<li><span style="font-family: Symbol;"><span><span style="font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span>Modeling and simulation</li>
+<li><span><span style="font-style: normal; font-variant: normal; font-weight: normal;">Continuous and discrete p</span></span>robability distributions</li>
+</ul>
+<p style="margin: 0in 0in 0.0001pt;"><o:p>&nbsp;</o:p></p>
+<p style="margin: 0in 0in 0.0001pt;">Event-driven programming is a fundamental model of computation in which the program responds to events in certain ways. The idea of real-time programming is a special type of event-driven programming in which there are absolute (computable) upper limits on the amount of time the program can take to respond to events.</p>
+<p style="margin: 0in 0in 0.0001pt;">&nbsp;</p>
+<p style="margin: 0in 0in 0.0001pt;">For our problem, we will assume that we have been hired by a local company to consider the throughput for a new service center that may have a varying number (let's call it M) of service channels. We will simulate customers passing through this system by using <span style="font-style: italic;">BOTH</span> a priority queue and a standard FIFO queue. Your program <span style="font-style: italic;">MUST</span> work as specified here. The customers will arrive randomly with times following the Poisson distribution. Suppose a store averages 10 arrivals per hour. The Poisson distribution can be used to determine the probability of no arrivals, 1 arrival, 5 arrivals, 15 arrivals, etc., given that average. The Poisson distribution can be transformed into a continuous probability distribution called a negative exponential distribution (which we will use) which produces <span style="font-style: italic;">time intervals </span>which, when added up, will yield Poisson distributed arrivals.</p>
+<p style="margin: 0in 0in 0.0001pt;">&nbsp;</p>
+<p style="margin: 0in 0in 0.0001pt;">The author of our recommended text points out that we can build simulations with an entry for each time point. However, if we use this approach and we want a more fine-grained time scale, the number of events to process could potentially grow very rapidly. For instance, if the current time unit is 1 sec and we want 1 msec time units instead, our input size would grow by 1000!</p>
+<p style="margin: 0in 0in 0.0001pt;">&nbsp;</p>
+<p style="margin: 0in 0in 0.0001pt;">An alternative is to use a priority queue prioritized by the time of the events in the simulation. At any point in the simulation, the next event will be either:</p>
+<ul>
+<li>
+<p style="margin: 0in 0in 0.0001pt;">a customer arrives for service,</p>
+</li>
+<li>
+<p style="margin: 0in 0in 0.0001pt;">a customer's service is complete.</p>
+</li>
+</ul>
+<p style="margin: 0in 0in 0.0001pt;">&nbsp;</p>
+<p style="margin: 0in 0in 0.0001pt;">Upon arrival, we check for an available service channel. If one exists, the customer goes into the service channel directly, we compute a completion time, and that time goes into the queue as a future event. If all service channels are in use, the customer goes into the FIFO queue. We know the time the customer leaves the FIFO queue to get service because that is exactly the time when service was completed for the prior customer in that service channel.</p>
+<p style="margin: 0in 0in 0.0001pt;">&nbsp;&nbsp;</p>
+<p style="margin: 0in 0in 0.0001pt;"><b>Computing Arrival and </b> <b>Service Time Intervals</b> &ndash; These times will be modeled by a negative exponential distribution. The following pseudocode contains an algorithm for computing a time interval between events with random distribution from an infinite population:</p>
+<p style="margin: 0in 0in 0.0001pt;">&nbsp;</p>
+<p style="margin: 0in 0in 0.0001pt;">&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family: Courier;" face="Courier">GetNextRandomInterval(avg)</span></p>
+<p style="margin: 0in 0in 0.0001pt;"><span face="Courier New" style="font-family: 'Courier New';">&nbsp;&nbsp;&nbsp;&nbsp; Generate a random float f on the interval (0..1]</span></p>
+<p style="margin: 0in 0in 0.0001pt;"><span face="Courier New" style="font-family: 'Courier New';">&nbsp;&nbsp;&nbsp;&nbsp; Compute intervalTime as -1 * (1.0/avg) * ln(f) // natural logarithm of f</span></p>
+<p style="margin: 0in 0in 0.0001pt;"><span face="Courier New" style="font-family: 'Courier New';">&nbsp;&nbsp;&nbsp;&nbsp; return intervalTime </span></p>
+<p style="margin: 0in 0in 0.0001pt;">&nbsp;</p>
+<span style="font-family: Times New Roman,Times,serif;">Note that the parameter (avg) could be either lambda or mu, depending on the interval you want. That is why it is generically named avg.</span><br />
+<p style="margin: 0in 0in 0.0001pt;"></p>
+<p style="margin: 0in 0in 0.0001pt;"><b>Program Execution</b><br /> Your simulation will be interactive. When the program runs, it will prompt the user for the following IN THIS ORDER:</p>
+<ul>
+<li>n - number of arrivals to simulate</li>
+<li><span>lambda (<span face="Symbol" style="font-family: Symbol;">l</span>) = average arrivals in a time period<o:p>.</o:p></span></li>
+<li><span><o:p></o:p></span><span>mu (<span face="Symbol" style="font-family: Symbol;">m</span>) = average number served in a time period.</span></li>
+<li>M - the number of service channels</li>
+</ul>
+<span></span><br />
+<p style="margin: 0in 0in 0.0001pt;">You will keep the priority queue small, of length 200. So long as more arrivals remain, you can easily add arrivals in O(lgn) time. You can do so when the number of events (arrivals and departures) in the PQ gets to eg: M+1. You will carry out the simulation by first filling the M servers with the first M customers, computing the service time when they are to be served. You will "prime the pump" for the system by placing the first M departure times into the priority queue. Now the simulation runs as you process the events in the priority queue. If the event is an arrival, you first check for an available server. If one is present, you can generate the departure time and add it to the priority queue, and note that the server is busy. If no servers are available, the customer goes into the FIFO queue. Eventually a departure will occur (the time service commences for a customer in the FIFO queue) and everything works fine. You must tally statistics as customers' service is completed. These include time waiting for service and time actually getting service.</p>
+<br />
+<p style="margin: 0in 0in 0.0001pt;"><a href="SimEventLoop.pdf">Pseudocode for the event loop</a></p>
+<p style="margin: 0in 0in 0.0001pt;"><br /> <o:p></o:p></p>
+<p style="margin: 0in 0in 0.0001pt;"><o:p><br /> </o:p></p>
+<p class="MsoNormal"><b><span>An Analytical Model of typical Queue measures</span></b><span><br /> <br /> There is a convenient set of formulas that will give you the results you would expect to see over the long run in the simulation. Your computer modeling will vary to some degree from the data points provided by these equations since the equations are based on large populations. <o:p></o:p></span></p>
+<p style="margin: 0in 0in 0.0001pt;">&nbsp;</p>
+<p style="margin: 0in 0in 0.0001pt;">1.&nbsp;&nbsp; The percent idle time, Po; that is, the percentage of time that no one is in the system:</p>
+<p align="center"><img style="border: 0px solid; width: 340px; height: 59px;" alt="Po graphic here" src="image001pzero.png" /></p>
+<p align="left"><br /> 2. The average number of people in the system (the number in line plus the number being served.</p>
+<p style="margin: 0in 0in 0.0001pt;" align="center"><img src="image003.png" border="0" height="41" width="199" /></p>
+<p style="margin: 0in 0in 0.0001pt;">&nbsp;</p>
+<p style="margin: 0in 0in 0.0001pt;">3. The average time a customer spends in the system.&nbsp; (the time the customer spent in line plus the time spent getting service):</p>
+<p style="margin: 0in 0in 0.0001pt;">&nbsp;</p>
+<p style="margin: 0in 0in 0.0001pt;" align="center"><img src="image005.png" border="0" height="44" width="306" /></p>
+<p style="margin: 0in 0in 0.0001pt;">&nbsp;</p>
+<p style="margin: 0in 0in 0.0001pt;">4. The average numbers of customers in the queue:</p>
+<p style="margin: 0in 0in 0.0001pt;">&nbsp;</p>
+<p style="margin: 0in 0in 0.0001pt;" align="center"><img src="image007.png" border="0" height="41" width="90" />&nbsp;</p>
+<p style="margin: 0in 0in 0.0001pt;">&nbsp;</p>
+<p style="margin: 0in 0in 0.0001pt;">5.&nbsp;&nbsp; The average time a customer spends waiting in the queue:</p>
+<p align="center"><img src="image009.png" border="0" height="42" width="116" /></p>
+<p style="margin: 0in 0in 0.0001pt;">6.&nbsp; The utilization factor for the system, (rho); that is, the proportion of the system's resources which is used by the traffic which arrives.</p>
+<p align="center"><img src="image011.png" border="0" height="43" width="56" /></p>
+<p style="margin: 0in 0in 0.0001pt;">When your program runs, you will compute and display all six values from the Analytical Model.<br /> <span></span></p>
+<p style="margin: 0in 0in 0.0001pt;"><span><br /> </span></p>
+<p style="margin: 0in 0in 0.0001pt;"><span style="font-weight: bold;">Simulation Measures to compute</span><br /> <span></span></p>
+<p style="margin: 0in 0in 0.0001pt;"><span>From your simulation, you are to determine simulated values for items determined analytically by formulas 1, 3, 5, and 6</span><span style="color: #222222; font-family: arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; display: inline ! important; float: none; background-color: #ffffff;"></span><span>.</span><span> </span><span>Additionally, you will report the probability of having to wait for service (customers who had to wait/total customers). </span><span></span><span><br /> </span></p>
+<p style="margin: 0in 0in 0.0001pt;"><span><br /> </span></p>
+<p style="margin: 0in 0in 0.0001pt;"><span>To get the simulated value of Po, accumulate all the time after a departure of the last customer being served (leaving no one in the system) until the next arrival. To simulate rho, compute the total time servers were available (M * total simulation time) and divide it into the total amount of service time.</span></p>
+<p style="margin: 0in 0in 0.0001pt;"><span><br /> </span></p>
+<p style="margin: 0in 0in 0.0001pt;"><span>Your output (to the console) will display the analytical model and simulation measures in such a way that you can compare them so that you can see how well your simulation results matched predicted values.</span><span><br /> </span></p>
+<p style="margin: 0in 0in 0.0001pt;"><br /> <span></span></p>
+<p style="margin: 0in 0in 0.0001pt; font-weight: bold;">Example input and results:</p>
+<p style="margin: 0in 0in 0.0001pt;">The analytical model should produce these results for the following inputs:</p>
+<ul>
+<li class="MsoNormal"><span>lambda (<span face="Symbol" style="font-family: Symbol;">l</span>) = 2<o:p></o:p></span></li>
+<li class="MsoNormal"><span>mu (<span face="Symbol" style="font-family: Symbol;">m</span>) = 3</span></li>
+<li>
+<p style="margin: 0in 0in 0.0001pt;">M = 2</p>
+</li>
+</ul>
+<br />
+<div style="margin-left: 40px;">Po = 0.5<br /> L = 0.75<br /> W = 0.375<br /> Lq = 0.083<br /> Wq = 0.0417</div>
+<p style="margin: 0in 0in 0.0001pt;"><span></span></p>
+<p class="MsoNormal"><br /> <span></span></p>
+<p class="MsoNormal"><span><b>Output<br /> </b></span></p>
+<p class="MsoNormal">All output will be to the console. You will display all the measures in the analytical model and the specified measures from the simulation.</p>
+<p class="MsoNormal"><span><b><br /> </b></span></p>
+<p class="MsoNormal"><span><b>Deliverables:</b><br /> You must include the following in your submission to the dropbox:<o:p></o:p></span></p>
+<ul>
+<li><span>Your functional decomposition in its own file entitled "FunctionalDecomposition." </span><span> (a Word doc or .pdf)</span></li>
+<li><span>A user&rsquo;s manual in its own file entitled "UsersManual"&nbsp; (a Word doc or .pdf)<o:p></o:p></span></li>
+<li><span>Source code</span></li>
+<li><span>A makefile</span></li>
+</ul>
+<p class="MsoNormal"><span><o:p>&nbsp;</o:p></span></p>
+<span><b>Submission Requirements</b></span><b>: </b><span style="font-weight: bold;">&nbsp;</span> <br />
+<p>Note: you will lose 10% if you do not follow these instructions <em>exactly</em>. The reason for this policy is that eLearning puts zip files inside zip files and it is a time-consuming, tedious, and error-prone policy to unzip them all one-by-one. I have a utility I wrote that nicely unzips all these into a usable folder structure. If you do not follow these instructions, your files will get all mashed up together with others, often with name collisions and it is an unusable mess.</p>
+<p><br />1. Compile and run your program one last time before submitting it. Your program must run with gcc in the Linux lab.<br />2. Place every file in your submission in a SINGLE DIRECTORY named &lt;last name&gt;-&lt;first initial&gt;-p&lt;number&gt;. For instance, I would create directory:<br />&nbsp; &nbsp; &nbsp;coffey-j-p2 &nbsp;for project 2.<br />3. zip that FOLDER into a .zip file with the SAME NAME. This means that inside your zip file, you will have exactly one folder (from the example: coffey-j-p2) showing at the top level. Inside that folder will be ALL the files in your project.<br />4. <em>DO NOT</em> make separate folders for documentation and source files (or anything else) inside the main folder. Having such a setup simply necessitates more navigation time to get where we need to go to grade.<br />5. Any needed input files should be in the top-level folder along with the source code.<br />6. MacOS users - remove the _MacOS_ utility folder before you zip up the file. If you cannot, delete it from the archive once the archive is created. It just takes up space and is not needed for anything we do with your submissions.<br />7. Login to UWF's eLearning system at&nbsp;<a href="http://elearning.uwf.edu/.">http://elearning.uwf.edu/.</a>&nbsp;Select our course.<br />9. Select the Dropbox option. Then select the appropriate project folder.<br />10. Upload your zip file to that folder. Check the dropbox to insure that the file was uploaded. ALWAYS give yourself enough time. If you are trying to submit at 11:57pm on your machine, the clock might be off and the dropbox might already be closed.</p>
+<p>Please review the policy on ACADEMIC MISCONDUCT. This is an&nbsp;<em>individual assignment.</em></p>
+<p class="MsoNormal"><span>&nbsp;</span></p>
+</div>
+</body></html>
