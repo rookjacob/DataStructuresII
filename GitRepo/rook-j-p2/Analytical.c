@@ -280,12 +280,22 @@ float getInterval(float avg)
 
 void PlaceFirstArrivals(void)
 {
+	int i = 1;
+	while (i <= numService)
+	{
+	Customer_t *Arrival = createNewArrival();
+	clock = Arrival->arrivalTime;
 
+	i++;
+	}
 }
 
 Customer_t *createNewArrival(void)
 {
-
+	Customer_t *newArrival = (Customer_t *)malloc(sizeof(Customer_t));
+	newArrival->nextCust = NULL;
+	newArrival->type = "A";
+	newArrival->arrivalTime = clock + getInterval(lambda);
 }
 
 int moreArrivals(void)
