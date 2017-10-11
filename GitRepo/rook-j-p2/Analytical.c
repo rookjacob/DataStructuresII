@@ -214,7 +214,7 @@ void printAllCal(void)
 	L = lambda * mu * power(lambda/mu, numService) * Pnot;
 	L = L/( fact(numService - 1) * power((float)numService * mu - lambda, 2));
 	L = L + lambda/mu;
-	W = L/mu;
+	W = L/lambda;
 	Lq = L - lambda/mu;
 	Wq = Lq/lambda;
 	rho = lambda/numService/mu;
