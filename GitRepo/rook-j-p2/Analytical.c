@@ -273,7 +273,9 @@ void runSimulation(void)
 
 float getInterval(float avg)
 {
-
+	float interval = (float)rand()/(float)(RAND_MAX);
+	interval = -1 * (1.0/avg) * (float)(log(interval));
+	return interval;
 }
 
 void PlaceFirstArrivals(void)
