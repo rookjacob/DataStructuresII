@@ -56,6 +56,7 @@ Customer_t *FIFORear;
 Customer_t *PQ[PQMAXSIZE+1];
 int PQSize;					//Current size of the PQ
 
+float clock;
 
 int 	numArrivals;
 float 	lambda;
@@ -277,6 +278,11 @@ void generateNextSet(void);
  *
  */
 void ProcessNextEvent(void);
+
+/*
+ *
+ */
+void printSimulation(void);
 //END OF FUNCTIONS FOR SIMULATION
 
 

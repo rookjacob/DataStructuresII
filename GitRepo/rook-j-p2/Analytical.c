@@ -259,6 +259,7 @@ void runSimulation(void)
 	PQSize = 0;
 	serverAvailable = numService;
 	numArrivalsLeft = numArrivals;
+	clock = 0;
 	PlaceFirstArrivals();
 
 	while (!isPQEmpty())
@@ -267,6 +268,7 @@ void runSimulation(void)
 		if (moreArrivals() && PQSize <= numService)
 			generateNextSet();
 	}
+	printSimulation();
 }
 
 void PlaceFirstArrivals(void)
@@ -287,6 +289,11 @@ void generateNextSet()
 }
 
 void ProcessNextEvent(void)
+{
+
+}
+
+void printSimulation(void)
 {
 
 }
