@@ -62,6 +62,9 @@ float 	lambda;
 float	mu;
 int		numService;
 
+int serverAvailable;
+int numArrivalsLeft;
+
 
 
 
@@ -259,6 +262,16 @@ void runSimulation();
  *
  */
 void PlaceFirstArrivals(void);
+
+/*
+ *
+ */
+int moreArrivals(void);
+
+/*
+ *
+ */
+void generateNextSet(void);
 
 /*
  *

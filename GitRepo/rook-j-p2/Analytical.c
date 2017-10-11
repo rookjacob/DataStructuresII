@@ -255,7 +255,18 @@ float power(float x, int y)
 //FUNCTIONS FOR SIMULATION
 void runSimulation(void)
 {
+	FIFOFront = FIFORear = NULL;
+	PQSize = 0;
+	serverAvailable = numService;
+	numArrivalsLeft = numArrivals;
+	PlaceFirstArrivals();
 
+	while (!isPQEmpty())
+	{
+		ProcessNextEvent();
+		if (moreArrivals() && PQSize <= numService)
+			generateNextSet();
+	}
 }
 
 void PlaceFirstArrivals(void)
@@ -263,6 +274,17 @@ void PlaceFirstArrivals(void)
 
 }
 
+int moreArrivals(void)
+{
+	if (numArrivalsLeft == 0)
+		return 0;
+	return 1;
+}
+
+void generateNextSet()
+{
+
+}
 
 void ProcessNextEvent(void)
 {
