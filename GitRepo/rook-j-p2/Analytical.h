@@ -40,8 +40,8 @@ typedef struct Cust
 	struct Cust *nextCust; //For FIFO Queue
 }Customer_t;
 
-Customer_t *FIFOFront = NULL;
-Customer_t *FIFORear = NULL;
+Customer_t *FIFOFront;
+Customer_t *FIFORear;
 
 /*
  * The Customer Priority Queue (PQ) is implemented using an array based heap of
@@ -54,13 +54,13 @@ Customer_t *FIFORear = NULL;
  */
 #define PQMAXSIZE 200
 Customer_t *PQ[PQMAXSIZE+1];
-int PQSize =0;					//Current size of the PQ
+int PQSize;					//Current size of the PQ
 
 
-int 	numArrivals = 0;
-float 	lambda = 0;
-float	mu = 0;
-int		numService = 0;
+int 	numArrivals;
+float 	lambda;
+float	mu;
+int		numService;
 
 
 

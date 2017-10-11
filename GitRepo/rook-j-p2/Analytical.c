@@ -57,7 +57,7 @@ void percolateDown(int index)
 		child = index * 2;
 		if( (child != PQSize ) && ( findTime(PQ[child +1]) < findTime(PQ[child])) )
 				child++;
-		if (findTime(child) < findTime(tmp))
+		if (findTime(PQ[child]) < findTime(tmp))
 			PQ[index] = PQ[child];
 		else
 			break;
@@ -101,7 +101,7 @@ void FIFOEnque(Customer_t *Customer)
 Customer_t *FIFODeque(void)
 {
 	Customer_t *tmp = FIFOFront;
-	if(isFIFOEmpty(FIFOFront))
+	if(isFIFOEmpty())
 		return NULL;
 	if(FIFOFront == FIFORear)
 		FIFOFront = FIFORear = NULL;
@@ -186,19 +186,19 @@ float calAvePeopleSys(void)
 
 float calAveTimeSys(void)
 {
-	return calAvePeopleSys/lambda;
+	return calAvePeopleSys()/lambda;
 }
 
 
 float calAveCustQ(void)
 {
-	return calAveTimeSys - lambda/mu;
+	return calAveTimeSys() - lambda/mu;
 }
 
 
 float calAveTimeWait(void)
 {
-	return calAveCustQ/lambda;
+	return calAveCustQ()/lambda;
 }
 
 
@@ -213,18 +213,19 @@ void printAllCal(void)
 	float L, W, Lq , Wq, rho;
 	L = lambda * mu * power(lambda/mu, numService) * Pnot;
 	L = L/( fact(numService - 1) * power((float)numService * mu - lambda, 2));
-	L = lambda/mu;
+	L = L + lambda/mu;
 	W = L/mu;
 	Lq = L - lambda/mu;
 	Wq = Lq/lambda;
 	rho = lambda/numService/mu;
 
-	printf("Po = %.3f\n"
-			"L  = %.3f\n"
-			"W  = %.3f\n"
-			"Lq = %.3f\n"
-			"Wq = %.3f\n",
-			Pnot,L,W,Lq,Wq);
+	 printf("Po  = %.3f\n"
+			"L   = %.3f\n"
+			"W   = %.3f\n"
+			"Lq  = %.3f\n"
+			"Wq  = %.3f\n"
+			"rho = %.3f\n",
+			Pnot,L,W,Lq,Wq,rho);
 }
 
 float fact(int n)
@@ -237,12 +238,13 @@ float fact(int n)
 
 float power(float x, int y)
 {
+	float result = 1;
 	while(y>0)
 	{
-		x = x * x;
+		result = result * x;
 		y--;
 	}
-	return x;
+	return result;
 }
 
 

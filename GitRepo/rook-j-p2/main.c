@@ -28,6 +28,8 @@ int main (void)
 	setM(val);
 
 	printAllCal();
+	printf("fact(5) = %f",fact(5));
+	printf("\n 5^5 = %f", power(5,5));
 
 	return 0;
 }
