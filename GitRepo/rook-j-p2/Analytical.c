@@ -255,12 +255,16 @@ float power(float x, int y)
 //FUNCTIONS FOR SIMULATION
 void runSimulation(void)
 {
-	FIFOFront = FIFORear = NULL;
-	PQSize = 0;
-	serverAvailable = numService;
-	numArrivalsLeft = numArrivals;
-	clock = 0;
+	//Main initial variable set
+	FIFOFront = FIFORear = NULL;		// Initialize FIFO Q to be empty
+	PQSize = 0;							//Initialize PQ to be empty
+	numArrivalsLeft = numArrivals;		//Initialize number of arrivals left in simulation equal to total number of arrivals
+	clock = 0;							//Initialize absolute clock to 0
+
 	PlaceFirstArrivals();
+	serverAvailable = numService;		//Initialize servers Available to total servers
+
+
 
 	while (!isPQEmpty())
 	{
@@ -281,21 +285,27 @@ float getInterval(float avg)
 void PlaceFirstArrivals(void)
 {
 	int i = 1;
+	float TmpTime=0;
 	while (i <= numService)
 	{
 	Customer_t *Arrival = createNewArrival();
-	clock = Arrival->arrivalTime;
+	Arrival->arrivalTime += TmpTime;
+	TmpTime = Arrival->arrivalTime;
+
+	PQEnque(Arrival);
+
 
 	i++;
 	}
+	return;
 }
 
 Customer_t *createNewArrival(void)
 {
 	Customer_t *newArrival = (Customer_t *)malloc(sizeof(Customer_t));
 	newArrival->nextCust = NULL;
-	newArrival->type = "A";
-	newArrival->arrivalTime = clock + getInterval(lambda);
+	newArrival->type = 'A';
+	newArrival->arrivalTime = getInterval(lambda);
 }
 
 int moreArrivals(void)
@@ -307,7 +317,18 @@ int moreArrivals(void)
 
 void generateNextSet()
 {
+	float TmpTime = clock;
+	while(PQSize < PQMAXSIZE && numArrivalsLeft > 0)
+	{
+		Customer_t *Arrival = createNewArrival();
+		Arrival->arrivalTime += TmpTime;
+		TmpTime = Arrival->arrivalTime;
 
+		PQEnque(Arrival);
+		PQSize++;
+		numArrivalsLeft--;
+
+	}
 }
 
 void ProcessNextEvent(void)
