@@ -263,12 +263,17 @@ void runSimulation();
 /*
  *
  */
-float getInterval(void);
+float getInterval(float avg);
 
 /*
  *
  */
 void PlaceFirstArrivals(void);
+
+/*
+ *
+ */
+Customer_t *createNewArrival(void);
 
 /*
  *

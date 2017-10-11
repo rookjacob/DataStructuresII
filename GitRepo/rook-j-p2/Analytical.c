@@ -283,6 +283,11 @@ void PlaceFirstArrivals(void)
 
 }
 
+Customer_t *createNewArrival(void)
+{
+
+}
+
 int moreArrivals(void)
 {
 	if (numArrivalsLeft == 0)
