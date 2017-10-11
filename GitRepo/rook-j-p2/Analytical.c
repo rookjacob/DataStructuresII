@@ -253,6 +253,11 @@ float power(float x, int y)
 
 
 //FUNCTIONS FOR SIMULATION
+void runSimulation(void)
+{
+
+}
+
 void PlaceFirstArrivals(void)
 {
 
