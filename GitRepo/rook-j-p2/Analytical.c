@@ -276,7 +276,7 @@ void runSimulation(void)
 	}
 	PoSim /= clock;
 	WSim /= numArrivals;
-	WqSim /= (float)numWait;
+	WqSim /= numArrivals;
 	rhoSim /= ((float)numService * clock);
 	waitProb = (float)numWait /((float)numArrivals);
 
@@ -382,7 +382,7 @@ void ProcessNextEvent(void)
 		}
 		else if (serverAvailable == numService)
 		{//Event is the last customer to be served, meaning there are no customers being served
-			PoSim += PQ[0]->arrivalTime - Event->departureTime;
+			PoSim += PQ[1]->arrivalTime - Event->departureTime;
 		}
 
 
@@ -399,12 +399,35 @@ void processStats(Customer_t *Departure)
 
 void printSimulation(void)
 {
-	printf( "PoSim    = %.3f"
-			"Wsim     = %.3f"
-			"WqSim    = %.3f"
-			"rhoSim   = %.3f"
-			"waitProb = %.3f",
+	printf( "PoSim    = %.3f\n"
+			"Wsim     = %.3f\n"
+			"WqSim    = %.3f\n"
+			"rhoSim   = %.3f\n"
+			"waitProb = %.3f\n",
 			PoSim, WSim, WqSim, rhoSim, waitProb);
+}
+
+void printComparison(void)
+{
+	float Pnot = calIdle();
+	float L, W, Lq , Wq, rho;
+	L = lambda * mu * power(lambda/mu, numService) * Pnot;
+	L = L/( fact(numService - 1) * power((float)numService * mu - lambda, 2));
+	L = L + lambda/mu;
+	W = L/lambda;
+	Lq = L - lambda/mu;
+	Wq = Lq/lambda;
+	rho = lambda/numService/mu;
+
+	printf( "Po  Percent Error = %%%6.3f\n"
+			"W   Percent Error = %%%6.3f\n"
+			"Wq  Percent Error = %%%6.3f\n"
+			"rho Percent Error = %%%6.3f\n",
+			(PoSim - Pnot)/Pnot * 100.0,
+			(WSim - W)/W * 100.0,
+			(WqSim - Wq)/Wq * 100.0,
+			(rhoSim - rho)/rho * 100.0);
+
 }
 
 

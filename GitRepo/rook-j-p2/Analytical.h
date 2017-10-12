@@ -304,6 +304,11 @@ void processStats(Customer_t *Departure);
  *
  */
 void printSimulation(void);
+
+/*
+ *
+ */
+void printComparison(void);
 //END OF FUNCTIONS FOR SIMULATION
 
 

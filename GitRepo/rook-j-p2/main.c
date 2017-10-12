@@ -27,9 +27,15 @@ int main (void)
 	scanf("%f", &val);
 	setM(val);
 
+	printf("\nAnalytical Model Calculations\n");
 	printAllCal();
+	printf("\n");
 
-	printf("%f", getInterval(mu));
+	printf("\nSimulated Model Calculations\n");
+	runSimulation();
+
+	printf("\n\nSimulation Comparisons\n");
+	printComparison();
 
 	return 0;
 }
