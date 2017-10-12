@@ -40,7 +40,7 @@ typedef struct Cust
 	float 	departureTime;
 	struct Cust *nextCust; //For FIFO Queue
 }Customer_t;
-
+//Pointers to the Front and Rear of the FIFO Queue
 Customer_t *FIFOFront;
 Customer_t *FIFORear;
 
@@ -55,30 +55,44 @@ Customer_t *FIFORear;
  */
 #define PQMAXSIZE 200
 Customer_t *PQ[PQMAXSIZE+1];
-int PQSize;					//Current size of the PQ
+int PQSize;					//Current size of the PQ throughout the simulation
 
+/*
+ * Absolute clock for simulation. The clock will progress whenever an event occurs.
+ * The clock will be set to the events time and all other new events will be based
+ * off the clock. Therefore, the simulation will be monotonically increasing.
+ */
 float clock;
 
+//Initial statistic values provided by the user
 int 	numArrivals;
 float 	lambda;
 float	mu;
 int		numService;
 
+//Variables for the current numService and numArrivals left in the simulation
 int serverAvailable;
 int numArrivalsLeft;
 
+
+//Variables to keep track of the statistics data through out the simulation
 float PoSim;		//Simulated time between last customer being served until next arrival
 float WSim;			//Simulated average Time a customer spends in the system
 float WqSim;		//Simulated average time a customer spends waiting in queue
 float rhoSim;		//Simulated utilization factor for system
-int   numWait;
-float waitProb;
+int   numWait;		//Number of customers added to the FIFO Queue
+float waitProb;		//Simulated wait probability
 
 
 
 
 
 //PQ FUNCTIONS
+/*
+ * The PQ functions are used to manipulate the array based heap used to simulate
+ * a priority queue. The PQ is used in the simulation to prioritize events based
+ * on the time that the event occurs. Earlier events have higher priority.
+ */
 /*
  *@brief	PQEnque		Function will add the passed customer to the end of the
  *PQ and use an insert method comparing the parent to the customer to be added.
@@ -111,16 +125,16 @@ Customer_t *PQDeque(void);
 int isPQEmpty(void);
 
 /*
- *@brief	percolateDown	Function will use an insert method of percolating down
- *the customer at the index passed in the parameters. Typically the percolateDown
- *function will be used when the lowest priority customer has just been moved to
- *the highest priority position (1) and is needed to be percolated down. But,
- *the function can be used at any position in the PQ. However, the function will
- *compare the customers "children" in the heap at indices 2 times the customer's
- *index and 2 time the customer's index plus 1. The customer that needs to be
- *percolated down will be swapped with the higher priority child, if either child
- *is of higher priority. If neither child is of higher priority the algorithm stops
- *and the customer stays at the current index.
+ * @brief	percolateDown	Function will use an insert method of percolating down
+ * the customer at the index passed in the parameters. Typically the percolateDown
+ * function will be used when the lowest priority customer has just been moved to
+ * the highest priority position (1) and is needed to be percolated down. But,
+ * the function can be used at any position in the PQ. However, the function will
+ * compare the customers "children" in the heap at indices 2 times the customer's
+ * index and 2 time the customer's index plus 1. The customer that needs to be
+ * percolated down will be swapped with the higher priority child, if either child
+ * is of higher priority. If neither child is of higher priority the algorithm stops
+ * and the customer stays at the current index.
  *
  *@param 	index		Index to start the percolateDown function
  */
@@ -143,6 +157,11 @@ float findTime(Customer_t *Customer);
 
 
 //FIFO QUEUE FUNCTIONS
+/*
+ * The FIFO Queue functions are used to manipulate the FIFO Queue. In the simulation
+ * the FIFO queue is used to simulate a line of customers waiting to be served.
+ */
+
 /*
  * @brief 	FIFOEnque		Function adds a customer to the end of the FIFO Queue.
  *
@@ -174,6 +193,11 @@ int isFIFOEmpty(void);
 
 
 //SET FUNCTIONS
+/*
+ * The set functions are used to set the numArrivals, lambda, mu, and numService
+ * variables.
+ */
+
 /*
  * @brief	setN		This function sets the value for numArrivals to the passed
  * value
@@ -213,47 +237,86 @@ void setM(float M);
 
 //EXPECTED CALCULATIONS FOR THE ANALYTICAL MODEL
 /*
+ * The expected calculations for the analytical model functions are use to do just
+ * that calculate the expected calculations of the simulation. The user can decide
+ * to use the individual functions to get each calculation individually or the
+ * user can use the printAllCal function to just simply print the calculated
+ * values.
+ */
+
+/*
+ * @brief	calIdle		Function calculates the expected percent idle time (Po),
+ * the percent of time that no one is in the system, of a long simulation
  *
+ * @return	float		Returns the value of the expected percent idle time
  */
 float calIdle(void);
 
 /*
+ * @brief	calAvePeopleSys		Function calculates the expected average number of
+ * people in the system (L) of a long simulation
  *
+ * @return 	float				Returns the value of the expected average number
+ * of people in the simulation
  */
 float calAvePeopleSys(void);
 
 /*
+ * @brief	calAveTimeSys		Function calculates the expected average time a
+ * customer spends in the system (W), the time the customer spent in line plus the
+ * time spent getting service, of a long simulation
  *
+ * @return	float				Returns the expected average time a customer spends
+ * in the system
  */
 float calAveTimeSys(void);
 
 /*
+ * @brief	calAveCustQ			Function calculates the expected average number
+ * of customers in the queue (Lq) of a long simulation
  *
+ * @return 	float				Returns expected average number of customers in queue
  */
 float calAveCustQ(void);
 
 /*
+ * @brief	calAveTimeWait		Function calculates the expected average time a
+ * customer spends wait in the FIFO queue (Wq), or in line, of a long simulation
  *
+ * @return	float				Returns the expected average time a customer spends
+ * waiting in the FIFO queue
  */
 float calAveTimeWait(void);
 
 /*
+ * @brief	calUtiliFactor		Function calculates the expected utilization factor
+ * for the system (rho), that is, the proportion of the system's resources which
+ * is used by the traffic which arrives of a long simulation
  *
+ * @return	float				Returns the expected utilization factor for the system
  */
 float calUtiliFactor(void);
 
 /*
- *
+ * @breif	printAllCal			Function prints all of the expected calculations:
+ * Po, L, W, Lq, Wq, and rho. The function calculates the values of the expected
+ * calculations itself rather than call the individual functions to save multiple
+ * calcualtions of the same variables.
  */
 void printAllCal(void);
 
 /*
+ * @brief	fact				Function calculates the factorial of the integer n
  *
+ * @return	float				Returns the factorial of n as float to simplify
+ * calculations in the cal functions
  */
 float fact(int n);
 
 /*
+ * @brief	power				Function calculates x^y
  *
+ * @return	float				Returns x^y
  */
 float power(float x, int y);
 //END OF EXPECTED CALCULATIONS FOR THE ANALYTICAL MODEL
@@ -261,6 +324,10 @@ float power(float x, int y);
 
 
 //FUNCTIONS FOR SIMULATION
+/*
+ *
+ */
+
 /*
  *
  */
