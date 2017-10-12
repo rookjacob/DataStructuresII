@@ -261,6 +261,7 @@ void runSimulation(void)
 	PQSize = 0;							//Initialize PQ to be empty
 	numArrivalsLeft = numArrivals;		//Initialize number of arrivals left in simulation equal to total number of arrivals
 	clock = 0;							//Initialize absolute clock to 0
+	PoSim = WSim = WqSim = rhoSim = 0;	//Initialize Simulation Stats
 
 	PlaceFirstArrivals();
 	serverAvailable = numService;		//Initialize servers Available to total servers
@@ -290,6 +291,8 @@ void PlaceFirstArrivals(void)
 	while (i <= numService)
 	{
 	Customer_t *Arrival = createNewArrival();
+	if(i == 1)
+		PoSim = Arrival->arrivalTime;		//Accounting for the time between the start of the simulation and the first arrival
 	Arrival->arrivalTime += TmpTime;
 	TmpTime = Arrival->arrivalTime;
 
@@ -307,6 +310,7 @@ Customer_t *createNewArrival(void)
 	newArrival->nextCust = NULL;
 	newArrival->type = 'A';
 	newArrival->arrivalTime = getInterval(lambda);
+	return newArrival;
 }
 
 int moreArrivals(void)
@@ -340,7 +344,7 @@ void ProcessNextEvent(void)
 		{
 			serverAvailable--;
 			Event->startOfServiceTime = Event->arrivalTime;
-			Event->departureTime = Event->arrivalTime + getInterval();
+			Event->departureTime = Event->arrivalTime + getInterval(mu);
 			Event->type = 'D';
 
 			PQEnque(Event);
@@ -353,13 +357,33 @@ void ProcessNextEvent(void)
 	else	//Processing Departure
 	{
 		serverAvailable++;
+		processStats(Event);
 
+		if(!isFIFOEmpty())
+		{
+			Customer_t *FIFOCust = FIFODeque();
+			FIFOCust->startOfServiceTime = Event->departureTime;
+			FIFOCust->departureTime = FIFOCust->startOfServiceTime + getInterval(mu);
+			FIFOCust->type = 'D';
+
+			PQEnque(FIFOCust);
+			serverAvailable--;
+		}
+		else if (serverAvailable == numService)
+		{//Event is the last customer to be served, meaning there are no customers being served
+			PoSim += PQ[0]->arrivalTime - Event->departureTime;
+		}
+
+
+		free(Event);
 	}
 }
 
 void processStats(Customer_t *Departure)
 {
-
+	WSim += Departure->departureTime - Departure->arrivalTime;
+	WqSim += Departure->startOfServiceTime - Departure->arrivalTime;
+	rhoSim += Departure->departureTime - Departure->startOfServiceTime;
 }
 
 void printSimulation(void)
