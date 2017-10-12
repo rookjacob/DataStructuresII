@@ -262,7 +262,7 @@ void runSimulation(void)
 	numArrivalsLeft = numArrivals;		//Initialize number of arrivals left in simulation equal to total number of arrivals
 	clock = 0;							//Initialize absolute clock to 0
 	PoSim = WSim = WqSim = rhoSim = 0;	//Initialize Simulation Stats
-
+	waitProb = 0;
 	PlaceFirstArrivals();
 	serverAvailable = numService;		//Initialize servers Available to total servers
 
@@ -274,6 +274,8 @@ void runSimulation(void)
 		if (moreArrivals() && PQSize <= numService)
 			generateNextSet();
 	}
+
+
 	printSimulation();
 }
 
@@ -338,8 +340,10 @@ void generateNextSet()
 void ProcessNextEvent(void)
 {
 	Customer_t *Event = PQDeque();
+
 	if(Event->type == 'A')
 	{
+		clock = Event->arrivalTime;
 		if(serverAvailable > 0)
 		{
 			serverAvailable--;
@@ -352,6 +356,7 @@ void ProcessNextEvent(void)
 		else
 		{
 			FIFOEnque(Event);
+			waitProb++;
 		}
 	}
 	else	//Processing Departure
