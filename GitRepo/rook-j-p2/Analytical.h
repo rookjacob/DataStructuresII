@@ -329,51 +329,93 @@ float power(float x, int y);
  */
 
 /*
- *
+ * @brief 	runSimulation		Function acts as the main function for the Analytical
+ * file. All of the simulation code is ran or called inside of runSimulation. The user
+ * will call runSimulation and the simulation will run and print out the simulation
+ * results. runSimulation first initialize all of the important variables the simulation
+ * keeps track of throughout the simulation. Then, the first couple of customers will
+ * be added to the PQ to start off the simulation. After the intital customers are
+ * added, a while loop is activated to keep running until the PQ is empty. In the while
+ * loop the next event will be processed and more arrivals will be added to the PQ
+ * when needed. After this the function will do the last bit of calculations to finish
+ * the calculations and then call the printSimulation function to print the calculations.
  */
-void runSimulation();
+void runSimulation(void);
 
 /*
+ * @brief	getInterval			Function calculates a random interval around the given
+ * average using the rand() function and negative exponential distribution
  *
+ * @param	avg					The average value to calculate a random interval around
+ *
+ * @return	float				Returns interval
  */
 float getInterval(float avg);
 
 /*
- *
+ * @brief	PlaceFirstArrivals	Function places M or numService number of arrivals into
+ * PQ.
  */
 void PlaceFirstArrivals(void);
 
 /*
+ * @brief	createNewArrivl		Function creates a new customer variable dynamically
+ * in memory, initializes the nextCust, type, and arrivalTime of the variable and
+ * returns the pointer to the new customer variable
  *
+ * @return	Customer_t*			Returns pointer to the newly created customer variable
  */
 Customer_t *createNewArrival(void);
 
 /*
+ * @brief	moreArrivals		Function check to see if there are more arrivals to be
+ * added to the simulation.
  *
+ * @return	int					Returns 1 if more arrivals can be added 0 if not
  */
 int moreArrivals(void);
 
 /*
- *
+ * @brief	generateNextSet		Function fills the PQ with new arrivals
  */
 void generateNextSet(void);
 
 /*
- *
+ * @brief	ProcessNextEvent	Function takes the next customer off of the PQ,
+ * determines if the customer is an arrival or departure. If the customer is an arrival
+ * and their is service available the clock is updated with the customer's arrival time
+ * and customer goes straight to the service. If all of the service providers are
+ * busy the customer is put in the FIFO queue. If the customer is a departure, the
+ * clock is updated with the customers departure time. If the FIFO queue is not empty
+ * the customer at the front of the FIFO queue is then served. The customer is switched
+ * from an arrival customer to a departure customer, and the departure time is calculated
+ * and set for the customer. If there is not a person in the FIFO queue, the function
+ * checks to see if there are any customers being served at that moment. If there are
+ * no customers being served at that moment then the PoSim is updated because there
+ * will be a period of time where there will be no customers in the simulation. This
+ * can be calculated to be the difference in time of the next arrival and the last
+ * departure. The function then frees the memory of the customer that was processed.
  */
 void ProcessNextEvent(void);
 
 /*
+ * @brief	processStats		Function adds the appropriate times to the WSim,
+ * WqSim, and rhoSim variables to keep track of how much time has elapsed for each
+ * simulated calculation.
  *
+ * @param	Departure			Departure to process stats
  */
 void processStats(Customer_t *Departure);
 /*
- *
+ * @brief	printSimulation		Function prints the results of the simulation to the
+ * output.
  */
 void printSimulation(void);
 
 /*
- *
+ * @brief	printComparison		Function prints out the percent error of each simulated
+ * calculation to the expected calculation. To save the same calculations being made
+ * multiple times the function does all of the calculations inside the function.
  */
 void printComparison(void);
 //END OF FUNCTIONS FOR SIMULATION
