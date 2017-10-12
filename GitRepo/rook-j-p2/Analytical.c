@@ -278,7 +278,7 @@ void runSimulation(void)
 	WSim /= numArrivals;
 	WqSim /= (float)numWait;
 	rhoSim /= ((float)numService * clock);
-	float waitProb = (float)numWait /((float)numArrivals);
+	waitProb = (float)numWait /((float)numArrivals);
 
 
 	printSimulation();
@@ -399,7 +399,12 @@ void processStats(Customer_t *Departure)
 
 void printSimulation(void)
 {
-
+	printf( "PoSim    = %.3f"
+			"Wsim     = %.3f"
+			"WqSim    = %.3f"
+			"rhoSim   = %.3f"
+			"waitProb = %.3f",
+			PoSim, WSim, WqSim, rhoSim, waitProb);
 }
 
 

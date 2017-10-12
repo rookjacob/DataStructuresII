@@ -72,6 +72,7 @@ float WSim;			//Simulated average Time a customer spends in the system
 float WqSim;		//Simulated average time a customer spends waiting in queue
 float rhoSim;		//Simulated utilization factor for system
 int   numWait;
+float waitProb;
 
 
 
