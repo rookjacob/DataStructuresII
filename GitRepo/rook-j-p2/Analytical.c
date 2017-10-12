@@ -15,11 +15,6 @@
 
 
 
-
-
-
-
-
 //SET FUNCTIONS
 void setN(int N)
 {
