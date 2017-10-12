@@ -17,10 +17,10 @@
 void PQEnque(Customer_t *Customer)
 {
 	PQ[0] = Customer;
-	int index = ++PQSize;
-	float time = findTime(Customer);
+	int index = ++PQSize;				//Location to add the new customer
+	float time = findTime(Customer);	//Finding the time of the event (arrival or departure time)
 
-	while (time < findTime(PQ[index/2]))
+	while (time < findTime(PQ[index/2]))	//Comparing the time of the parent in the heap
 	{
 		PQ[index] = PQ[index/2];
 		index /= 2;
@@ -32,10 +32,10 @@ void PQEnque(Customer_t *Customer)
 
 Customer_t *PQDeque(void)
 {
-	Customer_t *tmp = PQ[1];
-	PQ[1] = PQ[PQSize--];
+	Customer_t *tmp = PQ[1];	//Store the Customer that is being Dequeued
+	PQ[1] = PQ[PQSize--]; 	//Assigning the last customer in the heap to the highest priority and percolating the customer down
 	percolateDown(1);
-	return tmp;
+	return tmp;					//Returning dequeued customer
 }
 
 
