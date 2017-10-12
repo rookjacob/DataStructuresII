@@ -26,6 +26,7 @@ void PQEnque(Customer_t *Customer)
 		index /= 2;
 	}
 	PQ[index] = Customer;
+
 }
 
 
@@ -310,7 +311,7 @@ Customer_t *createNewArrival(void)
 
 int moreArrivals(void)
 {
-	if (numArrivalsLeft == 0)
+	if (numArrivalsLeft <= 0)
 		return 0;
 	return 1;
 }
@@ -325,13 +326,38 @@ void generateNextSet()
 		TmpTime = Arrival->arrivalTime;
 
 		PQEnque(Arrival);
-		PQSize++;
 		numArrivalsLeft--;
 
 	}
 }
 
 void ProcessNextEvent(void)
+{
+	Customer_t *Event = PQDeque();
+	if(Event->type == 'A')
+	{
+		if(serverAvailable > 0)
+		{
+			serverAvailable--;
+			Event->startOfServiceTime = Event->arrivalTime;
+			Event->departureTime = Event->arrivalTime + getInterval();
+			Event->type = 'D';
+
+			PQEnque(Event);
+		}
+		else
+		{
+			FIFOEnque(Event);
+		}
+	}
+	else	//Processing Departure
+	{
+		serverAvailable++;
+
+	}
+}
+
+void processStats(Customer_t *Departure)
 {
 
 }

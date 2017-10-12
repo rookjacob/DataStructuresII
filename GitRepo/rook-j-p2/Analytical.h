@@ -67,6 +67,11 @@ int		numService;
 int serverAvailable;
 int numArrivalsLeft;
 
+float PoSim;		//Simulated time between last customer being served until next arrival
+float WSim;			//Simulated average Time a customer spends in the system
+float WqSim;		//Simulated average time a customer spends waiting in queue
+float rhoSim;		//Simulated utilization factor for system
+
 
 
 
@@ -290,6 +295,10 @@ void generateNextSet(void);
  */
 void ProcessNextEvent(void);
 
+/*
+ *
+ */
+void processStats(Customer_t *Departure);
 /*
  *
  */
