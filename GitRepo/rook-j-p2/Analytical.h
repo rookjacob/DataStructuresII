@@ -1,5 +1,14 @@
 /*
- * @file Analytical.h !!
+ * @file Analytical.h		File contains all of the function prototypes and function
+ * descriptions for each function. The functions in Analytical.h are used to simulate
+ * customers passing through a service system and calculating the simulation statistics,
+ * namely the percent idle time, average time a customer spends in the system, the
+ * average time a customer spends waiting in the queue, and the utilization factor
+ * for the system. The Analytical functions use FIFO queues and priority queues to
+ * simulate customers arriving, departing, and waiting in line. More specifically,
+ * the FIFO queue is used to simulate the line and the priority queue is used to
+ * simulate when a customer arrives or departs. The queue data structures are
+ * provided by the Queue.h file.
  *
  * @author Jacob Rook
  * @date 10/12/2017
@@ -14,7 +23,6 @@
 #include<stdlib.h>
 #include<math.h>
 
-#include"Queue.h"
 
 
 /*

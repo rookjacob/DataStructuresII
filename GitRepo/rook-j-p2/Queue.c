@@ -1,5 +1,7 @@
 /*
- * @file Queue.c !!
+ * @file Queue.c 		File contains all of the function definitions of the function
+ * prototypes defined in Queue.h. The detailed descriptions of these functions are
+ * provided in the Queue.h file.
  *
  * @author Jacob Rook
  * @date 10/12/2017

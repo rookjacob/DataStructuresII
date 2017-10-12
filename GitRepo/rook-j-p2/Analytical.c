@@ -1,5 +1,7 @@
 /*
- * @file Analytical.c
+ * @file Analytical.c		File contains all of the function definitions for the
+ * function prototypes defined in Analytical.h. The detailed description of functions
+ * are in Analytical.h.
  *
  * @author Jacob Rook
  * @date 10/12/2017

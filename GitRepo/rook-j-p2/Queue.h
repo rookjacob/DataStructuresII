@@ -1,5 +1,16 @@
 /*
- * @file Queue.h !!
+ * @file Queue.h 		File contains the data structures for a the Analytical files.
+ * The data structures defined in this file are a customer structure, a FIFO queue,
+ * and a priority queue. The customer structure stores all of the information needed
+ * for the Analytical files and a customer pointer that is used in the FIFO queue
+ * data structure. The FIFO queue uses the pointer in the customer structure to
+ * create a linked list of customers. When a customer is added to the FIFO queue, the
+ * customer is placed at the rear of the linked list and removals from the FIFO
+ * queue are taken from the front of the linked list. The front and rear of the linked
+ * list are tracked using a FIFOFront and FIFORear pointer. The priority queue data
+ * structure is implemented using an array based heap of pointers to customer data
+ * structures. The higher priority customers are those which have the lower arrival
+ * time or departure time.
  *
  * @author Jacob Rook
  * @date 10/12/2017

@@ -1,5 +1,11 @@
 /*
- * @file main.c
+ * @file main.c		File contains the main function which calls the functions
+ * of Analytical.h. The main function first asks the user for the statistic information
+ * needed for the simulation and sets the values using the Analytical.h's set
+ * functions. Then the main function calls the printAllCal function to print the
+ * expected calculations. After, that the runSimulation function is called to run
+ * the simulation. And, then the printComparison function is called to compare the
+ * expected and simulated values.
  *
  * @author Jacob Rook
  * @date 10/12/2017
