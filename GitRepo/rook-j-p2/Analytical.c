@@ -274,6 +274,11 @@ void runSimulation(void)
 		if (moreArrivals() && PQSize <= numService)
 			generateNextSet();
 	}
+	PoSim /= clock;
+	WSim /= numArrivals;
+	WqSim /= (float)numWait;
+	rhoSim /= ((float)numService * clock);
+	float waitProb = (float)numWait /((float)numArrivals);
 
 
 	printSimulation();
@@ -356,11 +361,12 @@ void ProcessNextEvent(void)
 		else
 		{
 			FIFOEnque(Event);
-			waitProb++;
+			numWait++;
 		}
 	}
 	else	//Processing Departure
 	{
+		clock = Event->departureTime;
 		serverAvailable++;
 		processStats(Event);
 
