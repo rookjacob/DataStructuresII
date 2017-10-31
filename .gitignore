@@ -8,3 +8,4 @@ rook-j-p1/Debug/
 *.settings
 *.gpj
 *.exe
+*.o
