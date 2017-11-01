@@ -18,7 +18,7 @@ double PERMUTATION[MAXCITIES];
 typedef struct Gen {
 	int cityTour[MAXCITIES];
 	double tourWeight;
-}Generation;
+}Tour;
 
 
 /*
@@ -60,6 +60,11 @@ void swap(int p, int q);
  *
  */
 void execGenetic(void);
+
+/*
+ *
+ */
+double calTourWeight(Tour *T);
 
 
 
