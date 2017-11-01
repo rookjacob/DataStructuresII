@@ -8,3 +8,51 @@
  */
 
 #include"TravelingSalesman.h"
+
+
+
+void startTravel(int numCities, int numTours, int numGen, double percentMut)
+{
+
+}
+
+void initTourVar(int numCities, int numTours, int numGen, double percentMut)
+{
+
+}
+
+void genNewWeight(void)
+{
+
+}
+
+void populateGraph(void)
+{
+
+}
+
+void execBruteForce(void)
+{
+
+}
+
+int fact(int n)
+{
+
+}
+
+void swap(int p, int q)
+{
+
+}
+
+void execGenetic(void)
+{
+
+}
+
+double calTourWeight(Tour *T)
+{
+
+}
+
