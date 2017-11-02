@@ -161,6 +161,19 @@ int compareTour(Tour *Tour1, Tour *Tour2)
 		return 1;
 	return 0;
 }
+
+/*
+ *
+ */
+void setTourEqual(Tour *T1, Tour *T2)
+{
+	int i;
+
+	for( i = 0; i < CITIES; i++)
+		T2->cityTour[i]= T1->cityTour[i];
+	T2->tourWeight = T1->tourWeight;
+}
+
 void execGenetic(void)
 {
 
