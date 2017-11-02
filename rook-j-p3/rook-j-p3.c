@@ -11,7 +11,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include"TravelingSalesman.h"
-#include"RookFunctions.h"
 
 int main(void)
 {

@@ -58,9 +58,12 @@ void genNewWeight(void)
 {
 	FILE *fp = fopen("cityWeights.txt", "w");
 	int i;
-
+	double tmp;
 	for(i = 0 ; i < 380 ; i++)
-		fprintf(fp, "%lf\n", genRandDouble);
+	{
+		tmp = genRandDouble();
+		fprintf(fp, "%lf\n", tmp);
+	}
 
 }
 
