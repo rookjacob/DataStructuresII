@@ -36,12 +36,12 @@ int GenHeap2Size;
 /*
  *
  */
-void HeapEnqueue(Tour *TourEnque, Tour **Heap, int *HeapSize);
+void HeapEnqueue(Tour *TourEnque, Tour Heap[], int *HeapSize);
 
 /*
  *
  */
-Tour *HeapDequeue(Tour **Heap, int *HeapSize);
+Tour *HeapDequeue(Tour Heap[], int *HeapSize);
 
 /*
  *
@@ -51,7 +51,7 @@ int isHeapEmpty(int *HeapSize);
 /*
  *
  */
-void percolateDown(Tour **Heap, int *HeapSize, int index);
+void percolateDown(Tour Heap[], int *HeapSize, int index);
 
 
 /*
@@ -118,7 +118,7 @@ void execGenetic(void);
 /*
  *
  */
-void populateGeneration(Tour **Heap2, int *Heap2Size, Tour **Heap1, int *Heap1Size);
+void populateGeneration(Tour Heap2[], int *Heap2Size, Tour Heap1[], int *Heap1Size);
 
 /*
  *
