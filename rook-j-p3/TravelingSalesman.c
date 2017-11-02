@@ -92,9 +92,20 @@ void populateGraph(void)
 	fclose(fp);
 }
 
-void populateGeneration(void)
+void populateGeneration(int condition)
 {
+	if(condition > 0)
+	{
 
+	}
+	if(condition == 0)
+	{
+
+	}
+	else
+	{
+		GenHeap1 = (Tour **)malloc(GENERATIONS * sizeof(Tour *));
+	}
 }
 
 void execBruteForce(void)
