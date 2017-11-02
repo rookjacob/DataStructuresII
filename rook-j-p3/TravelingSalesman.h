@@ -36,22 +36,22 @@ int GenHeap2Size;
 /*
  *
  */
-void HeapEnqueue(Tour *TourEnque, Tour **Heap, int HeapSize);
+void HeapEnqueue(Tour *TourEnque, Tour **Heap, int *HeapSize);
 
 /*
  *
  */
-Tour *HeapDequeue(Tour **Heap, int HeapSize);
+Tour *HeapDequeue(Tour **Heap, int *HeapSize);
 
 /*
  *
  */
-int isHeapEmpty(int HeapSize);
+int isHeapEmpty(int *HeapSize);
 
 /*
  *
  */
-void percolateDown(Tour **Heap, int HeapSize, int index);
+void percolateDown(Tour **Heap, int *HeapSize, int index);
 
 
 /*
@@ -79,11 +79,6 @@ void populateGraph(void);
  *
  */
 void initGeneration(void);
-
-/*
- *
- */
-void populateGeneration(int condition);
 
 /*
  *
@@ -119,6 +114,11 @@ void setTourEqual(Tour *T1, Tour *T2);
  *
  */
 void execGenetic(void);
+
+/*
+ *
+ */
+void populateGeneration(Tour **Heap2, int *Heap2Size, Tour **Heap1, int *Heap1Size);
 
 /*
  *

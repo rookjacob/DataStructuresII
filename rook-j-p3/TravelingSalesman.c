@@ -14,11 +14,11 @@
 #include<time.h>
 
 
-void HeapEnqueue(Tour *TourEnque, Tour **Heap, int HeapSize)
+void HeapEnqueue(Tour *TourEnque, Tour **Heap, int *HeapSize)
 {
 	Heap[0] = TourEnque;
 	TourEnque->tourWeight = calTourWeight(TourEnque);
-	int index = ++HeapSize;
+	int index = ++(*HeapSize);
 
 	while(TourEnque->tourWeight < Heap[index/2]->tourWeight)
 	{
@@ -28,28 +28,28 @@ void HeapEnqueue(Tour *TourEnque, Tour **Heap, int HeapSize)
 	Heap[index] = TourEnque;
 }
 
-Tour *HeapDequeue(Tour **Heap, int HeapSize)
+Tour *HeapDequeue(Tour **Heap, int *HeapSize)
 {
 	Tour *tmp = Heap[1];
-	Heap[1] = Heap[HeapSize--];
+	Heap[1] = Heap[(*HeapSize)--];
 	percolateDown(Heap, HeapSize, 1);
 	return tmp;
 }
 
-int isHeapEmpty(int HeapSize)
+int isHeapEmpty(int *HeapSize)
 {
-	return !(HeapSize);
+	return !(*HeapSize);
 }
 
-void percolateDown(Tour **Heap, int HeapSize, int index)
+void percolateDown(Tour **Heap, int *HeapSize, int index)
 {
 	int child;
 	Tour *tmp = Heap[index];
 
-	while(index * 2 <= HeapSize)
+	while(index * 2 <= *HeapSize)
 	{
 		child = index * 2;
-		if((child != HeapSize) && (Heap[child +1]->tourWeight < Heap[child]->tourWeight))
+		if((child != *HeapSize) && (Heap[child +1]->tourWeight < Heap[child]->tourWeight))
 			child++;
 		if(Heap[child]->tourWeight < tmp->tourWeight)
 			Heap[index] = Heap[child];
@@ -96,8 +96,6 @@ void initTourVar(int numCities, int numTours, int numGen, double percentMut)
 	populateGraph();
 
 	initGeneration();
-	populateGeneration(0);
-
 
 }
 
@@ -147,12 +145,12 @@ void initGeneration(void)
 	GenHeap2 = (Tour **)malloc((GENERATIONS + 1) * sizeof(Tour *));
 	GenHeap1Size = 0;
 	GenHeap2Size = 0;
-	int n, m, k, p, q, i;
+	int n, m, k, p, q;
 	n = CITIES - 1;
 
 	Tour TmpTour;
 	initTour(&TmpTour);
-	HeapEnque(&TmpTour, GenHeap1, GenHeap1Size);
+	HeapEnqueue(&TmpTour, GenHeap1, GenHeap1Size);
 	while(GenHeap1Size < TOURSNGEN)
 	{
 		m = n - 2;
@@ -170,20 +168,7 @@ void initGeneration(void)
 			p++;
 			q--;
 		}
-		HeapEnque(&TmpTour, GenHeap1, GenHeap1Size);
-	}
-
-}
-
-void populateGeneration(int condition)
-{
-	if(condition)
-	{
-
-	}
-	else
-	{
-
+		HeapEnqueue(&TmpTour, GenHeap1, GenHeap1Size);
 	}
 
 }
@@ -268,8 +253,29 @@ void setTourEqual(Tour *T1, Tour *T2)
 
 void execGenetic(void)
 {
+	int i;
+	int condition = 0;
+	for(i = 0; i < GENERATIONS; i++)
+	{
+		if(condition)
+		{
+			populateGeneration(GenHeap1, GenHeap2);
+			condition = 0;
+		}
+		else
+		{
+			populateGeneration(GenHeap2, GenHeap1);
+			condition = 1;
+		}
+	}
+}
+
+void populateGeneration(Tour **Heap2, int *Heap2Size, Tour **Heap1, int *Heap1Size)
+{
+	HeapEnqueue(HeapDequeue(Heap1))
 
 }
+
 
 double calTourWeight(Tour *T)
 {
