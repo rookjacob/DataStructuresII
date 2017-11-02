@@ -17,6 +17,7 @@
 void HeapEnqueue(Tour *TourEnque, Tour **Heap, int HeapSize)
 {
 	Heap[0] = TourEnque;
+	TourEnque->tourWeight = calTourWeight(TourEnque);
 	int index = ++HeapSize;
 
 	while(TourEnque->tourWeight < Heap[index/2]->tourWeight)
@@ -79,8 +80,6 @@ void startTravel(int numCities, int numTours, int numGen, double percentMut)
 	execGenetic();
 	clock_gettime(CLOCK_REALTIME, &TimeEnd);
 	GTime = calTimeDiff(&TimeEnd, &TimeStart);
-
-
 
 }
 
@@ -146,7 +145,33 @@ void initGeneration(void)
 {
 	GenHeap1 = (Tour **)malloc((GENERATIONS + 1)* sizeof(Tour *));
 	GenHeap2 = (Tour **)malloc((GENERATIONS + 1) * sizeof(Tour *));
+	GenHeap1Size = 0;
+	GenHeap2Size = 0;
+	int n, m, k, p, q, i;
+	n = CITIES - 1;
 
+	Tour TmpTour;
+	initTour(&TmpTour);
+	HeapEnque(&TmpTour, GenHeap1, GenHeap1Size);
+	while(GenHeap1Size < TOURSNGEN)
+	{
+		m = n - 2;
+		while(TmpTour.cityTour[m] > TmpTour.cityTour[m+1])
+			m = m - 1;
+		k = n - 1;
+		while(TmpTour.cityTour[m] > TmpTour.cityTour[k])
+			k = k - 1;
+		swap(m, k, &TmpTour);
+		p = m + 1;
+		q = n - 1;
+		while(p < q)
+		{
+			swap(p, q, &TmpTour);
+			p++;
+			q--;
+		}
+		HeapEnque(&TmpTour, GenHeap1, GenHeap1Size);
+	}
 
 }
 
