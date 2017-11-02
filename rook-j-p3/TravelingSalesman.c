@@ -14,6 +14,54 @@
 #include<time.h>
 
 
+void HeapEnqueue(Tour *TourEnque, Tour **Heap, int HeapSize)
+{
+	Heap[0] = TourEnque;
+	int index = ++HeapSize;
+
+	while(TourEnque->tourWeight < Heap[index/2]->tourWeight)
+	{
+		Heap[index] = Heap[index/2];
+		index /=2;
+	}
+	Heap[index] = TourEnque;
+}
+
+Tour *HeapDequeue(Tour **Heap, int HeapSize)
+{
+	Tour *tmp = Heap[1];
+	Heap[1] = Heap[HeapSize--];
+	percolateDown(Heap, HeapSize, 1);
+	return tmp;
+}
+
+int isHeapEmpty(int HeapSize)
+{
+	return !(HeapSize);
+}
+
+void percolateDown(Tour **Heap, int HeapSize, int index)
+{
+	int child;
+	Tour *tmp = Heap[index];
+
+	while(index * 2 <= HeapSize)
+	{
+		child = index * 2;
+		if((child != HeapSize) && (Heap[child +1]->tourWeight < Heap[child]->tourWeight))
+			child++;
+		if(Heap[child]->tourWeight < tmp->tourWeight)
+			Heap[index] = Heap[child];
+		else
+			break;
+		index = child;
+	}
+	Heap[index] = tmp;
+}
+
+
+
+
 
 void startTravel(int numCities, int numTours, int numGen, double percentMut)
 {
@@ -47,7 +95,9 @@ void initTourVar(int numCities, int numTours, int numGen, double percentMut)
 		MUTATIONS = TOURSNGEN - 2;
 
 	populateGraph();
-	populateGeneration();
+
+	initGeneration();
+	populateGeneration(0);
 
 
 }
@@ -92,20 +142,25 @@ void populateGraph(void)
 	fclose(fp);
 }
 
+void initGeneration(void)
+{
+	GenHeap1 = (Tour **)malloc((GENERATIONS + 1)* sizeof(Tour *));
+	GenHeap2 = (Tour **)malloc((GENERATIONS + 1) * sizeof(Tour *));
+
+
+}
+
 void populateGeneration(int condition)
 {
-	if(condition > 0)
-	{
-
-	}
-	if(condition == 0)
+	if(condition)
 	{
 
 	}
 	else
 	{
-		GenHeap1 = (Tour **)malloc(GENERATIONS * sizeof(Tour *));
+
 	}
+
 }
 
 void execBruteForce(void)
@@ -117,7 +172,6 @@ void execBruteForce(void)
 	Tour TmpTour;
 	initTour(&TmpTour);
 	setTourEqual(&BESTTOUR, &TmpTour);
-	printTour(&TmpTour);
 	for(i = 1; i < nfact; i++)
 	{
 		m = n - 2;
@@ -136,14 +190,11 @@ void execBruteForce(void)
 			q--;
 		}
 		calTourWeight(&TmpTour);
-		printTour(&TmpTour);
 		if(compareTour(&TmpTour, &BESTTOUR))
 			setTourEqual(&BESTTOUR, &TmpTour);
 
 
 	}
-
-printTour(&BESTTOUR);
 
 }
 

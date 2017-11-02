@@ -29,7 +29,29 @@ typedef struct T {
 Tour BESTTOUR;
 
 Tour **GenHeap1;
+int GenHeap1Size;
 Tour **GenHeap2;
+int GenHeap2Size;
+
+/*
+ *
+ */
+void HeapEnqueue(Tour *TourEnque, Tour **Heap, int HeapSize);
+
+/*
+ *
+ */
+Tour *HeapDequeue(Tour **Heap, int HeapSize);
+
+/*
+ *
+ */
+int isHeapEmpty(int HeapSize);
+
+/*
+ *
+ */
+void percolateDown(Tour **Heap, int HeapSize, int index);
 
 
 /*
@@ -52,6 +74,11 @@ void genNewWeight(void);
  *
  */
 void populateGraph(void);
+
+/*
+ *
+ */
+void initGeneration(void);
 
 /*
  *
