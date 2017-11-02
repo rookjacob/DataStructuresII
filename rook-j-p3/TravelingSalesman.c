@@ -127,7 +127,7 @@ void execBruteForce(void)
 
 	}
 
-
+printTour(BESTTOUR);
 
 }
 
