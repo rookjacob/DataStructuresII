@@ -171,7 +171,7 @@ double calTourWeight(Tour *T)
 	double weight = CITYGRAPH[0][T->cityTour[0]];	//From starting city to first city
 	int i;
 
-	for(i = 0; i < CITIES; i++)
+	for(i = 0; i < CITIES - 1; i++)
 	{
 		weight += CITYGRAPH[T->cityTour[i]][T->cityTour[i+1]];
 	}
@@ -185,7 +185,7 @@ void printTour(Tour *T)
 {
 	int i;
 	printf("0->");
-	for(i = 0; i < CITIES; i++)
+	for(i = 0; i < CITIES - 1; i++)
 	{
 		printf("%d->",T->cityTour[i]);
 	}
