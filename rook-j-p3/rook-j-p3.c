@@ -31,7 +31,7 @@ int main(void)
 	printf("Please enter the percentage of generations that should be comprised of mutations.\n");
 	scanf("%lf", &percentMut);
 	printf("Will a new cityWeights.txt be generated? (y/n)\n");
-	scanf("%c", &newGen);
+	scanf("\n%c", &newGen);
 
 	if(newGen == 'y')
 		startTravel(numCities, numTours, numGen, percentMut, 1);
