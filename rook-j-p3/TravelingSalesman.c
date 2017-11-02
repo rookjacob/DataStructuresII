@@ -259,12 +259,12 @@ void execGenetic(void)
 	{
 		if(condition)
 		{
-			populateGeneration(GenHeap1, &GenHeap2);
+			populateGeneration(GenHeap1, &GenHeap1Size, GenHeap2, &GenHeap2Size );
 			condition = 0;
 		}
 		else
 		{
-			populateGeneration(GenHeap2, &GenHeap1);
+			populateGeneration(GenHeap2, &GenHeap2Size, GenHeap1, &GenHeap1Size );
 			condition = 1;
 		}
 	}
@@ -284,7 +284,7 @@ void populateGeneration(Tour **Heap2, int *Heap2Size, Tour **Heap1, int *Heap1Si
 		HeapEnqueue(tmp,Heap2, Heap2Size);
 
 	}
-	for(i = Heap2Size; i < TOURSNGEN; i++)
+	for(i = *Heap2Size; i < TOURSNGEN; i++)
 	{
 
 	}
