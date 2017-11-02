@@ -81,6 +81,11 @@ void swap(int p, int q, Tour *TourSwap);
 /*
  *
  */
+int compareTour(Tour *Tour1, Tour *Tour2);
+
+/*
+ *
+ */
 void execGenetic(void);
 
 /*

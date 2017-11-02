@@ -100,7 +100,7 @@ void execBruteForce(void)
 
 	Tour TmpTour;
 	initTour(&TmpTour);
-	BESTTOUR = TmpTour;
+	BESTTOUR = &TmpTour;
 
 	for(i = 1; i < nfact; i++)
 	{
@@ -122,7 +122,7 @@ void execBruteForce(void)
 		calTourWeight(&TmpTour);
 		printTour(&TmpTour);
 		if(compareTour(&TmpTour, BESTTOUR))
-			BESTTOUR = TmpTour;
+			BESTTOUR = &TmpTour;
 
 
 	}
@@ -137,7 +137,7 @@ void initTour(Tour *init)
 
 	for(i = 1; i < CITIES; i++)
 		init->cityTour[i-1] = i;
-	init->tourWeight = calTourWeight(&init);
+	init->tourWeight = calTourWeight(init);
 }
 
 int fact(int n)
@@ -176,7 +176,7 @@ double calTourWeight(Tour *T)
 		weight += CITYGRAPH[T->cityTour[i]][T->cityTour[i+1]];
 	}
 
-	weight += CITYGRAPH[T->cityTour[CITIES - 1][0]]; //From last city to starting city
+	weight += CITYGRAPH[T->cityTour[CITIES - 1]][0]]; //From last city to starting city
 	T->tourWeight = weight;
 	return weight;
 }
