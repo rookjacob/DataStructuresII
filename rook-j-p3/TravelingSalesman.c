@@ -141,8 +141,8 @@ void populateGraph(void)
 
 void initGeneration(void)
 {
-	GenHeap1 = (Tour **)malloc((GENERATIONS + 1)* sizeof(Tour *));
-	GenHeap2 = (Tour **)malloc((GENERATIONS + 1) * sizeof(Tour *));
+	GenHeap1 = (Tour **)malloc((GENERATIONS + 1)* sizeof(Tour ));
+	GenHeap2 = (Tour **)malloc((GENERATIONS + 1) * sizeof(Tour ));
 	GenHeap1Size = 0;
 	GenHeap2Size = 0;
 	int n, m, k, p, q;
