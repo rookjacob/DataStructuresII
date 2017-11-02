@@ -176,7 +176,7 @@ double calTourWeight(Tour *T)
 		weight += CITYGRAPH[T->cityTour[i]][T->cityTour[i+1]];
 	}
 
-	weight += CITYGRAPH[T->cityTour[CITIES - 1]][0]]; //From last city to starting city
+	weight += CITYGRAPH[T->cityTour[CITIES - 1]][0]; //From last city to starting city
 	T->tourWeight = weight;
 	return weight;
 }
