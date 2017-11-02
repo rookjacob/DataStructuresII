@@ -90,7 +90,7 @@ void populateGraph(void)
 			}
 			fscanf(fp, "%lf ", &tmp);
 			CITYGRAPH[i][j] = tmp;
-			printf("%2d", floor(CITYGRAPH[i][j]));
+			printf("%2d", (int)floor(CITYGRAPH[i][j]));
 		}
 	}
 }
