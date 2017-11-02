@@ -150,7 +150,7 @@ void initGeneration(void)
 
 	Tour TmpTour;
 	initTour(&TmpTour);
-	HeapEnqueue(&TmpTour, GenHeap1, GenHeap1Size);
+	HeapEnqueue(&TmpTour, GenHeap1, &GenHeap1Size);
 	while(GenHeap1Size < TOURSNGEN)
 	{
 		m = n - 2;
@@ -168,7 +168,7 @@ void initGeneration(void)
 			p++;
 			q--;
 		}
-		HeapEnqueue(&TmpTour, GenHeap1, GenHeap1Size);
+		HeapEnqueue(&TmpTour, GenHeap1, &GenHeap1Size);
 	}
 
 }
@@ -259,12 +259,12 @@ void execGenetic(void)
 	{
 		if(condition)
 		{
-			populateGeneration(GenHeap1, GenHeap2);
+			populateGeneration(GenHeap1, &GenHeap2);
 			condition = 0;
 		}
 		else
 		{
-			populateGeneration(GenHeap2, GenHeap1);
+			populateGeneration(GenHeap2, &GenHeap1);
 			condition = 1;
 		}
 	}
