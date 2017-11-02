@@ -272,6 +272,9 @@ void execGenetic(void)
 
 void populateGeneration(Tour **Heap2, int *Heap2Size, Tour **Heap1, int *Heap1Size)
 {	//Store best Heap 1 into Heap 2
+	Tour BestTour;
+	setTourEqual(&BestTour, HeapDequeue(Heap1,Heap1Size));
+
 	HeapEnqueue(HeapDequeue(Heap1,Heap1Size),Heap2, Heap2Size);
 	HeapEnqueue(HeapDequeue(Heap1,Heap1Size),Heap2, Heap2Size);
 
