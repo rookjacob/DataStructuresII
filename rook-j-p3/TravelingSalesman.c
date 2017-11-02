@@ -83,6 +83,10 @@ void startTravel(int numCities, int numTours, int numGen, double percentMut)
 	clock_gettime(CLOCK_REALTIME, &TimeEnd);
 	GTime = calTimeDiff(&TimeEnd, &TimeStart);
 
+	printf("Brute Force took %lfs", BFTime);
+	printf("Genetic took     %lfs", GTime);
+
+
 }
 
 void initTourVar(int numCities, int numTours, int numGen, double percentMut)
