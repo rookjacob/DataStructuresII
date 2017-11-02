@@ -109,11 +109,13 @@ void execBruteForce(void)
 	{
 		m = n - 2;
 		while(BestTour.cityTour[m] > BestTour.cityTour[m+1])
+		{
 			m = m - 1;
 		k = n -1;
 		tmp = BestTour.cityTour[m];
 		BestTour.cityTour[m] = BestTour.cityTour[k];
 		BestTour.cityTour[k] = tmp;
+		}
 		p = m + 1;
 		q = n - 1;
 		while (p < q)
