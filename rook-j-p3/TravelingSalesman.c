@@ -28,7 +28,7 @@ void HeapEnqueue(Tour *TourEnque, Tour Heap[], int *HeapSize)
 	setTourEqual(&Heap[index], TourEnque);
 }
 
-Tour *HeapDequeue(Tour Heap[], int *HeapSize)
+Tour HeapDequeue(Tour Heap[], int *HeapSize)
 {
 	Tour tmp;
 	setTourEqual(&tmp, &Heap[1]);

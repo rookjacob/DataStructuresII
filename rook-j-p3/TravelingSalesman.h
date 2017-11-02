@@ -41,7 +41,7 @@ void HeapEnqueue(Tour *TourEnque, Tour Heap[], int *HeapSize);
 /*
  *
  */
-Tour *HeapDequeue(Tour Heap[], int *HeapSize);
+Tour HeapDequeue(Tour Heap[], int *HeapSize);
 
 /*
  *
