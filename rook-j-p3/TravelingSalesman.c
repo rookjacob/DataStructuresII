@@ -94,14 +94,13 @@ void populateGraph(void)
 
 void execBruteForce(void)
 {
-	Tour BestTour;
 	int n, m, k, p, q, i, nfact;
 	n = CITIES - 1;
 	nfact = fact(n);
 
 	Tour TmpTour;
-	initTour(&BESTTOUR);
 	initTour(&TmpTour);
+	BESTTOUR = TmpTour;
 
 	for(i = 1; i < nfact; i++)
 	{
@@ -120,7 +119,8 @@ void execBruteForce(void)
 			p++;
 			q--;
 		}
-
+		calTourWeight(&TmpTour);
+		if(compareTour(&TmpTour, ))
 
 	}
 
@@ -152,6 +152,12 @@ void swap(int p, int q, Tour *TourSwap)
 	TourSwap->cityTour[q] = tmp;
 }
 
+int compareTour(Tour *Tour1, Tour *Tour2)
+{
+	if(Tour1->tourWeight < Tour2->tourWeight)
+		return 1;
+	return 0;
+}
 void execGenetic(void)
 {
 

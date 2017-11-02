@@ -32,7 +32,7 @@ typedef struct Gen {
 	Tour TourGen;
 }Generation;
 
-Tour BESTTOUR;
+Tour *BESTTOUR;
 Generation *Gen1Head;
 Generation *Gen2Head;
 
