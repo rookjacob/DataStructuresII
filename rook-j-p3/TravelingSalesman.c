@@ -14,7 +14,7 @@
 #include<time.h>
 
 
-void HeapEnqueue(Tour *TourEnque, Tour *Heap, int *HeapSize)
+void HeapEnqueue(Tour *TourEnque, Tour Heap[], int *HeapSize)
 {
 	Heap[0] = TourEnque;
 	TourEnque->tourWeight = calTourWeight(TourEnque);
@@ -28,7 +28,7 @@ void HeapEnqueue(Tour *TourEnque, Tour *Heap, int *HeapSize)
 	Heap[index] = TourEnque;
 }
 
-Tour *HeapDequeue(Tour *Heap, int *HeapSize)
+Tour *HeapDequeue(Tour Heap[], int *HeapSize)
 {
 	Tour *tmp = Heap[1];
 	Heap[1] = Heap[(*HeapSize)--];
@@ -41,7 +41,7 @@ int isHeapEmpty(int *HeapSize)
 	return !(*HeapSize);
 }
 
-void percolateDown(Tour *Heap, int *HeapSize, int index)
+void percolateDown(Tour Heap[], int *HeapSize, int index)
 {
 	int child;
 	Tour *tmp = Heap[index];
@@ -270,7 +270,7 @@ void execGenetic(void)
 	}
 }
 
-void populateGeneration(Tour *Heap2, int *Heap2Size, Tour *Heap1, int *Heap1Size)
+void populateGeneration(Tour Heap2[], int *Heap2Size, Tour Heap1[], int *Heap1Size)
 {	//Store best Heap 1 into Heap 2
 	Tour BestTour;
 	Tour SecondBTour;
