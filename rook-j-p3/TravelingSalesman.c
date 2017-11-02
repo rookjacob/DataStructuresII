@@ -58,10 +58,13 @@ void genNewWeight(void)
 {
 	FILE *fp = fopen("cityWeights.txt", "w");
 	int i;
+	double DoubleMax = 100.0;
 	double tmp;
+	srand((unsigned int)time(NULL));
+
 	for(i = 0 ; i < 380 ; i++)
 	{
-		tmp = genRandDouble();
+		tmp = ((double)rand()/(double)RAND_MAX) * DoubleMax;
 		fprintf(fp, "%lf\n", tmp);
 	}
 
