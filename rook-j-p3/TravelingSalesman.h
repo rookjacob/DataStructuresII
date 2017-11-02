@@ -9,6 +9,7 @@
 
 #ifndef TRAVELINGSALESMAN_H_
 #define TRAVELINGSALESMAN_H_
+#include<time.h>
 
 #define MAXCITIES 20
 
@@ -38,17 +39,22 @@ Generation *Gen2Head;
 /*
  *
  */
-void startTravel(int numCities, int numTours, int numGen, double percentMut);
+void startTravel(int numCities, int numTours, int numGen, double percentMut, int newGen);
 
 /*
  *
  */
-void initTourVar(int numCities, int numTours, int numGen, double percentMut);
+void initTourVar(int numCities, int numTours, int numGen, double percentMut, int newGen);
 
 /*
  *
  */
 void genNewWeight(void);
+
+/*
+ *
+ */
+double genRandDouble(void);
 
 /*
  *
@@ -80,6 +86,11 @@ void execGenetic(void);
  */
 double calTourWeight(Tour *T);
 
+/*
+ *
+ *//*
+double calTimeDiff(timespec *End, timespec *Start);
+*/
 
 
 #endif /* TRAVELINGSALESMAN_H_ */
