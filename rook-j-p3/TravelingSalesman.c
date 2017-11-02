@@ -73,7 +73,7 @@ void genNewWeight(void)
 double genRandDouble(void)
 {
 	double DoubleMax = 100.0;
-	srand((unsigned int)time(NULL));
+	srand((unsigned int)CLOCK_REALTIME);
 	return ((double)rand()/(double)RAND_MAX) * DoubleMax;
 }
 
