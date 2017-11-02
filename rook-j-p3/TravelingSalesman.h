@@ -56,7 +56,7 @@ void populateGraph(void);
 /*
  *
  */
-void populateGerneration(int condition);
+void populateGeneration(int condition);
 
 /*
  *
