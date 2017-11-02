@@ -99,8 +99,8 @@ void execBruteForce(void)
 	BestTour.cityTour[1] = 1;
 	BestTour.cityTour[2] = 2;
 	BestTour.cityTour[3] = 3;
-	BestTour.cityTour[4] = 4;
-	int n = 4;
+	BestTour.cityTour[4] = 0;
+	int n = 3;
 	int m, k, p, q, i;
 	int nfact = fact(n);
 	double tmp;
@@ -125,7 +125,7 @@ void execBruteForce(void)
 			p++;
 			q--;
 		}
-		printf("%d%d%d%d%d0\n",BestTour.cityTour[0],BestTour.cityTour[1],BestTour.cityTour[2],BestTour.cityTour[3],BestTour.cityTour[4]);
+		printf("%d %d%d%d %d\n",BestTour.cityTour[0],BestTour.cityTour[1],BestTour.cityTour[2],BestTour.cityTour[3],BestTour.cityTour[4]);
 
 
 
