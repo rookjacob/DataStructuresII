@@ -28,8 +28,8 @@ typedef struct T {
 
 Tour BESTTOUR;
 
-Tour ***GenHeap1;
-Tour ***GenHeap2;
+Tour **GenHeap1;
+Tour **GenHeap2;
 
 
 /*
