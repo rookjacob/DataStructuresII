@@ -275,8 +275,8 @@ void populateGeneration(Tour Heap2[], int *Heap2Size, Tour Heap1[], int *Heap1Si
 {	//Store best Heap 1 into Heap 2
 	Tour BestTour;
 	Tour SecondBTour;
-	setTourEqual(&BestTour, HeapDequeue(Heap1,Heap1Size));
-	setTourEqual(&SecondBTour, HeapDequeue(Heap1,Heap1Size));
+	setTourEqual(&BestTour, &HeapDequeue(Heap1,Heap1Size));
+	setTourEqual(&SecondBTour, &HeapDequeue(Heap1,Heap1Size));
 
 	HeapEnqueue(&BestTour,Heap2, Heap2Size);
 	HeapEnqueue(&SecondBTour,Heap2, Heap2Size);
@@ -285,14 +285,14 @@ void populateGeneration(Tour Heap2[], int *Heap2Size, Tour Heap1[], int *Heap1Si
 	Tour *tmp;
 	for(i = 0; i < MUTATIONS; i++)
 	{
-		tmp = HeapDequeue(Heap1, Heap1Size);
+		tmp = &HeapDequeue(Heap1, Heap1Size);
 		tourMutate(tmp);
 		HeapEnqueue(tmp,Heap2, Heap2Size);
 
 	}
 	while(!isHeapEmpty(Heap1Size))
 	{
-		tmp = HeapDequeue(Heap1, Heap1Size);
+		tmp = &HeapDequeue(Heap1, Heap1Size);
 
 	}
 }
