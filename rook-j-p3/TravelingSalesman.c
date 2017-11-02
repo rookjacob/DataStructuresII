@@ -150,7 +150,7 @@ int fact(int n)
 
 void swap(int p, int q, Tour *TourSwap)
 {
-	int tmp = p;
+	int tmp = TourSwap->cityTour[p];
 	TourSwap->cityTour[p] = TourSwap->cityTour[q];
 	TourSwap->cityTour[q] = tmp;
 }
