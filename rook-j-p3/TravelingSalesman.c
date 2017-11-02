@@ -47,7 +47,7 @@ void initTourVar(int numCities, int numTours, int numGen, double percentMut)
 		MUTATIONS = TOURSNGEN - 2;
 
 	populateGraph();
-
+	populateGeneration();
 
 
 }
@@ -90,6 +90,11 @@ void populateGraph(void)
 		}
 	}
 	fclose(fp);
+}
+
+void populateGeneration(void)
+{
+
 }
 
 void execBruteForce(void)

@@ -14,7 +14,6 @@
 #define MAXCITIES 20
 
 double CITYGRAPH[MAXCITIES][MAXCITIES];
-double PERMUTATION[MAXCITIES];
 
 int CITIES;
 int TOURSNGEN;
@@ -27,14 +26,10 @@ typedef struct T {
 	double tourWeight;
 }Tour;
 
-typedef struct Gen {
-	struct Gen *Next;
-	Tour TourGen;
-}Generation;
-
 Tour BESTTOUR;
-Generation *Gen1Head;
-Generation *Gen2Head;
+
+Tour ***GenHeap1;
+Tour ***GenHeap2;
 
 
 /*
@@ -57,6 +52,11 @@ void genNewWeight(void);
  *
  */
 void populateGraph(void);
+
+/*
+ *
+ */
+void populateGerneration(void);
 
 /*
  *
