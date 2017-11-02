@@ -34,9 +34,8 @@ int main(void)
 	scanf("\n%c", &newGen);
 
 	if(newGen == 'y')
-		startTravel(numCities, numTours, numGen, percentMut, 1);
-	else
-		startTravel(numCities, numTours, numGen, percentMut, 0);
+		genNewWeight();
+	startTravel(numCities, numTours, numGen, percentMut);
 
 
 

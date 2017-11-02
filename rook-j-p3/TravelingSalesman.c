@@ -15,12 +15,12 @@
 
 
 
-void startTravel(int numCities, int numTours, int numGen, double percentMut, int newGen)
+void startTravel(int numCities, int numTours, int numGen, double percentMut)
 {
 	//struct timespec TimeStart, TimeEnd;
 	//double BFTime, GTime;
 
-	initTourVar(numCities, numTours, numGen, percentMut, newGen);
+	initTourVar(numCities, numTours, numGen, percentMut);
 
 	//clock_gettime(CLOCK_REALTIME, &TimeStart);
 	execBruteForce();
@@ -36,7 +36,7 @@ void startTravel(int numCities, int numTours, int numGen, double percentMut, int
 
 }
 
-void initTourVar(int numCities, int numTours, int numGen, double percentMut, int newGen)
+void initTourVar(int numCities, int numTours, int numGen, double percentMut)
 {
 	CITIES = numCities;
 	TOURSNGEN = numTours;
@@ -45,9 +45,6 @@ void initTourVar(int numCities, int numTours, int numGen, double percentMut, int
 
 	if (MUTATIONS > (TOURSNGEN - 2))
 		MUTATIONS = TOURSNGEN - 2;
-
-	if(newGen)
-		genNewWeight();
 
 	populateGraph();
 

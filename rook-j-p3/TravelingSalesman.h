@@ -39,12 +39,12 @@ Generation *Gen2Head;
 /*
  *
  */
-void startTravel(int numCities, int numTours, int numGen, double percentMut, int newGen);
+void startTravel(int numCities, int numTours, int numGen, double percentMut);
 
 /*
  *
  */
-void initTourVar(int numCities, int numTours, int numGen, double percentMut, int newGen);
+void initTourVar(int numCities, int numTours, int numGen, double percentMut);
 
 /*
  *
