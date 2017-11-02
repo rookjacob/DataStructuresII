@@ -87,7 +87,7 @@ void populateGraph(void)
 				continue;
 			fscanf(fp, "%lf ", &tmp);
 			CITYGRAPH[i][j] = tmp;
-			printf("%lf ", CITYGRAPH[i][j]);
+			printf("%d", floor(CITYGRAPH[i][j]));
 		}
 	}
 }
