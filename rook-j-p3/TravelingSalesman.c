@@ -124,7 +124,7 @@ void execBruteForce(void)
 			p++;
 			q--;
 		}
-		printf("%d%d%d%d%d\n",BestTour.cityTour[0],BestTour.cityTour[1],BestTour.cityTour[2],BestTour.cityTour[3],BestTour.cityTour[4]);
+		printf("%d%d%d%d%d0\n",BestTour.cityTour[0],BestTour.cityTour[1],BestTour.cityTour[2],BestTour.cityTour[3],BestTour.cityTour[4]);
 
 
 
