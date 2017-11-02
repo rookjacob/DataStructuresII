@@ -15,10 +15,24 @@
 double CITYGRAPH[MAXCITIES][MAXCITIES];
 double PERMUTATION[MAXCITIES];
 
-typedef struct Gen {
+int CITIES;
+int TOURSNGEN;
+int GENERATIONS;
+int MUTATIONS;
+
+
+typedef struct T {
 	int cityTour[MAXCITIES];
 	double tourWeight;
 }Tour;
+
+typedef struct Gen {
+	struct Gen *Next;
+	Tour TourGen;
+}Generation;
+
+Generation *Gen1Head;
+Generation *Gen2Head;
 
 
 /*
