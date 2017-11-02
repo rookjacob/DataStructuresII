@@ -101,7 +101,7 @@ void execBruteForce(void)
 	Tour TmpTour;
 	initTour(&TmpTour);
 	BESTTOUR = &TmpTour;
-
+	printTour(&TmpTour);
 	for(i = 1; i < nfact; i++)
 	{
 		m = n - 2;
@@ -189,7 +189,7 @@ void printTour(Tour *T)
 	{
 		printf("%d->",T->cityTour[0]);
 	}
-	printf("\nWeight: %lf\n", T->tourWeight);
+	printf("0\nWeight: %lf\n", T->tourWeight);
 }
 /*
 double calTimeDiff(struct timespec *End, struct timespec *Start)
