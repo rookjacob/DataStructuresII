@@ -17,20 +17,20 @@
 
 void startTravel(int numCities, int numTours, int numGen, double percentMut)
 {
-	//struct timespec TimeStart, TimeEnd;
-	//double BFTime, GTime;
+	struct timespec TimeStart, TimeEnd;
+	double BFTime, GTime;
 
 	initTourVar(numCities, numTours, numGen, percentMut);
 
-	//clock_gettime(CLOCK_REALTIME, &TimeStart);
+	clock_gettime(CLOCK_REALTIME, &TimeStart);
 	execBruteForce();
-	//clock_gettime(CLOCK_REALTIME, &TimeEnd);
-	//BFTime = calTimeDiff(&TimeEnd, &TimeStart);
+	clock_gettime(CLOCK_REALTIME, &TimeEnd);
+	BFTime = calTimeDiff(&TimeEnd, &TimeStart);
 
-	//clock_gettime(CLOCK_REALTIME, &TimeStart);
+	clock_gettime(CLOCK_REALTIME, &TimeStart);
 	execGenetic();
-	//clock_gettime(CLOCK_REALTIME, &TimeEnd);
-	//GTime = calTimeDiff(&TimeEnd, &TimeStart);
+	clock_gettime(CLOCK_REALTIME, &TimeEnd);
+	GTime = calTimeDiff(&TimeEnd, &TimeStart);
 
 
 
@@ -204,10 +204,10 @@ void printTour(Tour *T)
 	}
 	printf("0\nWeight: %lf\n", T->tourWeight);
 }
-/*
+
 double calTimeDiff(struct timespec *End, struct timespec *Start)
 {
 	return difftime(End->tv_sec, Start->tv_sec) + ((double)End->tv_nsec - (double)Start->tv_nsec)/1000000000.0;
 }
-*/
+
 

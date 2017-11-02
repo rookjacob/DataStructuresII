@@ -105,9 +105,9 @@ void printTour(Tour *T);
 
 /*
  *
- *//*
-double calTimeDiff(timespec *End, timespec *Start);
-*/
+ */
+double calTimeDiff(struct timespec *End, struct timespec *Start);
+
 
 
 #endif /* TRAVELINGSALESMAN_H_ */
