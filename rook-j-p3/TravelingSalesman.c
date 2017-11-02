@@ -141,8 +141,8 @@ void populateGraph(void)
 
 void initGeneration(void)
 {
-	GenHeap1 = (Tour **)malloc((GENERATIONS + 1)* sizeof(Tour ));
-	GenHeap2 = (Tour **)malloc((GENERATIONS + 1) * sizeof(Tour ));
+	GenHeap1 = (Tour *)malloc((GENERATIONS + 1)* sizeof(Tour ));
+	GenHeap2 = (Tour *)malloc((GENERATIONS + 1) * sizeof(Tour ));
 	GenHeap1Size = 0;
 	GenHeap2Size = 0;
 	int n, m, k, p, q;
@@ -273,10 +273,12 @@ void execGenetic(void)
 void populateGeneration(Tour **Heap2, int *Heap2Size, Tour **Heap1, int *Heap1Size)
 {	//Store best Heap 1 into Heap 2
 	Tour BestTour;
+	Tour SecondBTour;
 	setTourEqual(&BestTour, HeapDequeue(Heap1,Heap1Size));
+	setTourEqual(&SecondBTour, HeapDequeue(Heap1,Heap1Size));
 
-	HeapEnqueue(HeapDequeue(Heap1,Heap1Size),Heap2, Heap2Size);
-	HeapEnqueue(HeapDequeue(Heap1,Heap1Size),Heap2, Heap2Size);
+	HeapEnqueue(&BestTour,Heap2, Heap2Size);
+	HeapEnqueue(&SecondBTour,Heap2, Heap2Size);
 
 	int i;
 	Tour *tmp;

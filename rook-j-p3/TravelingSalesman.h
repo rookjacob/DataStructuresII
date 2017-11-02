@@ -28,9 +28,9 @@ typedef struct T {
 
 Tour BESTTOUR;
 
-Tour **GenHeap1;
+Tour *GenHeap1;
 int GenHeap1Size;
-Tour **GenHeap2;
+Tour *GenHeap2;
 int GenHeap2Size;
 
 /*
