@@ -13,7 +13,6 @@
 #include"TravelingSalesman.h"
 #include"RookFunctions.h"
 
-
 int main(void)
 {
 	int numCities = 0;
@@ -33,6 +32,12 @@ int main(void)
 	scanf("%lf", &percentMut);
 	printf("Will a new cityWeights.txt be generated? (y/n)\n");
 	scanf("%c", &newGen);
+
+	if(newGen == 'y')
+		startTravel(numCities, numTours, numGen, percentMut, 1);
+	else
+		startTravel(numCities, numTours, numGen, percentMut, 0);
+
 
 
 
