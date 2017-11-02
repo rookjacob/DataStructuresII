@@ -65,6 +65,7 @@ void genNewWeight(void)
 		tmp = ((double)rand()/(double)RAND_MAX) * DoubleMax;
 		fprintf(fp, "%lf\n", tmp);
 	}
+	fclose(fp);
 
 }
 
@@ -90,6 +91,7 @@ void populateGraph(void)
 			printf("%2d ", (int)floor(CITYGRAPH[i][j]));
 		}
 	}
+	fclose(fp);
 }
 
 void execBruteForce(void)
