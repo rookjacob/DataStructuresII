@@ -32,6 +32,7 @@ typedef struct Gen {
 	Tour TourGen;
 }Generation;
 
+Tour BESTTOUR;
 Generation *Gen1Head;
 Generation *Gen2Head;
 
@@ -65,12 +66,17 @@ void execBruteForce(void);
 /*
  *
  */
+void initTour(Tour *init);
+
+/*
+ *
+ */
 int fact(int n);
 
 /*
  *
  */
-void swap(int p, int q);
+void swap(int p, int q, Tour *TourSwap);
 
 /*
  *

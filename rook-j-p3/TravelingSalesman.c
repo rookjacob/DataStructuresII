@@ -95,46 +95,34 @@ void populateGraph(void)
 void execBruteForce(void)
 {
 	Tour BestTour;
-	BestTour.cityTour[0] = 0;
-	BestTour.cityTour[1] = 1;
-	BestTour.cityTour[2] = 2;
-	BestTour.cityTour[3] = 3;
-	BestTour.cityTour[4] = 0;
-	int n = 4;
-	int m, k, p, q, i;
-	int nfact = fact(n);
-	double tmp;
-	printf("01234\n");
+	int n, m, k, p, q, i, nfact;
+	n = CITIES - 1;
+	nfact = fact(n);
+
+	Tour TmpTour;
+	initTour(&BESTTOUR);
+	initTour(&TmpTour);
+
 	for(i = 1; i < nfact; i++)
 	{
 		m = n - 2;
-		while(BestTour.cityTour[m] > BestTour.cityTour[m+1])
+		while(TmpTour.cityTour[m] > TmpTour.cityTour[m+1])
 			m = m - 1;
-		k = n -1;
-		tmp = BestTour.cityTour[m];
-		BestTour.cityTour[m] = BestTour.cityTour[k];
-		BestTour.cityTour[k] = tmp;
-
-		p = m + 1;
-		q = n - 1;
-		while (p < q)
-		{
-			tmp = BestTour.cityTour[p];
-			BestTour.cityTour[p] = BestTour.cityTour[q];
-			BestTour.cityTour[q] = tmp;
-			p++;
-			q--;
-		}
-		printf("%d %d%d%d %d\n",BestTour.cityTour[0],BestTour.cityTour[1],BestTour.cityTour[2],BestTour.cityTour[3],BestTour.cityTour[4]);
-
 
 
 	}
-	printf("%d %d%d%d %d\n",BestTour.cityTour[0],BestTour.cityTour[1],BestTour.cityTour[2],BestTour.cityTour[3],BestTour.cityTour[4]);
 
 
 
+}
 
+void initTour(Tour *init)
+{
+	int i;
+
+	for(i = 1; i < CITIES; i++)
+		init->cityTour[i-1] = i;
+	init->tourWeight = calTourWeight(&init);
 }
 
 int fact(int n)
@@ -145,9 +133,11 @@ int fact(int n)
 	return n * fact(n-1);
 }
 
-void swap(int p, int q)
+void swap(int p, int q, Tour *TourSwap)
 {
-
+	int tmp = p;
+	TourSwap->cityTour[p] = TourSwap->cityTour[q];
+	TourSwap->cityTour[q] = tmp;
 }
 
 void execGenetic(void)
@@ -157,7 +147,17 @@ void execGenetic(void)
 
 double calTourWeight(Tour *T)
 {
+	double weight = CITYGRAPH[0][T->cityTour[0]];	//From starting city to first city
+	int i;
 
+	for(i = 0; i < CITIES; i++)
+	{
+		weight += CITYGRAPH[T->cityTour[i]][T->cityTour[i+1]];
+	}
+
+	weight += CITYGRAPH[T->cityTour[CITIES - 1][0]]; //From last city to starting city
+	T->tourWeight = weight;
+	return weight;
 }
 /*
 double calTimeDiff(struct timespec *End, struct timespec *Start)
