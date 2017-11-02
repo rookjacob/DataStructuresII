@@ -100,7 +100,7 @@ void execBruteForce(void)
 	BestTour.cityTour[2] = 2;
 	BestTour.cityTour[3] = 3;
 	BestTour.cityTour[4] = 0;
-	int n = 3;
+	int n = 4;
 	int m, k, p, q, i;
 	int nfact = fact(n);
 	double tmp;
