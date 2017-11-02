@@ -123,6 +123,11 @@ void populateGeneration(Tour **Heap2, int *Heap2Size, Tour **Heap1, int *Heap1Si
 /*
  *
  */
+void tourMutate(Tour *Mut);
+
+/*
+ *
+ */
 double calTourWeight(Tour *T);
 
 /*

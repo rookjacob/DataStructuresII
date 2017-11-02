@@ -271,9 +271,35 @@ void execGenetic(void)
 }
 
 void populateGeneration(Tour **Heap2, int *Heap2Size, Tour **Heap1, int *Heap1Size)
-{
-	HeapEnqueue(HeapDequeue(Heap1))
+{	//Store best Heap 1 into Heap 2
+	HeapEnqueue(HeapDequeue(Heap1,Heap1Size),Heap2, Heap2Size);
+	HeapEnqueue(HeapDequeue(Heap1,Heap1Size),Heap2, Heap2Size);
 
+	int i;
+	Tour *tmp;
+	for(i = 0; i < MUTATIONS; i++)
+	{
+		tmp = HeapDequeue(Heap1, Heap1Size);
+		tourMutate(tmp);
+		HeapEnqueue(tmp,Heap2, Heap2Size);
+
+	}
+	for(i = Heap2Size; i < TOURSNGEN; i++)
+	{
+
+	}
+}
+
+void tourMutate(Tour *Mut)
+{
+	int MUTRANGEMAX = 9, MUTRANGEMIN = 3;
+	srand(time(CLOCK_REALTIME));
+	int i, MutRange = rand() % (MUTRANGEMAX - MUTRANGEMIN) + MUTRANGEMIN;
+
+	for(i = 0; i < MutRange; i++)
+	{
+		swap(rand()%(CITIES - 2), rand()%(CITIES - 2), Mut);
+	}
 }
 
 
