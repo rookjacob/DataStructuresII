@@ -45,20 +45,21 @@ int isHeapEmpty(int *HeapSize)
 void percolateDown(Tour Heap[], int *HeapSize, int index)
 {
 	int child;
-	Tour *tmp = Heap[index];
+	Tour tmp;
+	setTourEqual(&tmp, &Heap[index]);
 
 	while(index * 2 <= *HeapSize)
 	{
 		child = index * 2;
-		if((child != *HeapSize) && (Heap[child +1]->tourWeight < Heap[child]->tourWeight))
+		if((child != *HeapSize) && (Heap[child +1].tourWeight < Heap[child].tourWeight))
 			child++;
-		if(Heap[child]->tourWeight < tmp->tourWeight)
-			Heap[index] = Heap[child];
+		if(Heap[child].tourWeight < tmp.tourWeight)
+			setTourEqual(&Heap[index], &Heap[child]);
 		else
 			break;
 		index = child;
 	}
-	Heap[index] = tmp;
+	setTourEqual(&Heap[index], &tmp);
 }
 
 
