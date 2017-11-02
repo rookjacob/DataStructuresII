@@ -135,7 +135,7 @@ void initTour(Tour *init)
 {
 	int i;
 
-	for(i = 1; i <= CITIES; i++)
+	for(i = 1; i < CITIES; i++)
 		init->cityTour[i-1] = i;
 	init->tourWeight = calTourWeight(init);
 }
