@@ -78,16 +78,19 @@ void populateGraph(void)
 	int j;
 	double tmp;
 
-	for(i = 1; i < MAXCITIES; i++)
+	for(i = 0; i < MAXCITIES; i++)
 	{
 		printf("\n");
 		for(j = 0; j < MAXCITIES; j++)
 		{
 			if(i == j)
+			{
+				printf ("00");
 				continue;
+			}
 			fscanf(fp, "%lf ", &tmp);
 			CITYGRAPH[i][j] = tmp;
-			printf("%d", floor(CITYGRAPH[i][j]));
+			printf("%2d", floor(CITYGRAPH[i][j]));
 		}
 	}
 }
