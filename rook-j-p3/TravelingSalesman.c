@@ -88,7 +88,6 @@ void populateGraph(void)
 			}
 			fscanf(fp, "%lf ", &tmp);
 			CITYGRAPH[i][j] = tmp;
-			printf("%2d ", (int)floor(CITYGRAPH[i][j]));
 		}
 	}
 	fclose(fp);
@@ -96,12 +95,53 @@ void populateGraph(void)
 
 void execBruteForce(void)
 {
+	Tour BestTour;
+	BestTour.cityTour[0] = 0;
+	BestTour.cityTour[1] = 1;
+	BestTour.cityTour[2] = 2;
+	BestTour.cityTour[3] = 3;
+	BestTour.cityTour[4] = 4;
+	int n = 5;
+	int m, k, p, q, i;
+	int nfact = fact(n);
+	double tmp;
+	printf("01234\n");
+	for(i = 1; i < nfact; i++)
+	{
+		m = n - 2;
+		while(BestTour.cityTour[m] > BestTour.cityTour[m+1])
+			m = m - 1;
+		k = n -1;
+		tmp = BestTour.cityTour[m];
+		BestTour.cityTour[m] = BestTour.cityTour[k];
+		BestTour.cityTour[k] = tmp;
+		p = m + 1;
+		q = n - 1;
+		while (p < q)
+		{
+			tmp = BestTour.cityTour[p];
+			BestTour.cityTour[p] = BestTour.cityTour[q];
+			BestTour.cityTour[q] = tmp;
+			p++;
+			q--;
+		}
+		printf("%d%d%d%d%d",BestTour.cityTour[0],BestTour.cityTour[1],BestTour.cityTour[2],BestTour.cityTour[3],BestTour.cityTour[4]);
+
+
+
+	}
+
+
+
 
 }
 
 int fact(int n)
 {
+	if (n == 1)
+		return 1;
 
+	return n * fact(n-1);
 }
 
 void swap(int p, int q)
