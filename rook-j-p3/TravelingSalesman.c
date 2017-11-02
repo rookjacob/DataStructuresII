@@ -100,7 +100,7 @@ void execBruteForce(void)
 
 	Tour TmpTour;
 	initTour(&TmpTour);
-	BESTTOUR = &TmpTour;
+	setTourEqual(&BESTTOUR, &TmpTour);
 	printTour(&TmpTour);
 	for(i = 1; i < nfact; i++)
 	{
@@ -122,7 +122,7 @@ void execBruteForce(void)
 		calTourWeight(&TmpTour);
 		printTour(&TmpTour);
 		if(compareTour(&TmpTour, BESTTOUR))
-			BESTTOUR = &TmpTour;
+			setTourEqual(&BESTTOUR, &TmpTour);
 
 
 	}
@@ -170,8 +170,8 @@ void setTourEqual(Tour *T1, Tour *T2)
 	int i;
 
 	for( i = 0; i < CITIES; i++)
-		T2->cityTour[i]= T1->cityTour[i];
-	T2->tourWeight = T1->tourWeight;
+		T1->cityTour[i]= T2->cityTour[i];
+	T1->tourWeight = T2->tourWeight;
 }
 
 void execGenetic(void)
