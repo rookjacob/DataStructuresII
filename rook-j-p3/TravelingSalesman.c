@@ -30,8 +30,9 @@ void HeapEnqueue(Tour *TourEnque, Tour Heap[], int *HeapSize)
 
 Tour *HeapDequeue(Tour Heap[], int *HeapSize)
 {
-	Tour *tmp = Heap[1];
-	Heap[1] = Heap[(*HeapSize)--];
+	Tour tmp;
+	setTourEqual(&tmp, &Heap[1]);
+	setTourEqual(&Heap[1], &Heap[(*HeapSize)--]);
 	percolateDown(Heap, HeapSize, 1);
 	return tmp;
 }
