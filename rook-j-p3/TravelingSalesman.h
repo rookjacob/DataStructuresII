@@ -90,6 +90,11 @@ double calTourWeight(Tour *T);
 
 /*
  *
+ */
+void printTour(Tour *T);
+
+/*
+ *
  *//*
 double calTimeDiff(timespec *End, timespec *Start);
 */

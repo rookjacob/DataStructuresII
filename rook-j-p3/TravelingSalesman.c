@@ -108,6 +108,18 @@ void execBruteForce(void)
 		m = n - 2;
 		while(TmpTour.cityTour[m] > TmpTour.cityTour[m+1])
 			m = m - 1;
+		k = n - 1;
+		while(TmpTour.cityTour[m] > TmpTour.cityTour[k])
+			k = k - 1;
+		swap(m, k, &TmpTour);
+		p = m + 1;
+		q = n - 1;
+		while(p < q)
+		{
+			swap(p, q, &TmpTour);
+			p++;
+			q--;
+		}
 
 
 	}
@@ -158,6 +170,17 @@ double calTourWeight(Tour *T)
 	weight += CITYGRAPH[T->cityTour[CITIES - 1][0]]; //From last city to starting city
 	T->tourWeight = weight;
 	return weight;
+}
+
+void printTour(Tour *T)
+{
+	int i;
+	printf("0->");
+	for(i = 0; i < CITIES; i++)
+	{
+		printf("%d->",T->cityTour[0]);
+	}
+	printf("\nWeight: %lf\n", T->tourWeight);
 }
 /*
 double calTimeDiff(struct timespec *End, struct timespec *Start)
