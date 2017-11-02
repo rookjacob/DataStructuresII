@@ -32,7 +32,7 @@ typedef struct Gen {
 	Tour TourGen;
 }Generation;
 
-Tour *BESTTOUR;
+Tour BESTTOUR;
 Generation *Gen1Head;
 Generation *Gen2Head;
 
@@ -82,6 +82,11 @@ void swap(int p, int q, Tour *TourSwap);
  *
  */
 int compareTour(Tour *Tour1, Tour *Tour2);
+
+/*
+ *
+ */
+void setTourEqual(Tour *T1, Tour *T2);
 
 /*
  *
