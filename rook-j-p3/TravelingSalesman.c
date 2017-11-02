@@ -70,13 +70,6 @@ void genNewWeight(void)
 
 }
 
-double genRandDouble(void)
-{
-	double DoubleMax = 100.0;
-	srand((unsigned int)time(NULL));
-	return ((double)rand()/(double)RAND_MAX) * DoubleMax;
-}
-
 void populateGraph(void)
 {
 	FILE *fp = fopen("cityWeights.txt", "r");

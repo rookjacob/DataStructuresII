@@ -51,10 +51,6 @@ void initTourVar(int numCities, int numTours, int numGen, double percentMut, int
  */
 void genNewWeight(void);
 
-/*
- *
- */
-double genRandDouble(void);
 
 /*
  *
