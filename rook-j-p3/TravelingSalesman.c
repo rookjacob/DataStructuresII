@@ -17,15 +17,15 @@
 void HeapEnqueue(Tour *TourEnque, Tour Heap[], int *HeapSize)
 {
 	TourEnque->tourWeight = calTourWeight(TourEnque);
-	setTourEqual(Heap[0], TourEnque);
+	setTourEqual(&Heap[0], TourEnque);
 	int index = ++(*HeapSize);
 
 	while(TourEnque->tourWeight < Heap[index/2].tourWeight)
 	{
-		setTourEqual(Heap[index], Heap[index/2]);
+		setTourEqual(&Heap[index], &Heap[index/2]);
 		index /=2;
 	}
-	setTourEqual(Heap[index], TourEnque);
+	setTourEqual(&Heap[index], TourEnque);
 }
 
 Tour *HeapDequeue(Tour Heap[], int *HeapSize)
