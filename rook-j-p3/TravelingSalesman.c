@@ -280,31 +280,38 @@ void populateGeneration(Tour Heap2[], int *Heap2Size, Tour Heap1[], int *Heap1Si
 {	//Store best Heap 1 into Heap 2
 	Tour BestTour = HeapDequeue(Heap1,Heap1Size) ;
 	Tour SecondBTour = HeapDequeue(Heap1,Heap1Size);
-	//setTourEqual(&BestTour, &HeapDequeue(Heap1,Heap1Size));
-	//setTourEqual(&SecondBTour, &HeapDequeue(Heap1,Heap1Size));
-
+	Heap2Size = 0;
 	HeapEnqueue(&BestTour,Heap2, Heap2Size);
 	HeapEnqueue(&SecondBTour,Heap2, Heap2Size);
 
 	int i;
-	Tour *tmp;
+	Tour tmp;
 	for(i = 0; i < MUTATIONS; i++)
 	{
-		tmp = &HeapDequeue(Heap1, Heap1Size);
-		tourMutate(tmp);
-		HeapEnqueue(tmp,Heap2, Heap2Size);
+		if(i%2)
+		{
+			setTourEqual(&tmp, &SecondBTour);
+			tourMutate(&tmp, 15,5);
+			HeapEnqueue(&tmp, Heap2, Heap2Size);
+		}
+		else
+		{
+			setTourEqual(&tmp, &BestTour);
+			tourMutate(&tmp, 5,3);
+			HeapEnqueue(&tmp, Heap2, Heap2Size);
+		}
+
 
 	}
-	while(!isHeapEmpty(Heap1Size))
+	while(Heap2Size < TOURSNGEN)
 	{
-		tmp = &HeapDequeue(Heap1, Heap1Size);
+		setTourEqual(&tmp, &HeapDequeue(Heap1, Heap1Size));
 
 	}
 }
 
-void tourMutate(Tour *Mut)
+void tourMutate(Tour *Mut, int MUTRANGEMAX, int MUTRANGEMIN)
 {
-	int MUTRANGEMAX = 9, MUTRANGEMIN = 3;
 	srand(time(CLOCK_REALTIME));
 	int i, MutRange = rand() % (MUTRANGEMAX - MUTRANGEMIN) + MUTRANGEMIN;
 
