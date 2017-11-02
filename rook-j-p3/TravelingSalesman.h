@@ -128,6 +128,11 @@ void tourMutate(Tour *Mut);
 /*
  *
  */
+void tourRandPerm(Tour *Perm);
+
+/*
+ *
+ */
 double calTourWeight(Tour *T);
 
 /*

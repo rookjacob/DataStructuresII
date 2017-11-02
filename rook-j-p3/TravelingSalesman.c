@@ -284,8 +284,9 @@ void populateGeneration(Tour **Heap2, int *Heap2Size, Tour **Heap1, int *Heap1Si
 		HeapEnqueue(tmp,Heap2, Heap2Size);
 
 	}
-	for(i = *Heap2Size; i < TOURSNGEN; i++)
+	while(!isHeapEmpty(Heap1Size))
 	{
+		tmp = HeapDequeue(Heap1, Heap1Size);
 
 	}
 }
@@ -300,6 +301,38 @@ void tourMutate(Tour *Mut)
 	{
 		swap(rand()%(CITIES - 2), rand()%(CITIES - 2), Mut);
 	}
+}
+
+void tourRandPerm(Tour *Perm)
+{
+	int n, m, k, p, q, i;
+	n = CITIES - 1;
+	int randMax = 50, randMin = 20;
+	srand(CLOCK_REALTIME);
+
+	Tour TmpTour;
+	setTourEqual(&TmpTour, Perm);
+	while(i < rand() % (randMax - randMin) + randMin)
+	{
+		m = n - 2;
+		while(TmpTour.cityTour[m] > TmpTour.cityTour[m+1])
+			m = m - 1;
+		k = n - 1;
+		while(TmpTour.cityTour[m] > TmpTour.cityTour[k])
+			k = k - 1;
+		swap(m, rand() % k, &TmpTour);
+		p = m + 1;
+		q = n - 1;
+		while(p < q)
+		{
+			swap(p, rand() % q, &TmpTour);
+			p++;
+			q--;
+		}
+		swap(rand() % (CITIES - 2), rand() % (CITIES - 2), &TmpTour);
+		//
+	}
+	setTourEqual(Perm, &TmpTour);
 }
 
 
