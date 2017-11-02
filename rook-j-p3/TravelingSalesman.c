@@ -52,6 +52,7 @@ void initTourVar(int numCities, int numTours, int numGen, double percentMut, int
 	populateGraph();
 
 
+
 }
 
 void genNewWeight(void)
@@ -79,11 +80,13 @@ void populateGraph(void)
 
 	for(i = 1; i < MAXCITIES; i++)
 	{
+		printf("\n");
 		for(j = 0; j < MAXCITIES; j++)
 		{
 			if(i == j)
 				continue;
 			fscanf(fp, "%lf", &tmp);
+			printf("%lf", tmp);
 			CITYGRAPH[i][j] = tmp;
 		}
 	}

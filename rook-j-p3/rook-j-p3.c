@@ -19,7 +19,7 @@ int main(void)
 	int numGen = 0;
 	double percentMut = 0;
 	char newGen;
-	/*
+
 	printf("Traveling Salesman Program\n\n");
 
 	printf("Please enter the number of cities to run.\n ");
@@ -37,8 +37,7 @@ int main(void)
 		startTravel(numCities, numTours, numGen, percentMut, 1);
 	else
 		startTravel(numCities, numTours, numGen, percentMut, 0);
-*/
-	genNewWeight();
+
 
 
 
