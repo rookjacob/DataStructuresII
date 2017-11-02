@@ -121,13 +121,13 @@ void execBruteForce(void)
 		}
 		calTourWeight(&TmpTour);
 		printTour(&TmpTour);
-		if(compareTour(&TmpTour, BESTTOUR))
+		if(compareTour(&TmpTour, &BESTTOUR))
 			setTourEqual(&BESTTOUR, &TmpTour);
 
 
 	}
 
-printTour(BESTTOUR);
+printTour(&BESTTOUR);
 
 }
 
