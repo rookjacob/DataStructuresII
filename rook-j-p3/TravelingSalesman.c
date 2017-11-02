@@ -76,7 +76,21 @@ double genRandDouble(void)
 
 void populateGraph(void)
 {
+	FILE *fp = fopen("cityWeights.txt", "r");
+	int i;
+	int j;
+	double tmp;
 
+	for(i = 1; i < MAXCITIES; i++)
+	{
+		for(j = 0; j < MAXCITIES; j++)
+		{
+			if(i == j)
+				continue;
+			fscanf(fp, "%lf", &tmp);
+			CITYGRAPH[i][j] = tmp;
+		}
+	}
 }
 
 void execBruteForce(void)
