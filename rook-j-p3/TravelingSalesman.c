@@ -85,7 +85,7 @@ void populateGraph(void)
 		{
 			if(i == j)
 				continue;
-			fscanf(fp, "%lf", &tmp);
+			fscanf(fp, "%.0lf ", &tmp);
 			printf("%lf", tmp);
 			CITYGRAPH[i][j] = tmp;
 		}
