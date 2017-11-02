@@ -305,7 +305,7 @@ void tourMutate(Tour *Mut)
 
 void tourRandPerm(Tour *Perm)
 {
-	int n, m, k, p, q, i;
+	int n, m, k, p, q, i = 0;
 	n = CITIES - 1;
 	int randMax = 50, randMin = 20;
 	srand(CLOCK_REALTIME);
@@ -330,7 +330,7 @@ void tourRandPerm(Tour *Perm)
 			q--;
 		}
 		swap(rand() % (CITIES - 2), rand() % (CITIES - 2), &TmpTour);
-		//
+		i++;
 	}
 	setTourEqual(Perm, &TmpTour);
 }
