@@ -305,6 +305,7 @@ void populateGeneration(Tour Heap2[], int *Heap2Size, Tour Heap1[], int *Heap1Si
 	}
 	while(*Heap2Size < TOURSNGEN)
 	{
+
 		setTourEqual(&tmp, HeapDequeue(Heap1, Heap1Size));
 
 	}
