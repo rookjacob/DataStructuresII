@@ -187,7 +187,7 @@ void printTour(Tour *T)
 	printf("0->");
 	for(i = 0; i < CITIES; i++)
 	{
-		printf("%d->",T->cityTour[0]);
+		printf("%d->",T->cityTour[i]);
 	}
 	printf("0\nWeight: %lf\n", T->tourWeight);
 }
