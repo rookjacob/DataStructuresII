@@ -100,7 +100,7 @@ void execBruteForce(void)
 	BestTour.cityTour[2] = 2;
 	BestTour.cityTour[3] = 3;
 	BestTour.cityTour[4] = 4;
-	int n = 5;
+	int n = 4;
 	int m, k, p, q, i;
 	int nfact = fact(n);
 	double tmp;
@@ -109,13 +109,12 @@ void execBruteForce(void)
 	{
 		m = n - 2;
 		while(BestTour.cityTour[m] > BestTour.cityTour[m+1])
-		{
 			m = m - 1;
 		k = n -1;
 		tmp = BestTour.cityTour[m];
 		BestTour.cityTour[m] = BestTour.cityTour[k];
 		BestTour.cityTour[k] = tmp;
-		}
+
 		p = m + 1;
 		q = n - 1;
 		while (p < q)
