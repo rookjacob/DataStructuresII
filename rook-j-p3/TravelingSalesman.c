@@ -396,9 +396,9 @@ void printResults(double BFTime, double GTime)
 			 "Time the brute force algorithm took:  %lf\n"
 			 "Cost from genetic algorithm:          %lf\n"
 			 "Time the genetic algorithm took:      %lf\n"
-			 "Percent of optimal the genetic algorithm produced: %lf%%",
+			 "Percent of optimal the genetic algorithm produced: %.2lf%%/n",
 			 CITIES, BESTTOUR.tourWeight, BFTime, BESTGENTOUR.tourWeight,
-			 GTime, GTime/BFTime * 100.0);
+			 GTime, BESTGENTOUR.tourWeight/BESTTOUR.tourWeight * 100.0);
 }
 
 double calTimeDiff(struct timespec *End, struct timespec *Start)
