@@ -290,7 +290,7 @@ void populateGeneration(Tour Heap2[], int *Heap2Size, Tour Heap1[], int *Heap1Si
 {	//Store best Heap 1 into Heap 2
 	Tour BestTour = HeapDequeue(Heap1,Heap1Size) ;
 	Tour SecondBTour = HeapDequeue(Heap1,Heap1Size);
-	Heap2Size = 0;
+	*Heap2Size = 0;
 	HeapEnqueue(&BestTour,Heap2, Heap2Size);
 	HeapEnqueue(&SecondBTour,Heap2, Heap2Size);
 
