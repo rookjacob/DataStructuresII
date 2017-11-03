@@ -1,0 +1,81 @@
+Please enter the number of cities to run.
+ 16
+Please enter the number of individual tours are in a given generation.
+1000
+Please enter the number of generations to run.
+1000
+Please enter the percentage of generations that should be comprised of mutations.
+50
+Will a new cityWeights.txt be generated? (y/n)
+n
+
+Results:
+Cities: 16
+Optimal Cost from brute force:        288.981629
+Time the brute force algorithm took:  152.844553
+Cost from genetic algorithm:          364.344024
+Time the genetic algorithm took:      29.559821
+Percent of optimal the genetic algorithm produced: 126.08%
+
+
+
+
+Please enter the number of cities to run.
+ 16
+Please enter the number of individual tours are in a given generation.
+1000
+Please enter the number of generations to run.
+1000
+Please enter the percentage of generations that should be comprised of mutations.
+50
+Will a new cityWeights.txt be generated? (y/n)
+n
+
+Results:
+Cities: 16
+Optimal Cost from brute force:        288.981629
+Time the brute force algorithm took:  152.844553
+Cost from genetic algorithm:          364.344024
+Time the genetic algorithm took:      29.559821
+Percent of optimal the genetic algorithm produced: 126.08%
+
+
+
+
+Please enter the number of cities to run.
+ 16
+Please enter the number of individual tours are in a given generation.
+1000
+Please enter the number of generations to run.
+1000
+Please enter the percentage of generations that should be comprised of mutations.
+50
+Will a new cityWeights.txt be generated? (y/n)
+n
+
+Results:
+Cities: 16
+Optimal Cost from brute force:        288.981629
+Time the brute force algorithm took:  152.844553
+Cost from genetic algorithm:          364.344024
+Time the genetic algorithm took:      29.559821
+Percent of optimal the genetic algorithm produced: 126.08%
+
+Please enter the number of cities to run.
+ 16
+Please enter the number of individual tours are in a given generation.
+1000
+Please enter the number of generations to run.
+1000
+Please enter the percentage of generations that should be comprised of mutations.
+50
+Will a new cityWeights.txt be generated? (y/n)
+n
+
+Results:
+Cities: 16
+Optimal Cost from brute force:        288.981629
+Time the brute force algorithm took:  152.844553
+Cost from genetic algorithm:          364.344024
+Time the genetic algorithm took:      29.559821
+Percent of optimal the genetic algorithm produced: 126.08%
