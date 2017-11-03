@@ -311,7 +311,7 @@ void populateGeneration(Tour Heap2[], int *Heap2Size, Tour Heap1[], int *Heap1Si
 			HeapEnqueue(&tmp, Heap2, Heap2Size);
 		}
 	}
-	while(*Heap2Size < TOURSNGEN)
+	while(*Heap2Size < TOURSNGEN - 1)
 	{
 		tourRandPerm(&tmp);
 		HeapEnqueue(&tmp, Heap2, Heap2Size);
