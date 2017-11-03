@@ -132,7 +132,6 @@ void populateGraph(void)
 
 	for(i = 0; i < MAXCITIES; i++)
 	{
-		printf("\n");
 		for(j = 0; j < MAXCITIES; j++)
 		{
 			if(i == j)
@@ -396,7 +395,7 @@ void printResults(double BFTime, double GTime)
 			 "Time the brute force algorithm took:  %lf\n"
 			 "Cost from genetic algorithm:          %lf\n"
 			 "Time the genetic algorithm took:      %lf\n"
-			 "Percent of optimal the genetic algorithm produced: %.2lf%%/n",
+			 "Percent of optimal the genetic algorithm produced: %.2lf%% \n",
 			 CITIES, BESTTOUR.tourWeight, BFTime, BESTGENTOUR.tourWeight,
 			 GTime, BESTGENTOUR.tourWeight/BESTTOUR.tourWeight * 100.0);
 }
