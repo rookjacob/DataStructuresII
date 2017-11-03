@@ -148,8 +148,8 @@ void populateGraph(void)
 
 void initGeneration(void)
 {
-	GenHeap1 = (Tour *)malloc((GENERATIONS + 1)* sizeof(Tour ));
-	GenHeap2 = (Tour *)malloc((GENERATIONS + 1) * sizeof(Tour ));
+	GenHeap1 = (Tour *)malloc((TOURSNGEN + 1)* sizeof(Tour ));
+	GenHeap2 = (Tour *)malloc((TOURSNGEN + 1) * sizeof(Tour ));
 	GenHeap1Size = 0;
 	GenHeap2Size = 0;
 	int n, m, k, p, q;
@@ -311,7 +311,7 @@ void populateGeneration(Tour Heap2[], int *Heap2Size, Tour Heap1[], int *Heap1Si
 			HeapEnqueue(&tmp, Heap2, Heap2Size);
 		}
 	}
-	while(*Heap2Size < TOURSNGEN - 1)
+	while(*Heap2Size < TOURSNGEN )
 	{
 		tourRandPerm(&tmp);
 		HeapEnqueue(&tmp, Heap2, Heap2Size);
