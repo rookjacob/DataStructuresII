@@ -1,5 +1,11 @@
 /*
- * @file TravelingSalesman.h
+ * @file TravelingSalesman.h	File contains all of the function prototypes used
+ * for the Traveling Salesman problem. This file contains two algorithms that are
+ * used to try to determine the best path to visit all cities once, return to the
+ * first, with the lowest cost possible. There is a brute fore method that just
+ * test every single permutation of the city arrangement which is (n - 1)! complex
+ * and a genetic algorithm that create generations of tours, determines the best,
+ * mutate the best, and repeat for a number of times.
  *
  * @author Jacob Rook
  * @date 11/02/2017
@@ -242,7 +248,15 @@ void execGenetic(void);
 void populateGeneration(Tour Heap2[], int *Heap2Size, Tour Heap1[], int *Heap1Size);
 
 /*
+ * @brief 	tourMutate		Function Mutates a given tour by swapping the cities
  *
+ * @param	Mut				Tour to be mutated
+ *
+ * @param	MUTRANGEMAX		Variable to help determine how mutated a mutation will
+ * be. The higher the max, the more the tour is mutated.
+ *
+ * @param	MUTRANGEMIN		Variable to help determine how mutated a mutation will
+ * be. The higher the min, the more the tour is mutated.
  */
 void tourMutate(Tour *Mut, int MUTRANGEMAX, int MUTRANGEMIN);
 
@@ -252,17 +266,33 @@ void tourMutate(Tour *Mut, int MUTRANGEMAX, int MUTRANGEMIN);
 void tourRandPerm(Tour *Perm);
 
 /*
+ * @brief	calTourWeight	Function calculates the weight of a given tour by
+ * adding up the weights between each city. Function store the weight into the
+ * structures variable and also returns the weight;
  *
+ * @param	T				Tour to be calculated
+ *
+ * @return	double			Returns the weight of the given tour.
  */
 double calTourWeight(Tour *T);
 
 /*
+ * @brief	printTour		Prints the passed tour with the cities linearly
+ * aligned separated by arrows. Also print the tour weight.
  *
+ * @param	T				Tour to be printed
  */
 void printTour(Tour *T);
 
 /*
+ * @brief 	caltimeDiff		Calculates the time difference between two timespec
+ * variables and returns the difference as a double
  *
+ * @param	End				End time used to calculate the difference
+ *
+ * @param	Start			Start time used to calculate the difference
+ *
+ * @return	double			Returns the double representation of the difference
  */
 double calTimeDiff(struct timespec *End, struct timespec *Start);
 //END OF TRAVELINGSALESMAN FUNCTIONS
