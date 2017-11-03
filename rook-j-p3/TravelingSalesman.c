@@ -85,8 +85,7 @@ void startTravel(int numCities, int numTours, int numGen, double percentMut)
 	clock_gettime(CLOCK_REALTIME, &TimeEnd);
 	GTime = calTimeDiff(&TimeEnd, &TimeStart);
 
-	printf("Brute Force took %lfs", BFTime);
-	printf("Genetic took     %lfs", GTime);
+	printResults(BFTime, GTime);
 
 
 }
@@ -276,6 +275,15 @@ void execGenetic(void)
 			condition = 1;
 		}
 	}
+	if(compareTour(&GenHeap1[1], &GenHeap2[1]))
+	{
+		setTourEqual(&BESTGENTOUR, &GenHeap1[1]);
+	}
+	else
+	{
+		setTourEqual(&BESTGENTOUR, &GenHeap2[1]);
+
+	}
 }
 
 void populateGeneration(Tour Heap2[], int *Heap2Size, Tour Heap1[], int *Heap1Size)
@@ -305,9 +313,8 @@ void populateGeneration(Tour Heap2[], int *Heap2Size, Tour Heap1[], int *Heap1Si
 	}
 	while(*Heap2Size < TOURSNGEN)
 	{
-
-		setTourEqual(&tmp, HeapDequeue(Heap1, Heap1Size));
-
+		tourRandPerm(&tmp);
+		HeapEnqueue(&tmp, Heap2, Heap2Size);
 	}
 }
 
@@ -348,7 +355,7 @@ void tourRandPerm(Tour *Perm)
 			p++;
 			q--;
 		}
-		swap(rand() % (CITIES - 2), rand() % (CITIES - 2), &TmpTour);
+		tourMutate(&TmpTour, 6,2);
 		i++;
 	}
 	setTourEqual(Perm, &TmpTour);
@@ -379,6 +386,19 @@ void printTour(Tour *T)
 		printf("%d->",T->cityTour[i]);
 	}
 	printf("0\nWeight: %lf\n", T->tourWeight);
+}
+
+void printResults(double BFTime, double GTime)
+{
+	printf("\nResults:\n"
+			 "Cities: %d\n"
+			 "Optimal Cost from brute force:        %lf\n"
+			 "Time the brute force algorithm took:  %lf\n"
+			 "Cost from genetic algorithm:          %lf\n"
+			 "Time the genetic algorithm took:      %lf\n"
+			 "Percent of optimal the genetic algorithm produced: %lf%%",
+			 CITIES, BESTTOUR.tourWeight, BFTime, BESTGENTOUR.tourWeight,
+			 GTime, GTime/BFTime * 100.0);
 }
 
 double calTimeDiff(struct timespec *End, struct timespec *Start)

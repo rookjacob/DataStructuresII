@@ -46,6 +46,7 @@ typedef struct T {
 }Tour;
 
 Tour BESTTOUR;		//Best tour found by the brute force algorithm
+Tour BESTGENTOUR;	//Best tour founf by the genetic algorithm
 
 /*
  * Two Tour pointers to simulate a heap for a given generation. Memory will be
@@ -287,6 +288,14 @@ double calTourWeight(Tour *T);
  * @param	T				Tour to be printed
  */
 void printTour(Tour *T);
+
+/*
+ * @brief	printResults	Prints the results of the simulation to the output.
+ * That is the number of cities run, optimal cost from brute force, time the
+ * brute force algorithm took, cost from the genetic algorithm, time it took to
+ * run, and the percent of optimal that the genetic algorithm produced.
+ */
+void printResults(double BFTime, double GTime);
 
 /*
  * @brief 	caltimeDiff		Calculates the time difference between two timespec
