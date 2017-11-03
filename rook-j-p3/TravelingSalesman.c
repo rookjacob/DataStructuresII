@@ -389,7 +389,8 @@ void printTour(Tour *T)
 
 void printResults(double BFTime, double GTime)
 {
-	printf("\nResults:\n"
+	FILE *fp = fopen("out")
+	fprintf("\nResults:\n"
 			 "Cities: %d\n"
 			 "Optimal Cost from brute force:        %lf\n"
 			 "Time the brute force algorithm took:  %lf\n"
