@@ -1,5 +1,10 @@
 /*
- * @file rook-j-p3.c
+ * @file rook-j-p3.c	File contains the main function for Project 3, the traveling
+ * salesman problem. The main function asked the user for the desired input and
+ * sends that information to the Traveling Salesman algorithms. The main function
+ * asks the user if they want to generate a new cityWeights.txt if so the genNewWight
+ * function is called. There is not input validation, so any invalid input will crash
+ * the program.
  *
  * @author Jacob Rook
  * @date 11/02/2017

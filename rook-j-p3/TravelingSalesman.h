@@ -261,7 +261,11 @@ void populateGeneration(Tour Heap2[], int *Heap2Size, Tour Heap1[], int *Heap1Si
 void tourMutate(Tour *Mut, int MUTRANGEMAX, int MUTRANGEMIN);
 
 /*
+ * @breif	tourRandPerm	Function generates random tour permutations
+ * by use of a mixture of the permutation algorithm the brute force algorithm
+ * uses and use of the rand() function.
  *
+ * @param	Perm			Tour to store the random permutation.
  */
 void tourRandPerm(Tour *Perm);
 

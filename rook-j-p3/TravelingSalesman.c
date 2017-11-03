@@ -1,5 +1,7 @@
 /*
- * @file TravelingSalesman.c
+ * @file TravelingSalesman.c		File contains all of the function definitions
+ * used for the Traveling Salesman problem. Detail descriptions of the functions
+ * can be found in the TrabelingSalesman.h file.
  *
  * @author Jacob Rook
  * @date 11/02/2017
@@ -297,11 +299,9 @@ void populateGeneration(Tour Heap2[], int *Heap2Size, Tour Heap1[], int *Heap1Si
 		else
 		{
 			setTourEqual(&tmp, &BestTour);
-			tourMutate(&tmp, 5,3);
+			tourMutate(&tmp, 5 + i,3 + i);
 			HeapEnqueue(&tmp, Heap2, Heap2Size);
 		}
-
-
 	}
 	while(*Heap2Size < TOURSNGEN)
 	{
@@ -330,7 +330,7 @@ void tourRandPerm(Tour *Perm)
 	srand(CLOCK_REALTIME);
 
 	Tour TmpTour;
-	setTourEqual(&TmpTour, Perm);
+	initTour(&TmpTour);
 	while(i < rand() % (randMax - randMin) + randMin)
 	{
 		m = n - 2;
