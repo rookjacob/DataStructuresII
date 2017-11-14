@@ -24,10 +24,10 @@ int main(void)
 	while(1)
 	{
 		printf("\n"
-				" Option		Choice\n"
-				"    1			Implement a Monte Carlo Simulation\n"
+				" Option			Choice\n"
+				"    1          Implement a Monte Carlo Simulation\n"
 				"    2          Implement a Simple Monte Carlo Algorithm\n"
-				"	 3 			Exit Program\n"
+				"    3          Exit Program\n"
 				"\n"
 				"Please enter an Option: ");
 
