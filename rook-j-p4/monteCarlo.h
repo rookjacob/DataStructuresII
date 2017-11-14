@@ -1,8 +1,10 @@
 /*
- * monteCarlo.h
+ * @file monteCarlo.h
  *
- *  Created on: Nov 13, 2017
- *      Author: rookj
+ * @author Jacob Rook
+ * @date 11/16/2017
+ * @info Course COP 4534
+ * Project 4
  */
 
 #ifndef MONTECARLO_H_
