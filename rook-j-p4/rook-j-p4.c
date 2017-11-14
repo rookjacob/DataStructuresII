@@ -19,7 +19,7 @@ int main(void)
 	scanf("\n%c", &cond);
 	if(cond == 'Y' || cond == 'y')
 	{
-		//Call function
+		txt2Binary();
 	}
 	while(1)
 	{
@@ -33,10 +33,10 @@ int main(void)
 		switch(cond)
 		{
 		case '1':
-			//Call function
+			MCSimulation();
 			break;
 		case '2':
-			//Call function
+			MCAlgorithm();
 			break;
 		case '3':
 			return 0;
