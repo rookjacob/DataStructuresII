@@ -13,4 +13,21 @@
 #include<stdio.h>
 
 
+/*
+ *
+ */
+void txt2Binary(void);
+
+
+/*
+ *
+ */
+void MCSimulation(void);
+
+/*
+ *
+ */
+void MCAlgorithm(void);
+
+
 #endif /* MONTECARLO_H_ */
