@@ -9,6 +9,9 @@
 
 #include<stdio.h>
 
+#include"monteCarlo.h"
+
+
 int main(void)
 {
 	char cond;

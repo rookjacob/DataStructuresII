@@ -10,6 +10,7 @@
 #ifndef MONTECARLO_H_
 #define MONTECARLO_H_
 
+#include<stdio.h>
 
 
 #endif /* MONTECARLO_H_ */
