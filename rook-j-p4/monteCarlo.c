@@ -15,7 +15,7 @@ void txt2Binary(void)
 	int i;
 
 	FILE *fp = fopen("SimParameters.txt", "r");
-	FILE *fp2 = fopen("SimParameters.bin", "wb");
+	FILE *fp2 = fopen("SimParameters.dat", "wb");
 
 	while(fp || fscanf(fp, "%d", &i) != EOF )
 	{
@@ -34,10 +34,10 @@ void MCSimulation(void)
 
 	FILE *fp;
 
-	fp = fopen("SimParameters.bin", "rb");
+	fp = fopen("SimParameters.dat", "rb");
 	if(!fp)
 	{
-		printf("Unable to open SimParameters.bin!");
+		printf("Unable to open SimParameters.dat!");
 		exit(1);
 	}
 	fread(&numSim, sizeof(int), 1, fp);
@@ -49,7 +49,7 @@ void MCSimulation(void)
 
 		if (fread(freqlist, sizeof(int), numCat, fp) != (numCat * sizeof(int)) )
 		{
-			printf("Error with reading SimParameters.bin!");
+			printf("Error with reading SimParameters.dat!");
 			exit(1);
 		}
 		fread(&numEvent, sizeof(int), 1, fp);
