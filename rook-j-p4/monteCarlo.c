@@ -49,7 +49,7 @@ void MCSimulation(void)
 		printf("numCat = %d\n", numCat);
 		freqlist = (int *)realloc(freqlist, numCat * sizeof(int));
 
-		if (fread(freqlist, sizeof(int), numCat, fp) != (numCat * sizeof(int)) )
+		if (fread(&freqlist, sizeof(int), numCat, fp) != (numCat * sizeof(int)) )
 		{
 			printf("Error with reading SimParameters.dat!");
 			//exit(1);
