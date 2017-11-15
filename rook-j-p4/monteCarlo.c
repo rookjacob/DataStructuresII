@@ -101,12 +101,32 @@ double calExpectation(int numCategories, int frequencyList[])
 
 int generateRandEvent(int numCategories, int intervalList[])
 {
+	srand(time(NULL));
 
+	int i = 0;
+
+	int randNum = rand() % intervalList[numCategories - 1];
+	while(i < numCategories)
+	{
+		if(randNum > intervalList[i])
+			continue;
+		else
+			break;
+	}
+	return i;
 }
 
 void printSimResults(int numEvents, double simResult, double expectedResult)
 {
-
+	double error = (simResult - expectedResult)/expectedResult;
+	if(error < 0)
+		error = error * -1;
+	printf("\n"
+			"N: %d\n"
+			"Simulated result: %.2lf\n"
+			"Expected value: %.2lf\n"
+			"Error percent: %0.3lf\n",
+			numEvents, simResult, expectedResult, error );
 }
 
 void MCAlgorithm(void)
