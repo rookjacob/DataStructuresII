@@ -19,7 +19,7 @@ void txt2Binary(void)
 
 	while(fp || fscanf(fp, "%d", &i) != EOF )
 	{
-		fprintf(fp2, "%d", i);
+		fwrite(&i, sizeof(int), fp2);
 	}
 	fclose(fp);
 	fclose(fp2);
