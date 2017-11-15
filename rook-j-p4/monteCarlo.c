@@ -19,14 +19,20 @@ void txt2Binary(void)
 
 	while(fp || fscanf(fp, "%d", &i) != EOF )
 	{
-		fprintf(fp2, "%d", &i);
+		fprintf(fp2, "%d", i);
 	}
 
 }
 
 void MCSimulation(void)
 {
-	printf("MCSimulation\n");
+	int i;
+
+	int numSim, numCat, numEvent;
+
+
+
+
 }
 
 void MCAlgorithm(void)
