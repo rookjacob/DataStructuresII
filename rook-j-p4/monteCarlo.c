@@ -27,7 +27,7 @@ void txt2Binary(void)
 
 void MCSimulation(void)
 {
-	int i;
+	int i, j;
 
 	int numSim, numCat, numEvent;
 	int *freqlist = NULL;
@@ -49,11 +49,13 @@ void MCSimulation(void)
 		printf("numCat = %d\n", numCat);
 		freqlist = (int *)realloc(freqlist, numCat * sizeof(int));
 
-		if (fread(&freqlist, sizeof(int), numCat, fp) != (numCat * sizeof(int)) )
+		for(j = 0; j < numCat; i++)
 		{
-			printf("Error with reading SimParameters.dat!");
-			//exit(1);
+		fread(freqlist + j, sizeof(int), numCat, fp);
+		printf("j = %d  %d", j, *(freqlist +j));
+
 		}
+
 		fread(&numEvent, sizeof(int), 1, fp);
 		printf("numEvent = %d\n", numEvent);
 		printf("Simulation %d\n", i+1);
