@@ -11,6 +11,7 @@
 #define MONTECARLO_H_
 
 #include<stdio.h>
+#include<stdlib.h>
 
 
 /*
@@ -23,6 +24,12 @@ void txt2Binary(void);
  *
  */
 void MCSimulation(void);
+
+/*
+ *
+ */
+void runMCSim(int numSimulations, int numCategories, int frequencyList[], int numEvents);
+
 
 /*
  *
