@@ -28,8 +28,12 @@ void MCSimulation(void);
 /*
  *
  */
-void runMCSim(int numSimulations, int numCategories, int frequencyList[], int numEvents);
+void runMCSim(int numCategories, int frequencyList[], int numEvents);
 
+/*
+ *
+ */
+double calExpectation(int numCategories, int frequencyList[]);
 
 /*
  *

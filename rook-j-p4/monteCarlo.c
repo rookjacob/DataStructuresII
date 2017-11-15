@@ -54,13 +54,18 @@ void MCSimulation(void)
 		fread(&numEvent, sizeof(int), 1, fp);
 
 		printf("Simulation %d\n", i+1);
-		runMCSim(numSim, numCat, freqlist, numEvent);
+		runMCSim(numCat, freqlist, numEvent);
 	}
 
 
 }
 
-void runMCSim(int numSimulations, int numCategories, int frequencyList[], int numEvents)
+void runMCSim(int numCategories, int frequencyList[], int numEvents)
+{
+
+}
+
+double calExpectation(int numCategories, int frequencyList[])
 {
 
 }
