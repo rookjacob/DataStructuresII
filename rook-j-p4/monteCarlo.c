@@ -47,7 +47,7 @@ void MCSimulation(void)
 	{
 		fread(&numCat, sizeof(int), 1 , fp);
 		printf("numCat = %d\n", numCat);
-		freqlist = realloc(freqlist, numCat * sizeof(int));
+		freqlist = (int *)realloc(freqlist, numCat * sizeof(int));
 
 		if (fread(freqlist, sizeof(int), numCat, fp) != (numCat * sizeof(int)) )
 		{
