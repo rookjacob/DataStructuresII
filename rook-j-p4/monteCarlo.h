@@ -12,6 +12,7 @@
 
 #include<stdio.h>
 #include<stdlib.h>
+#include<time.h>
 
 
 /*
@@ -34,6 +35,16 @@ void runMCSim(int numCategories, int frequencyList[], int numEvents);
  *
  */
 double calExpectation(int numCategories, int frequencyList[]);
+
+/*
+ *
+ */
+int generateRandEvent(int numCategories, int intervalList[]);
+
+/*
+ *
+ */
+void printSimResults(int numEvents, double simResult, double expectedResult);
 
 /*
  *

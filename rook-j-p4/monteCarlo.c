@@ -62,10 +62,49 @@ void MCSimulation(void)
 
 void runMCSim(int numCategories, int frequencyList[], int numEvents)
 {
+	int i, j;
+	double expectation = calExpectation(numCategories, frequencyList);
+	double simExpectation;
+	int sumFrequencies = -1;
+	int sumRandEvents = 0;
 
+	for(i = 0; i < numCategories; i++)
+	{
+		sumFrequencies = sumFrequencies + frequencyList[i];
+		frequencyList[i] = sumFrequencies;
+	}
+	for(i = 0; i < numEvents; i++)
+	{
+		sumRandEvents = sumRandEvents + generateRandEvent(numCategories, frequencyList);
+	}
+	simExpectation = (double)sumRandEvents/ (double)numEvents;
+	printSimResults(numEvents, simExpectation, expectation);
 }
 
 double calExpectation(int numCategories, int frequencyList[])
+{
+	int i;
+	double expectation = 0;
+	int sumFrequencies = 0;
+
+	for(i = 0; i< numCategories; i++)
+	{
+		sumFrequencies = sumFrequencies + frequencyList[i];
+	}
+
+	for(i = 0; i < numCategories; i++)
+	{
+		expectation = expectation + (double)i * (double)(frequencyList[i])/ (double)(sumFrequencies);
+	}
+	return expectation;
+}
+
+int generateRandEvent(int numCategories, int intervalList[])
+{
+
+}
+
+void printSimResults(int numEvents, double simResult, double expectedResult)
 {
 
 }
