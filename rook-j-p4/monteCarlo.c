@@ -50,7 +50,7 @@ void MCSimulation(void)
 		if (fread(freqlist, sizeof(int), numCat, fp) != (numCat * sizeof(int)) )
 		{
 			printf("Error with reading SimParameters.dat!");
-			exit(1);
+			//exit(1);
 		}
 		fread(&numEvent, sizeof(int), 1, fp);
 
