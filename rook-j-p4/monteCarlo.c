@@ -12,7 +12,16 @@
 
 void txt2Binary(void)
 {
-	printf("txt2Binary\n");
+	int i;
+
+	FILE *fp = fopen("SimParameters.txt", "r");
+	FILE *fp2 = fopen("SimParameters.bin", "wb");
+
+	while(fp || fscanf(fp, "%d", &i) != EOF )
+	{
+		fprintf(fp2, "%d", &i);
+	}
+
 }
 
 void MCSimulation(void)
