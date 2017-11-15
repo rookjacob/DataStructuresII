@@ -17,7 +17,7 @@ void txt2Binary(void)
 	FILE *fp = fopen("SimParameters.txt", "r");
 	FILE *fp2 = fopen("SimParameters.dat", "wb");
 
-	while(fp || fscanf(fp, "%d", &i) != EOF )
+	while(fp && fscanf(fp, "%d", &i) != EOF )
 	{
 		printf("%d\n" ,i);
 	}
