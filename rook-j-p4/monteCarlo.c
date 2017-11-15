@@ -41,10 +41,12 @@ void MCSimulation(void)
 		exit(1);
 	}
 	fread(&numSim, sizeof(int), 1, fp);
+	printf("numSim = %d\n", numSim);
 
 	for(i = 0; i < numSim; i++)
 	{
 		fread(&numCat, sizeof(int), 1 , fp);
+		printf("numCat = %d\n", numCat);
 		freqlist = realloc(freqlist, numCat * sizeof(int));
 
 		if (fread(freqlist, sizeof(int), numCat, fp) != (numCat * sizeof(int)) )
@@ -53,7 +55,7 @@ void MCSimulation(void)
 			//exit(1);
 		}
 		fread(&numEvent, sizeof(int), 1, fp);
-
+		printf("numEvent = %d\n", numEvent);
 		printf("Simulation %d\n", i+1);
 		runMCSim(numCat, freqlist, numEvent);
 	}
