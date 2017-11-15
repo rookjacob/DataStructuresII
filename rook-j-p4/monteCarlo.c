@@ -62,7 +62,7 @@ void MCSimulation(void)
 
 void runMCSim(int numCategories, int frequencyList[], int numEvents)
 {
-	int i, j;
+	int i;
 	double expectation = calExpectation(numCategories, frequencyList);
 	double simExpectation;
 	int sumFrequencies = -1;
