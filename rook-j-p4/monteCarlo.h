@@ -51,5 +51,11 @@ void printSimResults(int numEvents, double simResult, double expectedResult);
  */
 void MCAlgorithm(void);
 
+/*
+ *
+ */
+void readConfig(int *numBatch, int *numItems, int *badBatches, int *badItems, int *sampledItems, int file);
+
+
 
 #endif /* MONTECARLO_H_ */

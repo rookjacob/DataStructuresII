@@ -136,9 +136,52 @@ void printSimResults(int numEvents, double simResult, double expectedResult)
 
 void MCAlgorithm(void)
 {
-	printf("MCAlgorithm\n");
+	int i;
+	int numBatch, numItems, badBatches, badItems, sampledItems;
+	for(i = 1; i <= 4; i++)
+	{
+		readConfig(&numBatch, &numItems, &badBatches, &badItems, &sampledItems, i);
+
+	}
+
 }
 
+void readConfig(int *numBatch, int *numItems, int *badBatches, int *badItems, int *sampledItems, int file)
+{
+	FILE *fp;
+	switch(i)
+	{
+	case 1:
+		fp = fopen("c1.txt", "r");
+		break;
+	case 2:
+		fp = fopen("c2.txt", "r");
+		break;
+	case 3:
+		fp = fopen("c3.txt", "r");
+		break;
+	case 4:
+		fp = fopen("c4.txt", "r");
+		break;
+	default:
+		printf("Invalid file chosen\n");
+		exit(1);
+	}
+
+	fscanf(fp, "%d", &numBatch);
+	fscanf(fp, "%d", &numItems);
+	fscanf(fp, "%d", &badBatches);
+	fscanf(fp, "%d", &badItems);
+	fscanf(fp, "%d", &sampledItems);
+
+	fclose(fp);
+
+}
+
+void generateDataSets(int *numBatch, int *numItems, int *badBatches, int *badItems, int *sampledItems)
+{
+
+}
 
 
 
