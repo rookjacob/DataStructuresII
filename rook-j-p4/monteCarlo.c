@@ -21,7 +21,8 @@ void txt2Binary(void)
 	{
 		fprintf(fp2, "%d", i);
 	}
-
+	fclose(fp);
+	fclose(fp2);
 }
 
 void MCSimulation(void)
@@ -56,7 +57,7 @@ void MCSimulation(void)
 		printf("Simulation %d\n", i+1);
 		runMCSim(numCat, freqlist, numEvent);
 	}
-
+	fclose(fp);
 
 }
 
