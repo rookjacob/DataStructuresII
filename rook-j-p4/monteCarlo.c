@@ -199,7 +199,7 @@ void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 				}
 				else					//Good Item
 				{
-					fprintf("g\n");
+					fprintf(fp, "g\n");
 				}
 			}
 		}
