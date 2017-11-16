@@ -1,5 +1,5 @@
 rook-j-p4 : rook-j-p4.o monteCarlo.o
-	gcc -o rook-j-p4 rook-j-p4.o monteCarlo.o
+	gcc -o rook-j-p4 rook-j-p4.o monteCarlo.o -lm
 monteCarlo.o : monteCarlo.h monteCarlo.c
 	gcc -c -g -Wall monteCarlo.c
 rook-j-p4.o : rook-j-p4.c monteCarlo.h

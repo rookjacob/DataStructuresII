@@ -15,6 +15,7 @@
 #include<time.h>
 #include<unistd.h>
 #include<sys/wait.h>
+#include<math.h>
 
 typedef struct Data {
 	int numBatches;
