@@ -181,7 +181,7 @@ void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 	int badItemCount = 0, badBatchCount= 0;
 	char filename[32];
 	FILE *fp;
-
+	execlp("if", "[" ,"!", "-d", "ds_Files", "]", "then", "mkdir", "ds_Files", ";", "fi" , (char *)NULL);
 	printf("\n"
 			"Generating Data Sets:\n");
 	for(i = 1; i <= numBatch; i++)
