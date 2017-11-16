@@ -106,7 +106,7 @@ double calExpectation(int numCategories, int frequencyList[])
 
 int generateRandEvent(int numCategories, int intervalList[])
 {
-	srand(time(NULL));
+	srand(time(CLOCK_REALTIME));
 
 	int i = 0;
 
