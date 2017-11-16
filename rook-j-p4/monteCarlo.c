@@ -137,7 +137,6 @@ void printSimResults(int numEvents, double simResult, double expectedResult)
 void MCAlgorithm(void)
 {
 	int i;
-	int numBatch, numItems, badBatches, badItems, sampledItems;
 	DataSet dataArray[4];
 
 	FILE *fp;
