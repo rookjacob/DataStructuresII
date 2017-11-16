@@ -70,7 +70,7 @@ void runMCSim(int numCategories, int frequencyList[], int numEvents)
 	int i;
 	double expectation = calExpectation(numCategories, frequencyList);
 	double simExpectation;
-	int sumFrequencies = -1;
+	int sumFrequencies = 0;
 	int sumRandEvents = 0;
 
 	for(i = 0; i < numCategories; i++)
@@ -111,7 +111,7 @@ int generateRandEvent(int numCategories, int intervalList[])
 	int i = 0;
 
 	int randNum = rand() % intervalList[numCategories - 1];
-	while(i < numCategories)
+	while(i < numCategories - 1)
 	{
 		if(randNum > intervalList[i])
 			continue;
