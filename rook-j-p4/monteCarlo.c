@@ -146,35 +146,29 @@ void MCAlgorithm(void)
 
 }
 
-void readConfig(int *numBatch, int *numItems, int *badBatches, int *badItems, int *sampledItems, int file)
+void readConfig(int *numBatch, int *numItems, int *badBatches, int *badItems, int *sampledItems, int fileNumber)
 {
 	FILE *fp;
-	switch(i)
-	{
-	case 1:
-		fp = fopen("c1.txt", "r");
-		break;
-	case 2:
-		fp = fopen("c2.txt", "r");
-		break;
-	case 3:
-		fp = fopen("c3.txt", "r");
-		break;
-	case 4:
-		fp = fopen("c4.txt", "r");
-		break;
-	default:
-		printf("Invalid file chosen\n");
-		exit(1);
-	}
+	char filename[16];
 
-	fscanf(fp, "%d", &numBatch);
-	fscanf(fp, "%d", &numItems);
-	fscanf(fp, "%d", &badBatches);
-	fscanf(fp, "%d", &badItems);
-	fscanf(fp, "%d", &sampledItems);
+	snprintf(filename, sizeof(filename), "c%d.txt", fileNumber);
+	fp = fopen(filename, "r");
+
+	fscanf(fp, "%d", numBatch);
+	fscanf(fp, "%d", numItems);
+	fscanf(fp, "%d", badBatches);
+	fscanf(fp, "%d", badItems);
+	fscanf(fp, "%d", sampledItems);
 
 	fclose(fp);
+
+	printf("Running:\n"
+			"	Number of Batches of Items:                        %4d\n"
+			"	Number of Items in Each Batch:                     %4d\n"
+			"	Percentage of Batches Containing Bad Items:        %4d%%\n"
+			"	Percentage of Items that are bad in a bad set:     %4d%%\n"
+			"	Items Sampled from Each Set:                       %4d\n",
+			*numBatch, *numItems, *badBatches, *badItems, *sampledItems);
 
 }
 
