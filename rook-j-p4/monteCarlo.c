@@ -121,7 +121,7 @@ int generateRandEvent(int numCategories, int intervalList[])
 
 void printSimResults(int numEvents, double simResult, double expectedResult)
 {
-	double error = (simResult - expectedResult)/expectedResult;
+	double error = (simResult - expectedResult)/expectedResult * 100.0;
 	if(error < 0)
 		error = error * -1;
 	printf("\n"
