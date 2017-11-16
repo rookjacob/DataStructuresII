@@ -145,7 +145,7 @@ void MCAlgorithm(void)
 
 	for(i = 0; i < 4; i++)
 	{
-		snprintf(filename, sizeof(filename), "c%d.txt", i +1 );
+		snprintf(filename, sizeof(filename), "c%d.txt", i + 1 );
 		fp = fopen(filename, "r");
 
 		readConfig(&dataArray[i], fp);
@@ -188,42 +188,7 @@ void generateDataSets(DataSet *data)
 	char filename[32];
 	FILE *fp;
 
-	/*
-	pid_t pid;
 
-	pid = fork();
-	if(!pid)
-	{
-		pid = fork();
-		if(!pid)
-		{
-			execlp("if", "if" ,"!", "-d", "ds_Files",  (char *)NULL);
-
-
-		}
-		else
-		{
-			waitpid(pid, NULL, 0);
-			pid = fork();
-			if(!pid)
-			{
-			execlp("then","then", "mkdir", "ds_Files", ";" , (char *)NULL);
-			}
-			else
-			{
-				waitpid(pid, NULL, 0);
-				execlp("fi", "fi", (char *)NULL);
-			}
-		}
-		printf("Error!");
-		exit(1);
-
-	}
-	else
-	{
-		waitpid(pid, NULL, 0);
-	}
-	*/
 	printf("\n"
 			"Generating Data Sets:\n");
 	for(i = 1; i <= data->numBatches; i++)
