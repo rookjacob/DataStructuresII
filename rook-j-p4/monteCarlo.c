@@ -149,8 +149,8 @@ void MCAlgorithm(void)
 		fclose(fp);
 		generateDataSets(&dataArray[i]);
 		analyzeDataSets(&dataArray[i]);
-		printSummary(dataArray, 4);
 	}
+	printSummary(dataArray, 4);
 
 }
 
