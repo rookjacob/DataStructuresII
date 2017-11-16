@@ -179,7 +179,7 @@ void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 	int i, j;
 	int randNum;
 	int badItemCount = 0, badBatchCount= 0;
-	char filename[16];
+	char filename[32];
 	FILE *fp;
 
 	printf("\n"
