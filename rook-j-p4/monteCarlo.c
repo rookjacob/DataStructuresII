@@ -190,7 +190,7 @@ void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 		pid = fork();
 		if(!pid)
 		{
-			execlp("if", "if", "[" ,"!", "-d", "ds_Files", "]", (char *)NULL);
+			execlp("if", "if" ,"!", "-d", "ds_Files",  (char *)NULL);
 
 
 		}
