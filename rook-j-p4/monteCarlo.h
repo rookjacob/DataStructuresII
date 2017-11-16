@@ -16,6 +16,17 @@
 #include<unistd.h>
 #include<sys/wait.h>
 
+typedef struct Data {
+	int numBatches;
+	int numItems;
+	int perBadBatch;
+	int perBadItem;
+	int sampledItems;
+	int simBadBatches;
+	int simBadBatchesDet;
+}DataSet;
+
+
 /*
  *
  */
