@@ -46,13 +46,11 @@ void MCSimulation(void)
 	for(i = 0; i < numSim; i++)
 	{
 		fread(&numCat, sizeof(int), 1 , fp);
-		printf("numCat = %d\n", numCat);
 		freqlist = (int *)realloc(freqlist, numCat * sizeof(int));
 
 		for(j = 0; j < numCat; j++)
 		{
 		fread(freqlist + j, sizeof(int), 1, fp);
-		printf("j = %d  %d", j, *(freqlist +j));
 
 		}
 
