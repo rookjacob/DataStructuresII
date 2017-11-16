@@ -151,6 +151,8 @@ void MCAlgorithm(void)
 		readConfig(&dataArray[i], fp);
 		fclose(fp);
 		generateDataSets(&dataArray[i]);
+		analyzeDataSets(&dataArray[i]);
+		printSummary(dataArray, 4);
 	}
 
 }
@@ -215,7 +217,7 @@ void generateDataSets(DataSet *data)
 					fprintf(fp, "g\n");
 				}
 			}
-			printf("Create Bad Set Batch #%3d, totBad = %4d Total = %5d PercentBad = %.2lf\n",
+			printf("\tCreate Bad Set Batch #%3d, totBad = %4d Total = %5d PercentBad = %.2lf\n",
 					i, badItemCount, data->numItems,
 					(double)badItemCount/ (double)data->numItems * 100.0);
 
@@ -234,6 +236,35 @@ void generateDataSets(DataSet *data)
 
 }
 
+void analyzeDataSets(DataSet *data)
+{
+
+}
+
+void printSummary(DataSet *data, int size )
+{
+	int i;
+	double PF = pow()
+	for(i = 0; i < size; i++)
+	{
+
+		printf("\n"
+				"Run %d:\n"
+				"Number of Batches of Items:                   \n"
+				"Number of Items in Each Batch:                \n"
+				"Percentage of Batches Containing Bad Items:   \n"
+				"Percentage of Items that are Bad in a Bad Set:    \n"
+				"Items Sampled from Each Set:                      \n"
+				"Base = %.2lf Exponent = %d\n"
+				"P(Failure to Detect Bad Item) = %lf\n"
+				"P(Batch is Good) = %lf\n"
+				"Percentage of Bad Batches Detected = %d%%\n",
+				(data + i)->numBatches, (data + i)->numItems, (data + i)->perBadBatch,
+				(data + i)->perBadItem, (data + i)->sampledItems,
+				1.0 -(double)(data + i)->perBadItem, (data + i)->sampledItems,
+				)
+	}
+}
 
 
 
