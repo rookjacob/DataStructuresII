@@ -189,7 +189,7 @@ void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 		randNum = rand()%100;
 		badItemCount = 0;
 
-		snprintf(filename, sizeof(filename), "ds%d.txt", i);
+		snprintf(filename, sizeof(filename), "ds_Files/ds%d.txt", i);
 		fp = fopen(filename, "w");
 
 		if(randNum < badBatches)//Bad Batch
