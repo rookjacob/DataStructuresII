@@ -244,7 +244,7 @@ void printSummary(DataSet *data, int size )
 	double PF;
 	for(i = 0; i < size; i++)
 	{
-		PF = pow(1.0 -(double)(data + i)->perBadItem,(data + i)->sampledItems );
+		PF = pow(1.0 -(double)(data + i)->perBadItem / 100.0,(data + i)->sampledItems );
 		printf("\n"
 				"Run %d:\n"
 				"Number of Batches of Items:                      %4d\n"
