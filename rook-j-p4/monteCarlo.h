@@ -56,6 +56,10 @@ void MCAlgorithm(void);
  */
 void readConfig(int *numBatch, int *numItems, int *badBatches, int *badItems, int *sampledItems, int file);
 
+/*
+ *
+ */
+void generateDataSets(int numBatch, int numItems, int badBatches, int badItems);
 
 
 #endif /* MONTECARLO_H_ */

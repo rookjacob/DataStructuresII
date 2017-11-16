@@ -141,7 +141,7 @@ void MCAlgorithm(void)
 	for(i = 1; i <= 4; i++)
 	{
 		readConfig(&numBatch, &numItems, &badBatches, &badItems, &sampledItems, i);
-
+		generateDataSets(numBatch, numItems, badBatches, badItems);
 	}
 
 }
@@ -178,9 +178,47 @@ void readConfig(int *numBatch, int *numItems, int *badBatches, int *badItems, in
 
 }
 
-void generateDataSets(int *numBatch, int *numItems, int *badBatches, int *badItems, int *sampledItems)
+void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 {
+	srand(time(NULL));
 
+	int i, j;
+	int randNum;
+	char filename[16];
+	FILE *fp;
+
+	for(i = 1; i <= numBatch; i++)
+	{
+		randNum = rand()%100;
+
+		snprintf(filename, sizeof(filename), "ds%d.txt", i);
+		fp = fopen(filename, "w");
+
+		if(randNum < badBatches)//Bad Batch
+		{
+			for(j = 0; j< numItems; j++)
+			{
+				randNum = rand()%100;
+				if(randNum < badItems)	//Bad Item
+				{
+					fprintf(fp, "b\n");
+				}
+				else					//Good Item
+				{
+					fprintf("g\n");
+				}
+			}
+		}
+		else	//Good Batch
+		{
+			for(j = 0; j < numItems; j++)
+			{
+				fprintf(fp, "g\n");
+			}
+		}
+
+		fclose(fp);
+	}
 }
 
 
