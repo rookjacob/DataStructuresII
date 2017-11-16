@@ -182,6 +182,7 @@ void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 	char filename[32];
 	FILE *fp;
 
+	/*
 	pid_t pid;
 
 	pid = fork();
@@ -216,6 +217,7 @@ void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 	{
 		waitpid(pid, NULL, 0);
 	}
+	*/
 	printf("\n"
 			"Generating Data Sets:\n");
 	for(i = 1; i <= numBatch; i++)
