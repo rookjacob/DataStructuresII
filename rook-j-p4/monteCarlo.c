@@ -220,8 +220,9 @@ void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 		}
 
 		fclose(fp);
-		printf("Total Bad Sets = %3d", badBatchCount);
 	}
+	printf("Total Bad Sets = %3d", badBatchCount);
+
 }
 
 
