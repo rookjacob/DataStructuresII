@@ -117,6 +117,7 @@ int generateRandEvent(int numCategories, int intervalList[])
 			continue;
 		else
 			break;
+		i++;
 	}
 	return i;
 }
