@@ -163,11 +163,11 @@ void readConfig(int *numBatch, int *numItems, int *badBatches, int *badItems, in
 	fclose(fp);
 
 	printf("Running:\n"
-			"	Number of Batches of Items:                        %4d\n"
-			"	Number of Items in Each Batch:                     %4d\n"
-			"	Percentage of Batches Containing Bad Items:        %4d%%\n"
-			"	Percentage of Items that are bad in a bad set:     %4d%%\n"
-			"	Items Sampled from Each Set:                       %4d\n",
+			"\tNumber of Batches of Items:                        %4d\n"
+			"\tNumber of Items in Each Batch:                     %4d\n"
+			"\tPercentage of Batches Containing Bad Items:        %4d%%\n"
+			"\tPercentage of Items that are bad in a bad set:     %4d%%\n"
+			"\tItems Sampled from Each Set:                       %4d\n",
 			*numBatch, *numItems, *badBatches, *badItems, *sampledItems);
 
 }
@@ -178,23 +178,29 @@ void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 
 	int i, j;
 	int randNum;
+	int badItemCount = 0, badBatchCount= 0;
 	char filename[16];
 	FILE *fp;
 
+	printf("\n"
+			"Generating Data Sets:\n");
 	for(i = 1; i <= numBatch; i++)
 	{
 		randNum = rand()%100;
+		badItemCount = 0;
 
 		snprintf(filename, sizeof(filename), "ds%d.txt", i);
 		fp = fopen(filename, "w");
 
 		if(randNum < badBatches)//Bad Batch
 		{
+			badBatchCount++;
 			for(j = 0; j< numItems; j++)
 			{
 				randNum = rand()%100;
 				if(randNum < badItems)	//Bad Item
 				{
+					badItemCount++;
 					fprintf(fp, "b\n");
 				}
 				else					//Good Item
@@ -202,6 +208,8 @@ void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 					fprintf(fp, "g\n");
 				}
 			}
+			printf("Create Bad Set Batch #%3d, totBad = %4d Total = %5d PercentBad = %.2lf\n",
+					i, badItemCount, numItems, (double)badItemCount/ (double)numItems * 100.0);
 		}
 		else	//Good Batch
 		{
@@ -212,6 +220,7 @@ void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 		}
 
 		fclose(fp);
+		printf("Total Bad Sets = %3d", badBatchCount);
 	}
 }
 
