@@ -74,5 +74,15 @@ void readConfig(DataSet *data, FILE *fp);
  */
 void generateDataSets(DataSet *data);
 
+/*
+ *
+ */
+void analyzeDataSets(DataSet *data);
+
+/*
+ *
+ */
+void printSummary(DataSet *data, int size );
+
 
 #endif /* MONTECARLO_H_ */
