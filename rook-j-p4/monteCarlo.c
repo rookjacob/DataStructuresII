@@ -128,7 +128,7 @@ void printSimResults(int numEvents, double simResult, double expectedResult)
 			"N: %d\n"
 			"Simulated result: %.2lf\n"
 			"Expected value: %.2lf\n"
-			"Error percent: %0.3lf\n",
+			"Error percent: %.3lf\n",
 			numEvents, simResult, expectedResult, error );
 }
 
