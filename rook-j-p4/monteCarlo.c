@@ -138,29 +138,33 @@ void MCAlgorithm(void)
 {
 	int i;
 	int numBatch, numItems, badBatches, badItems, sampledItems;
-	for(i = 1; i <= 4; i++)
+	DataSet dataArray[4];
+
+	FILE *fp;
+	char filename[16];
+
+	for(i = 0; i < 4; i++)
 	{
-		readConfig(&numBatch, &numItems, &badBatches, &badItems, &sampledItems, i);
-		generateDataSets(numBatch, numItems, badBatches, badItems);
+		snprintf(filename, sizeof(filename), "c%d.txt", i +1 );
+		fp = fopen(filename, "r");
+
+		readConfig(&dataArray[i], fp);
+		fclose(fp);
+		generateDataSets(&dataArray[i]);
 	}
 
 }
 
-void readConfig(int *numBatch, int *numItems, int *badBatches, int *badItems, int *sampledItems, int fileNumber)
+void readConfig(DataSet *data, FILE *fp)
 {
-	FILE *fp;
-	char filename[16];
 
-	snprintf(filename, sizeof(filename), "c%d.txt", fileNumber);
-	fp = fopen(filename, "r");
 
-	fscanf(fp, "%d", numBatch);
-	fscanf(fp, "%d", numItems);
-	fscanf(fp, "%d", badBatches);
-	fscanf(fp, "%d", badItems);
-	fscanf(fp, "%d", sampledItems);
+	fscanf(fp, "%d", data->numBatches);
+	fscanf(fp, "%d", data->numItems);
+	fscanf(fp, "%d", data->perBadBatch);
+	fscanf(fp, "%d", data->perBadItem);
+	fscanf(fp, "%d", data->sampledItems);
 
-	fclose(fp);
 
 	printf("Running:\n"
 			"\tNumber of Batches of Items:                        %4d\n"
@@ -168,17 +172,19 @@ void readConfig(int *numBatch, int *numItems, int *badBatches, int *badItems, in
 			"\tPercentage of Batches Containing Bad Items:        %4d%%\n"
 			"\tPercentage of Items that are bad in a bad set:     %4d%%\n"
 			"\tItems Sampled from Each Set:                       %4d\n",
-			*numBatch, *numItems, *badBatches, *badItems, *sampledItems);
+			data->numBatches, data->numItems, data->perBadBatch,
+			data->perBadItem, data->sampledItems);
 
 }
 
-void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
+void generateDataSets(DataSet *data)
 {
 	srand(time(NULL));
 
 	int i, j;
 	int randNum;
-	int badItemCount = 0, badBatchCount= 0;
+	int badItemCount = 0;//, badBatchCount= 0;
+	data->simBadBatches = 0;
 	char filename[32];
 	FILE *fp;
 
@@ -220,7 +226,7 @@ void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 	*/
 	printf("\n"
 			"Generating Data Sets:\n");
-	for(i = 1; i <= numBatch; i++)
+	for(i = 1; i <= data->numBatches; i++)
 	{
 		randNum = rand()%100;
 		badItemCount = 0;
@@ -228,13 +234,13 @@ void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 		snprintf(filename, sizeof(filename), "ds_Files/ds%d.txt", i);
 		fp = fopen(filename, "w");
 
-		if(randNum < badBatches)//Bad Batch
+		if(randNum < data->perBadBatch)//Bad Batch
 		{
-			badBatchCount++;
-			for(j = 0; j< numItems; j++)
+			data->simBadBatches++;
+			for(j = 0; j< data->numItems; j++)
 			{
 				randNum = rand()%100;
-				if(randNum < badItems)	//Bad Item
+				if(randNum < data->perBadItem)	//Bad Item
 				{
 					badItemCount++;
 					fprintf(fp, "b\n");
@@ -245,11 +251,13 @@ void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 				}
 			}
 			printf("Create Bad Set Batch #%3d, totBad = %4d Total = %5d PercentBad = %.2lf\n",
-					i, badItemCount, numItems, (double)badItemCount/ (double)numItems * 100.0);
+					i, badItemCount, data->numItems,
+					(double)badItemCount/ (double)data->numItems * 100.0);
+
 		}
 		else	//Good Batch
 		{
-			for(j = 0; j < numItems; j++)
+			for(j = 0; j < data->numItems; j++)
 			{
 				fprintf(fp, "g\n");
 			}
@@ -257,7 +265,7 @@ void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 
 		fclose(fp);
 	}
-	printf("Total Bad Sets = %3d\n\n", badBatchCount);
+	printf("Total Bad Sets = %3d\n\n", data->simBadBatches);
 
 }
 
