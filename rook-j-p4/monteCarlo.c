@@ -161,11 +161,11 @@ void readConfig(DataSet *data, FILE *fp)
 {
 
 
-	fscanf(fp, "%d", data->numBatches);
-	fscanf(fp, "%d", data->numItems);
-	fscanf(fp, "%d", data->perBadBatch);
-	fscanf(fp, "%d", data->perBadItem);
-	fscanf(fp, "%d", data->sampledItems);
+	fscanf(fp, "%d", &data->numBatches);
+	fscanf(fp, "%d", &data->numItems);
+	fscanf(fp, "%d", &data->perBadBatch);
+	fscanf(fp, "%d", &data->perBadItem);
+	fscanf(fp, "%d", &data->sampledItems);
 
 
 	printf("Running:\n"
