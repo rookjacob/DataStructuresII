@@ -187,7 +187,8 @@ void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 	pid = fork();
 	if(!pid)
 	{
-		execlp("if", "[" ,"!", "-d", "ds_Files", "]", "then", "mkdir", "ds_Files", ";", "fi" , (char *)NULL);
+
+		execlp("if", "if", "[" ,"!", "-d", "ds_Files", "]", "then", "mkdir", "ds_Files", ";", "fi" , (char *)NULL);
 		printf("Error");
 		exit(1);
 	}
