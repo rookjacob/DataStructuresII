@@ -258,7 +258,7 @@ void printSummary(DataSet *data, int size )
 				"P(Failure to Detect Bad Item) = %lf\n"
 				"P(Batch is Good) = %lf\n"
 				"Percentage of Bad Batches Detected = %d%%\n",
-				(data + i)->numBatches, (data + i)->numItems, (data + i)->perBadBatch,
+				i, (data + i)->numBatches, (data + i)->numItems, (data + i)->perBadBatch,
 				(data + i)->perBadItem, (data + i)->sampledItems,
 				1.0 -(double)(data + i)->perBadItem, (data + i)->sampledItems,
 				PF, 1.0 - PF, (data +i)->simBadBatchesDet);
