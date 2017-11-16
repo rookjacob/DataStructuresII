@@ -51,7 +51,7 @@ void MCSimulation(void)
 
 		for(j = 0; j < numCat; i++)
 		{
-		fread(freqlist + j, sizeof(int), numCat, fp);
+		fread(freqlist + j, sizeof(int), 1, fp);
 		printf("j = %d  %d", j, *(freqlist +j));
 
 		}
@@ -244,17 +244,17 @@ void analyzeDataSets(DataSet *data)
 void printSummary(DataSet *data, int size )
 {
 	int i;
-	double PF = pow()
+	double PF;
 	for(i = 0; i < size; i++)
 	{
-
+		PF = pow(1.0 -(double)(data + i)->perBadItem,(data + i)->sampledItems );
 		printf("\n"
 				"Run %d:\n"
-				"Number of Batches of Items:                   \n"
-				"Number of Items in Each Batch:                \n"
-				"Percentage of Batches Containing Bad Items:   \n"
-				"Percentage of Items that are Bad in a Bad Set:    \n"
-				"Items Sampled from Each Set:                      \n"
+				"Number of Batches of Items:                      %4d\n"
+				"Number of Items in Each Batch:                   %4d\n"
+				"Percentage of Batches Containing Bad Items:      %4d\n"
+				"Percentage of Items that are Bad in a Bad Set:   %4d\n"
+				"Items Sampled from Each Set:                     %4d\n"
 				"Base = %.2lf Exponent = %d\n"
 				"P(Failure to Detect Bad Item) = %lf\n"
 				"P(Batch is Good) = %lf\n"
@@ -262,7 +262,7 @@ void printSummary(DataSet *data, int size )
 				(data + i)->numBatches, (data + i)->numItems, (data + i)->perBadBatch,
 				(data + i)->perBadItem, (data + i)->sampledItems,
 				1.0 -(double)(data + i)->perBadItem, (data + i)->sampledItems,
-				)
+				PF, 1.0 - PF, (data +i)->simBadBatchesDet);
 	}
 }
 
