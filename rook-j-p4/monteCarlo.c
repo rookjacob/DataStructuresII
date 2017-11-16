@@ -191,6 +191,10 @@ void generateDataSets(int numBatch, int numItems, int badBatches, int badItems)
 		printf("Error");
 		exit(1);
 	}
+	else
+	{
+		waitpid(pid, NULL, 0);
+	}
 	printf("\n"
 			"Generating Data Sets:\n");
 	for(i = 1; i <= numBatch; i++)
