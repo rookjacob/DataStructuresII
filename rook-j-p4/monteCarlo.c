@@ -111,12 +111,9 @@ int generateRandEvent(int numCategories, int intervalList[])
 	int i = 0;
 
 	int randNum = rand() % intervalList[numCategories - 1];
-	while(i < numCategories - 1)
+	while(randNum > intervalList[i] && i < numCategories - 1)
 	{
-		if(randNum > intervalList[i])
-			continue;
-		else
-			break;
+
 		i++;
 	}
 	return i;
