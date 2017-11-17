@@ -242,7 +242,7 @@ void analyzeDataSets(DataSet *data)
 
 	int randNum;
 
-	printf("Analyzing Data Sets:\n")
+	printf("Analyzing Data Sets:\n");
 
 	for(i = 0; i < data->numBatches; i++)
 	{
