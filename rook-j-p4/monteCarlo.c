@@ -261,7 +261,7 @@ void analyzeDataSets(DataSet *data)
 			if(tmp == 'b')
 			{
 				data->simBadBatchesDet++;
-				printf("\tBatch #%3d is Bad")
+				printf("\tBatch #%3d is Bad", i + 1);
 			}
 
 		}
