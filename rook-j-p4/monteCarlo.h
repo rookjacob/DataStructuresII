@@ -1,5 +1,8 @@
 /*
- * @file monteCarlo.h
+ * @file monteCarlo.h	This file contains all of the functions to execute the
+ * Monte Carlo simulation and algorithm. The user just has to call either MCSimulation
+ * or MCAlgorithm depending on what they want to do and the functions will handle
+ * the rest. Further detail of the process can be found above the function prototypes.
  *
  * @author Jacob Rook
  * @date 11/16/2017
@@ -17,6 +20,24 @@
 #include<sys/wait.h>
 #include<math.h>
 
+/*
+ * @brief	DataSet		This structure is used to store all the information for
+ * the Monte Carlo algorithm for a given simulation.
+ *
+ * @var		numBatches	Number of Batches in the simulation
+ *
+ * @var		numItems	Number of items in a batch
+ *
+ * @var		perBadBath	Percent of bad batches in the simulation
+ *
+ * @var		perBadItems	Percent of bad items in a bad batch
+ *
+ * @var		sampledItems	Number of items sampled in the simulation
+ *
+ * @var		simBadBatches	Number of bad batches made in the simulation
+ *
+ * @var		simBadBatchesDet	Number of detected bad batches in the simulation
+ */
 typedef struct Data {
 	int numBatches;
 	int numItems;

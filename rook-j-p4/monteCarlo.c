@@ -1,5 +1,7 @@
 /*
- * @file monteCarlo.c
+ * @file monteCarlo.c 	This file contains all of the function definitons for the
+ * Monte Carlo simulation and algorithm. Details of the functions can be found in ]
+ * the monteCarlo.h file.
  *
  * @author Jacob Rook
  * @date 11/16/2017
@@ -144,7 +146,7 @@ void MCAlgorithm(void)
 		readConfig(&dataArray[i], fp);
 		fclose(fp);
 		generateDataSets(&dataArray[i]);
-		analyzeDataSets(&dataArray[i]);
+		//analyzeDataSets(&dataArray[i]);
 	}
 	printSummary(dataArray, 4);
 

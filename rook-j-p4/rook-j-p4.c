@@ -1,5 +1,10 @@
 /*
- * @file rook-j-p4.c
+ * @file rook-j-p4.c	This file contains the main file for the Monte Carlo to call]
+ * the functions for the Monte Carlo simulation and algorithm. The main function will
+ * ask the user if they would like to convert the SimParameters.txt to a binary file
+ * if so, the program will call txt2Binary to do just that. Then the program will ask
+ * if the user will want to do the Monte Carlo simulation or algorithm continuously
+ * until the exit program option is chosen.
  *
  * @author Jacob Rook
  * @date 11/16/2017
