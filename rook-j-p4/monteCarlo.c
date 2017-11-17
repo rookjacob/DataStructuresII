@@ -252,7 +252,7 @@ void analyzeDataSets(DataSet *data)
 		{
 			do
 			{
-			randNum = rand() % (data->numItems * 2); //Multiply by 2 to compensate for newline characters
+			randNum = rand() % (data->numItems ); //Multiply by 2 to compensate for newline characters
 			fseek(fp, randNum * sizeof(char), SEEK_SET);
 			fread(&tmp, sizeof(char), 1, fp );
 
