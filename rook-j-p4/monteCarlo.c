@@ -231,7 +231,41 @@ void generateDataSets(DataSet *data)
 
 void analyzeDataSets(DataSet *data)
 {
+	data->simBadBatchesDet = 0;
+	int i, j;
 
+	FILE *fp;
+	char filename[32];
+	char tmp;
+
+	srand(CLOCK_REALTIME);
+
+	int randNum;
+
+	printf("Analyzing Data Sets:\n")
+
+	for(i = 0; i < data->numBatches; i++)
+	{
+		snprintf(filename, sizeof(filename), "ds_Files/ds%d.txt", i + 1);
+		fp = fopen(filename, "r");
+		for(j = 0; j < data->sampledItems; j++)
+		{
+			do
+			{
+			randNum = rand() % (data->numItems * 2); //Multiply by 2 to compensate for newline characters
+			fseek(fp, randNum * sizeof(char), SEEK_SET);
+			fread(&tmp, sizeof(char), 1, fp );
+
+			}while(tmp == '\n');
+
+			if(tmp == 'b')
+			{
+				data->simBadBatchesDet++;
+				printf("\tBatch #%3d is Bad")
+			}
+
+		}
+	}
 }
 
 void printSummary(DataSet *data, int size )
