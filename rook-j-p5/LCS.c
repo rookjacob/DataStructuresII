@@ -1,8 +1,11 @@
 /*
- * LCS.c
+ * @file LCS.c
  *
- *  Created on: Dec 4, 2017
- *      Author: rookj
+ * @author Jacob Rook
+ * @date 12/07/2017
+ * @info Course COP 4534
+ * Project 5
  */
 
+#include"LSC.h"
 
