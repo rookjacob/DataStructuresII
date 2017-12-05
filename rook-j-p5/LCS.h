@@ -12,6 +12,31 @@
 #ifndef LCS_H_
 #define LCS_H_
 
+#include<stdio.h>
+#include<string.h>
+
+
+#define MAX_LCS_LENGTH 50
+
+int **LCS_C;
+int Seq1_Length;
+int Seq2_Length;
+
+/*
+ *
+ */
+int LCS_Length_C(char *Seq1, char *Seq2);
+
+/*
+ *
+ */
+void allocate_LCS_C(int r, int c);
+
+/*
+ *
+ */
+int print_LCS(void);
+
 
 
 #endif /* LCS_H_ */
