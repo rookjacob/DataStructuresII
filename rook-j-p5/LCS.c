@@ -7,5 +7,5 @@
  * Project 5
  */
 
-#include"LSC.h"
+#include"LCS.h"
 
