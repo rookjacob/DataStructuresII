@@ -13,18 +13,13 @@
 
 int main(void)
 {
-	char file1[] = {"twoSequnces.txt"};
-	char file2[] = {"multipleSequences.txt"};
-	FILE *fp;
-
-	char tmp_LCS_1[MAX_LCS_LENGTH];
-	char tmp_LCS_2[MAX_LCS_LENGTH];
 
 
+	LCS_Length_C("twoSequences.txt");
+	print_LCS();
 
 
-
-
+	LCS_Multiple_Length("multipleSequence.txt");
 
 
 

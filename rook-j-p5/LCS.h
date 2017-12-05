@@ -25,7 +25,7 @@ int Seq2_Length;
 /*
  *
  */
-int LCS_Length_C(char *Seq1, char *Seq2);
+int LCS_Length_C(char *FileName);
 
 /*
  *
@@ -36,6 +36,11 @@ void allocate_LCS_C(int r, int c);
  *
  */
 int print_LCS(void);
+
+/*
+ *
+ */
+void LCS_Multiple_Length(char *FileName);
 
 
 
