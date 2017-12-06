@@ -109,10 +109,10 @@ void initXY(char *FileName)
 void allocate_LCS_C(void)
 {
 	int i;
-	LCS_C = (int **)malloc((X_LENGTH + 1) * sizeof(int *));
+	LCS_C = (int **)malloc((X_LENGTH + 2) * sizeof(int *));
 	for(i = 0; i < X_LENGTH; i++)
 	{
-		LCS_C[i] = (int *)malloc((Y_LENGTH + 1) * sizeof(int));
+		LCS_C[i] = (int *)malloc((Y_LENGTH + 2) * sizeof(int));
 	}
 	for(i = 1; i <= X_LENGTH ; i++)
 	{
