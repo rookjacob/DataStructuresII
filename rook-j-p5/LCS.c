@@ -151,6 +151,10 @@ void deallocate_LCS_Var(void)
 
 void print_LCS(int i, int j)
 {
+	if(i <= 0 || j <= 0)
+	{
+		return;
+	}
 	if(LCS_X[i] == LCS_Y[j])
 	{
 		print_LCS(i-1, j-1);
