@@ -16,7 +16,6 @@ int main(void)
 
 
 	LCS_Length_C("twoSequences.txt");
-	print_LCS();
 
 
 	LCS_Multiple_Length("multipleSequence.txt");
