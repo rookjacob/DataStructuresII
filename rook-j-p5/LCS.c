@@ -79,6 +79,7 @@ void initXY(char *FileName)
 	int string1_Length = strlen(string1);
 	int string2_Length = strlen(string2);
 	string1[string1_Length] = '\0';
+
 	string2[string2_Length] = '\0';
 
 
