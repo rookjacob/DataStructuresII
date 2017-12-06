@@ -145,7 +145,7 @@ void deallocate_LCS_Var(void)
 }
 
 
-void print_LCS(void)
+void print_LCS(int i, int j)
 {
 
 }
