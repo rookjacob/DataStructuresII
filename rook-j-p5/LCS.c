@@ -105,6 +105,7 @@ void initXY(char *FileName)
 	}
 	LCS_X[0] = ' ';
 	LCS_Y[0] = ' ';
+	printf("%s\n%s\n", LCS_X, LCS_Y);
 
 }
 
