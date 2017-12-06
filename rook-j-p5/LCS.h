@@ -53,7 +53,7 @@ void deallocate_LCS_Var(void);
 /*
  *
  */
-int print_LCS(void);
+void print_LCS(void);
 
 /*
  *

@@ -21,7 +21,7 @@ int LCS_Length_C(char *FileName)
 	{
 		for(j = 1; j <= Y_LENGTH; j++)
 		{
-			if(LCS_X[i] == LCS_C[j])
+			if(LCS_X[i] == LCS_Y[j])
 			{
 				LCS_C[i][j] = LCS_C[i-1][j-1] + 1;
 			}
@@ -39,7 +39,7 @@ int LCS_Length_C(char *FileName)
 
 
 	i = LCS_C[X_LENGTH][Y_LENGTH];
-	deallocat_LCS_Var();
+	deallocate_LCS_Var();
 	return i;
 }
 
@@ -142,7 +142,7 @@ void deallocate_LCS_Var(void)
 }
 
 
-int print_LCS(void)
+void print_LCS(void)
 {
 
 }
