@@ -18,6 +18,7 @@
 
 
 #define MAX_LCS_LENGTH 1000
+#define MAX_NUM_LCS 50
 
 int **LCS_C;
 
@@ -27,8 +28,7 @@ char *LCS_Y;
 int X_LENGTH;
 int Y_LENGTH;
 
-int Seq1_Length;
-int Seq2_Length;
+int NUM_LCS;
 
 /*
  *
@@ -59,6 +59,11 @@ void print_LCS(int i, int j);
  *
  */
 void LCS_Multiple_Length(char *FileName);
+
+/*
+ *
+ */
+void init_Interval_List(char *FileName);
 
 
 

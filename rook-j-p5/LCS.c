@@ -182,7 +182,9 @@ void LCS_Multiple_Length(char *FileName)
 
 void init_Interval_List(char *FileName)
 {
-
+	FILE *fp;
+	fp = fopen(FileName, "r");
+	int i = fscanf(fp, "%d",&NUM_LCS);
 }
 
 
