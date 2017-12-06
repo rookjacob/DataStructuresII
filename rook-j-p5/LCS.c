@@ -38,8 +38,9 @@ int LCS_Length_C(char *FileName)
 			}
 		}
 	}
-
-	print_LCS();
+	printf("LCS: ");
+	print_LCS(X_LENGTH,Y_LENGTH);
+	printf("\n");
 
 	i = LCS_C[X_LENGTH][Y_LENGTH];
 	deallocate_LCS_Var();
@@ -164,7 +165,7 @@ void print_LCS(int i, int j)
 
 void LCS_Multiple_Length(char *FileName)
 {
-
+	printf("LCS_Multiple\n");
 }
 
 
