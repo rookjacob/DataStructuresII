@@ -103,6 +103,8 @@ void initXY(char *FileName)
 		strcpy(LCS_Y + 1, string2);
 		Y_LENGTH = string2_Length - 1;
 	}
+	LCS_X[0] = ' ';
+	LCS_Y[0] = ' ';
 
 }
 
@@ -130,7 +132,7 @@ void deallocate_LCS_Var(void)
 	int i;
 	if(LCS_X)
 	{
-		free(LCS_X+1);
+		free(LCS_X);
 	}
 	if(LCS_Y)
 	{
