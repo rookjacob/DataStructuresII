@@ -130,7 +130,7 @@ void deallocate_LCS_Var(void)
 	int i;
 	if(LCS_X)
 	{
-		free(LCS_X);
+		free((void *)LCS_X);
 	}
 	if(LCS_Y)
 	{
