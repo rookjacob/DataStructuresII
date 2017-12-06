@@ -21,13 +21,13 @@ int LCS_Length_C(char *FileName)
 	{
 		for(j = 1; j <= Y_LENGTH; j++)
 		{
-			if(LCS_X[i] == LCS_[j])
+			if(LCS_X[i] == LCS_C[j])
 			{
-				LCS_C[i,j] = LCS_C[i-1, j-1] + 1;
+				LCS_C[i][j] = LCS_C[i-1][j-1] + 1;
 			}
 			else
 			{
-				if(LCS_C[i-1,j] >= LCS_C[i, j -1])
+				if(LCS_C[i-1][j] >= LCS_C[i][j -1])
 				{
 
 				}
