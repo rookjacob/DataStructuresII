@@ -114,11 +114,11 @@ void allocate_LCS_C(void)
 	{
 		LCS_C[i] = (int *)malloc((Y_LENGTH + 1) * sizeof(int));
 	}
-	for(i = 0; i < X_LENGTH + 1; i++)
+	for(i = 1; i <= X_LENGTH ; i++)
 	{
 		LCS_C[i][0] = 0;
 	}
-	for(i = 0; i < Y_LENGTH + 1; i++)
+	for(i = 0; i <= Y_LENGTH; i++)
 	{
 		LCS_C[0][i] = 0;
 	}
