@@ -50,11 +50,9 @@ void initXY(char *FileName)
 
 	if(string1_Length > string2_Length)
 	{
-		int *tmp = (int *)malloc((string2_Length + 1) * sizeof(int));
-		LCS_X = tmp;
+		LCS_X = (char *)malloc((string2_Length + 1) * sizeof(char));
+		LCS_Y = (char *)malloc((string1_Length + 1) * sizeof(char));
 
-		int *tmp = (int *)malloc((string1_Length + 1) * sizeof(int));
-		LCS_Y = tmp;
 		strcpy(LCS_X, string2);
 		strcpy(LCS_Y, string1);
 	}
