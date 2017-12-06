@@ -54,15 +54,19 @@ void initXY(char *FileName)
 		LCS_Y = (char *)malloc((string1_Length + 1) * sizeof(char));
 
 		strcpy(LCS_X, string2);
+		X_LENGTH = string2_Length;
 		strcpy(LCS_Y, string1);
+		Y_LENGTH = string1_Length;
 	}
 	else
 	{
-		LCS_X = (int *)malloc((string1_Length + 1) * sizeof(int));
-		LCS_Y = (int *)malloc((string2_Length + 1) * sizeof(int));
+		LCS_X = (char *)malloc((string1_Length + 1) * sizeof(char));
+		LCS_Y = (char *)malloc((string2_Length + 1) * sizeof(char));
 
 		strcpy(LCS_X, string1);
+		X_LENGTH = string1_Length;
 		strcpy(LCS_Y, string2);
+		Y_LENGTH = string2_Length;
 	}
 
 }

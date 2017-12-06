@@ -24,6 +24,9 @@ int **LCS_C;
 char *LCS_X;
 char *LCS_Y;
 
+int X_LENGTH;
+int Y_LENGTH;
+
 int Seq1_Length;
 int Seq2_Length;
 
