@@ -62,14 +62,14 @@ void initXY(char *FileName)
 	char string1[MAX_LCS_LENGTH + 1];
 	char string2[MAX_LCS_LENGTH + 1];
 
-	if(!fgets(string1, MAX_LCS_LENGTH, fp))
+	if(!fgets(string1, MAX_LCS_LENGTH + 1, fp))
 	{
 		printf("Error with %s\n",FileName);
 		fclose(fp);
 		exit(1);
 	}
 
-	if(!fgets(string2, MAX_LCS_LENGTH, fp))
+	if(!fgets(string2, MAX_LCS_LENGTH + 1, fp))
 	{
 		printf("Error with %s\n",FileName);
 		fclose(fp);
@@ -78,26 +78,29 @@ void initXY(char *FileName)
 
 	int string1_Length = strlen(string1);
 	int string2_Length = strlen(string2);
+	string1[string1_Length] = '\0';
+	string2[string2_Length] = '\0';
+
 
 	if(string1_Length < string2_Length)
 	{
-		LCS_X = (char *)malloc((string2_Length + 1) * sizeof(char));
-		LCS_Y = (char *)malloc((string1_Length + 1) * sizeof(char));
+		LCS_X = (char *)malloc((string2_Length ) * sizeof(char));
+		LCS_Y = (char *)malloc((string1_Length) * sizeof(char));
 
 		strcpy(LCS_X + 1, string2);
-		X_LENGTH = string2_Length;
+		X_LENGTH = string2_Length - 1;
 		strcpy(LCS_Y + 1, string1);
-		Y_LENGTH = string1_Length;
+		Y_LENGTH = string1_Length - 1;
 	}
 	else
 	{
-		LCS_X = (char *)malloc((string1_Length + 1) * sizeof(char));
-		LCS_Y = (char *)malloc((string2_Length + 1) * sizeof(char));
+		LCS_X = (char *)malloc((string1_Length) * sizeof(char));
+		LCS_Y = (char *)malloc((string2_Length) * sizeof(char));
 
 		strcpy(LCS_X + 1, string1);
-		X_LENGTH = string1_Length;
+		X_LENGTH = string1_Length - 1;
 		strcpy(LCS_Y + 1, string2);
-		Y_LENGTH = string2_Length;
+		Y_LENGTH = string2_Length - 1;
 	}
 
 }
@@ -106,10 +109,10 @@ void initXY(char *FileName)
 void allocate_LCS_C(void)
 {
 	int i;
-	LCS_C = (int **)malloc(X_LENGTH * sizeof(int *));
+	LCS_C = (int **)malloc((X_LENGTH + 1) * sizeof(int *));
 	for(i = 0; i < X_LENGTH; i++)
 	{
-		LCS_C[i] = (int *)malloc(Y_LENGTH * sizeof(int));
+		LCS_C[i] = (int *)malloc((Y_LENGTH + 1) * sizeof(int));
 	}
 	for(i = 0; i < X_LENGTH; i++)
 	{
@@ -134,7 +137,7 @@ void deallocate_LCS_Var(void)
 	}
 	if(LCS_C)
 	{
-		for(i = 0; i < X_LENGTH; i++)
+		for(i = 0; i <= X_LENGTH; i++)
 		{
 			if(LCS_C[i])
 			{
