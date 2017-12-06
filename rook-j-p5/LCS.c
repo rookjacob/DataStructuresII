@@ -12,8 +12,25 @@
 
 int LCS_Length_C(char *FileName)
 {
+	initXY(FileName);
 
 
+
+
+
+
+	if(LCS_X)
+	{
+		free(LCS_X);
+	}
+	if(LCS_Y)
+	{
+		free(LCS_Y);
+	}
+	if(LCS_C)
+	{
+		free(LCS_C);
+	}
 }
 
 void initXY(char *FileName)
@@ -53,9 +70,9 @@ void initXY(char *FileName)
 		LCS_X = (char *)malloc((string2_Length + 1) * sizeof(char));
 		LCS_Y = (char *)malloc((string1_Length + 1) * sizeof(char));
 
-		strcpy(LCS_X, string2);
+		strcpy(LCS_X + 1, string2);
 		X_LENGTH = string2_Length;
-		strcpy(LCS_Y, string1);
+		strcpy(LCS_Y + 1, string1);
 		Y_LENGTH = string1_Length;
 	}
 	else
@@ -72,9 +89,14 @@ void initXY(char *FileName)
 }
 
 
-void allocate_LCS_C(int r, int c)
+void allocate_LCS_C(void)
 {
-
+	int i;
+	LCS_C = (char **)malloc(Y_LENGTH * sizeof(char *));
+	for(i = 0; i < Y_LENGTH; i++)
+	{
+		LCS_C[i] = (char *)malloc(X_LENGTH * sizeof(char));
+	}
 }
 
 

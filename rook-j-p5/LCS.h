@@ -43,7 +43,7 @@ void initXY(char *FileName);
 /*
  *
  */
-void allocate_LCS_C(int r, int c);
+void allocate_LCS_C(void);
 
 /*
  *
