@@ -23,7 +23,14 @@ int LCS_Length_C(char *FileName)
 		{
 			if(LCS_X[i] == LCS_[j])
 			{
+				LCS_C[i,j] = LCS_C[i-1, j-1] + 1;
+			}
+			else
+			{
+				if(LCS_C[i-1,j] >= LCS_C[i, j -1])
+				{
 
+				}
 			}
 		}
 	}
@@ -31,7 +38,7 @@ int LCS_Length_C(char *FileName)
 
 
 
-	i = LCS_C[X_LENGTH, Y_LENGTH];
+	i = LCS_C[X_LENGTH][Y_LENGTH];
 	deallocat_LCS_Var();
 	return i;
 }
@@ -95,23 +102,24 @@ void initXY(char *FileName)
 void allocate_LCS_C(void)
 {
 	int i;
-	LCS_C = (char **)malloc(X_LENGTH * sizeof(char *));
+	LCS_C = (int **)malloc(X_LENGTH * sizeof(int *));
 	for(i = 0; i < X_LENGTH; i++)
 	{
-		LCS_C[i] = (char *)malloc(Y_LENGTH * sizeof(char));
+		LCS_C[i] = (int *)malloc(Y_LENGTH * sizeof(int));
 	}
 	for(i = 0; i < X_LENGTH; i++)
 	{
-		LCS_C[i, 0] = 0;
+		LCS_C[i][0] = 0;
 	}
 	for(i = 0; i < Y_LENGTH; i++)
 	{
-		LCS_C[0, i] = 0;
+		LCS_C[0][i] = 0;
 	}
 }
 
 void deallocate_LCS_Var(void)
 {
+	int i;
 	if(LCS_X)
 	{
 		free(LCS_X);
