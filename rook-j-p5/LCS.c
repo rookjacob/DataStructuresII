@@ -43,7 +43,7 @@ int LCS_Length_C(char *FileName)
 	printf("\n");
 
 	i = LCS_C[X_LENGTH][Y_LENGTH];
-	deallocate_LCS_Var();
+	//deallocate_LCS_Var(); //NOT WORKING
 	return i;
 }
 
@@ -75,7 +75,7 @@ void initXY(char *FileName)
 		fclose(fp);
 		exit(1);
 	}
-
+	fclose(fp);
 	int string1_Length = strlen(string1);
 	int string2_Length = strlen(string2);
 	string1[string1_Length] = '\0';
@@ -175,7 +175,14 @@ void print_LCS(int i, int j)
 
 void LCS_Multiple_Length(char *FileName)
 {
-	printf("LCS_Multiple\n");
+
+	init_Interval_List(FileName);
+
+}
+
+void init_Interval_List(char *FileName)
+{
+
 }
 
 
