@@ -12,25 +12,28 @@
 
 int LCS_Length_C(char *FileName)
 {
+	int i, j;
 	initXY(FileName);
 
+	allocate_LCS_C();
 
-
-
-
-
-	if(LCS_X)
+	for(i = 1; i <= X_LENGTH; i++)
 	{
-		free(LCS_X);
+		for(j = 1; j <= Y_LENGTH; j++)
+		{
+			if(LCS_X[i] == LCS_[j])
+			{
+
+			}
+		}
 	}
-	if(LCS_Y)
-	{
-		free(LCS_Y);
-	}
-	if(LCS_C)
-	{
-		free(LCS_C);
-	}
+
+
+
+
+	i = LCS_C[X_LENGTH, Y_LENGTH];
+	deallocat_LCS_Var();
+	return i;
 }
 
 void initXY(char *FileName)
@@ -65,7 +68,7 @@ void initXY(char *FileName)
 	int string1_Length = strlen(string1);
 	int string2_Length = strlen(string2);
 
-	if(string1_Length > string2_Length)
+	if(string1_Length < string2_Length)
 	{
 		LCS_X = (char *)malloc((string2_Length + 1) * sizeof(char));
 		LCS_Y = (char *)malloc((string1_Length + 1) * sizeof(char));
@@ -92,10 +95,41 @@ void initXY(char *FileName)
 void allocate_LCS_C(void)
 {
 	int i;
-	LCS_C = (char **)malloc(Y_LENGTH * sizeof(char *));
+	LCS_C = (char **)malloc(X_LENGTH * sizeof(char *));
+	for(i = 0; i < X_LENGTH; i++)
+	{
+		LCS_C[i] = (char *)malloc(Y_LENGTH * sizeof(char));
+	}
+	for(i = 0; i < X_LENGTH; i++)
+	{
+		LCS_C[i, 0] = 0;
+	}
 	for(i = 0; i < Y_LENGTH; i++)
 	{
-		LCS_C[i] = (char *)malloc(X_LENGTH * sizeof(char));
+		LCS_C[0, i] = 0;
+	}
+}
+
+void deallocate_LCS_Var(void)
+{
+	if(LCS_X)
+	{
+		free(LCS_X);
+	}
+	if(LCS_Y)
+	{
+		free(LCS_Y);
+	}
+	if(LCS_C)
+	{
+		for(i = 0; i < X_LENGTH; i++)
+		{
+			if(LCS_C[i])
+			{
+				free(LCS_C[i]);
+			}
+		}
+		free(LCS_C);
 	}
 }
 

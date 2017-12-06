@@ -48,6 +48,11 @@ void allocate_LCS_C(void);
 /*
  *
  */
+void deallocate_LCS_Var(void);
+
+/*
+ *
+ */
 int print_LCS(void);
 
 /*
