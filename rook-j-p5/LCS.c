@@ -147,7 +147,19 @@ void deallocate_LCS_Var(void)
 
 void print_LCS(int i, int j)
 {
-
+	if(LCS_X[i] == LCS_Y[j])
+	{
+		print_LCS(i-1, j-1);
+		printf("%c", LCS_X[i]);
+	}
+	else if(LCS_C[i-1][j] >= LCS_C[i][j-1])
+	{
+		print_LCS(i-1,j);
+	}
+	else
+	{
+		print_LCS(i,j-1);
+	}
 }
 
 void LCS_Multiple_Length(char *FileName)
