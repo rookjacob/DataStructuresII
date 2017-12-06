@@ -43,7 +43,7 @@ int LCS_Length_C(char *FileName)
 	printf("\n");
 
 	i = LCS_C[X_LENGTH][Y_LENGTH];
-	deallocate_LCS_Var();
+	//deallocate_LCS_Var();
 	return i;
 }
 
@@ -130,7 +130,7 @@ void deallocate_LCS_Var(void)
 	int i;
 	if(LCS_X)
 	{
-		free((void *)LCS_X);
+		free(LCS_X);
 	}
 	if(LCS_Y)
 	{
