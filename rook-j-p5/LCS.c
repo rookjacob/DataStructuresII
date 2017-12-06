@@ -29,7 +29,7 @@ int LCS_Length_C(char *FileName)
 			{
 				if(LCS_C[i-1][j] >= LCS_C[i][j -1])
 				{
-					LCS_C[i][j] = LCS_C[i-1, j];
+					LCS_C[i][j] = LCS_C[i-1][j];
 				}
 				else
 				{
