@@ -29,14 +29,17 @@ int LCS_Length_C(char *FileName)
 			{
 				if(LCS_C[i-1][j] >= LCS_C[i][j -1])
 				{
-
+					LCS_C[i][j] = LCS_C[i-1, j];
+				}
+				else
+				{
+					LCS_C[i][j] = LCS_C[i][j-1];
 				}
 			}
 		}
 	}
 
-
-
+	print_LCS();
 
 	i = LCS_C[X_LENGTH][Y_LENGTH];
 	deallocate_LCS_Var();
