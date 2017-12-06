@@ -17,9 +17,13 @@
 #include<string.h>
 
 
-#define MAX_LCS_LENGTH 50
+#define MAX_LCS_LENGTH 1000
 
 int **LCS_C;
+
+char *LCS_X;
+char *LCS_Y;
+
 int Seq1_Length;
 int Seq2_Length;
 
@@ -27,6 +31,11 @@ int Seq2_Length;
  *
  */
 int LCS_Length_C(char *FileName);
+
+/*
+ *
+ */
+void initXY(char *FileName);
 
 /*
  *
