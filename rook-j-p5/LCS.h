@@ -95,6 +95,11 @@ int LCS_Length_2M(void);
  */
 void init_LCS_M12(void);
 
+/*
+ *
+ */
+void swap_Top_Bottom(int *Top, int *Bottom);
+
 
 
 #endif /* LCS_H_ */

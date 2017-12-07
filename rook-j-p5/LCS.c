@@ -376,7 +376,7 @@ int LCS_Length_2M(void)
 				}
 			}
 		}
-
+		swap_Top_Bottom(Top,Bottom);
 	}
 }
 
@@ -392,6 +392,14 @@ void init_LCS_M12(void)
 		LCS_M1[i] = 0;
 	}
 	LCS_M2[0] = 0;
+}
+
+void swap_Top_Bottom(int *Top, int *Bottom)
+{
+	int *tmp = Top;
+	Top = Bottom;
+	Bottom = tmp;
+	Bottom[0] = 0;
 }
 
 
