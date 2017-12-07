@@ -115,10 +115,12 @@ void allocate_LCS_C(void)
 {
 	int i;
 	LCS_C = (int **)realloc(LCS_C,(X_LENGTH + 1) * sizeof(int *));
+
 	for(i = 0; i <= X_LENGTH; i++)
 	{
 		LCS_C[i] = (int *)realloc(NULL,(Y_LENGTH + 1) * sizeof(int));
 	}
+
 	for(i = 1; i <= X_LENGTH ; i++)
 	{
 		LCS_C[i][0] = 0;
@@ -243,7 +245,7 @@ void init_Interval_List(char *FileName)
 			exit(1);
 		}
 	}
-	fclose(fp);//NEED TO FIXX
+	//fclose(fp);//NEED TO FIXX
 }
 
 void read_NUM_LCS(char *FileName)
