@@ -194,7 +194,7 @@ void LCS_Multiple_Length(char *FileName)
 		printf("%d  ",i);
 		for(j = 1; j <= NUM_LCS; j++)
 		{
-			if(i > j)
+			if(i >= j)
 			{
 				printf("-  ");
 			}
