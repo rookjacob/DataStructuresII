@@ -80,9 +80,9 @@ void init_XY_C(char *FileName)
 	fclose(fp);
 	int string1_Length = strlen(string1);
 	int string2_Length = strlen(string2);
-	string1[string1_Length] = '\0';
+	string1[string1_Length - 1] = '\0';
 	printf("[%s]\n",string1);
-	string2[string2_Length] = '\0';
+	string2[string2_Length - 1] = '\0';
 	printf("[%s]\n", string2);
 
 	if(string1_Length < string2_Length)
