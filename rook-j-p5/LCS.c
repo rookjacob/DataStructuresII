@@ -185,7 +185,7 @@ void LCS_Multiple_Length(char *FileName)
 void init_Interval_List(char *FileName)
 {
 	read_NUM_LCS(FileName);
-	INT_LIST = (int *)realloc(INT_LIST, (NUM_LCS + 1) * sizeof(char));
+	INT_LIST = (int *)realloc(INT_LIST, (NUM_LCS + 2) * sizeof(char));
 
 	FILE *fp;
 	fp = fopen(FileName, "r");
