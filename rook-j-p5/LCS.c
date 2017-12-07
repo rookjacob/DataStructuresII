@@ -271,7 +271,7 @@ void read_NUM_LCS(char *FileName)
 
 char sequence_Similarity(int r, int c, char *FileName)
 {
-	init_XY_2M(r,c);
+	init_XY_2M(r,c, FileName);
 
 	int LCS_L = LCS_Length_2M();
 
@@ -311,12 +311,75 @@ void init_XY_2M(int r, int c, char *FileName)
 	fseek(fp, INT_LIST[r - 1], SEEK_SET);
 	fgets(tmp1, MAX_LCS_LENGTH, fp);
 
+	fseek(fp, INT_LIST[c - 1], SEEK_SET);
+	fgets(tmp2, MAX_LCS_LENGTH, fp);
+
+	fclose(fp);
+
+	int tmp1_Length = strlen(tmp1);
+	int tmp2_Length = strlen(tmp2);
+
+	tmp1[tmp1_Length] = '\0';
+	tmp2[tmp2_Length] = '\0';
+
+
+	if(tmp1_Length < tmp2_Length)
+	{
+		LCS_X = (char *)realloc(LCS_X,(tmp2_Length ) * sizeof(char));
+		LCS_Y = (char *)realloc(LCS_Y, (tmp1_Length) * sizeof(char));
+
+		strcpy(LCS_X + 1, tmp2);
+		X_LENGTH = tmp2_Length - 1;
+		strcpy(LCS_Y + 1, tmp1);
+		Y_LENGTH = tmp1_Length - 1;
+	}
+	else
+	{
+		LCS_X = (char *)realloc(LCS_X, (tmp1_Length) * sizeof(char));
+		LCS_Y = (char *)realloc(LCS_Y, (tmp2_Length) * sizeof(char));
+
+		strcpy(LCS_X + 1, tmp1);
+		X_LENGTH = tmp1_Length - 1;
+		strcpy(LCS_Y + 1, tmp2);
+		Y_LENGTH = tmp2_Length - 1;
+	}
+	LCS_X[0] = ' ';
+	LCS_Y[0] = ' ';
 
 }
 
 int LCS_Length_2M(void)
 {
+	init_LCS_M12();
 
+	int *Top = LCS_M1;
+	int *Bottom = LCS_M2;
+	int i, j;
+
+	for(i = 1; i <= X_LENGTH; i++)
+	{
+		for(j = 1; j <= Y_LENGTH; j++)
+		{
+			if(LCS_X[i] == LCS_Y[j])
+			{
+
+			}
+		}
+	}
+}
+
+void init_LCS_M12(void)
+{
+	LCS_M1 = (int *)realloc(LCS_M1, Y_LENGTH * sizeof(int));
+	LCS_M2 = (int *)realloc(LCS_M2, Y_LENGTH * sizeof(int));
+
+	int i;
+
+	for(i = 0; i < Y_LENGTH; i++)
+	{
+		LCS_M1[i] = 0;
+	}
+	LCS_M2[0] = 0;
 }
 
 

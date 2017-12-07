@@ -32,6 +32,9 @@ int NUM_LCS;
 
 int *INT_LIST;
 
+int *LCS_M1;
+int *LCS_M2;
+
 /*
  *
  */
@@ -86,6 +89,11 @@ void init_XY_2M(int r, int c, char *FileName);
  *
  */
 int LCS_Length_2M(void);
+
+/*
+ *
+ */
+void init_LCS_M12(void);
 
 
 
