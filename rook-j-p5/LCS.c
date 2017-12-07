@@ -196,7 +196,7 @@ void init_Interval_List(char *FileName)
 
 	fgets(tmp, MAX_LCS_LENGTH + 2, fp);
 	INT_LIST[0] = strlen(tmp);
-	for(i = 1; i < NUM_LCS; i++)
+	for(i = 1; i <= NUM_LCS; i++)
 	{
 		if(fgets(tmp, MAX_LCS_LENGTH + 2, fp))
 		{
