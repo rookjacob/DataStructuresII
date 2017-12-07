@@ -134,8 +134,8 @@ void allocate_LCS_C(void)
 void deallocate_LCS_Var(void)
 {
 	int i;
-	free(LCS_X);
-	//LCS_X = realloc(LCS_X, 0);
+	//free(LCS_X);
+	LCS_X = realloc(LCS_X, 0);
 
 	LCS_Y = realloc(LCS_Y, 0);
 
