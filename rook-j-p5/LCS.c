@@ -362,9 +362,21 @@ int LCS_Length_2M(void)
 		{
 			if(LCS_X[i] == LCS_Y[j])
 			{
-
+				Bottom[j] = Top[j - 1] + 1;
+			}
+			else
+			{
+				if(Top[j] >= Bottom[j-1])
+				{
+					Bottom[j] = Top[j];
+				}
+				else
+				{
+					Bottom[j] = Bottom[j -1];
+				}
 			}
 		}
+
 	}
 }
 
