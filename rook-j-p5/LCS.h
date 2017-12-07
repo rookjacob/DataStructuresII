@@ -118,7 +118,8 @@ void print_LCS(int i, int j);
  *
  * The function then starts to print a table with the comparisons between each string.
  * The comparison is based off the length of both strings and the length of the LCS, given
- * by the
+ * by the sequence_Similarity() function.
+ *
  */
 void LCS_Multiple_Length(char *FileName);
 
