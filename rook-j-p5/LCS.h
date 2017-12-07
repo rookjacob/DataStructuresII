@@ -80,27 +80,37 @@ int *LCS_M2;
 int LCS_Length_C(char *FileName);
 
 /*
+ * @brief	init_XY_C		Function initializes LCS_X LCS_Y to the strings stored in the
+ * FileName file. The function is expecting the file to have two strings, one per line.
+ *
+ * @param	FileName		File to get the strings for LCS_X and LCS_Y
  *
  */
 void init_XY_C(char *FileName);
 
 /*
+ * @brief 	allocate_LCS_C		Function dynamically allocates memory for the "C" LCS_C
+ * array that is used to solve for the LCS. Function also initializes the 0th row and 0th
+ * column to 0. The dimensions of LCS_C are determined by the X_LENGTH and Y_LENGTH variables
+ * that are initialized the the init_XY_C function.
  *
  */
 void allocate_LCS_C(void);
 
 /*
+ * @brief	deallocate_LCS_Var		Function deallocates the dynamically allocated variables
+ * used to calculate the LCS. Specifically LCS_X, LCS_Y, LCS_C, LCS_M1, LCS_M2, and INT_LIST.
  *
  */
 void deallocate_LCS_Var(void);
 
 /*
- *
+ * @brief	print_LCS		Function prints the actual LCS of the two strings.
  */
 void print_LCS(int i, int j);
 
 /*
- *
+ * @brief	LCS_Multiple_Length
  */
 void LCS_Multiple_Length(char *FileName);
 
