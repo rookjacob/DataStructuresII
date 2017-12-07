@@ -40,7 +40,7 @@ int LCS_Length_C(char *FileName);
 /*
  *
  */
-void initXY(char *FileName);
+void init_XY_C(char *FileName);
 
 /*
  *
@@ -71,6 +71,21 @@ void init_Interval_List(char *FileName);
  *
  */
 void read_NUM_LCS(char *FileName);
+
+/*
+ *
+ */
+char sequence_Similarity(int r, int c);
+
+/*
+ *
+ */
+void init_XY_2M(int r, int c);
+
+/*
+ *
+ */
+int LCS_Length_2M(void);
 
 
 

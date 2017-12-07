@@ -16,7 +16,7 @@ int LCS_Length_C(char *FileName)
 	LCS_X = NULL;
 	LCS_Y = NULL;
 
-	initXY(FileName);
+	init_XY_C(FileName);
 
 	LCS_C = NULL;
 	allocate_LCS_C();
@@ -51,7 +51,7 @@ int LCS_Length_C(char *FileName)
 	return i;
 }
 
-void initXY(char *FileName)
+void init_XY_C(char *FileName)
 {
 	FILE *fp;
 	fp = fopen(FileName, "r");
@@ -200,7 +200,7 @@ void LCS_Multiple_Length(char *FileName)
 			}
 			else
 			{
-				printf("H  ");
+				printf("%c  ", sequence_Similarity(i,j));
 			}
 		}
 		printf("\n");
@@ -266,6 +266,23 @@ void read_NUM_LCS(char *FileName)
 		exit(1);
 	}
 	fclose(fp);
+}
+
+char sequence_Similarity(int r, int c)
+{
+	init_XY_2M(r,c);
+
+	int LCS_L = LCS_Length_2M();
+}
+
+void init_XY_2M(int r, int c)
+{
+
+}
+
+int LCS_Length_2M(void)
+{
+
 }
 
 
