@@ -13,12 +13,12 @@
 int LCS_Length_C(char *FileName)
 {
 	int i, j;
-	initXY(FileName);
-
-	LCS_C = NULL;
 	LCS_X = NULL;
 	LCS_Y = NULL;
 
+	initXY(FileName);
+
+	LCS_C = NULL;
 	allocate_LCS_C();
 
 	for(i = 1; i <= X_LENGTH; i++)
