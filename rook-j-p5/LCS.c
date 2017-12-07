@@ -132,25 +132,25 @@ void allocate_LCS_C(void)
 void deallocate_LCS_Var(void)
 {
 	int i;
-	if(LCS_X)
+
+	LCS_X = realloc(LCS_X, 0);
+
+	LCS_Y = realloc(LCS_Y, 0);
+
+	for(i = 0; i <= X_LENGTH; i++)
 	{
-		LCS_X = realloc(LCS_X, 0);
-	}
-	if(LCS_Y)
-	{
-		LCS_Y = realloc(LCS_Y, 0);
-	}
-	if(LCS_C)
-	{
-		for(i = 0; i <= X_LENGTH; i++)
+		if(LCS_C[i])
 		{
-			if(LCS_C[i])
-			{
-				LCS_C[i] = realloc(LCS_C[i], 0);
-			}
+			LCS_C[i] = realloc(LCS_C[i], 0);
 		}
-		LCS_C = realloc(LCS_C, 0);
 	}
+	LCS_C = realloc(LCS_C, 0);
+
+	LCS_M1 = realloc(LCS_M1, 0);
+	LCS_M2 = realloc(LCS_M2,0);
+
+	INT_LIST = realloc(INT_LIST,0);
+
 }
 
 
