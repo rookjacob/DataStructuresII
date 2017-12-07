@@ -30,6 +30,8 @@ int Y_LENGTH;
 
 int NUM_LCS;
 
+int *INT_LIST;
+
 /*
  *
  */
@@ -64,6 +66,11 @@ void LCS_Multiple_Length(char *FileName);
  *
  */
 void init_Interval_List(char *FileName);
+
+/*
+ *
+ */
+void read_NUM_LCS(char *FileName);
 
 
 
