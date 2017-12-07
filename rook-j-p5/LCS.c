@@ -179,7 +179,7 @@ void print_LCS(int i, int j)
 
 void LCS_Multiple_Length(char *FileName)
 {
-
+	INT_LIST = NULL;
 	init_Interval_List(FileName);
 
 }
@@ -187,6 +187,7 @@ void LCS_Multiple_Length(char *FileName)
 void init_Interval_List(char *FileName)
 {
 	read_NUM_LCS(FileName);
+	INT_LIST = (int *)realloc(INT_LIST, (NUM_LCS + 1) * sizeof(char));
 
 	FILE *fp;
 	fp = fopen(FileName, "r");
@@ -194,13 +195,20 @@ void init_Interval_List(char *FileName)
 
 	int i;
 	char tmp[MAX_LCS_LENGTH + 2];
-	size_t tmpI;
 
-	for(i = 0; i < NUM_LCS; i++)
+	tmp = fgets(tmp, MAX_LCS_LENGTH + 2, fp);
+	INT_LIST[0] = strlen(tmp);
+	for(i = 1; i < NUM_LCS; i++)
 	{
 		if(fgets(tmp, MAX_LCS_LENGTH + 2, fp))
 		{
-			tmpI = strlen(tmp);
+			INT_LIST[i] = strlen(tmp) + INT_LIST[i - 1];
+			if(!INT_LIST[i])
+			{
+				printf("Error reading string %d", i);
+				fclose(fp);
+				exit(1);
+			}
 		}
 		else
 		{
