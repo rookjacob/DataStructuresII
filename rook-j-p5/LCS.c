@@ -215,7 +215,7 @@ void init_Interval_List(char *FileName)
 			exit(1);
 		}
 	}
-	fclose(fp);
+	//fclose(fp);NEED TO FIXX
 }
 
 void read_NUM_LCS(char *FileName)
