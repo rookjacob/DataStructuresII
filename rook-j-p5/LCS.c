@@ -211,7 +211,7 @@ void LCS_Multiple_Length(char *FileName)
 void init_Interval_List(char *FileName)
 {
 	read_NUM_LCS(FileName);
-	INT_LIST = (int *)realloc(INT_LIST, (NUM_LCS + 2) * sizeof(char));
+	INT_LIST = (int *)realloc(INT_LIST, (NUM_LCS) * sizeof(char));
 
 	FILE *fp;
 	fp = fopen(FileName, "r");
@@ -222,7 +222,8 @@ void init_Interval_List(char *FileName)
 
 	fgets(tmp, MAX_LCS_LENGTH + 2, fp);
 	INT_LIST[0] = strlen(tmp);
-	for(i = 1; i <= NUM_LCS; i++)
+
+	for(i = 1; i < NUM_LCS; i++)
 	{
 		if(fgets(tmp, MAX_LCS_LENGTH + 1, fp))
 		{
@@ -273,10 +274,32 @@ char sequence_Similarity(int r, int c)
 	init_XY_2M(r,c);
 
 	int LCS_L = LCS_Length_2M();
+
+	double XY_percent_Length = (double)Y_LENGTH / (double)X_LENGTH;
+	double LCS_percent_Length = (double)LCS_L / (double)Y_LENGTH;
+
+	if(XY_percent_Length >= .9 && LCS_percent_Length >= .8)
+	{
+		return 'H';
+	}
+	else if(XY_percent_Length >= .8 && LCS_percent_Length >= .6)
+	{
+		return 'M';
+	}
+	else if(XY_percent_Length >= .6 && LCS_percent_Length >= .5)
+	{
+		return 'L';
+	}
+	else
+	{
+		return 'D';
+	}
 }
 
 void init_XY_2M(int r, int c)
 {
+	char tmp1[MAX_LCS_LENGTH + 1];
+	char tmp2[MAX_LCS_LENGTH + 1];
 
 }
 
