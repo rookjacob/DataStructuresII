@@ -110,7 +110,15 @@ void deallocate_LCS_Var(void);
 void print_LCS(int i, int j);
 
 /*
- * @brief	LCS_Multiple_Length
+ * @brief	LCS_Multiple_Length		This function measures the "similarity" of multiple
+ * strings to one another. The function opens the file passed to the function, reads how
+ * many strings there are in the file, then creates an interval list used to determine the
+ * start of each string in the file. The file passed should have the number of strings in
+ * the file followed by that many strings each on its own line.
+ *
+ * The function then starts to print a table with the comparisons between each string.
+ * The comparison is based off the length of both strings and the length of the LCS, given
+ * by the
  */
 void LCS_Multiple_Length(char *FileName);
 
