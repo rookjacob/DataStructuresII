@@ -136,11 +136,11 @@ void deallocate_LCS_Var(void)
 	int i;
 	if(LCS_X)
 	{
-		realloc(LCS_X, 0);
+		LCS_X = realloc(LCS_X, 0);
 	}
 	if(LCS_Y)
 	{
-		realloc(LCS_Y, 0);
+		LCS_Y = realloc(LCS_Y, 0);
 	}
 	if(LCS_C)
 	{
@@ -148,10 +148,10 @@ void deallocate_LCS_Var(void)
 		{
 			if(LCS_C[i])
 			{
-				realloc(LCS_C[i], 0);
+				LCS_C[i] = realloc(LCS_C[i], 0);
 			}
 		}
-		realloc(LCS_C, 0);
+		LCS_C = realloc(LCS_C, 0);
 	}
 }
 
@@ -196,7 +196,7 @@ void init_Interval_List(char *FileName)
 	int i;
 	char tmp[MAX_LCS_LENGTH + 2];
 
-	tmp = fgets(tmp, MAX_LCS_LENGTH + 2, fp);
+	fgets(tmp, MAX_LCS_LENGTH + 2, fp);
 	INT_LIST[0] = strlen(tmp);
 	for(i = 1; i < NUM_LCS; i++)
 	{
