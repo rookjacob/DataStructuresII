@@ -85,8 +85,8 @@ void initXY(char *FileName)
 
 	if(string1_Length < string2_Length)
 	{
-		LCS_X = (char *)malloc((string2_Length ) * sizeof(char));
-		LCS_Y = (char *)malloc((string1_Length) * sizeof(char));
+		LCS_X = (char *)realloc(LCS_X,(string2_Length ) * sizeof(char));
+		LCS_Y = (char *)realloc(LCS_Y, (string1_Length) * sizeof(char));
 
 		strcpy(LCS_X + 1, string2);
 		X_LENGTH = string2_Length - 1;
@@ -95,8 +95,8 @@ void initXY(char *FileName)
 	}
 	else
 	{
-		LCS_X = (char *)malloc((string1_Length) * sizeof(char));
-		LCS_Y = (char *)malloc((string2_Length) * sizeof(char));
+		LCS_X = (char *)realloc(LCS_X, (string1_Length) * sizeof(char));
+		LCS_Y = (char *)realloc(LCS_Y, (string2_Length) * sizeof(char));
 
 		strcpy(LCS_X + 1, string1);
 		X_LENGTH = string1_Length - 1;
@@ -112,10 +112,10 @@ void initXY(char *FileName)
 void allocate_LCS_C(void)
 {
 	int i;
-	LCS_C = (int **)malloc((X_LENGTH + 1) * sizeof(int *));
+	LCS_C = (int **)realloc(LCS_C,(X_LENGTH + 1) * sizeof(int *));
 	for(i = 0; i <= X_LENGTH; i++)
 	{
-		LCS_C[i] = (int *)malloc((Y_LENGTH + 1) * sizeof(int));
+		LCS_C[i] = (int *)realloc(LCS_C[i],(Y_LENGTH + 1) * sizeof(int));
 	}
 	for(i = 1; i <= X_LENGTH ; i++)
 	{
@@ -182,9 +182,54 @@ void LCS_Multiple_Length(char *FileName)
 
 void init_Interval_List(char *FileName)
 {
+	read_NUM_LCS(FileName);
+
 	FILE *fp;
 	fp = fopen(FileName, "r");
-	int i = fscanf(fp, "%d",&NUM_LCS);
+	fseek(fp, 0, SEEK_SET);
+
+	int i;
+	char tmp[MAX_LCS_LENGTH + 2];
+	size_t tmpI;
+
+	for(i = 0; i < NUM_LCS; i++)
+	{
+		if(fgets(tmp, MAX_LCS_LENGTH + 2, fp))
+		{
+			tmpI = strlen(tmp);
+		}
+		else
+		{
+			printf("Error reading %s\n", FileName);
+			fclose(fp);
+			exit(1);
+		}
+	}
+	fclose(fp);
+}
+
+void read_NUM_LCS(char *FileName)
+{
+	FILE *fp;
+	fp = fopen(FileName, "r");
+
+	if(!fp)
+	{
+		printf("Error with %s\n", FileName);
+		fclose(fp);
+		exit(1);
+	}
+
+
+	int tmp = fscanf(fp, "%d",&NUM_LCS);
+
+	if(tmp == EOF || tmp != 1)
+	{
+		printf("%s has invalid format\n", FileName);
+		fclose(fp);
+		exit(1);
+	}
+	fclose(fp);
 }
 
 
