@@ -200,7 +200,7 @@ void LCS_Multiple_Length(char *FileName)
 			}
 			else
 			{
-				printf("%c  ", sequence_Similarity(i,j));
+				printf("%c  ", sequence_Similarity(i,j,FileName));
 			}
 		}
 		printf("\n");
@@ -269,7 +269,7 @@ void read_NUM_LCS(char *FileName)
 	fclose(fp);
 }
 
-char sequence_Similarity(int r, int c)
+char sequence_Similarity(int r, int c, char *FileName)
 {
 	init_XY_2M(r,c);
 
@@ -296,10 +296,21 @@ char sequence_Similarity(int r, int c)
 	}
 }
 
-void init_XY_2M(int r, int c)
+void init_XY_2M(int r, int c, char *FileName)
 {
 	char tmp1[MAX_LCS_LENGTH + 1];
 	char tmp2[MAX_LCS_LENGTH + 1];
+
+	FILE *fp = fopen(FileName, "r");
+	if(!fp)
+	{
+		printf("Error with %s\n", FileName);
+		exit(1);
+	}
+
+	fseek(fp, INT_LIST[r - 1], SEEK_SET);
+	fgets(tmp1, MAX_LCS_LENGTH, fp);
+
 
 }
 
