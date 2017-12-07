@@ -132,11 +132,11 @@ void deallocate_LCS_Var(void)
 	int i;
 	if(LCS_X)
 	{
-		free(LCS_X);
+		realloc(LCS_X, 0);
 	}
 	if(LCS_Y)
 	{
-		free(LCS_Y);
+		realloc(LCS_Y, 0);
 	}
 	if(LCS_C)
 	{
@@ -144,10 +144,10 @@ void deallocate_LCS_Var(void)
 		{
 			if(LCS_C[i])
 			{
-				free(LCS_C[i]);
+				realloc(LCS_C[i], 0);
 			}
 		}
-		free(LCS_C);
+		realloc(LCS_C, 0);
 	}
 }
 
