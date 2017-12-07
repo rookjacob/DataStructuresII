@@ -69,14 +69,12 @@ void initXY(char *FileName)
 	if(!fgets(string1, MAX_LCS_LENGTH + 1, fp))
 	{
 		printf("Error with %s\n",FileName);
-		fclose(fp);
 		exit(1);
 	}
 
 	if(!fgets(string2, MAX_LCS_LENGTH + 1, fp))
 	{
 		printf("Error with %s\n",FileName);
-		fclose(fp);
 		exit(1);
 	}
 	fclose(fp);
@@ -228,7 +226,6 @@ void read_NUM_LCS(char *FileName)
 	if(!fp)
 	{
 		printf("Error with %s\n", FileName);
-		fclose(fp);
 		exit(1);
 	}
 
