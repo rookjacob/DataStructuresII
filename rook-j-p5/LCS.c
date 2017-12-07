@@ -119,7 +119,7 @@ void allocate_LCS_C(void)
 	LCS_C = (int **)realloc(LCS_C,(X_LENGTH + 1) * sizeof(int *));
 	for(i = 0; i <= X_LENGTH; i++)
 	{
-		LCS_C[i] = (int *)realloc(LCS_C[i],(Y_LENGTH + 1) * sizeof(int));
+		LCS_C[i] = (int *)realloc(NULL,(Y_LENGTH + 1) * sizeof(int));
 	}
 	for(i = 1; i <= X_LENGTH ; i++)
 	{
