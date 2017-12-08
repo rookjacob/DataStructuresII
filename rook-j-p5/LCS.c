@@ -65,7 +65,7 @@ void init_XY_C(char *FileName)
 		exit(1);
 	}
 
-	if(!fgets(&LCS_Y[1], MAX_LCS_LENGTH + 1, fp))
+	if(!fgets(LCS_Y, MAX_LCS_LENGTH + 1, fp))
 	{
 		printf("Error with %s\n",FileName);
 		exit(1);
@@ -74,6 +74,8 @@ void init_XY_C(char *FileName)
 
 	X_LENGTH = strlen(LCS_X) - 2;
 	Y_LENGTH = strlen(LCS_Y) - 2;
+
+	printf("%d %d \n", X_LENGTH, Y_LENGTH);
 
 	LCS_X[X_LENGTH] = '\0';
 	LCS_X[0] = ' ';
