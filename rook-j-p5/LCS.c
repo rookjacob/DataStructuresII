@@ -43,9 +43,7 @@ int LCS_Length_C(char *FileName)
 	print_LCS(X_LENGTH,Y_LENGTH);
 	printf("\n");
 
-	i = LCS_C[X_LENGTH][Y_LENGTH];
-	deallocate_LCS_Var(); //NOT WORKING
-	return i;
+	return LCS_C[X_LENGTH][Y_LENGTH];
 }
 
 void init_XY_C(char *FileName)
