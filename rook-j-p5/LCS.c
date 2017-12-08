@@ -1,5 +1,6 @@
 /*
- * @file LCS.c
+ * @file LCS.c 		File contains all of the function definitions for the
+ * functions to determine the LCS of given sequences
  *
  * @author Jacob Rook
  * @date 12/07/2017

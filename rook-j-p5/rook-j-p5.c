@@ -1,5 +1,6 @@
 /*
- * @file rook-j-p5.c
+ * @file rook-j-p5.c		File contains the main function to test the functions
+ * in the LCS files.
  *
  * @author Jacob Rook
  * @date 12/07/2017
