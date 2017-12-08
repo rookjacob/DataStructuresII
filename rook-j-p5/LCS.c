@@ -59,7 +59,7 @@ void init_XY_C(char *FileName)
 	}
 
 
-	if(!fgets(&LCS_X[1], MAX_LCS_LENGTH + 1, fp))
+	if(!fgets(LCS_X, MAX_LCS_LENGTH + 1, fp))
 	{
 		printf("Error with %s\n",FileName);
 		exit(1);
