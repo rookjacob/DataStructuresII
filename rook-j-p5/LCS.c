@@ -72,7 +72,7 @@ void init_XY_C(char *FileName)
 	}
 	fclose(fp);
 
-	X_LENGTH = strlen(LCS_X) - 3;
+	X_LENGTH = strlen(LCS_X) - sizeof('\n');
 	Y_LENGTH = strlen(LCS_Y) - 3;
 
 	LCS_X[X_LENGTH + 1] = '\0';
