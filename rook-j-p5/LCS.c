@@ -72,14 +72,14 @@ void init_XY_C(char *FileName)
 	}
 	fclose(fp);
 
-	X_LENGTH = strlen(LCS_X) - sizeof('\n');
-	Y_LENGTH = strlen(LCS_Y) - 3;
+	X_LENGTH = strlen(LCS_X) - 2;
+	Y_LENGTH = strlen(LCS_Y) - 2;
 
-	LCS_X[X_LENGTH + 1] = '\0';
+	LCS_X[X_LENGTH] = '\0';
 	LCS_X[0] = ' ';
 	printf("[%s]\n",LCS_X);
 
-	LCS_Y[Y_LENGTH + 1] = '\0';
+	LCS_Y[Y_LENGTH] = '\0';
 	LCS_Y[0] = ' ';
 	printf("[%s]\n", LCS_Y);
 
