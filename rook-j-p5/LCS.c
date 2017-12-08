@@ -75,13 +75,9 @@ void init_XY_C(char *FileName)
 	X_LENGTH = strlen(LCS_X) - 1;
 	Y_LENGTH = strlen(LCS_Y) - 1;
 
-	printf("%d %d \n", X_LENGTH, Y_LENGTH);
-
 	LCS_X[X_LENGTH] = '\0';
-	printf("[%s]\n",LCS_X);
 
 	LCS_Y[Y_LENGTH] = '\0';
-	printf("[%s]\n", LCS_Y);
 
 	char tmp[MAX_LCS_LENGTH +1];
 	int tmpint;
@@ -209,7 +205,7 @@ void init_Interval_List(char *FileName)
 			exit(1);
 		}
 	}
-	fclose(fp);//NEED TO FIXX
+	fclose(fp);
 }
 
 void read_NUM_LCS(char *FileName)
@@ -264,9 +260,6 @@ char sequence_Similarity(int r, int c, char *FileName)
 
 void init_XY_2M(int r, int c, char *FileName)
 {
-	char tmp1[MAX_LCS_LENGTH + 1];
-	char tmp2[MAX_LCS_LENGTH + 1];
-
 	FILE *fp = fopen(FileName, "r");
 	if(!fp)
 	{
@@ -275,42 +268,32 @@ void init_XY_2M(int r, int c, char *FileName)
 	}
 
 	fseek(fp, INT_LIST[r - 1], SEEK_SET);
-	fgets(tmp1, MAX_LCS_LENGTH, fp);
+	fgets(LCS_X, MAX_LCS_LENGTH, fp);
 
 	fseek(fp, INT_LIST[c - 1], SEEK_SET);
-	fgets(tmp2, MAX_LCS_LENGTH, fp);
+	fgets(LCS_Y, MAX_LCS_LENGTH, fp);
 
 	fclose(fp);
 
-	int tmp1_Length = strlen(tmp1);
-	int tmp2_Length = strlen(tmp2);
+	X_LENGTH = strlen(LCS_X) - 1;
 
-	tmp1[tmp1_Length] = '\0';
-	tmp2[tmp2_Length] = '\0';
+	LCS_X[X_LENGTH] = '\0';
+	LCS_Y[Y_LENGTH] = '\0';
 
 
-	if(tmp1_Length < tmp2_Length)
+	char tmp[MAX_LCS_LENGTH +1];
+	int tmpint;
+
+	if(X_LENGTH < Y_LENGTH)
 	{
-		//LCS_X = (char *)realloc(LCS_X,(tmp2_Length ) * sizeof(char));
-		//LCS_Y = (char *)realloc(LCS_Y, (tmp1_Length) * sizeof(char));
-
-		strcpy(LCS_X + 1, tmp2);
-		X_LENGTH = tmp2_Length - 1;
-		strcpy(LCS_Y + 1, tmp1);
-		Y_LENGTH = tmp1_Length - 1;
+		strcpy(tmp, LCS_Y);
+		strcpy(LCS_Y, LCS_X);
+		strcpy(LCS_X, tmp);
+		tmpint = Y_LENGTH;
+		Y_LENGTH = X_LENGTH;
+		X_LENGTH = tmpint;
 	}
-	else
-	{
-		//LCS_X = (char *)realloc(LCS_X, (tmp1_Length) * sizeof(char));
-		//LCS_Y = (char *)realloc(LCS_Y, (tmp2_Length) * sizeof(char));
 
-		strcpy(LCS_X + 1, tmp1);
-		X_LENGTH = tmp1_Length - 1;
-		strcpy(LCS_Y + 1, tmp2);
-		Y_LENGTH = tmp2_Length - 1;
-	}
-	LCS_X[0] = ' ';
-	LCS_Y[0] = ' ';
 
 }
 
@@ -326,7 +309,7 @@ int LCS_Length_2M(void)
 	{
 		for(j = 1; j <= Y_LENGTH; j++)
 		{
-			if(LCS_X[i] == LCS_Y[j])
+			if(LCS_X[i - 1] == LCS_Y[j - 1])
 			{
 				Bottom[j] = Top[j - 1] + 1;
 			}
@@ -348,9 +331,6 @@ int LCS_Length_2M(void)
 
 void init_LCS_M12(void)
 {
-	//LCS_M1 = (int *)realloc(LCS_M1, Y_LENGTH * sizeof(int));
-	//LCS_M2 = (int *)realloc(LCS_M2, Y_LENGTH * sizeof(int));
-
 	int i;
 
 	for(i = 0; i < Y_LENGTH; i++)
