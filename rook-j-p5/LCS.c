@@ -77,10 +77,10 @@ void init_XY_C(char *FileName)
 
 	printf("%d %d \n", X_LENGTH, Y_LENGTH);
 
-	LCS_X[X_LENGTH + 1] = '\0';
+	LCS_X[X_LENGTH] = '\0';
 	printf("[%s]\n",LCS_X);
 
-	LCS_Y[Y_LENGTH + 2] = '\0';
+	LCS_Y[Y_LENGTH] = '\0';
 	printf("[%s]\n", LCS_Y);
 
 	char tmp[MAX_LCS_LENGTH +1];
