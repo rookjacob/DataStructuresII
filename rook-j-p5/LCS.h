@@ -95,14 +95,7 @@ void init_XY_C(char *FileName);
  * that are initialized the the init_XY_C function.
  *
  */
-void allocate_LCS_C(void);
-
-/*
- * @brief	deallocate_LCS_Var		Function deallocates the dynamically allocated variables
- * used to calculate the LCS. Specifically LCS_X, LCS_Y, LCS_C, LCS_M1, LCS_M2, and INT_LIST.
- *
- */
-void deallocate_LCS_Var(void);
+void init_LCS_C(void);
 
 /*
  * @brief	print_LCS		Function prints the actual LCS of the two strings.

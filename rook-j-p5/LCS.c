@@ -13,13 +13,10 @@
 int LCS_Length_C(char *FileName)
 {
 	int i, j;
-	LCS_X = NULL;
-	LCS_Y = NULL;
 
 	init_XY_C(FileName);
 
-	LCS_C = NULL;
-	allocate_LCS_C();
+	init_LCS_C();
 
 	for(i = 1; i <= X_LENGTH; i++)
 	{
@@ -63,63 +60,52 @@ void init_XY_C(char *FileName)
 		exit(1);
 	}
 
-	char string1[MAX_LCS_LENGTH + 1];
-	char string2[MAX_LCS_LENGTH + 1];
 
-	if(!fgets(string1, MAX_LCS_LENGTH + 1, fp))
+	if(!fgets(&LCS_X[1], MAX_LCS_LENGTH + 1, fp))
 	{
 		printf("Error with %s\n",FileName);
 		exit(1);
 	}
 
-	if(!fgets(string2, MAX_LCS_LENGTH + 1, fp))
+	if(!fgets(&LCS_Y[1], MAX_LCS_LENGTH + 1, fp))
 	{
 		printf("Error with %s\n",FileName);
 		exit(1);
 	}
 	fclose(fp);
-	int string1_Length = strlen(string1);
-	int string2_Length = strlen(string2);
-	string1[string1_Length - 1] = '\0';
-	printf("[%s]\n",string1);
-	string2[string2_Length - 1] = '\0';
-	printf("[%s]\n", string2);
 
-	if(string1_Length < string2_Length)
-	{
-		LCS_X = (char *)realloc(LCS_X,(string2_Length ) * sizeof(char));
-		LCS_Y = (char *)realloc(LCS_Y, (string1_Length) * sizeof(char));
+	X_LENGTH = strlen(LCS_X) - 2;
+	Y_LENGTH = strlen(LCS_Y) - 2;
 
-		strcpy(LCS_X + 1, string2);
-		X_LENGTH = string2_Length - 1;
-		strcpy(LCS_Y + 1, string1);
-		Y_LENGTH = string1_Length - 1;
-	}
-	else
-	{
-		LCS_X = (char *)realloc(LCS_X, (string1_Length) * sizeof(char));
-		LCS_Y = (char *)realloc(LCS_Y, (string2_Length) * sizeof(char));
-
-		strcpy(LCS_X + 1, string1);
-		X_LENGTH = string1_Length - 1;
-		strcpy(LCS_Y + 1, string2);
-		Y_LENGTH = string2_Length - 1;
-	}
+	LCS_X[X_LENGTH + 1] = '\0';
 	LCS_X[0] = ' ';
+	printf("[%s]\n",LCS_X);
+
+	LCS_Y[Y_LENGTH + 1] = '\0';
 	LCS_Y[0] = ' ';
+	printf("[%s]\n", LCS_Y);
+
+	char tmp[MAX_LCS_LENGTH +1];
+	int tmpint;
+
+	if(X_LENGTH < Y_LENGTH)
+	{
+
+
+		strcpy(tmp, LCS_Y);
+		strcpy(LCS_Y, LCS_X);
+		strcpy(LCS_X, tmp);
+		tmpint = Y_LENGTH;
+		Y_LENGTH = X_LENGTH;
+		X_LENGTH = tmpint;
+	}
 
 }
 
 
-void allocate_LCS_C(void)
+void init_LCS_C(void)
 {
 	int i;
-	LCS_C = (int **)realloc(LCS_C,(X_LENGTH + 1) * sizeof(int *));
-
-	for(i = 0; i <= X_LENGTH; i++)
-	{
-		LCS_C[i] = (int *)realloc(NULL,(Y_LENGTH + 1) * sizeof(int));
-	}
 
 	for(i = 1; i <= X_LENGTH ; i++)
 	{
@@ -129,30 +115,6 @@ void allocate_LCS_C(void)
 	{
 		LCS_C[0][i] = 0;
 	}
-}
-
-void deallocate_LCS_Var(void)
-{
-	int i;
-	//free(LCS_X);
-	LCS_X = realloc(LCS_X, 0);
-
-	LCS_Y = realloc(LCS_Y, 0);
-
-	for(i = 0; i <= X_LENGTH; i++)
-	{
-		if(LCS_C[i])
-		{
-			LCS_C[i] = realloc(LCS_C[i], 0);
-		}
-	}
-	LCS_C = realloc(LCS_C, 0);
-
-	LCS_M1 = realloc(LCS_M1, 0);
-	LCS_M2 = realloc(LCS_M2,0);
-
-	INT_LIST = realloc(INT_LIST,0);
-
 }
 
 
