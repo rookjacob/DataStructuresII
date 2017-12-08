@@ -22,7 +22,7 @@ int LCS_Length_C(char *FileName)
 	{
 		for(j = 1; j <= Y_LENGTH; j++)
 		{
-			if(LCS_X[i] == LCS_Y[j])
+			if(LCS_X[i - 1] == LCS_Y[j - 1])
 			{
 				LCS_C[i][j] = LCS_C[i-1][j-1] + 1;
 			}
