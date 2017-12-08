@@ -24,14 +24,14 @@
  * @brief	LCS_C		Variable to point to the dynamically allocated memory for the "C"
  * array in the dynamic programming algorithm for the LCS problem.
  */
-int **LCS_C;
+int LCS_C[MAX_LCS_LENGTH + 1][MAX_LCS_LENGTH + 1];
 
 /*
  * brief	LCS_X LCS_Y		Variable to point to the dynamically allocated memory to store
  * strings of interest for the LCS
  */
-char *LCS_X;
-char *LCS_Y;
+char LCS_X[MAX_LCS_LENGTH + 1];
+char LCS_Y[MAX_LCS_LENGTH + 1];
 
 /*
  * @brief	X_LENGTH Y_LENGTH	Variables to store the length of hte LCS_X LCS_Y strings
@@ -50,14 +50,14 @@ int NUM_LCS;
  * interval list for the LCS_Multiple_Length function. The locations in the passed files for
  * all of the strings are stored in this array.
  */
-int *INT_LIST;
+int INT_LIST[MAX_NUM_LCS];
 
 /*
  * @brief	LCS_M1 LCS_M2		Variable to point to the dynamically allocate memory to
  * store the temporary arrays to do the LCS calculations
  */
-int *LCS_M1;
-int *LCS_M2;
+int LCS_M1[MAX_LCS_LENGTH + 1];
+int LCS_M2[MAX_LCS_LENGTH + 1];
 
 /*
  * @brief	LCS_Length_C	This function calculates the LCS of two strings in the file
