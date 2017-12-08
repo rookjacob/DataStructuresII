@@ -72,8 +72,8 @@ void init_XY_C(char *FileName)
 	}
 	fclose(fp);
 
-	X_LENGTH = strlen(LCS_X) - 2;
-	Y_LENGTH = strlen(LCS_Y) - 2;
+	X_LENGTH = strlen(LCS_X) - 3;
+	Y_LENGTH = strlen(LCS_Y) - 3;
 
 	LCS_X[X_LENGTH + 1] = '\0';
 	LCS_X[0] = ' ';
