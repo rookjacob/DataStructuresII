@@ -190,7 +190,6 @@ void init_Interval_List(char *FileName)
 		if(fgets(tmp, MAX_LCS_LENGTH + 1, fp))
 		{
 			INT_LIST[i] = strlen(tmp) + INT_LIST[i - 1];
-			printf("%d %d %c\n", i, INT_LIST[i], tmp[0]);
 			if(!INT_LIST[i])
 			{
 				printf("Error reading string %d", i);
