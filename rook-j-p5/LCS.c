@@ -173,14 +173,20 @@ void init_Interval_List(char *FileName)
 {
 	read_NUM_LCS(FileName);
 
+	if(NUM_LCS > 50)
+	{
+		printf("Too many strings\n");
+		exit(1);
+	}
+
 	FILE *fp;
 	fp = fopen(FileName, "r");
 	fseek(fp, 0, SEEK_SET);
 
 	int i;
-	char tmp[MAX_LCS_LENGTH + 2];
+	char tmp[MAX_LCS_LENGTH + 1];
 
-	fgets(tmp, MAX_LCS_LENGTH + 2, fp);
+	fgets(tmp, MAX_LCS_LENGTH + 1, fp);
 	INT_LIST[0] = strlen(tmp);
 
 	for(i = 1; i < NUM_LCS; i++)
@@ -188,7 +194,7 @@ void init_Interval_List(char *FileName)
 		if(fgets(tmp, MAX_LCS_LENGTH + 1, fp))
 		{
 			INT_LIST[i] = strlen(tmp) + INT_LIST[i - 1];
-			printf("%d %d\n", i, INT_LIST[i]);
+			printf("%d %d %c\n", i, INT_LIST[i], tmp[0]);
 			if(!INT_LIST[i])
 			{
 				printf("Error reading string %d", i);
